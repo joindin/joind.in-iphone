@@ -39,7 +39,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSObject *localConfListData = self.confListData;
 	UITableViewCell *vc;
-	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
 	[vc autorelease];
 	
 	// Bury into the data struct - this will be farmed out to a model
@@ -49,7 +49,12 @@
 	
 	NSString *label = [[[NSString alloc] initWithString:[tempB objectForKey:@"event_name"]] autorelease];
 	
+	unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+	NSDateComponents *startDate = [[NSCalendar currentCalendar] components:unitFlags fromDate:[NSDate dateWithTimeIntervalSince1970:[[tempB objectForKey:@"event_start"] integerValue]]];	
+	NSDateComponents *endDate = [[NSCalendar currentCalendar] components:unitFlags fromDate:[NSDate dateWithTimeIntervalSince1970:[[tempB objectForKey:@"event_end"] integerValue]]];	
+	
 	vc.textLabel.text = label;
+	vc.detailTextLabel.text = [NSString stringWithFormat:@"%d/%d/%d - %d/%d/%d", [startDate day], [startDate month], [startDate year], [endDate day], [endDate month], [endDate year]];
 	
 	NSLog(@"Index %d, label %@, indexPath %@", idx, label, indexPath);
 	
