@@ -273,8 +273,8 @@
 	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
-		<integer>1280</integer>
-		<integer>1280</integer>
+		<integer>786</integer>
+		<integer>786</integer>
 	</array>
 	<key>Perspectives</key>
 	<array>
@@ -328,7 +328,7 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
-								<real>132</real>
+								<real>174</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
@@ -356,7 +356,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {132, 660}}</string>
+							<string>{{0, 0}, {174, 659}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -366,19 +366,19 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {149, 678}}</string>
+						<string>{{0, 0}, {191, 677}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
-							<real>132</real>
+							<real>174</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>0 59 1280 719 0 0 1280 778 </string>
+						<string>493 60 786 718 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
 					<key>Proportion</key>
-					<string>149pt</string>
+					<string>191pt</string>
 				</dict>
 				<dict>
 					<key>Dock</key>
@@ -403,15 +403,16 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>0AE9790110EBD4AD00575889</string>
+										<string>0AE9797210EC340200575889</string>
 										<key>history</key>
 										<array>
-											<string>0AE976CB10EA750E00575889</string>
 											<string>0AE9779610EAD6A900575889</string>
 											<string>0AE9779710EAD6A900575889</string>
 											<string>0AE9779810EAD6A900575889</string>
-											<string>0AE978E210EBD09100575889</string>
-											<string>0AE978E710EBD10A00575889</string>
+											<string>0AE9794310EC128200575889</string>
+											<string>0AE9796F10EC340200575889</string>
+											<string>0AE9797010EC340200575889</string>
+											<string>0AE9797110EC340200575889</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -425,18 +426,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1126, 564}}</string>
+								<string>{{0, 0}, {590, 560}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 59 1280 719 0 0 1280 778 </string>
+								<string>493 60 786 718 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>564pt</string>
+							<string>560pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>109pt</string>
+							<string>112pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -450,7 +451,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {970, 204}}</string>
+										<string>{{10, 27}, {590, 85}}</string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -504,9 +505,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1126, 82}}</string>
+										<string>{{10, 27}, {590, 85}}</string>
 										<key>RubberWindowFrame</key>
-										<string>0 59 1280 719 0 0 1280 778 </string>
+										<string>493 60 786 718 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -515,7 +516,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>1126pt</string>
+					<string>590pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -534,11 +535,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>0AE976AE10EA73E700575889</string>
+				<string>0AE9792310EC0BE800575889</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>0AE976AF10EA73E700575889</string>
+				<string>0AE9792410EC0BE800575889</string>
 				<string>0AE976AB10EA73DC00575889</string>
-				<string>0AE976B010EA73E700575889</string>
+				<string>0AE9792510EC0BE800575889</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -687,14 +688,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>0AE976B110EA73E700575889</string>
+				<string>0AE9793010EC0E6D00575889</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>0AE976B210EA73E700575889</string>
-				<string>0AE976B310EA73E700575889</string>
-				<string>0AE976B410EA73E700575889</string>
-				<string>0AE976B510EA73E700575889</string>
-				<string>0AE976AB10EA73DC00575889</string>
+				<string>0AE9793110EC0E6D00575889</string>
+				<string>0AE9793210EC0E6D00575889</string>
+				<string>0AE9793310EC0E6D00575889</string>
+				<string>0AE9793410EC0E6D00575889</string>
+				<string>0AE9793510EC0E6D00575889</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>
@@ -711,7 +712,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>283890861.75044203</real>
+	<real>283915266.885921</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -728,12 +729,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>0AE976D210EA751F00575889</string>
-		<string>0AE976CF10EA750E00575889</string>
+		<string>0AE9793D10EC101B00575889</string>
+		<string>0AE9793710EC0E6D00575889</string>
 		<string>/Users/kevin/git/joindin/app/joindinapp/joindinapp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 59 1280 719 0 0 1280 778 </string>
+	<string>493 60 786 718 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
