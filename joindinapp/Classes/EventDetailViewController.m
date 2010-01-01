@@ -7,13 +7,17 @@
 //
 
 #import "EventDetailViewController.h"
+#import "TalkDetailViewController.h"
 #import "EventDetailModel.h"
 #import "EventDetailViewCell.h"
+#import "TalkListModel.h"
+#import "APICaller.h"
 
 
 @implementation EventDetailViewController
 
 @synthesize event;
+@synthesize talks;
 
 /*
 - (void)viewDidLoad {
@@ -27,7 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.title = event.name;
-	
+	self.talks = [APICaller GetTalksForEvent:event];
 }
 
 /*
@@ -77,14 +81,20 @@
 		return 3;
 	}
 	if (section == 1) {
-		return 2;
+		return [self.talks getNumTalks];
 	}
 	return 0;
 }
 
 // Override to support row selection in the table view.
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ([indexPath section] == 1) {
+		TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
+		talkDetailViewController.talk = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
+		[self.navigationController pushViewController:talkDetailViewController animated:YES];
+		[talkDetailViewController release];
+	}
+}
 
 
 /*
@@ -144,7 +154,7 @@
 				vc.title = event.name;
 				
 				NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-				[outputFormatter setDateFormat:@"dd-MM-yyyy"];
+				[outputFormatter setDateFormat:@"d MMM yyyy"];
 				NSString *startDate = [outputFormatter stringFromDate:event.start];
 				NSString *endDate   = [outputFormatter stringFromDate:event.end];
 				[outputFormatter release];
@@ -168,35 +178,40 @@
 				break;
 		}
 		vc.accessoryType = UITableViewCellAccessoryNone;
+		vc.selectionStyle = UITableViewCellSelectionStyleNone;
 		return vc;
 	} else if (indexPath.section == 1) {
 		UITableViewCell *vc;
 		vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
 		[vc autorelease];
+		
+		TalkDetailModel *tdm = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
+		
+		vc.textLabel.text = tdm.title;
+		vc.detailTextLabel.text = tdm.speaker;
 		vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		vc.selectionStyle = UITableViewCellSelectionStyleBlue;
 		return vc;
 	}
 	return nil; // Should never happen
 	
 }
 
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.section == 0) {
 		return 70;
 	}
-	return 40;
+	return 50;
 }
+*/
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
-	NSString *sectionHeader = nil;
-	
 	if(section == 1) {
-		sectionHeader = @"Talks";
+		return @"Talks";
 	}
-	
-	return sectionHeader;
+	return nil;
 }
 
 - (void)dealloc {
