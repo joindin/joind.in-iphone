@@ -8,20 +8,12 @@
 
 #import "EventDetailViewController.h"
 #import "EventDetailModel.h"
+#import "EventDetailViewCell.h"
 
 
 @implementation EventDetailViewController
 
 @synthesize event;
-
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
 
 /*
 - (void)viewDidLoad {
@@ -35,7 +27,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.title = event.name;
-
+	
 }
 
 /*
@@ -74,85 +66,138 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
 
-
-// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+	if (section == 0) {
+		return 3;
+	}
+	if (section == 1) {
+		return 2;
+	}
+	return 0;
 }
 
+// Override to support row selection in the table view.
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//}
 
-// Customize the appearance of table view cells.
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source.
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+ }   
+ }
+ */
+
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
+
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-		cell.textLabel.text = @"asdfgh";
-		cell.detailTextLabel.text = @"poiuyt";
-    }
-    
-    // Set up the cell...
 	
-    return cell;
+	/*
+	*/
+	
+	if (indexPath.section == 0) {
+		EventDetailViewCell *vc = (EventDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cellView"];
+		if(vc == nil) {
+			[[NSBundle mainBundle] loadNibNamed:@"EventDetailViewCell" owner:self options:nil];
+			vc = tblCell;
+		}
+		
+		switch ([indexPath row]) {
+			case 0:
+				vc.title = event.name;
+				
+				NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+				[outputFormatter setDateFormat:@"dd-MM-yyyy"];
+				NSString *startDate = [outputFormatter stringFromDate:event.start];
+				NSString *endDate   = [outputFormatter stringFromDate:event.end];
+				[outputFormatter release];
+				
+				if ([startDate compare:endDate] == NSOrderedSame) {
+					vc.desc = startDate;
+				} else {
+					vc.desc = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
+				}
+				break;
+			case 1:
+				vc.title = @"Location";
+				vc.desc = event.location;
+				break;
+			case 2:
+				vc.title = @"Description";
+				vc.desc = event.description;
+				break;
+			default:
+				vc.title = @"default";
+				break;
+		}
+		vc.accessoryType = UITableViewCellAccessoryNone;
+		return vc;
+	} else if (indexPath.section == 1) {
+		UITableViewCell *vc;
+		vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+		[vc autorelease];
+		vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		return vc;
+	}
+	return nil; // Should never happen
+	
 }
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.section == 0) {
+		return 70;
+	}
+	return 40;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	
+	NSString *sectionHeader = nil;
+	
+	if(section == 1) {
+		sectionHeader = @"Talks";
+	}
+	
+	return sectionHeader;
 }
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 - (void)dealloc {
     [super dealloc];

@@ -79,8 +79,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     // Navigation logic may go here -- for example, create and push another view controller.
-	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] initWithNibName:@"EventDetailViewController" bundle:nil];
-	eventDetailViewController.event = [self.confListData getEventDetailModelAtIndex:[indexPath indexAtPosition:1]];
+	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] initWithNibName:@"EventDetailView" bundle:nil];
+	eventDetailViewController.event = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 	[self.navigationController pushViewController:eventDetailViewController animated:YES];
 	[eventDetailViewController release];
 }
@@ -132,14 +132,21 @@
 	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
 	[vc autorelease];
 	
-	EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath indexAtPosition:1]];
+	EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 	
 	NSString *label = edm.name;
 
-	unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
-	NSDateComponents *startDate = [[NSCalendar currentCalendar] components:unitFlags fromDate:edm.start];
-	NSDateComponents *endDate = [[NSCalendar currentCalendar] components:unitFlags fromDate:edm.end];
-	vc.detailTextLabel.text = [NSString stringWithFormat:@"%d/%d/%d - %d/%d/%d", [startDate day], [startDate month], [startDate year], [endDate day], [endDate month], [endDate year]];
+	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+	[outputFormatter setDateFormat:@"dd-MM-yyyy"];
+	NSString *startDate = [outputFormatter stringFromDate:edm.start];
+	NSString *endDate   = [outputFormatter stringFromDate:edm.end];
+	[outputFormatter release];
+	
+	if ([startDate compare:endDate] == NSOrderedSame) {
+		vc.detailTextLabel.text = startDate;
+	} else {
+		vc.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
+	}
 	
 	vc.textLabel.text = label;
 	
