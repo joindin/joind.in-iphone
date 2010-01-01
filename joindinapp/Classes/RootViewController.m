@@ -7,18 +7,24 @@
 //
 
 #import "RootViewController.h"
-
+#import "EventDetailViewController.h"
+#import "EventListModel.h"
+#import "EventDetailModel.h"
+#import "APICaller.h"
+#import "JSON.h"
 
 @implementation RootViewController
 
-/*
+@synthesize confListData;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	self.confListData = [APICaller GetEventList];
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -47,7 +53,7 @@
 	// Return YES for supported orientations.
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
- */
+*/
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -69,39 +75,15 @@
 }
 
 
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-	// Configure the cell.
-
-    return cell;
-}
-
-
-
-/*
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
+	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] initWithNibName:@"EventDetailViewController" bundle:nil];
+	eventDetailViewController.event = [self.confListData getEventDetailModelAtIndex:[indexPath indexAtPosition:1]];
+	[self.navigationController pushViewController:eventDetailViewController animated:YES];
+	[eventDetailViewController release];
 }
-*/
 
 
 /*
@@ -143,6 +125,35 @@
 }
 */
 
+ 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	UITableViewCell *vc;
+	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+	[vc autorelease];
+	
+	EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath indexAtPosition:1]];
+	
+	NSString *label = edm.name;
+
+	unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+	NSDateComponents *startDate = [[NSCalendar currentCalendar] components:unitFlags fromDate:edm.start];
+	NSDateComponents *endDate = [[NSCalendar currentCalendar] components:unitFlags fromDate:edm.end];
+	vc.detailTextLabel.text = [NSString stringWithFormat:@"%d/%d/%d - %d/%d/%d", [startDate day], [startDate month], [startDate year], [endDate day], [endDate month], [endDate year]];
+	
+	vc.textLabel.text = label;
+	
+	return vc;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [self.confListData getNumEvents];
+}
+
+- (UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+	return UITableViewCellAccessoryDisclosureIndicator;
+}
 
 - (void)dealloc {
     [super dealloc];
