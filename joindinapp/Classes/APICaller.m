@@ -103,7 +103,7 @@
 	//NSLog(@"JSON request is %@", reqJSON);
 	
 	NSMutableURLRequest *req;
-	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://lorna.rivendell.local/api/event"]];
+	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://joind.in/api/event"]];
 	[req setHTTPBody:[reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
 	[req setHTTPMethod:@"POST"];
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
