@@ -137,7 +137,7 @@
 	NSString *label = edm.name;
 
 	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-	[outputFormatter setDateFormat:@"dd-MM-yyyy"];
+	[outputFormatter setDateFormat:@"d MMM yyyy"];
 	NSString *startDate = [outputFormatter stringFromDate:edm.start];
 	NSString *endDate   = [outputFormatter stringFromDate:edm.end];
 	[outputFormatter release];
@@ -149,17 +149,13 @@
 	}
 	
 	vc.textLabel.text = label;
+	vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	return vc;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [self.confListData getNumEvents];
-}
-
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-	return UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)dealloc {
