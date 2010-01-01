@@ -23,20 +23,16 @@
 		
 		NSLog(@"Event is %@", event);
 		EventDetailModel *edm = [[EventDetailModel alloc] init];
-		edm.name  = [event objectForKey:@"event_name"];
-		edm.start = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_start"] integerValue]];
-		edm.end   = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_end"]   integerValue]];
-/*
-		 NSString   *name;
-		 NSDate     *start;
-		 NSDate     *end;
-		 NSUInteger  Id;
-		 NSString   *location;
-		 NSString   *description;
-		 NSUInteger  active;
-		 NSString   *stub;
-		 NSUInteger  tzOffset;
-*/		 
+		edm.name        = [event objectForKey:@"event_name"];
+		edm.start       = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_start"] integerValue]];
+		edm.end         = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_end"]   integerValue]];
+		edm.Id          = [[event objectForKey:@"ID"] integerValue];
+		edm.location    = [event objectForKey:@"event_loc"];
+		edm.description = [event objectForKey:@"event_desc"];
+		edm.active      = [[event objectForKey:@"active"] integerValue];
+		edm.stub        = [event objectForKey:@"event_stub"];
+		edm.tzOffset    = [[event objectForKey:@"event_tz"] integerValue];
+		
 		[elm addEvent:edm];
 		[edm release];
 	}

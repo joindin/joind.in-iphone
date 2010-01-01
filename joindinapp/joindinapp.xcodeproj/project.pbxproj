@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A6D1DD710EE35F500E941EE /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6D1DD610EE35F500E941EE /* Entitlements.plist */; };
+		0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6D1E3E10EE561700E941EE /* Entitlements.plist */; };
+		0A7DEBF910EE613A0028D49B /* EventDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEBF810EE613A0028D49B /* EventDetailView.xib */; };
+		0A7DEC4910EE68B50028D49B /* EventDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEC4810EE68B50028D49B /* EventDetailViewCell.xib */; };
+		0A7DEC5010EE69950028D49B /* EventDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DEC4F10EE69950028D49B /* EventDetailViewCell.m */; };
 		0AB4A60A10EC37DB003A48FC /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */; };
-		0AB4A60B10EC37DB003A48FC /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4A60910EC37DB003A48FC /* EventDetailViewController.xib */; };
 		0AB4A65910ED5C9F003A48FC /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A64E10ED5C9F003A48FC /* NSObject+SBJSON.m */; };
 		0AB4A65A10ED5C9F003A48FC /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A65010ED5C9F003A48FC /* NSString+SBJSON.m */; };
 		0AB4A65B10ED5C9F003A48FC /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A65210ED5C9F003A48FC /* SBJSON.m */; };
@@ -30,10 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A6D1DD610EE35F500E941EE /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		0A6D1E3E10EE561700E941EE /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		0A7DEBF810EE613A0028D49B /* EventDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailView.xib; sourceTree = "<group>"; };
+		0A7DEC4810EE68B50028D49B /* EventDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailViewCell.xib; sourceTree = "<group>"; };
+		0A7DEC4E10EE69950028D49B /* EventDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewCell.h; sourceTree = "<group>"; };
+		0A7DEC4F10EE69950028D49B /* EventDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewCell.m; sourceTree = "<group>"; };
 		0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
-		0AB4A60910EC37DB003A48FC /* EventDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EventDetailViewController.xib; path = Classes/EventDetailViewController.xib; sourceTree = "<group>"; };
 		0AB4A64C10ED5C9F003A48FC /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		0AB4A64D10ED5C9F003A48FC /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		0AB4A64E10ED5C9F003A48FC /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -102,6 +107,8 @@
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */,
 				0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */,
+				0A7DEC4E10EE69950028D49B /* EventDetailViewCell.h */,
+				0A7DEC4F10EE69950028D49B /* EventDetailViewCell.m */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -157,7 +164,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				0A6D1DD610EE35F500E941EE /* Entitlements.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -181,8 +187,10 @@
 			children = (
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				0AB4A60910EC37DB003A48FC /* EventDetailViewController.xib */,
 				8D1107310486CEB800E47090 /* joindinapp-Info.plist */,
+				0A6D1E3E10EE561700E941EE /* Entitlements.plist */,
+				0A7DEBF810EE613A0028D49B /* EventDetailView.xib */,
+				0A7DEC4810EE68B50028D49B /* EventDetailViewCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -248,8 +256,9 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
-				0AB4A60B10EC37DB003A48FC /* EventDetailViewController.xib in Resources */,
-				0A6D1DD710EE35F500E941EE /* Entitlements.plist in Resources */,
+				0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */,
+				0A7DEBF910EE613A0028D49B /* EventDetailView.xib in Resources */,
+				0A7DEC4910EE68B50028D49B /* EventDetailViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +282,7 @@
 				0AB4A69E10ED8986003A48FC /* EventDetailModel.m in Sources */,
 				0AB4A6A110ED8999003A48FC /* EventListModel.m in Sources */,
 				0AB4A6D610EE0BBC003A48FC /* APICaller.m in Sources */,
+				0A7DEC5010EE69950028D49B /* EventDetailViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +325,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -329,7 +339,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};
