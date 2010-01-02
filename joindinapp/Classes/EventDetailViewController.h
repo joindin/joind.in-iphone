@@ -22,6 +22,7 @@
 	IBOutlet UILabel  *uiDesc;
 	IBOutlet UIButton *uiDescButton;
 	IBOutlet UIView   *uiViewWithContent;
+	IBOutlet UIActivityIndicatorView *uiLoadTalksIndicator;
 }
 
 - (UIView*) createFixedView;
@@ -37,5 +38,6 @@
 @property (nonatomic, retain) UIButton *uiDescButton;
 @property (nonatomic, retain) UIScrollView  *uiScroller;
 @property (nonatomic, retain) UIView  *uiViewWithContent;
+@property (nonatomic, retain) UIActivityIndicatorView *uiLoadTalksIndicator;
 
 @end

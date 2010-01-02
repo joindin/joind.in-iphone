@@ -351,9 +351,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
-									<integer>2</integer>
-									<integer>1</integer>
+									<integer>30</integer>
+									<integer>24</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -393,7 +392,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>0AB4A5F310EC3496003A48FC</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EventGetTalks.h</string>
+								<string>EventDetailViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -401,11 +400,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>0AB4A5F410EC3496003A48FC</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>EventGetTalks.h</string>
+										<string>EventDetailViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>0A7DF27110F007410028D49B</string>
+										<string>0A7DF2A110F009ED0028D49B</string>
 										<key>history</key>
 										<array>
 											<string>0AB4A63610ED5A44003A48FC</string>
@@ -430,14 +429,14 @@
 											<string>0A7DF17F10EFF3200028D49B</string>
 											<string>0A7DF18010EFF3200028D49B</string>
 											<string>0A7DF1CF10EFFD4D0028D49B</string>
-											<string>0A7DF1F110EFFF780028D49B</string>
-											<string>0A7DF22810F001270028D49B</string>
-											<string>0A7DF23110F001600028D49B</string>
-											<string>0A7DF24E10F0052A0028D49B</string>
 											<string>0A7DF26D10F007410028D49B</string>
 											<string>0A7DF26E10F007410028D49B</string>
 											<string>0A7DF26F10F007410028D49B</string>
-											<string>0A7DF27010F007410028D49B</string>
+											<string>0A7DF27310F007B70028D49B</string>
+											<string>0A7DF27810F008250028D49B</string>
+											<string>0A7DF27910F008250028D49B</string>
+											<string>0A7DF28410F009220028D49B</string>
+											<string>0A7DF28510F009220028D49B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -737,7 +736,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>284165953.87240398</real>
+	<real>284166637.46561998</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>

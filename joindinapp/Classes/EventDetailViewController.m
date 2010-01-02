@@ -25,6 +25,7 @@
 @synthesize uiDescButton;
 @synthesize uiScroller;
 @synthesize uiViewWithContent;
+@synthesize uiLoadTalksIndicator;
 
 #pragma mark View loaders
 
@@ -42,6 +43,7 @@
 	
 	EventGetTalks *e = [APICaller EventGetTalks:self];
 	[e call:self.event];
+	[self.uiLoadTalksIndicator startAnimating];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -130,6 +132,7 @@
 #pragma mark Utility methods
 
 - (void)gotTalksForEvent:(TalkListModel *)tlm {
+	[self.uiLoadTalksIndicator stopAnimating];
 	self.talks = tlm;
 	[(UITableView *)self.uiViewWithContent reloadData];
 }
