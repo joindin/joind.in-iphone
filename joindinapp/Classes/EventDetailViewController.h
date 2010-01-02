@@ -8,16 +8,33 @@
 
 #import <UIKit/UIKit.h>
 #import "EventDetailModel.h"
-#import "EventDetailViewCell.h"
 #import "TalkListModel.h"
 
-@interface EventDetailViewController : UITableViewController {
+@interface EventDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate> {
 	EventDetailModel *event;
-	IBOutlet EventDetailViewCell *tblCell;
 	TalkListModel *talks;
+	
+	UIScrollView *uiScroller;
+	// IB components
+	IBOutlet UILabel  *uiTitle;
+	IBOutlet UILabel  *uiDate;
+	IBOutlet UILabel  *uiLocation;
+	IBOutlet UILabel  *uiDesc;
+	IBOutlet UIButton *uiDescButton;
+	IBOutlet UIView *uiViewWithContent;
 }
+
+- (UIView*) createFixedView;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;
+
+@property (nonatomic, retain) UILabel  *uiTitle;
+@property (nonatomic, retain) UILabel  *uiDate;
+@property (nonatomic, retain) UILabel  *uiLocation;
+@property (nonatomic, retain) UILabel  *uiDesc;
+@property (nonatomic, retain) UIButton *uiDescButton;
+@property (nonatomic, retain) UIScrollView  *uiScroller;
+@property (nonatomic, retain) UIView  *uiViewWithContent;
 
 @end

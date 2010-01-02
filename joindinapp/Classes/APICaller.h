@@ -10,11 +10,10 @@
 #import "EventListModel.h"
 #import "TalkListModel.h"
 
-
 @interface APICaller : NSObject {
-
 }
 
++ (NSString *)GetApiUrl;
 + (EventListModel *)GetEventList;
 + (TalkListModel *)GetTalksForEvent:(EventDetailModel *)event;
 + (NSObject *)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params;
