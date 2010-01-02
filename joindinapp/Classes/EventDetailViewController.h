@@ -21,7 +21,7 @@
 	IBOutlet UILabel  *uiLocation;
 	IBOutlet UILabel  *uiDesc;
 	IBOutlet UIButton *uiDescButton;
-	IBOutlet UIView *uiViewWithContent;
+	IBOutlet UIView   *uiViewWithContent;
 }
 
 - (UIView*) createFixedView;

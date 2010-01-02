@@ -7,6 +7,7 @@
 //
 
 #import "EventDetailViewController.h"
+#import "EventDescriptionViewController.h"
 #import "TalkDetailViewController.h"
 #import "EventDetailModel.h"
 #import "TalkListModel.h"
@@ -111,7 +112,10 @@
 #pragma mark User-action handlers
 
 - (IBAction)uiDescButtonPressed:(id)sender {
-	NSLog(@"Button pressed");
+	EventDescriptionViewController *edvc = [[EventDescriptionViewController alloc] initWithNibName:@"EventDescriptionView" bundle:nil];
+	edvc.event = self.event;
+	[self.navigationController pushViewController:edvc animated:YES];
+	[edvc release];
 }
 
 #pragma mark Utility methods
