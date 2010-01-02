@@ -7,15 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EventListModel.h"
-#import "TalkListModel.h"
 
 @interface APICaller : NSObject {
+	id delegate;
+	NSMutableData *urlData;
 }
 
-+ (NSString *)GetApiUrl;
-+ (EventListModel *)GetEventList;
-+ (TalkListModel *)GetTalksForEvent:(EventDetailModel *)event;
-+ (NSObject *)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params;
+@property (nonatomic, retain) id delegate;
+@property (nonatomic, retain) NSMutableData *urlData;
+
+- (id)initWithDelegate:(id)_delegate;
+- (NSString *)getApiUrl;
+- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params;
+
+// Override these methods to implement a new API call
+- (void)call:(NSString *)eventType;
+- (void)gotData:(NSObject *)obj;
+- (void)gotError:(NSObject *)error;
 
 @end

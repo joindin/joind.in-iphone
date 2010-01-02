@@ -10,7 +10,7 @@
 #import "EventDetailViewController.h"
 #import "EventListModel.h"
 #import "EventDetailModel.h"
-#import "APICaller.h"
+#import "EventGetEventList.h"
 #import "JSON.h"
 
 @implementation RootViewController
@@ -23,7 +23,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-	self.confListData = [APICaller GetEventList];
+	EventGetEventList *e = [APICaller EventGetEventList:self];
+	[e call:@"upcoming"];
+}
+
+- (void)gotEventListData:(EventListModel *)eventListData {
+	self.confListData = eventListData;
+	[(UITableView *)self.view reloadData];
 }
 
 /*
@@ -71,7 +77,11 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+	if (self.confListData == nil) {
+		return 0;
+	} else {
+		return 1;
+	}
 }
 
 
@@ -82,11 +92,9 @@
 	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] init];
 	EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 	eventDetailViewController.event = edm;
-	eventDetailViewController.talks = [APICaller GetTalksForEvent:edm];
 	[self.navigationController pushViewController:eventDetailViewController animated:YES];
 	[eventDetailViewController release];
 }
-
 
 /*
 // Override to support conditional editing of the table view.
