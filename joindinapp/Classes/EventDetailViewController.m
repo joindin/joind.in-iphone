@@ -9,29 +9,66 @@
 #import "EventDetailViewController.h"
 #import "TalkDetailViewController.h"
 #import "EventDetailModel.h"
-#import "EventDetailViewCell.h"
 #import "TalkListModel.h"
 #import "APICaller.h"
-
 
 @implementation EventDetailViewController
 
 @synthesize event;
 @synthesize talks;
+@synthesize uiTitle;
+@synthesize uiDate;
+@synthesize uiLocation;
+@synthesize uiDesc;
+@synthesize uiDescButton;
+@synthesize uiScroller;
+@synthesize uiViewWithContent;
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+ 
+	UIView *contentView = [self createFixedView];
+	self.uiScroller = [[UIScrollView alloc] initWithFrame:[self.view frame]];
+	self.uiScroller.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	
+	self.uiScroller.contentSize = CGSizeMake(contentView.frame.size.width, contentView.frame.size.height + 200);
+	
+	[self.uiScroller addSubview: contentView];
+	[self.view addSubview:self.uiScroller];
 }
-*/
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.title = event.name;
-	self.talks = [APICaller GetTalksForEvent:event];
+	self.uiTitle.text = event.name;
+	self.uiDesc.text = event.description;
+	self.uiLocation.text = event.location;
+	
+	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+	[outputFormatter setDateFormat:@"d MMM yyyy"];
+	NSString *startDate = [outputFormatter stringFromDate:event.start];
+	NSString *endDate   = [outputFormatter stringFromDate:event.end];
+	[outputFormatter release];
+	
+	if ([startDate compare:endDate] == NSOrderedSame) {
+		self.uiDate.text = startDate;
+	} else {
+		self.uiDate.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
+	}
+	
+}
+
+- (UIView*) createFixedView {
+	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:@"EventDetailViewFixed" owner:self options:nil];
+	NSEnumerator *nibEnumerator = [nibContents objectEnumerator];
+	return (UIView*)[nibEnumerator nextObject];
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+	return self.uiViewWithContent;
 }
 
 /*
@@ -73,29 +110,20 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (section == 0) {
-		return 3;
-	}
-	if (section == 1) {
-		return [self.talks getNumTalks];
-	}
-	return 0;
+	return [self.talks getNumTalks];
 }
 
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if ([indexPath section] == 1) {
-		TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
-		talkDetailViewController.talk = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
-		[self.navigationController pushViewController:talkDetailViewController animated:YES];
-		[talkDetailViewController release];
-	}
+	TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
+	talkDetailViewController.talk = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
+	[self.navigationController pushViewController:talkDetailViewController animated:YES];
+	[talkDetailViewController release];
 }
-
 
 /*
  // Override to support conditional editing of the table view.
@@ -139,61 +167,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	/*
-	*/
+	UITableViewCell *vc;
+	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+	[vc autorelease];
 	
-	if (indexPath.section == 0) {
-		EventDetailViewCell *vc = (EventDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cellView"];
-		if(vc == nil) {
-			[[NSBundle mainBundle] loadNibNamed:@"EventDetailViewCell" owner:self options:nil];
-			vc = tblCell;
-		}
-		
-		switch ([indexPath row]) {
-			case 0:
-				vc.title = event.name;
-				
-				NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-				[outputFormatter setDateFormat:@"d MMM yyyy"];
-				NSString *startDate = [outputFormatter stringFromDate:event.start];
-				NSString *endDate   = [outputFormatter stringFromDate:event.end];
-				[outputFormatter release];
-				
-				if ([startDate compare:endDate] == NSOrderedSame) {
-					vc.desc = startDate;
-				} else {
-					vc.desc = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
-				}
-				break;
-			case 1:
-				vc.title = @"Location";
-				vc.desc = event.location;
-				break;
-			case 2:
-				vc.title = @"Description";
-				vc.desc = event.description;
-				break;
-			default:
-				vc.title = @"default";
-				break;
-		}
-		vc.accessoryType = UITableViewCellAccessoryNone;
-		vc.selectionStyle = UITableViewCellSelectionStyleNone;
-		return vc;
-	} else if (indexPath.section == 1) {
-		UITableViewCell *vc;
-		vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-		[vc autorelease];
-		
-		TalkDetailModel *tdm = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
-		
-		vc.textLabel.text = tdm.title;
-		vc.detailTextLabel.text = tdm.speaker;
-		vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		vc.selectionStyle = UITableViewCellSelectionStyleBlue;
-		return vc;
-	}
-	return nil; // Should never happen
+	TalkDetailModel *tdm = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
+	
+	vc.textLabel.text = tdm.title;
+	vc.textLabel.adjustsFontSizeToFitWidth = NO;
+	vc.textLabel.font = [UIFont systemFontOfSize:14];
+	
+	vc.detailTextLabel.text = tdm.speaker;
+	vc.detailTextLabel.adjustsFontSizeToFitWidth = NO;
+	vc.detailTextLabel.font = [UIFont systemFontOfSize:12];
+	
+	vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	vc.selectionStyle = UITableViewCellSelectionStyleBlue;
+	
+	return vc;
 	
 }
 
@@ -206,13 +197,6 @@
 	return 50;
 }
 */
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if(section == 1) {
-		return @"Talks";
-	}
-	return nil;
-}
 
 - (void)dealloc {
     [super dealloc];

@@ -15,6 +15,11 @@
 
 @implementation APICaller
 
++ (NSString *)GetApiUrl {
+	//return @"http://lorna.rivendell.local/api";
+	return @"http://joind.in/api";
+}
+
 + (EventListModel *)GetEventList {
 	NSObject *obj = [APICaller callAPI:@"event" action:@"getlist" params:[NSDictionary dictionaryWithObject:@"upcoming" forKey:@"event_type"]];
 	NSDictionary *d = (NSDictionary *)obj;
@@ -103,7 +108,7 @@
 	//NSLog(@"JSON request is %@", reqJSON);
 	
 	NSMutableURLRequest *req;
-	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://joind.in/api/event"]];
+	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", [APICaller GetApiUrl], type]]];
 	[req setHTTPBody:[reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
 	[req setHTTPMethod:@"POST"];
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

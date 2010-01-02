@@ -8,15 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6D1E3E10EE561700E941EE /* Entitlements.plist */; };
-		0A7DEBF910EE613A0028D49B /* EventDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEBF810EE613A0028D49B /* EventDetailView.xib */; };
-		0A7DEC4910EE68B50028D49B /* EventDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEC4810EE68B50028D49B /* EventDetailViewCell.xib */; };
-		0A7DEC5010EE69950028D49B /* EventDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DEC4F10EE69950028D49B /* EventDetailViewCell.m */; };
 		0A7DED4F10EE79160028D49B /* TalkListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DED4E10EE79160028D49B /* TalkListModel.m */; };
 		0A7DED5210EE79200028D49B /* TalkDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DED5110EE79200028D49B /* TalkDetailModel.m */; };
 		0A7DEE0010EE844B0028D49B /* TalkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DEDFE10EE844B0028D49B /* TalkDetailViewController.m */; };
 		0A7DEE0110EE844B0028D49B /* TalkDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEDFF10EE844B0028D49B /* TalkDetailView.xib */; };
 		0A7DEE4110EE87D80028D49B /* TalkDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEE4010EE87D80028D49B /* TalkDetailViewCell.xib */; };
 		0A7DEE4510EE88790028D49B /* TalkDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DEE4410EE88790028D49B /* TalkDetailViewCell.m */; };
+		0A7DEFF710EEDC510028D49B /* EventDetailViewFixed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */; };
 		0AB4A60A10EC37DB003A48FC /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */; };
 		0AB4A65910ED5C9F003A48FC /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A64E10ED5C9F003A48FC /* NSObject+SBJSON.m */; };
 		0AB4A65A10ED5C9F003A48FC /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A65010ED5C9F003A48FC /* NSString+SBJSON.m */; };
@@ -39,10 +37,6 @@
 
 /* Begin PBXFileReference section */
 		0A6D1E3E10EE561700E941EE /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		0A7DEBF810EE613A0028D49B /* EventDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailView.xib; sourceTree = "<group>"; };
-		0A7DEC4810EE68B50028D49B /* EventDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailViewCell.xib; sourceTree = "<group>"; };
-		0A7DEC4E10EE69950028D49B /* EventDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewCell.h; sourceTree = "<group>"; };
-		0A7DEC4F10EE69950028D49B /* EventDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewCell.m; sourceTree = "<group>"; };
 		0A7DED4D10EE79160028D49B /* TalkListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkListModel.h; sourceTree = "<group>"; };
 		0A7DED4E10EE79160028D49B /* TalkListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkListModel.m; sourceTree = "<group>"; };
 		0A7DED5010EE79200028D49B /* TalkDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkDetailModel.h; sourceTree = "<group>"; };
@@ -53,6 +47,7 @@
 		0A7DEE4010EE87D80028D49B /* TalkDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkDetailViewCell.xib; sourceTree = "<group>"; };
 		0A7DEE4310EE88790028D49B /* TalkDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkDetailViewCell.h; sourceTree = "<group>"; };
 		0A7DEE4410EE88790028D49B /* TalkDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkDetailViewCell.m; sourceTree = "<group>"; };
+		0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailViewFixed.xib; sourceTree = "<group>"; };
 		0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		0AB4A64C10ED5C9F003A48FC /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -123,8 +118,6 @@
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */,
 				0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */,
-				0A7DEC4E10EE69950028D49B /* EventDetailViewCell.h */,
-				0A7DEC4F10EE69950028D49B /* EventDetailViewCell.m */,
 				0A7DEDFD10EE844B0028D49B /* TalkDetailViewController.h */,
 				0A7DEDFE10EE844B0028D49B /* TalkDetailViewController.m */,
 				0A7DEE4310EE88790028D49B /* TalkDetailViewCell.h */,
@@ -213,10 +206,9 @@
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* joindinapp-Info.plist */,
 				0A6D1E3E10EE561700E941EE /* Entitlements.plist */,
-				0A7DEBF810EE613A0028D49B /* EventDetailView.xib */,
-				0A7DEC4810EE68B50028D49B /* EventDetailViewCell.xib */,
 				0A7DEDFF10EE844B0028D49B /* TalkDetailView.xib */,
 				0A7DEE4010EE87D80028D49B /* TalkDetailViewCell.xib */,
+				0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -283,10 +275,9 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
 				0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */,
-				0A7DEBF910EE613A0028D49B /* EventDetailView.xib in Resources */,
-				0A7DEC4910EE68B50028D49B /* EventDetailViewCell.xib in Resources */,
 				0A7DEE0110EE844B0028D49B /* TalkDetailView.xib in Resources */,
 				0A7DEE4110EE87D80028D49B /* TalkDetailViewCell.xib in Resources */,
+				0A7DEFF710EEDC510028D49B /* EventDetailViewFixed.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +301,6 @@
 				0AB4A69E10ED8986003A48FC /* EventDetailModel.m in Sources */,
 				0AB4A6A110ED8999003A48FC /* EventListModel.m in Sources */,
 				0AB4A6D610EE0BBC003A48FC /* APICaller.m in Sources */,
-				0A7DEC5010EE69950028D49B /* EventDetailViewCell.m in Sources */,
 				0A7DED4F10EE79160028D49B /* TalkListModel.m in Sources */,
 				0A7DED5210EE79200028D49B /* TalkDetailModel.m in Sources */,
 				0A7DEE0010EE844B0028D49B /* TalkDetailViewController.m in Sources */,

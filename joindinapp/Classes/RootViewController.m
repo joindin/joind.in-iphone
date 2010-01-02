@@ -79,8 +79,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     // Navigation logic may go here -- for example, create and push another view controller.
-	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] initWithNibName:@"EventDetailView" bundle:nil];
-	eventDetailViewController.event = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
+	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] init];
+	EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
+	eventDetailViewController.event = edm;
+	eventDetailViewController.talks = [APICaller GetTalksForEvent:edm];
 	[self.navigationController pushViewController:eventDetailViewController animated:YES];
 	[eventDetailViewController release];
 }
