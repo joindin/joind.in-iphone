@@ -12,6 +12,7 @@
 #import "EventDetailModel.h"
 #import "TalkListModel.h"
 #import "APICaller.h"
+#import "EventGetTalks.h"
 
 @implementation EventDetailViewController
 
@@ -38,6 +39,9 @@
 	
 	[self.uiScroller addSubview: contentView];
 	[self.view addSubview:self.uiScroller];
+	
+	EventGetTalks *e = [APICaller EventGetTalks:self];
+	[e call:self.event];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,7 +74,11 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+	if (self.talks == nil) {
+		return 0;
+	} else {
+		return 1;
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -82,6 +90,7 @@
 	TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
 	talkDetailViewController.talk = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
 	[self.navigationController pushViewController:talkDetailViewController animated:YES];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES]; // Deselect the talk row in the event detail screen
 	[talkDetailViewController release];
 }
 
@@ -119,6 +128,11 @@
 }
 
 #pragma mark Utility methods
+
+- (void)gotTalksForEvent:(TalkListModel *)tlm {
+	self.talks = tlm;
+	[(UITableView *)self.uiViewWithContent reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

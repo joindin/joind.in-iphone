@@ -15,67 +15,23 @@
 
 @implementation APICaller
 
-+ (NSString *)GetApiUrl {
+@synthesize delegate;
+@synthesize urlData;
+
+- (id)initWithDelegate:(id)_delegate {
+	self.delegate = _delegate;
+	self.urlData = [[NSMutableData alloc] init];
+	return self;
+}
+
+- (NSString *)getApiUrl {
 	//return @"http://lorna.rivendell.local/api";
 	return @"http://joind.in/api";
 }
 
-+ (EventListModel *)GetEventList {
-	NSObject *obj = [APICaller callAPI:@"event" action:@"getlist" params:[NSDictionary dictionaryWithObject:@"upcoming" forKey:@"event_type"]];
-	NSDictionary *d = (NSDictionary *)obj;
-	
-	EventListModel *elm = [[[EventListModel alloc] init] autorelease];
-	
-	for (NSDictionary *event in d) {
-		
-		//NSLog(@"Event is %@", event);
-		EventDetailModel *edm = [[EventDetailModel alloc] init];
-		edm.name        = [event objectForKey:@"event_name"];
-		edm.start       = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_start"] integerValue]];
-		edm.end         = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_end"]   integerValue]];
-		edm.Id          = [[event objectForKey:@"ID"] integerValue];
-		edm.location    = [event objectForKey:@"event_loc"];
-		edm.description = [event objectForKey:@"event_desc"];
-		edm.active      = [[event objectForKey:@"active"] integerValue];
-		edm.stub        = [event objectForKey:@"event_stub"];
-		edm.tzOffset    = [[event objectForKey:@"event_tz"] integerValue];
-		
-		[elm addEvent:edm];
-		[edm release];
-	}
-	
-	return elm;
-}
+#pragma mark API call
 
-+ (TalkListModel *)GetTalksForEvent:(EventDetailModel *)event {
-	NSObject *obj = [APICaller callAPI:@"event" action:@"gettalks" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"]];
-	NSDictionary *d = (NSDictionary *)obj;
-	TalkListModel *tlm = [[[TalkListModel alloc] init] autorelease];
-	for (NSDictionary *talk in d) {
-		
-		NSLog(@"Talk %@", talk);
-		
-		TalkDetailModel *tdm = [[TalkDetailModel alloc] init];
-		tdm.title      = [talk objectForKey:@"talk_title"];
-		tdm.speaker    = [talk objectForKey:@"speaker"];
-		tdm.Id         = [[talk objectForKey:@"tid"] integerValue];
-		tdm.eventId    = [[talk objectForKey:@"eid"] integerValue];
-		tdm.slidesLink = [talk objectForKey:@"slides_link"];
-		tdm.given      = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"date_given"]   integerValue]];
-		tdm.desc       = [talk objectForKey:@"talk_desc"];
-		tdm.langName   = [talk objectForKey:@"lang_name"];
-		tdm.lang       = [[talk objectForKey:@"lang"] integerValue];
-		tdm.rating     = [[talk objectForKey:@"tavg"] integerValue];
-		tdm.type       = [talk objectForKey:@"tcid"];
-		
-		[tlm addTalk:tdm];
-		[tdm release];
-		
-	}
-	return tlm;
-}
-
-+ (NSObject *)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params {
+- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params {
 	
 	//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
 	
@@ -105,31 +61,57 @@
 	[reqAction  release];
 	[reqObject  release];
 
-	//NSLog(@"JSON request is %@", reqJSON);
+	NSLog(@"JSON request is %@", reqJSON);
 	
 	NSMutableURLRequest *req;
-	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", [APICaller GetApiUrl], type]]];
+	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", [self getApiUrl], type]]];
 	[req setHTTPBody:[reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
 	[req setHTTPMethod:@"POST"];
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	
-	NSData *urlData;
-	NSURLResponse *response;
-	NSError *error;
-	
 	// Make synchronous request
-	urlData = [NSURLConnection sendSynchronousRequest:req
-									returningResponse:&response
-												error:&error];
+	[NSURLConnection connectionWithRequest:req delegate:self];
 	[req release];
 	
-	NSString *responseString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
-	//NSLog(@"Response is %@", responseString);
+}
+
+#pragma mark URL callback methods
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	[self.urlData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	NSString *responseString = [[NSString alloc] initWithData:self.urlData encoding:NSUTF8StringEncoding];
+	
+	// Reset buffer
+	[self.urlData release];
+	self.urlData = [[NSMutableData alloc] init];
+	
+	// Parse response
+	NSLog(@"Response is %@", responseString);
 	SBJSON *jsonParser = [SBJSON new];
 	NSObject *obj = [jsonParser objectWithString:responseString error:NULL];
 	[jsonParser release];
 	[responseString release];
-	return obj;
+	[self gotData:obj];
+}
+
+#pragma mark Override these
+- (void)call:(NSString *)eventType {
+	[self doesNotRecognizeSelector:_cmd];
+}
+- (void)gotData:(NSObject *)obj {
+	[self doesNotRecognizeSelector:_cmd];
+}
+- (void)gotError:(NSObject *)error {
+	[self doesNotRecognizeSelector:_cmd];
 }
 
 @end
