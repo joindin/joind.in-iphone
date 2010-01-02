@@ -25,6 +25,7 @@
 }
 
 - (UIView*) createFixedView;
+- (IBAction)uiDescButtonPressed:(id)sender;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;
