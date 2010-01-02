@@ -11,7 +11,6 @@
 #import "TalkListModel.h"
 
 @interface EventGetTalks : APICaller {
-
 }
 
 - (void)call:(EventDetailModel *)event;

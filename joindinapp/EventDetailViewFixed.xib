@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="30"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -129,7 +129,7 @@
 					<object class="IBUILabel" id="95806808">
 						<reference key="NSNextResponder" ref="698576825"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 176}, {280, 29}}</string>
+						<string key="NSFrame">{{20, 176}, {63, 29}}</string>
 						<reference key="NSSuperview" ref="698576825"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -203,6 +203,16 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
+					</object>
+					<object class="IBUIActivityIndicatorView" id="354060846">
+						<reference key="NSNextResponder" ref="698576825"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{91, 180}, {20, 20}}</string>
+						<reference key="NSSuperview" ref="698576825"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<int key="IBUIStyle">2</int>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
@@ -293,6 +303,14 @@
 					</object>
 					<int key="connectionID">29</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">uiLoadTalksIndicator</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="354060846"/>
+					</object>
+					<int key="connectionID">31</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -327,6 +345,7 @@
 							<reference ref="319513857"/>
 							<reference ref="492471708"/>
 							<reference ref="154323254"/>
+							<reference ref="354060846"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -370,6 +389,11 @@
 						<reference key="object" ref="154323254"/>
 						<reference key="parent" ref="698576825"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">30</int>
+						<reference key="object" ref="354060846"/>
+						<reference key="parent" ref="698576825"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -384,6 +408,7 @@
 					<string>23.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
+					<string>30.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
@@ -394,6 +419,7 @@
 					<string>EventDetailViewController</string>
 					<string>UIResponder</string>
 					<string>{{418, 285}, {320, 460}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -421,7 +447,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">29</int>
+			<int key="maxID">31</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -440,6 +466,7 @@
 							<string>uiDate</string>
 							<string>uiDesc</string>
 							<string>uiDescButton</string>
+							<string>uiLoadTalksIndicator</string>
 							<string>uiLocation</string>
 							<string>uiTitle</string>
 							<string>uiViewWithContent</string>
@@ -449,6 +476,7 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
+							<string>UIActivityIndicatorView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIView</string>
@@ -593,6 +621,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="678421999">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UIResponder.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIActivityIndicatorView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UIActivityIndicatorView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
