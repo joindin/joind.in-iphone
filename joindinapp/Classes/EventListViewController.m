@@ -11,7 +11,6 @@
 #import "EventListModel.h"
 #import "EventDetailModel.h"
 #import "EventGetEventList.h"
-#import "JSON.h"
 
 @implementation EventListViewController
 
@@ -24,13 +23,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	self.title = @"Upcoming events";
 	
-	EventGetEventList *e = [APICaller EventGetEventList:self];
-	[e call:@"upcoming"];
-}
-
-- (void)gotEventListData:(EventListModel *)eventListData {
-	self.confListData = eventListData;
-	[(UITableView *)self.view reloadData];
 }
 
 /*

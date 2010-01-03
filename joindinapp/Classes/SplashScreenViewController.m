@@ -7,34 +7,35 @@
 //
 
 #import "SplashScreenViewController.h"
+#import "EventListViewController.h"
+#import "APICaller.h"
+#import "EventGetEventList.h"
+#import "EventListModel.h"
+#import "EventDetailModel.h"
 
 
 @implementation SplashScreenViewController
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
+@synthesize uiLoading;
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-*/
+	
+	EventGetEventList *e = [APICaller EventGetEventList:self];
+	[e call:@"upcoming"];
+	[uiLoading startAnimating];
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-*/
+
+- (void)gotEventListData:(EventListModel *)eventListData {
+	[uiLoading stopAnimating];
+	EventListViewController *rvc = [[EventListViewController alloc] initWithNibName:@"EventListView" bundle:nil];
+	rvc.confListData = eventListData;
+	UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:rvc];
+	[[[self view] window] addSubview:[navC view]];
+	[[self view] removeFromSuperview];
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -42,12 +43,6 @@
 	
 	// Release any cached data, images, etc that aren't in use.
 }
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
 
 - (void)dealloc {
     [super dealloc];
