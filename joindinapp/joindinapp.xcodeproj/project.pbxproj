@@ -28,6 +28,7 @@
 		0AB4A69E10ED8986003A48FC /* EventDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A69D10ED8986003A48FC /* EventDetailModel.m */; };
 		0AB4A6A110ED8999003A48FC /* EventListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A6A010ED8999003A48FC /* EventListModel.m */; };
 		0AB4A6D610EE0BBC003A48FC /* APICaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A6D510EE0BBC003A48FC /* APICaller.m */; };
+		0AE8579010F0214E002C4C98 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8578F10F0214E002C4C98 /* appicon.png */; };
 		0AF708F610F0107200CDEBE6 /* SplashScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */; };
 		0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7099310F01AFE00CDEBE6 /* logo.gif */; };
 		0AF709C810F01EB600CDEBE6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF709C710F01EB600CDEBE6 /* Default.png */; };
@@ -81,6 +82,7 @@
 		0AB4A6A010ED8999003A48FC /* EventListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListModel.m; sourceTree = "<group>"; };
 		0AB4A6D410EE0BBC003A48FC /* APICaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICaller.h; sourceTree = "<group>"; };
 		0AB4A6D510EE0BBC003A48FC /* APICaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICaller.m; sourceTree = "<group>"; };
+		0AE8578F10F0214E002C4C98 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashScreenView.xib; sourceTree = "<group>"; };
 		0AF7099310F01AFE00CDEBE6 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
 		0AF709C710F01EB600CDEBE6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0AE8578F10F0214E002C4C98 /* appicon.png */,
 				0AF7099310F01AFE00CDEBE6 /* logo.gif */,
 				28F335F01007B36200424DE2 /* EventListView.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
@@ -313,6 +316,7 @@
 				0AF708F610F0107200CDEBE6 /* SplashScreenView.xib in Resources */,
 				0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */,
 				0AF709C810F01EB600CDEBE6 /* Default.png in Resources */,
+				0AE8579010F0214E002C4C98 /* appicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
