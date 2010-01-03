@@ -10,7 +10,9 @@
 
 
 @interface SplashScreenViewController : UIViewController {
-
+	IBOutlet UIActivityIndicatorView *uiLoading;
 }
+
+@property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
 
 @end

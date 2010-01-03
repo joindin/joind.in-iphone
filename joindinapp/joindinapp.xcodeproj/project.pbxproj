@@ -30,6 +30,7 @@
 		0AB4A6D610EE0BBC003A48FC /* APICaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A6D510EE0BBC003A48FC /* APICaller.m */; };
 		0AF708F610F0107200CDEBE6 /* SplashScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */; };
 		0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7099310F01AFE00CDEBE6 /* logo.gif */; };
+		0AF709C810F01EB600CDEBE6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF709C710F01EB600CDEBE6 /* Default.png */; };
 		1D3623260D0F684500981E51 /* joindinappAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* joindinappAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -82,6 +83,7 @@
 		0AB4A6D510EE0BBC003A48FC /* APICaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICaller.m; sourceTree = "<group>"; };
 		0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashScreenView.xib; sourceTree = "<group>"; };
 		0AF7099310F01AFE00CDEBE6 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
+		0AF709C710F01EB600CDEBE6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* joindinappAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joindinappAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* joindinappAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = joindinappAppDelegate.m; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */,
 				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
 				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
+				0AF709C710F01EB600CDEBE6 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				0A7DF07B10EFAEAA0028D49B /* EventDescriptionView.xib in Resources */,
 				0AF708F610F0107200CDEBE6 /* SplashScreenView.xib in Resources */,
 				0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */,
+				0AF709C810F01EB600CDEBE6 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

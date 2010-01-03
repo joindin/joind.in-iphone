@@ -25,18 +25,7 @@
 	
 	[window addSubview:[splashScreenViewController view]];
     [window makeKeyAndVisible];
-	[self performSelector:@selector(startApp) withObject:nil afterDelay:0.2f];
 }
-
-- (void)startApp {
-	[[splashScreenViewController view] removeFromSuperview];
-	
-	EventListViewController *rvc = [[EventListViewController alloc] initWithNibName:@"EventListView" bundle:nil];
-	UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:rvc];
-	[window addSubview:[navC view]];
-	
-}
-
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Save data if appropriate
