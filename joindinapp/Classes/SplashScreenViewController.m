@@ -23,7 +23,7 @@
     [super viewDidLoad];
 	
 	EventGetEventList *e = [APICaller EventGetEventList:self];
-	[e call:@"upcoming"];
+	[e call:@"past"];
 	[uiLoading startAnimating];
 
 }

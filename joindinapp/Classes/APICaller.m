@@ -95,7 +95,7 @@
 	self.urlData = [[NSMutableData alloc] init];
 	
 	// Parse response
-	NSLog(@"Response is %@", responseString);
+	//NSLog(@"Response is %@", responseString);
 	SBJSON *jsonParser = [SBJSON new];
 	NSObject *obj = [jsonParser objectWithString:responseString error:NULL];
 	[jsonParser release];

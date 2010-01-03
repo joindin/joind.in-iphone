@@ -22,7 +22,6 @@
 	
 	NSDictionary *d = (NSDictionary *)obj;
 	for (NSDictionary *talk in d) {
-		NSLog(@"Talk is %@", talk);
 		TalkDetailModel *tdm = [[TalkDetailModel alloc] init];
 		tdm.title      = [talk objectForKey:@"talk_title"];
 		tdm.speaker    = [talk objectForKey:@"speaker"];
@@ -33,7 +32,9 @@
 		tdm.desc       = [talk objectForKey:@"talk_desc"];
 		tdm.langName   = [talk objectForKey:@"lang_name"];
 		tdm.lang       = [[talk objectForKey:@"lang"] integerValue];
-		tdm.rating     = [[talk objectForKey:@"tavg"] integerValue];
+		if ([talk objectForKey:@"rank"] != [NSNull null]) {
+			tdm.rating = [[talk objectForKey:@"rank"] integerValue];
+		}
 		tdm.type       = [talk objectForKey:@"tcid"];
 		
 		[tlm addTalk:tdm];
