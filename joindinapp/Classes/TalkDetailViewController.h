@@ -16,6 +16,7 @@
 	IBOutlet UILabel    *uiSpeaker;
 	IBOutlet UILabel    *uiDate;
 	IBOutlet UITextView *uiDesc;
+	IBOutlet UIImageView *uiRating;
 }
 
 @property (nonatomic, retain) TalkDetailModel *talk;
@@ -23,5 +24,6 @@
 @property (nonatomic, retain) UILabel *uiSpeaker;
 @property (nonatomic, retain) UILabel *uiDate;
 @property (nonatomic, retain) UITextView *uiDesc;
+@property (nonatomic, retain) UIImageView *uiRating;
 
 @end

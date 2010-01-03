@@ -17,7 +17,6 @@
 }
 
 - (void)gotData:(NSObject *)obj {
-	NSLog(@"Got data: %@", obj);
 	
 	NSDictionary *d = (NSDictionary *)obj;
 	

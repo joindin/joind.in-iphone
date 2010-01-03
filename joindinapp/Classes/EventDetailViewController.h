@@ -15,6 +15,7 @@
 	TalkListModel *talks;
 	
 	UIScrollView *uiScroller;
+	UIView       *uiFixedView;
 	// IB components
 	IBOutlet UILabel  *uiTitle;
 	IBOutlet UILabel  *uiDate;
@@ -27,6 +28,7 @@
 
 - (UIView*) createFixedView;
 - (IBAction)uiDescButtonPressed:(id)sender;
+- (void)resizeScroller;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;

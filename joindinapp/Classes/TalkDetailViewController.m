@@ -16,6 +16,7 @@
 @synthesize uiSpeaker;
 @synthesize uiDate;
 @synthesize uiDesc;
+@synthesize uiRating;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -30,6 +31,14 @@
 	
 	self.uiDate.text = dateGiven;
 	self.uiDesc.text = talk.desc;
+	
+	NSLog(@"Talk rating is %d", self.talk.rating);
+	if (self.talk.rating > 0 && self.talk.rating <= 5) {
+		self.uiRating.hidden = NO;
+		self.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", talk.rating]];
+	} else {
+		self.uiRating.hidden = YES;
+	}
 }
 
 - (void)didReceiveMemoryWarning {

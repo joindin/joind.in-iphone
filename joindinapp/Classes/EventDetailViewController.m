@@ -32,13 +32,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	UIView *contentView = [self createFixedView];
+	uiFixedView = [self createFixedView];
 	self.uiScroller = [[UIScrollView alloc] initWithFrame:[self.view frame]];
-	self.uiScroller.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	self.uiScroller.canCancelContentTouches = NO;
+	//self.uiScroller.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	
-	self.uiScroller.contentSize = CGSizeMake(contentView.frame.size.width, contentView.frame.size.height + 200);
+	[self resizeScroller];
 	
-	[self.uiScroller addSubview: contentView];
+	[self.uiScroller addSubview:uiFixedView];
 	[self.view addSubview:self.uiScroller];
 	
 	EventGetTalks *e = [APICaller EventGetTalks:self];
@@ -131,10 +132,15 @@
 
 #pragma mark Utility methods
 
+- (void)resizeScroller {
+	self.uiScroller.contentSize = CGSizeMake(320, 220 + (44 * [self.talks getNumTalks]));
+}
+
 - (void)gotTalksForEvent:(TalkListModel *)tlm {
 	[self.uiLoadTalksIndicator stopAnimating];
 	self.talks = tlm;
 	[(UITableView *)self.uiViewWithContent reloadData];
+	[self resizeScroller];
 }
 
 - (void)didReceiveMemoryWarning {
