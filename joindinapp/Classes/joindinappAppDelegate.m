@@ -7,14 +7,14 @@
 //
 
 #import "joindinappAppDelegate.h"
-#import "RootViewController.h"
+#import "SplashScreenViewController.h"
+#import "EventListViewController.h"
 
 
 @implementation joindinappAppDelegate
 
 @synthesize window;
-@synthesize navigationController;
-
+@synthesize splashScreenViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -23,8 +23,18 @@
     
     // Override point for customization after app launch    
 	
-	[window addSubview:[navigationController view]];
+	[window addSubview:[splashScreenViewController view]];
     [window makeKeyAndVisible];
+	[self performSelector:@selector(startApp) withObject:nil afterDelay:0.2f];
+}
+
+- (void)startApp {
+	[[splashScreenViewController view] removeFromSuperview];
+	
+	EventListViewController *rvc = [[EventListViewController alloc] initWithNibName:@"EventListView" bundle:nil];
+	UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:rvc];
+	[window addSubview:[navC view]];
+	
 }
 
 
@@ -37,7 +47,7 @@
 #pragma mark Memory management
 
 - (void)dealloc {
-	[navigationController release];
+	[splashScreenViewController release];
 	[window release];
 	[super dealloc];
 }
