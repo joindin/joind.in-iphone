@@ -15,15 +15,65 @@
 @implementation EventListViewController
 
 @synthesize confListData;
+@synthesize uiEventRange;
+@synthesize uiTableHeaderView;
+@synthesize uiActivityPast;
+@synthesize uiActivityHot;
+@synthesize uiActivityUpcoming;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	self.title = @"Upcoming events";
+	self.title = @"Events";
+	
+	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventListView" owner:self options:nil];
+	self.uiTableHeaderView = [nibViews objectAtIndex: 1];	
+	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
+	
+	[self.uiEventRange addTarget:self
+						  action:@selector(rangeChanged)
+				forControlEvents:UIControlEventValueChanged];
+	
+	[self rangeChanged];
 	
 }
+
+- (void)rangeChanged {
+	self.confListData = nil;
+	[(UITableView *)[self view] reloadData];
+	
+	EventGetEventList *e = [APICaller EventGetEventList:self];
+
+	switch (self.uiEventRange.selectedSegmentIndex) {
+		case 0:	// Past
+			[e call:@"past"];
+			[self.uiActivityPast startAnimating];
+			break;
+		case 1:	// Hot
+			[e call:@"hot"];
+			[self.uiActivityHot startAnimating];
+			break;
+		case 2:	// Upcoming
+			[e call:@"upcoming"];
+			[self.uiActivityUpcoming startAnimating];
+			break;
+		default:
+			NSLog(@"Oops");
+			break;
+	}
+}
+
+
+- (void)gotEventListData:(EventListModel *)eventListData {
+	self.confListData = eventListData;
+	[(UITableView *)[self view] reloadData];
+	[self.uiActivityPast     stopAnimating];
+	[self.uiActivityHot      stopAnimating];
+	[self.uiActivityUpcoming stopAnimating];
+}
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,7 +121,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	if (self.confListData == nil) {
-		return 0;
+		return 1;
 	} else {
 		return 1;
 	}
@@ -80,13 +130,13 @@
 
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    // Navigation logic may go here -- for example, create and push another view controller.
-	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] init];
-	EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
-	eventDetailViewController.event = edm;
-	[self.navigationController pushViewController:eventDetailViewController animated:YES];
-	[eventDetailViewController release];
+	if (self.confListData != nil) {
+		EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] init];
+		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
+		eventDetailViewController.event = edm;
+		[self.navigationController pushViewController:eventDetailViewController animated:YES];
+		[eventDetailViewController release];
+	}
 }
 
 /*
@@ -135,30 +185,40 @@
 	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
 	[vc autorelease];
 	
-	EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
-	
-	NSString *label = edm.name;
-
-	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-	[outputFormatter setDateFormat:@"d MMM yyyy"];
-	NSString *startDate = [outputFormatter stringFromDate:edm.start];
-	NSString *endDate   = [outputFormatter stringFromDate:edm.end];
-	[outputFormatter release];
-	
-	if ([startDate compare:endDate] == NSOrderedSame) {
-		vc.detailTextLabel.text = startDate;
+	if (self.confListData == nil) {
+		if ([indexPath row] == 0) {
+			vc.textLabel.text = @"Fetching data...";
+		}
 	} else {
-		vc.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
+		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
+		
+		NSString *label = edm.name;
+		
+		NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+		[outputFormatter setDateFormat:@"d MMM yyyy"];
+		NSString *startDate = [outputFormatter stringFromDate:edm.start];
+		NSString *endDate   = [outputFormatter stringFromDate:edm.end];
+		[outputFormatter release];
+		
+		if ([startDate compare:endDate] == NSOrderedSame) {
+			vc.detailTextLabel.text = startDate;
+		} else {
+			vc.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
+		}
+		
+		vc.textLabel.text = label;
+		vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	
-	vc.textLabel.text = label;
-	vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	return vc;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.confListData getNumEvents];
+	if (self.confListData == nil) {
+		return 1;
+	} else {
+		return [self.confListData getNumEvents];
+	}
 }
 
 - (void)dealloc {

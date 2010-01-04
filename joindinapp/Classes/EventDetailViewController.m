@@ -23,28 +23,17 @@
 @synthesize uiLocation;
 @synthesize uiDesc;
 @synthesize uiDescButton;
-@synthesize uiScroller;
-@synthesize uiViewWithContent;
 @synthesize uiLoadTalksIndicator;
+@synthesize uiTableHeaderView;
 
 #pragma mark View loaders
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	uiFixedView = [self createFixedView];
-	self.uiScroller = [[UIScrollView alloc] initWithFrame:[self.view frame]];
-	self.uiScroller.canCancelContentTouches = NO;
-	//self.uiScroller.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	
-	[self resizeScroller];
-	
-	[self.uiScroller addSubview:uiFixedView];
-	[self.view addSubview:self.uiScroller];
-	
-	EventGetTalks *e = [APICaller EventGetTalks:self];
-	[e call:self.event];
-	[self.uiLoadTalksIndicator startAnimating];
+	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventDetailViewFixed" owner:self options:nil];
+	self.uiTableHeaderView = [nibViews objectAtIndex: 1];
+	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,12 +55,10 @@
 		self.uiDate.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
 	}
 	
-}
-
-- (UIView*) createFixedView {
-	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:@"EventDetailViewFixed" owner:self options:nil];
-	NSEnumerator *nibEnumerator = [nibContents objectEnumerator];
-	return (UIView*)[nibEnumerator nextObject];
+	EventGetTalks *e = [APICaller EventGetTalks:self];
+	[e call:self.event];
+	[self.uiLoadTalksIndicator startAnimating];	
+	
 }
 
 #pragma mark Table view methods
@@ -132,15 +119,10 @@
 
 #pragma mark Utility methods
 
-- (void)resizeScroller {
-	self.uiScroller.contentSize = CGSizeMake(320, 220 + (44 * [self.talks getNumTalks]));
-}
-
 - (void)gotTalksForEvent:(TalkListModel *)tlm {
 	[self.uiLoadTalksIndicator stopAnimating];
 	self.talks = tlm;
-	[(UITableView *)self.uiViewWithContent reloadData];
-	[self resizeScroller];
+	[(UITableView *)self.view reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

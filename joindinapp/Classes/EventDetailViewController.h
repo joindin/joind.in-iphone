@@ -10,25 +10,21 @@
 #import "EventDetailModel.h"
 #import "TalkListModel.h"
 
-@interface EventDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate> {
+@interface EventDetailViewController : UITableViewController {
 	EventDetailModel *event;
 	TalkListModel *talks;
 	
-	UIScrollView *uiScroller;
-	UIView       *uiFixedView;
 	// IB components
 	IBOutlet UILabel  *uiTitle;
 	IBOutlet UILabel  *uiDate;
 	IBOutlet UILabel  *uiLocation;
 	IBOutlet UILabel  *uiDesc;
 	IBOutlet UIButton *uiDescButton;
-	IBOutlet UIView   *uiViewWithContent;
 	IBOutlet UIActivityIndicatorView *uiLoadTalksIndicator;
+	IBOutlet UIView   *uiTableHeaderView;
 }
 
-- (UIView*) createFixedView;
 - (IBAction)uiDescButtonPressed:(id)sender;
-- (void)resizeScroller;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;
@@ -38,8 +34,7 @@
 @property (nonatomic, retain) UILabel  *uiLocation;
 @property (nonatomic, retain) UILabel  *uiDesc;
 @property (nonatomic, retain) UIButton *uiDescButton;
-@property (nonatomic, retain) UIScrollView  *uiScroller;
-@property (nonatomic, retain) UIView  *uiViewWithContent;
 @property (nonatomic, retain) UIActivityIndicatorView *uiLoadTalksIndicator;
+@property (nonatomic, retain) UIView   *uiTableHeaderView;
 
 @end
