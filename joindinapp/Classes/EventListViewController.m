@@ -17,9 +17,7 @@
 @synthesize confListData;
 @synthesize uiEventRange;
 @synthesize uiTableHeaderView;
-@synthesize uiActivityPast;
-@synthesize uiActivityHot;
-@synthesize uiActivityUpcoming;
+@synthesize uiFetchingCell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,15 +47,12 @@
 	switch (self.uiEventRange.selectedSegmentIndex) {
 		case 0:	// Past
 			[e call:@"past"];
-			[self.uiActivityPast startAnimating];
 			break;
 		case 1:	// Hot
 			[e call:@"hot"];
-			[self.uiActivityHot startAnimating];
 			break;
 		case 2:	// Upcoming
 			[e call:@"upcoming"];
-			[self.uiActivityUpcoming startAnimating];
 			break;
 		default:
 			NSLog(@"Oops");
@@ -65,13 +60,9 @@
 	}
 }
 
-
 - (void)gotEventListData:(EventListModel *)eventListData {
 	self.confListData = eventListData;
 	[(UITableView *)[self view] reloadData];
-	[self.uiActivityPast     stopAnimating];
-	[self.uiActivityHot      stopAnimating];
-	[self.uiActivityUpcoming stopAnimating];
 }
 
 
@@ -181,15 +172,16 @@
  
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	UITableViewCell *vc;
-	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-	[vc autorelease];
 	
 	if (self.confListData == nil) {
-		if ([indexPath row] == 0) {
-			vc.textLabel.text = @"Fetching data...";
-		}
+		//vc.textLabel.text = @"Fetching data...";
+		//NSLog(@"Table cell is %@", test);
+		return self.uiFetchingCell;
 	} else {
+		UITableViewCell *vc;
+		vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+		[vc autorelease];
+		
 		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 		
 		NSString *label = edm.name;
@@ -208,9 +200,9 @@
 		
 		vc.textLabel.text = label;
 		vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		return vc;
 	}
 	
-	return vc;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

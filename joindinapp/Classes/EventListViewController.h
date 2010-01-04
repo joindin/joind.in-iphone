@@ -12,17 +12,13 @@
 	EventListModel *confListData;
 	IBOutlet UIView *uiTableHeaderView;
 	IBOutlet UISegmentedControl *uiEventRange;
-	IBOutlet UIActivityIndicatorView *uiActivityPast;
-	IBOutlet UIActivityIndicatorView *uiActivityHot;
-	IBOutlet UIActivityIndicatorView *uiActivityUpcoming;
+	IBOutlet UITableViewCell *uiFetchingCell;
 }
 
 @property(nonatomic, retain) EventListModel *confListData;
 @property(nonatomic, retain) UIView *uiTableHeaderView;
 @property(nonatomic, retain) UISegmentedControl *uiEventRange;
-@property(nonatomic, retain) UIActivityIndicatorView *uiActivityPast;
-@property(nonatomic, retain) UIActivityIndicatorView *uiActivityHot;
-@property(nonatomic, retain) UIActivityIndicatorView *uiActivityUpcoming;
+@property(nonatomic, retain) UITableViewCell *uiFetchingCell;
 
 - (void)rangeChanged;
 
