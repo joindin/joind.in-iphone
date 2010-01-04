@@ -56,7 +56,12 @@
 
 @implementation APICaller (APICaller_EventGetEventList)
 + (EventGetEventList *)EventGetEventList:(id)_delegate {
-	EventGetEventList *e = [[EventGetEventList alloc] initWithDelegate:_delegate];
+	static EventGetEventList *e = nil;
+	if (e != nil) {
+		[e cancel];
+		[e release];
+	}	
+	e = [[EventGetEventList alloc] initWithDelegate:_delegate];
 	return e;
 }
 @end

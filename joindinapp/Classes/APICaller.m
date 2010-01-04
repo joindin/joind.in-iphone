@@ -17,6 +17,7 @@
 
 @synthesize delegate;
 @synthesize urlData;
+@synthesize connection;
 
 - (id)initWithDelegate:(id)_delegate {
 	self.delegate = _delegate;
@@ -70,9 +71,13 @@
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	
 	// Make synchronous request
-	[NSURLConnection connectionWithRequest:req delegate:self];
+	self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
 	[req release];
 	
+}
+
+- (void)cancel {
+	[self.connection cancel];
 }
 
 #pragma mark URL callback methods

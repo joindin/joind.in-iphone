@@ -22,18 +22,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	EventGetEventList *e = [APICaller EventGetEventList:self];
-	[e call:@"past"];
-	[uiLoading startAnimating];
+	[self performSelector:@selector(startApp) withObject:nil afterDelay:0.5f];
 
 }
 
-- (void)gotEventListData:(EventListModel *)eventListData {
-	[uiLoading stopAnimating];
+- (void)startApp {
 	EventListViewController *rvc = [[EventListViewController alloc] initWithNibName:@"EventListView" bundle:nil];
-	rvc.confListData = eventListData;
+	//rvc.confListData = eventListData;
 	UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:rvc];
 	[[[self view] window] addSubview:[navC view]];
+	/*
+	[navC release];
+	[rvc release];
+	 */
 	[[self view] removeFromSuperview];
 }
 

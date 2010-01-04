@@ -52,7 +52,12 @@
 
 @implementation APICaller (APICaller_EventGetTalks)
 + (EventGetTalks *)EventGetTalks:(id)_delegate {
-	EventGetTalks *e = [[EventGetTalks alloc] initWithDelegate:_delegate];
+	static EventGetTalks *e = nil;
+	if (e != nil) {
+		[e cancel];
+		[e release];
+	}
+	e = [[EventGetTalks alloc] initWithDelegate:_delegate];
 	return e;
 }
 @end
