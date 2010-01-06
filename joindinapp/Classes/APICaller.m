@@ -58,8 +58,8 @@ NSString* md5( NSString *str ) {
 }
 
 - (NSString *)getApiUrl {
-	return @"http://lorna.rivendell.local/api";
-	//return @"http://joind.in/api";
+	//return @"http://lorna.rivendell.local/api";
+	return @"http://joind.in/api";
 }
 
 - (BOOL)checkCacheForRequest:(NSString *)_reqJSON toUrl:(NSString *)_url ignoreExpiry:(BOOL)ignoreExpiry {
@@ -93,7 +93,7 @@ NSString* md5( NSString *str ) {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
 	NSMutableDictionary *d = [NSMutableDictionary dictionaryWithCapacity:2];
 	[d setObject:responseString forKey:@"data"];
-	[d setObject:[NSString stringWithFormat:@"%f", [[NSDate dateWithTimeIntervalSinceNow:5.0f] timeIntervalSince1970]] forKey:@"expires"];
+	[d setObject:[NSString stringWithFormat:@"%f", [[NSDate dateWithTimeIntervalSinceNow:60.0f] timeIntervalSince1970]] forKey:@"expires"];
 	NSString *filename = [NSString stringWithFormat:@"%@/%@.json", [paths objectAtIndex:0], md5([NSString stringWithFormat:@"%@%@", _reqJSON, _url])];
 	[[d JSONRepresentation] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
