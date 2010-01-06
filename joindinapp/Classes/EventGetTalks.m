@@ -126,7 +126,9 @@
 			tdm.lastComment = 0;
 		}
 		
-		[tlm addTalk:tdm];
+		//if (tdm.active && !tdm.private) {
+			[tlm addTalk:tdm];
+		//}
 		[tdm release];
 		
 	}
