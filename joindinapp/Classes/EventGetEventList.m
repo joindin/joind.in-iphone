@@ -9,6 +9,7 @@
 #import "EventGetEventList.h"
 #import "EventListModel.h"
 #import "EventDetailModel.h"
+#import "JSON.h"
 
 @implementation EventGetEventList
 
