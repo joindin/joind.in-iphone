@@ -20,5 +20,15 @@
 @synthesize active;
 @synthesize stub;
 @synthesize tzOffset;
+@synthesize icon;
+@synthesize pending;
+@synthesize hashtag;
+@synthesize url;
+@synthesize cfpStart;
+@synthesize cfpEnd;
+@synthesize voting;
+@synthesize private;
+@synthesize numAttend;
+@synthesize numComments;
 
 @end

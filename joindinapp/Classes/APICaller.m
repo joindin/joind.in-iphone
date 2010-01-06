@@ -6,40 +6,13 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#pragma mark Other stuff
-
-#import <CommonCrypto/CommonDigest.h>
-
-NSString* md5( NSString *str ) {
-	const char *cStr = [str UTF8String];
-	unsigned char result[CC_MD5_DIGEST_LENGTH];
-	
-	CC_MD5( cStr, strlen(cStr), result );
-	
-	return [NSString
-			stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-			result[0], result[1],
-			result[2], result[3],
-			result[4], result[5],
-			result[6], result[7],
-			result[8], result[9],
-			result[10], result[11],
-			result[12], result[13],
-			result[14], result[15]
-			];
-}
-
-
-
-
-
 #import "APICaller.h"
 #import "JSON.h"
 #import "EventListModel.h"
 #import "EventDetailModel.h"
 #import "TalkListModel.h"
 #import "TalkDetailModel.h"
-
+#import "NSString+md5.h"
 
 
 
@@ -64,7 +37,7 @@ NSString* md5( NSString *str ) {
 
 - (BOOL)checkCacheForRequest:(NSString *)_reqJSON toUrl:(NSString *)_url ignoreExpiry:(BOOL)ignoreExpiry {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	NSString *filename = [NSString stringWithFormat:@"%@/%@.json",  [paths objectAtIndex:0], md5([NSString stringWithFormat:@"%@%@", _reqJSON, _url])];
+	NSString *filename = [NSString stringWithFormat:@"%@/%@.json",  [paths objectAtIndex:0], [[NSString stringWithFormat:@"%@%@", _reqJSON, _url] md5]];
 	//NSLog(@"Cache file is %@", filename);
 	NSString *result = [NSString stringWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:NULL];
 	if (result == NULL) {
@@ -94,7 +67,7 @@ NSString* md5( NSString *str ) {
 	NSMutableDictionary *d = [NSMutableDictionary dictionaryWithCapacity:2];
 	[d setObject:responseString forKey:@"data"];
 	[d setObject:[NSString stringWithFormat:@"%f", [[NSDate dateWithTimeIntervalSinceNow:60.0f] timeIntervalSince1970]] forKey:@"expires"];
-	NSString *filename = [NSString stringWithFormat:@"%@/%@.json", [paths objectAtIndex:0], md5([NSString stringWithFormat:@"%@%@", _reqJSON, _url])];
+	NSString *filename = [NSString stringWithFormat:@"%@/%@.json", [paths objectAtIndex:0], [[NSString stringWithFormat:@"%@%@", _reqJSON, _url] md5]];
 	[[d JSONRepresentation] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
