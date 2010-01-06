@@ -9,7 +9,7 @@
 #import "SplashScreenViewController.h"
 #import "EventListViewController.h"
 #import "APICaller.h"
-#import "EventGetEventList.h"
+#import "EventGetList.h"
 #import "EventListModel.h"
 #import "EventDetailModel.h"
 

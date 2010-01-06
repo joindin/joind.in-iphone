@@ -10,7 +10,7 @@
 #import "EventDetailViewController.h"
 #import "EventListModel.h"
 #import "EventDetailModel.h"
-#import "EventGetEventList.h"
+#import "EventGetList.h"
 
 @implementation EventListViewController
 
@@ -42,7 +42,7 @@
 	self.confListData = nil;
 	[(UITableView *)[self view] reloadData];
 	
-	EventGetEventList *e = [APICaller EventGetEventList:self];
+	EventGetList *e = [APICaller EventGetList:self];
 
 	switch (self.uiEventRange.selectedSegmentIndex) {
 		case 0:	// Past
