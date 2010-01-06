@@ -23,19 +23,108 @@
 	NSDictionary *d = (NSDictionary *)obj;
 	for (NSDictionary *talk in d) {
 		TalkDetailModel *tdm = [[TalkDetailModel alloc] init];
-		tdm.title      = [talk objectForKey:@"talk_title"];
-		tdm.speaker    = [talk objectForKey:@"speaker"];
-		tdm.Id         = [[talk objectForKey:@"tid"] integerValue];
-		tdm.eventId    = [[talk objectForKey:@"eid"] integerValue];
-		tdm.slidesLink = [talk objectForKey:@"slides_link"];
-		tdm.given      = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"date_given"]   integerValue]];
-		tdm.desc       = [talk objectForKey:@"talk_desc"];
-		tdm.langName   = [talk objectForKey:@"lang_name"];
-		tdm.lang       = [[talk objectForKey:@"lang"] integerValue];
-		if ([talk objectForKey:@"rank"] != [NSNull null]) {
-			tdm.rating = [[talk objectForKey:@"rank"] integerValue];
+		
+		if ([[talk objectForKey:@"talk_title"] isKindOfClass:[NSString class]]) {
+			tdm.title = [talk objectForKey:@"talk_title"];
+		} else {
+			tdm.title = @"";
 		}
-		tdm.type       = [talk objectForKey:@"tcid"];
+		
+		if ([[talk objectForKey:@"speaker"] isKindOfClass:[NSString class]]) {
+			tdm.speaker    = [talk objectForKey:@"speaker"];
+		} else {
+			tdm.speaker = @"";
+		}
+		
+		if ([[talk objectForKey:@"tid"] isKindOfClass:[NSString class]]) {
+			tdm.Id         = [[talk objectForKey:@"tid"] integerValue];
+		} else {
+			tdm.Id = 0;
+		}
+		
+		if ([[talk objectForKey:@"eid"] isKindOfClass:[NSString class]]) {
+			tdm.eventId    = [[talk objectForKey:@"eid"] integerValue];
+		} else {
+			tdm.eventId = 0;
+		}
+		
+		if ([[talk objectForKey:@"slides_link"] isKindOfClass:[NSString class]]) {
+			tdm.slidesLink = [talk objectForKey:@"slides_link"];
+		} else {
+			tdm.slidesLink = @"";
+		}
+		
+		if ([[talk objectForKey:@"date_given"] isKindOfClass:[NSString class]]) {
+			tdm.given      = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"date_given"]   integerValue]];
+		} else {
+			tdm.given = 0;
+		}
+		
+		if ([[talk objectForKey:@"talk_desc"] isKindOfClass:[NSString class]]) {
+			tdm.desc       = [talk objectForKey:@"talk_desc"];
+		} else {
+			tdm.desc = @"";
+		}
+		
+		if ([[talk objectForKey:@"lang_name"] isKindOfClass:[NSString class]]) {
+			tdm.langName   = [talk objectForKey:@"lang_name"];
+		} else {
+			tdm.langName = @"";
+		}
+		
+		if ([[talk objectForKey:@"lang"] isKindOfClass:[NSString class]]) {
+			tdm.lang       = [[talk objectForKey:@"lang"] integerValue];
+		} else {
+			tdm.lang = 0;
+		}
+		
+		if ([[talk objectForKey:@"rank"] isKindOfClass:[NSString class]]) {
+			tdm.rating = [[talk objectForKey:@"rank"] integerValue];
+		} else {
+			tdm.rating = 0;
+		}
+		
+		if ([[talk objectForKey:@"tcid"] isKindOfClass:[NSString class]]) {
+			tdm.type       = [talk objectForKey:@"tcid"];
+		} else {
+			tdm.type = @"";
+		}
+		
+		if ([[talk objectForKey:@"active"] isKindOfClass:[NSString class]]) {
+			tdm.active       = ([[[talk objectForKey:@"active"] lowercaseString] compare:@"y"] == NSOrderedSame);
+		} else {
+			tdm.active = NO;
+		}
+		
+		if ([[talk objectForKey:@"owner_id"] isKindOfClass:[NSString class]]) {
+			tdm.speakerId       = [[talk objectForKey:@"owner_id"] integerValue];
+		} else {
+			tdm.speakerId = 0;
+		}
+		
+		if ([[talk objectForKey:@"private"] isKindOfClass:[NSString class]]) {
+			tdm.private       = ([[[talk objectForKey:@"private"] lowercaseString] compare:@"y"] == NSOrderedSame);
+		} else {
+			tdm.private = NO;
+		}
+		
+		if ([[talk objectForKey:@"lang_abbr"] isKindOfClass:[NSString class]]) {
+			tdm.langAbbr       = [talk objectForKey:@"lang_abbr"];
+		} else {
+			tdm.langAbbr = @"";
+		}
+		
+		if ([[talk objectForKey:@"ccount"] isKindOfClass:[NSString class]]) {
+			tdm.numComments       = [[talk objectForKey:@"ccount"] integerValue];
+		} else {
+			tdm.numComments = 0;
+		}
+		
+		if ([[talk objectForKey:@"last_comment_date"] isKindOfClass:[NSString class]]) {
+			tdm.lastComment      = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"last_comment_date"]   integerValue]];
+		} else {
+			tdm.lastComment = 0;
+		}
 		
 		[tlm addTalk:tdm];
 		[tdm release];

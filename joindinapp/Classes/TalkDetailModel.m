@@ -21,5 +21,11 @@
 @synthesize lang;
 @synthesize rating;
 @synthesize type;
+@synthesize active;
+@synthesize speakerId;
+@synthesize private;
+@synthesize langAbbr;
+@synthesize numComments;
+@synthesize lastComment;
 
 @end

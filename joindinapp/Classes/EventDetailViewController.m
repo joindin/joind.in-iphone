@@ -55,9 +55,9 @@
 		self.uiDate.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
 	}
 	
+	[self.uiLoadTalksIndicator startAnimating];	
 	EventGetTalks *e = [APICaller EventGetTalks:self];
 	[e call:self.event];
-	[self.uiLoadTalksIndicator startAnimating];	
 	
 }
 

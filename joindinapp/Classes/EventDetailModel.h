@@ -16,9 +16,19 @@
 	NSUInteger  Id;
 	NSString   *location;
 	NSString   *description;
-	NSUInteger  active;
+	BOOL        active;
 	NSString   *stub;
-	NSUInteger  tzOffset;
+	NSInteger   tzOffset;
+	NSString   *icon;
+	BOOL        pending;
+	NSString   *hashtag;
+	NSString   *url;
+	NSDate     *cfpStart;
+	NSDate     *cfpEnd;
+	BOOL        voting;
+	BOOL        private;
+	NSUInteger  numAttend;
+	NSUInteger  numComments;
 	/*
 	 event_lat: For future use 
 	 event_long: For future use 
@@ -31,8 +41,18 @@
 @property (nonatomic, assign) NSUInteger  Id;
 @property (nonatomic, retain) NSString   *location;
 @property (nonatomic, retain) NSString   *description;
-@property (nonatomic, assign) NSUInteger  active;
+@property (nonatomic, assign) BOOL        active;
 @property (nonatomic, retain) NSString   *stub;
-@property (nonatomic, assign) NSUInteger  tzOffset;
+@property (nonatomic, assign) NSInteger   tzOffset;
+@property (nonatomic, retain) NSString   *icon;
+@property (nonatomic, assign) BOOL        pending;
+@property (nonatomic, retain) NSString   *hashtag;
+@property (nonatomic, retain) NSString   *url;
+@property (nonatomic, retain) NSDate     *cfpStart;
+@property (nonatomic, retain) NSDate     *cfpEnd;
+@property (nonatomic, assign) BOOL        voting;
+@property (nonatomic, assign) BOOL        private;
+@property (nonatomic, assign) NSUInteger  numAttend;
+@property (nonatomic, assign) NSUInteger  numComments;
 
 @end

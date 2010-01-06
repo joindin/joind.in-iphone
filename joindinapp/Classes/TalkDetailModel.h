@@ -18,8 +18,15 @@
 	NSString   *desc;       // talk_desc
 	NSString   *langName;   // lang_name
 	NSUInteger  lang;       // lang
-	NSUInteger  rating;     // tavg
+	NSUInteger  rating;     // rank
 	NSString   *type;       // tcid
+	
+	BOOL        active;     // active
+	NSUInteger  speakerId;  // owner_id
+	BOOL        private;    // private
+	NSString   *langAbbr;   // lang_abbr
+	NSUInteger  numComments;// ccount
+	NSDate     *lastComment;// last_comment_date
 }
 
 @property (nonatomic, retain) NSString   *title;
@@ -33,5 +40,11 @@
 @property (nonatomic, assign) NSUInteger  lang;
 @property (nonatomic, assign) NSUInteger  rating;
 @property (nonatomic, retain) NSString   *type;
+@property (nonatomic, assign) BOOL        active;
+@property (nonatomic, assign) NSUInteger  speakerId;
+@property (nonatomic, assign) BOOL        private;
+@property (nonatomic, retain) NSString   *langAbbr;
+@property (nonatomic, assign) NSUInteger  numComments;
+@property (nonatomic, retain) NSDate     *lastComment;
 
 @end
