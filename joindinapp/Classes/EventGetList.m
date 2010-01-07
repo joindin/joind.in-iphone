@@ -23,6 +23,10 @@
 	
 	EventListModel *elm = [[[EventListModel alloc] init] autorelease];
 	
+	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+	BOOL limit = [userPrefs boolForKey:@"limitevents"];
+
+	
 	for (NSDictionary *event in d) {
 		
 		//NSLog(@"Event is %@", event);
@@ -142,11 +146,17 @@
 		} else {
 			edm.numComments = 0;
 		}
+		
+		if ([[event objectForKey:@"user_attending"] isKindOfClass:[NSString class]]) {
+			edm.userAttend  = ([[[event objectForKey:@"user_attending"] lowercaseString] compare:@"y"] == NSOrderedSame);
+		} else {
+			edm.userAttend  = NO;
+		}
+		
+		
 
 		
-		
-		
-		if (edm.active && !edm.pending && !edm.private) {
+		if (edm.active && !edm.pending && !edm.private && ((!limit) || (limit && edm.userAttend))) {
 			[elm addEvent:edm];
 		}
 		

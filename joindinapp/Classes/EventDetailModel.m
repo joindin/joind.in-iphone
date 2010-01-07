@@ -30,5 +30,6 @@
 @synthesize private;
 @synthesize numAttend;
 @synthesize numComments;
+@synthesize userAttend;
 
 @end
