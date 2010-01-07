@@ -11,6 +11,7 @@
 #import "EventListModel.h"
 #import "EventDetailModel.h"
 #import "EventGetList.h"
+#import "SettingsViewController.h"
 
 @implementation EventListViewController
 
@@ -26,6 +27,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	self.title = @"Events";
 	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(btnPressed)];
+	
 	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventListView" owner:self options:nil];
 	self.uiTableHeaderView = [nibViews objectAtIndex: 1];	
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
@@ -34,8 +37,13 @@
 						  action:@selector(rangeChanged)
 				forControlEvents:UIControlEventValueChanged];
 	
-	[self rangeChanged];
 	
+}
+
+- (void)btnPressed {
+	SettingsViewController *vc = [[SettingsViewController alloc] init];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];	
 }
 
 - (void)rangeChanged {
@@ -66,11 +74,12 @@
 }
 
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	[self rangeChanged];
+	
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

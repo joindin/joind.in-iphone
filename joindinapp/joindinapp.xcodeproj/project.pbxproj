@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0A41DEF610F518B000FBFE86 /* Entitlementsadhoc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A41DEF510F518B000FBFE86 /* Entitlementsadhoc.plist */; };
+		0A41E05510F53E9B00FBFE86 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A41E05410F53E9B00FBFE86 /* Settings.bundle */; };
+		0A41E10510F54C8B00FBFE86 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */; };
+		0A41E10610F54C8B00FBFE86 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A41E10410F54C8B00FBFE86 /* SettingsView.xib */; };
 		0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6D1E3E10EE561700E941EE /* Entitlements.plist */; };
 		0A7DED4F10EE79160028D49B /* TalkListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DED4E10EE79160028D49B /* TalkListModel.m */; };
 		0A7DED5210EE79200028D49B /* TalkDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DED5110EE79200028D49B /* TalkDetailModel.m */; };
@@ -52,6 +55,10 @@
 
 /* Begin PBXFileReference section */
 		0A41DEF510F518B000FBFE86 /* Entitlementsadhoc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlementsadhoc.plist; sourceTree = "<group>"; };
+		0A41E05410F53E9B00FBFE86 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		0A41E10410F54C8B00FBFE86 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsView.xib; path = Classes/SettingsView.xib; sourceTree = "<group>"; };
 		0A6D1E3E10EE561700E941EE /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		0A7DED4D10EE79160028D49B /* TalkListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkListModel.h; sourceTree = "<group>"; };
 		0A7DED4E10EE79160028D49B /* TalkListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkListModel.m; sourceTree = "<group>"; };
@@ -172,6 +179,8 @@
 				0A7DF07810EFAEAA0028D49B /* EventDescriptionViewController.m */,
 				0A7DF2A210F00A560028D49B /* SplashScreenViewController.h */,
 				0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */,
+				0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */,
+				0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -245,6 +254,7 @@
 				0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */,
 				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
 				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
+				0A41E10410F54C8B00FBFE86 /* SettingsView.xib */,
 			);
 			name = "NIB files";
 			sourceTree = "<group>";
@@ -286,6 +296,7 @@
 				8D1107310486CEB800E47090 /* joindinapp-Info.plist */,
 				0A6D1E3E10EE561700E941EE /* Entitlements.plist */,
 				0A41DEF510F518B000FBFE86 /* Entitlementsadhoc.plist */,
+				0A41E05410F53E9B00FBFE86 /* Settings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -366,6 +377,8 @@
 				0AE857AE10F024A5002C4C98 /* rating-4.gif in Resources */,
 				0AE857AF10F024A5002C4C98 /* rating-5.gif in Resources */,
 				0A41DEF610F518B000FBFE86 /* Entitlementsadhoc.plist in Resources */,
+				0A41E05510F53E9B00FBFE86 /* Settings.bundle in Resources */,
+				0A41E10610F54C8B00FBFE86 /* SettingsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +410,7 @@
 				0A7DF19610EFF86B0028D49B /* EventGetTalks.m in Sources */,
 				0A7DF2A510F00A560028D49B /* SplashScreenViewController.m in Sources */,
 				0AE85D3F10F515E5002C4C98 /* NSString+md5.m in Sources */,
+				0A41E10510F54C8B00FBFE86 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

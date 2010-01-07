@@ -75,11 +75,30 @@
 
 - (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params {
 	
+	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+	NSString *user = [userPrefs stringForKey:@"username"];
+	NSString *pass = [userPrefs stringForKey:@"password"];
+	
+	/*
+	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+	[userPrefs setObject:@"testuser" forKey:@"username"];
+	[userPrefs setObject:@"testpass" forKey:@"password"];
+	[userPrefs synchronize];
+	*/
+	
+ 	if (user == nil || pass == nil) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Please setup your username/password" 
+													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		return;
+	}
+	
 	//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
 	
 	NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
-	[reqAuth setObject:@"kevin" forKey:@"user"];
-	[reqAuth setObject:@"6228bd57c9a858eb305e0fd0694890f7" forKey:@"pass"];
+	[reqAuth setObject:user forKey:@"user"];
+	[reqAuth setObject:[pass md5] forKey:@"pass"];
 	
 	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
 	[reqAction setObject:action forKey:@"type"];

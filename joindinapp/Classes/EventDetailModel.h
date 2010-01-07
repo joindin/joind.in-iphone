@@ -29,6 +29,8 @@
 	BOOL        private;
 	NSUInteger  numAttend;
 	NSUInteger  numComments;
+	BOOL        userAttend;
+
 	/*
 	 event_lat: For future use 
 	 event_long: For future use 
@@ -54,5 +56,6 @@
 @property (nonatomic, assign) BOOL        private;
 @property (nonatomic, assign) NSUInteger  numAttend;
 @property (nonatomic, assign) NSUInteger  numComments;
+@property (nonatomic, assign) BOOL        userAttend;
 
 @end

@@ -13,6 +13,7 @@
 #import "TalkListModel.h"
 #import "APICaller.h"
 #import "EventGetTalks.h"
+#import "SettingsViewController.h"
 
 @implementation EventDetailViewController
 
@@ -30,10 +31,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(btnPressed)];
+
 	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventDetailViewFixed" owner:self options:nil];
 	self.uiTableHeaderView = [nibViews objectAtIndex: 1];
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
+}
+
+- (void)btnPressed {
+	SettingsViewController *vc = [[SettingsViewController alloc] init];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
