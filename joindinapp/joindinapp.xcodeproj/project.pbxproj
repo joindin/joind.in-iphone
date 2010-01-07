@@ -13,6 +13,8 @@
 		0A41E10610F54C8B00FBFE86 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A41E10410F54C8B00FBFE86 /* SettingsView.xib */; };
 		0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6D1E3E10EE561700E941EE /* Entitlements.plist */; };
 		0A77D98D10F6876F006A7C67 /* APIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A77D98C10F6876F006A7C67 /* APIError.m */; };
+		0A77DA6610F69881006A7C67 /* attending.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A77DA6410F69881006A7C67 /* attending.png */; };
+		0A77DA6710F69881006A7C67 /* notattending.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A77DA6510F69881006A7C67 /* notattending.png */; };
 		0A7DED4F10EE79160028D49B /* TalkListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DED4E10EE79160028D49B /* TalkListModel.m */; };
 		0A7DED5210EE79200028D49B /* TalkDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DED5110EE79200028D49B /* TalkDetailModel.m */; };
 		0A7DEE0010EE844B0028D49B /* TalkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DEDFE10EE844B0028D49B /* TalkDetailViewController.m */; };
@@ -63,6 +65,8 @@
 		0A6D1E3E10EE561700E941EE /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		0A77D98B10F6876F006A7C67 /* APIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIError.h; sourceTree = "<group>"; };
 		0A77D98C10F6876F006A7C67 /* APIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIError.m; sourceTree = "<group>"; };
+		0A77DA6410F69881006A7C67 /* attending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attending.png; sourceTree = "<group>"; };
+		0A77DA6510F69881006A7C67 /* notattending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notattending.png; sourceTree = "<group>"; };
 		0A7DED4D10EE79160028D49B /* TalkListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkListModel.h; sourceTree = "<group>"; };
 		0A7DED4E10EE79160028D49B /* TalkListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkListModel.m; sourceTree = "<group>"; };
 		0A7DED5010EE79200028D49B /* TalkDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkDetailModel.h; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 		0AE8579B10F02419002C4C98 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A77DA6410F69881006A7C67 /* attending.png */,
+				0A77DA6510F69881006A7C67 /* notattending.png */,
 				0AE857A410F024A5002C4C98 /* rating-0.gif */,
 				0AE857A510F024A5002C4C98 /* rating-1.gif */,
 				0AE857A610F024A5002C4C98 /* rating-2.gif */,
@@ -384,6 +390,8 @@
 				0A41DEF610F518B000FBFE86 /* Entitlementsadhoc.plist in Resources */,
 				0A41E05510F53E9B00FBFE86 /* Settings.bundle in Resources */,
 				0A41E10610F54C8B00FBFE86 /* SettingsView.xib in Resources */,
+				0A77DA6610F69881006A7C67 /* attending.png in Resources */,
+				0A77DA6710F69881006A7C67 /* notattending.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
