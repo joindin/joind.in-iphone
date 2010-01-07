@@ -26,22 +26,17 @@
 @synthesize uiDescButton;
 @synthesize uiLoadTalksIndicator;
 @synthesize uiTableHeaderView;
+@synthesize uiAttending;
 
 #pragma mark View loaders
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(btnPressed)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(uiSettingsButtonPressed)];
 
 	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventDetailView" owner:self options:nil];
 	self.uiTableHeaderView = [nibViews objectAtIndex: 1];
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
-}
-
-- (void)btnPressed {
-	SettingsViewController *vc = [[SettingsViewController alloc] init];
-	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -118,11 +113,27 @@
 
 #pragma mark User-action handlers
 
+- (void)uiSettingsButtonPressed {
+	SettingsViewController *vc = [[SettingsViewController alloc] init];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];	
+}
+
 - (IBAction)uiDescButtonPressed:(id)sender {
 	EventDescriptionViewController *edvc = [[EventDescriptionViewController alloc] initWithNibName:@"EventDescriptionView" bundle:nil];
 	edvc.event = self.event;
 	[self.navigationController pushViewController:edvc animated:YES];
 	[edvc release];
+}
+
+- (IBAction)uiAttendingButtonPressed:(id)sender {
+	if (self.event.userAttend) {
+		[sender setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"notattending" ofType:@"png"]] forState:UIControlStateNormal];
+		self.event.userAttend = NO;
+	} else {
+		[sender setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"attending" ofType:@"png"]] forState:UIControlStateNormal];
+		self.event.userAttend = YES;
+	}
 }
 
 #pragma mark Utility methods
