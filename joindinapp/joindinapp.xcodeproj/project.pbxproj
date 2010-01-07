@@ -17,7 +17,7 @@
 		0A7DED5210EE79200028D49B /* TalkDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DED5110EE79200028D49B /* TalkDetailModel.m */; };
 		0A7DEE0010EE844B0028D49B /* TalkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DEDFE10EE844B0028D49B /* TalkDetailViewController.m */; };
 		0A7DEE0110EE844B0028D49B /* TalkDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEDFF10EE844B0028D49B /* TalkDetailView.xib */; };
-		0A7DEFF710EEDC510028D49B /* EventDetailViewFixed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */; };
+		0A7DEFF710EEDC510028D49B /* EventDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DEFF610EEDC510028D49B /* EventDetailView.xib */; };
 		0A7DF07A10EFAEAA0028D49B /* EventDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF07810EFAEAA0028D49B /* EventDescriptionViewController.m */; };
 		0A7DF07B10EFAEAA0028D49B /* EventDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */; };
 		0A7DF15C10EFEF060028D49B /* EventGetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF15B10EFEF060028D49B /* EventGetList.m */; };
@@ -70,7 +70,7 @@
 		0A7DEDFD10EE844B0028D49B /* TalkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkDetailViewController.h; sourceTree = "<group>"; };
 		0A7DEDFE10EE844B0028D49B /* TalkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkDetailViewController.m; sourceTree = "<group>"; };
 		0A7DEDFF10EE844B0028D49B /* TalkDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TalkDetailView.xib; path = Classes/TalkDetailView.xib; sourceTree = "<group>"; };
-		0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailViewFixed.xib; sourceTree = "<group>"; };
+		0A7DEFF610EEDC510028D49B /* EventDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailView.xib; sourceTree = "<group>"; };
 		0A7DF07710EFAEAA0028D49B /* EventDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDescriptionViewController.h; sourceTree = "<group>"; };
 		0A7DF07810EFAEAA0028D49B /* EventDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDescriptionViewController.m; sourceTree = "<group>"; };
 		0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EventDescriptionView.xib; path = Classes/EventDescriptionView.xib; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 				28F335F01007B36200424DE2 /* EventListView.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				0A7DEDFF10EE844B0028D49B /* TalkDetailView.xib */,
-				0A7DEFF610EEDC510028D49B /* EventDetailViewFixed.xib */,
+				0A7DEFF610EEDC510028D49B /* EventDetailView.xib */,
 				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
 				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
 				0A41E10410F54C8B00FBFE86 /* SettingsView.xib */,
@@ -369,7 +369,7 @@
 				28F335F11007B36200424DE2 /* EventListView.xib in Resources */,
 				0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */,
 				0A7DEE0110EE844B0028D49B /* TalkDetailView.xib in Resources */,
-				0A7DEFF710EEDC510028D49B /* EventDetailViewFixed.xib in Resources */,
+				0A7DEFF710EEDC510028D49B /* EventDetailView.xib in Resources */,
 				0A7DF07B10EFAEAA0028D49B /* EventDescriptionView.xib in Resources */,
 				0AF708F610F0107200CDEBE6 /* SplashScreenView.xib in Resources */,
 				0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */,

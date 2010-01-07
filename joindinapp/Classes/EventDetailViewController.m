@@ -33,7 +33,7 @@
     [super viewDidLoad];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(btnPressed)];
 
-	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventDetailViewFixed" owner:self options:nil];
+	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventDetailView" owner:self options:nil];
 	self.uiTableHeaderView = [nibViews objectAtIndex: 1];
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
 }
