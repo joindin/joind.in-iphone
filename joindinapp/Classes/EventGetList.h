@@ -24,6 +24,6 @@
 @end
 
 @protocol EventGetListResponse
-- (void)gotEventListData:(EventListModel *)elm;
+- (void)gotEventListData:(EventListModel *)elm error:(APIError *)err;
 @end
 

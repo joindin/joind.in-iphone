@@ -14,7 +14,7 @@
 @implementation EventGetTalks
 
 - (void)call:(EventDetailModel *)event {
-	[self callAPI:@"event" action:@"gettalks" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"]];
+	[self callAPI:@"event" action:@"gettalks" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"] needAuth:YES];
 }
 
 - (void)gotData:(NSObject *)obj {
@@ -132,11 +132,11 @@
 		[tdm release];
 		
 	}
-	[self.delegate gotTalksForEvent:tlm];
+	[self.delegate gotTalksForEvent:tlm error:nil];
 }
 
-- (void)gotError:(NSObject *)error {
-	NSLog(@"error");
+- (void)gotError:(APIError *)error {
+	[self.delegate gotTalksForEvent:nil error:error];
 }
 	
 @end

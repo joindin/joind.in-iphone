@@ -14,7 +14,7 @@
 @implementation EventGetList
 
 - (void)call:(NSString *)eventType {
-	[self callAPI:@"event" action:@"getlist" params:[NSDictionary dictionaryWithObject:eventType forKey:@"event_type"]];
+	[self callAPI:@"event" action:@"getlist" params:[NSDictionary dictionaryWithObject:eventType forKey:@"event_type"] needAuth:YES];
 }
 
 - (void)gotData:(NSObject *)obj {
@@ -40,13 +40,13 @@
 		
 		
 		if ([[event objectForKey:@"event_start"] isKindOfClass:[NSString class]]) {
-			edm.start = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_start"]   integerValue]];;
+			edm.start = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_start"]   integerValue]];
 		} else {
 			edm.start = nil;
 		}
 		
 		if ([[event objectForKey:@"event_end"] isKindOfClass:[NSString class]]) {
-			edm.end = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_end"]   integerValue]];;
+			edm.end = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"event_end"]   integerValue]];
 		} else {
 			edm.end = nil;
 		}
@@ -163,12 +163,12 @@
 		[edm release];
 	}
 	
-	[self.delegate gotEventListData:elm];
+	[self.delegate gotEventListData:elm error:nil];
 	
 }
 
-- (void)gotError:(NSObject *)error {
-	NSLog(@"Got error");
+- (void)gotError:(APIError *)error {
+	[self.delegate gotEventListData:nil error:error];
 }
 
 

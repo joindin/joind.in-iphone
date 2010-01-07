@@ -73,32 +73,38 @@
 
 #pragma mark API call
 
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params {
+- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth {
 	
-	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-	NSString *user = [userPrefs stringForKey:@"username"];
-	NSString *pass = [userPrefs stringForKey:@"password"];
+	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
 	
-	/*
-	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-	[userPrefs setObject:@"testuser" forKey:@"username"];
-	[userPrefs setObject:@"testpass" forKey:@"password"];
-	[userPrefs synchronize];
-	*/
-	
- 	if (user == nil || pass == nil) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Please setup your username/password" 
-													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-		return;
+	if (needAuth) {
+		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+		NSString *user = [userPrefs stringForKey:@"username"];
+		NSString *pass = [userPrefs stringForKey:@"password"];
+		
+		/*
+		 NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+		 [userPrefs setObject:@"testuser" forKey:@"username"];
+		 [userPrefs setObject:@"testpass" forKey:@"password"];
+		 [userPrefs synchronize];
+		 */
+		
+		if (user == nil) {
+			user = @"";
+		}
+		if (pass == nil) {
+			pass = @"";
+		}
+		
+		//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
+		
+		NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
+		[reqAuth setObject:user forKey:@"user"];
+		[reqAuth setObject:[pass md5] forKey:@"pass"];
+		
+		[reqRequest setObject:reqAuth forKey:@"auth"];
+		[reqAuth    release];
 	}
-	
-	//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
-	
-	NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
-	[reqAuth setObject:user forKey:@"user"];
-	[reqAuth setObject:[pass md5] forKey:@"pass"];
 	
 	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
 	[reqAction setObject:action forKey:@"type"];
@@ -108,20 +114,18 @@
 		[reqAction setObject:[NSNull null] forKey:@"data"];
 	}
 	
-	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
-	[reqRequest setObject:reqAuth forKey:@"auth"];
 	[reqRequest setObject:reqAction forKey:@"action"];
 	
 	NSMutableDictionary *reqObject = [[NSMutableDictionary alloc] initWithCapacity:1];
 	[reqObject setObject:reqRequest forKey:@"request"];
 	
+	[reqRequest release];
+	[reqAction  release];
+	
 	self.reqJSON = [reqObject JSONRepresentation];
 	
-	[reqRequest release];
-	[reqAuth    release];
-	[reqAction  release];
 	[reqObject  release];
-
+	
 	//NSLog(@"JSON request is %@", reqJSON);
 	
 	self.url = [NSString stringWithFormat:@"%@/%@", [self getApiUrl], type];
@@ -148,12 +152,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	if (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:YES]) {
-		[self gotResponse:nil];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Network error" 
-													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-		[self gotResponse:nil];
+		[self gotError:[APIError APIErrorWithMsg:@"Network error" type:ERR_NETWORK]];
 	}
 }
 
@@ -185,7 +184,16 @@
 	NSObject *obj = [jsonParser objectWithString:responseString error:NULL];
 	//NSLog(@"Got obj %@", obj);
 	[jsonParser release];
-	[self gotData:obj];
+	
+	if (obj == nil) {
+		if ([responseString isEqualToString:@"Invalid permissions!"]) {
+			[self gotError:[APIError APIErrorWithMsg:responseString type:ERR_CREDENTIALS]];
+		} else {
+			[self gotError:[APIError APIErrorWithMsg:responseString type:ERR_UNKNOWN]];
+		}
+	} else {
+		[self gotData:obj];
+	}
 }
 
 #pragma mark Override these

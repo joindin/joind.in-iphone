@@ -68,16 +68,36 @@
 	}
 }
 
-- (void)gotEventListData:(EventListModel *)eventListData {
-	self.confListData = eventListData;
-	[(UITableView *)[self view] reloadData];
+- (void)gotEventListData:(EventListModel *)eventListData error:(APIError *)error {
+	if (error != nil) {
+		//NSLog(@"Error: %@", error.msg);
+		UIAlertView *alert;
+		if (error.type == ERR_CREDENTIALS) {
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
+														   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		} else {
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
+														   delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		}
+		[alert show];
+		[alert release];
+		
+	} else {
+		self.confListData = eventListData;
+		[(UITableView *)[self view] reloadData];
+	}
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	SettingsViewController *vc = [[SettingsViewController alloc] init];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	[self rangeChanged];
-	
 }
 
 /*

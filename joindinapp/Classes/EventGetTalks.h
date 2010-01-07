@@ -24,5 +24,5 @@
 @end
 
 @protocol EventGetTalksResponse
-- (void)gotTalksForEvent:(TalkListModel *)tlm;
+- (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)err;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "APIError.h"
 
 @interface APICaller : NSObject {
 	id delegate;
@@ -24,7 +25,7 @@
 
 - (id)initWithDelegate:(id)_delegate;
 - (NSString *)getApiUrl;
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params;
+- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth;
 - (void)cancel;
 - (void)gotResponse:(NSString *)responseString;
 - (BOOL)checkCacheForRequest:(NSString *)_reqJSON toUrl:(NSString *)url ignoreExpiry:(BOOL)ignoreExpiry;
