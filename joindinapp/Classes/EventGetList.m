@@ -147,13 +147,21 @@
 			edm.numComments = 0;
 		}
 		
-		if ([[event objectForKey:@"user_attending"] isKindOfClass:[NSString class]]) {
-			edm.userAttend  = ([[[event objectForKey:@"user_attending"] lowercaseString] compare:@"y"] == NSOrderedSame);
-		} else {
+		if ([event objectForKey:@"user_attending"] == nil) {
+			edm.isAuthd     = NO;
 			edm.userAttend  = NO;
+		} else {
+			edm.isAuthd     = YES;
+			if ([[event objectForKey:@"user_attending"] isKindOfClass:[NSString class]]) {
+				edm.userAttend = ([[[event objectForKey:@"user_attending"] lowercaseString] compare:@"y"] == NSOrderedSame);
+			} else if ([[event objectForKey:@"user_attending"] isKindOfClass:[NSNumber class]]) {
+				edm.userAttend = ([[event objectForKey:@"user_attending"] boolValue]);
+			} else {
+				NSLog(@"Can't recognise type %@", [[event objectForKey:@"user_attending"] class]);
+			}
 		}
 		
-		
+		//NSLog(@"Attending %i Authd %i Obj %@ type %@", edm.userAttend, edm.isAuthd, [event objectForKey:@"user_attending"], [[event objectForKey:@"user_attending"] class]);
 
 		
 		if (edm.active && !edm.pending && !edm.private && ((!limit) || (limit && edm.userAttend))) {

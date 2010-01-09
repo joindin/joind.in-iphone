@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "EventDetailModel.h"
 #import "TalkListModel.h"
+#import "APIError.h"
+#import "EventAttend.h"
 
 @interface EventDetailViewController : UITableViewController {
 	EventDetailModel *event;
@@ -27,6 +29,10 @@
 
 - (IBAction)uiDescButtonPressed:(id)sender;
 - (IBAction)uiAttendingButtonPressed:(id)sender;
+
+- (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error;
+- (void)gotEventAttend:(APIError *)err;
+- (void)setAttendingImage;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;

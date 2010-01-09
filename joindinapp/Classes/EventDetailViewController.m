@@ -14,6 +14,7 @@
 #import "APICaller.h"
 #import "EventGetTalks.h"
 #import "SettingsViewController.h"
+#import "EventAttend.h"
 
 @implementation EventDetailViewController
 
@@ -52,6 +53,8 @@
 	NSString *endDate   = [outputFormatter stringFromDate:event.end];
 	[outputFormatter release];
 	
+	[self setAttendingImage];
+	
 	if ([startDate compare:endDate] == NSOrderedSame) {
 		self.uiDate.text = startDate;
 	} else {
@@ -61,6 +64,24 @@
 	[self.uiLoadTalksIndicator startAnimating];	
 	EventGetTalks *e = [APICaller EventGetTalks:self];
 	[e call:self.event];
+	
+}
+
+- (void)setAttendingImage {
+	if (self.event.isAuthd == YES) {
+		self.uiAttending.hidden = NO;
+	} else {
+		self.uiAttending.hidden = YES;
+	}
+	
+	NSString *imageName;
+	if (self.event.userAttend) {
+		imageName = @"attending";
+	} else {
+		imageName = @"notattending";
+	}	
+	[self.uiAttending setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageName ofType:@"png"]] forState:UIControlStateNormal];
+	[imageName release];
 	
 }
 
@@ -127,13 +148,8 @@
 }
 
 - (IBAction)uiAttendingButtonPressed:(id)sender {
-	if (self.event.userAttend) {
-		[sender setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"notattending" ofType:@"png"]] forState:UIControlStateNormal];
-		self.event.userAttend = NO;
-	} else {
-		[sender setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"attending" ofType:@"png"]] forState:UIControlStateNormal];
-		self.event.userAttend = YES;
-	}
+	EventAttend *e = [APICaller EventAttend:self];
+	[e call:self.event];
 }
 
 #pragma mark Utility methods
@@ -149,6 +165,14 @@
 		[self.uiLoadTalksIndicator stopAnimating];
 		self.talks = tlm;
 		[(UITableView *)self.view reloadData];
+	}
+}
+
+- (void)gotEventAttend:(APIError *)err {
+	if (err == nil) {
+		self.event.userAttend = !self.event.userAttend;
+		[APICaller clearCache];
+		[self setAttendingImage];
 	}
 }
 
