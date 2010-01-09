@@ -12,9 +12,9 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
 			<integer value="21"/>
 			<integer value="6"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -245,6 +245,7 @@
 							<reference ref="508667155"/>
 						</object>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">Event type selector view</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
@@ -259,6 +260,7 @@
 							<reference ref="229543567"/>
 						</object>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">Fetching cell</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">25</int>
@@ -286,7 +288,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>EventListViewController</string>
 					<string>UIResponder</string>
-					<string>{{418, 509}, {320, 247}}</string>
+					<string>{{614, 440}, {320, 247}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{418, 690}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

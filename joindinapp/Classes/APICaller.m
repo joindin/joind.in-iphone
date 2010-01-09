@@ -14,8 +14,6 @@
 #import "TalkDetailModel.h"
 #import "NSString+md5.h"
 
-
-
 @implementation APICaller
 
 @synthesize delegate;
@@ -31,8 +29,9 @@
 }
 
 - (NSString *)getApiUrl {
+	return @"http://lorna.adsl.magicmonkey.org/api";
 	//return @"http://lorna.rivendell.local/api";
-	return @"http://joind.in/api";
+	//return @"http://joind.in/api";
 }
 
 - (BOOL)checkCacheForRequest:(NSString *)_reqJSON toUrl:(NSString *)_url ignoreExpiry:(BOOL)ignoreExpiry {
@@ -71,9 +70,24 @@
 	[[d JSONRepresentation] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
++ (void)clearCache {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+	NSArray *cacheFiles = [NSBundle pathsForResourcesOfType:@"json" inDirectory:[paths objectAtIndex:0]];
+	//NSLog(@"Cache files: %@", cacheFiles);
+	NSFileManager *fm = [NSFileManager defaultManager];
+	for (NSString *file in cacheFiles) {
+		//NSLog(@"Removing file %@", file);
+		[fm removeItemAtPath:file error:nil];
+	}
+}
+
 #pragma mark API call
 
 - (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth {
+	[self callAPI:type action:action params:params needAuth:needAuth canCache:YES];
+}
+
+- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
 	
 	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
 	
@@ -130,7 +144,7 @@
 	
 	self.url = [NSString stringWithFormat:@"%@/%@", [self getApiUrl], type];
 	
-	if (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO]) {
+	if ((!canCache) || (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO])) {
 		NSMutableURLRequest *req;
 		req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:3.0f];
 		[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
