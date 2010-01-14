@@ -8,9 +8,10 @@
 
 #import "TalkCommentsViewController.h"
 #import "TalkGetComments.h"
+#import "TalkAddComment.h"
 #import "TalkCommentsViewCell.h"
 #import "NewCommentViewCell.h"
-
+#import "SettingsViewController.h"
 
 @implementation TalkCommentsViewController
 
@@ -39,6 +40,33 @@
 		[alert show];
 		[alert release];
 	}
+}
+
+- (void)gotAddedTalkComment:(APIError *)error {
+	if (error != nil) {
+		//NSLog(@"Error: %@", error.msg);
+		UIAlertView *alert;
+		if (error.type == ERR_CREDENTIALS) {
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
+											  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		} else {
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
+											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			// Reload comments
+			TalkGetComments *t = [APICaller TalkGetComments:self];
+			[t call:self.talk];
+		}
+		[alert show];
+		[alert release];
+	} else {
+		[(UITableView *)[self view] reloadData];
+	}
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	SettingsViewController *vc = [[SettingsViewController alloc] init];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,8 +149,15 @@
 				}
 			}
 		}
+		cell.commentDelegate = self;
 		return cell;
 	}
+}
+
+- (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity {
+	[activity startAnimating];
+	TalkAddComment *t = [APICaller TalkAddComment:self];
+	[t call:self.talk rating:3 comment:comment private:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

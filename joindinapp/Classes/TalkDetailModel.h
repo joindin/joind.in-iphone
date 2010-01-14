@@ -47,4 +47,6 @@
 @property (nonatomic, assign) NSUInteger  numComments;
 @property (nonatomic, retain) NSDate     *lastComment;
 
+-(BOOL)hasFinished;
+
 @end

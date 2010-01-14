@@ -14,10 +14,11 @@
 @synthesize uiSubmit;
 @synthesize uiComment;
 @synthesize uiActivity;
+@synthesize commentDelegate;
 
 - (IBAction) uiSubmitted:(id)sender {
 	self.uiSubmit.hidden = YES;
-	[self.uiActivity startAnimating];
+	[self.commentDelegate submitComment:self.uiComment.text activityIndicator:self.uiActivity];
 }
 
 @end
