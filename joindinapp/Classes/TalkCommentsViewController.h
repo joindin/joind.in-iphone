@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TalkDetailModel.h"
 #import "TalkCommentListModel.h"
+#import "NewCommentViewCell.h"
 
 
-@interface TalkCommentsViewController : UITableViewController {
+@interface TalkCommentsViewController : UITableViewController <CommentSubmitter> {
 	TalkDetailModel *talk;
 	TalkCommentListModel *comments;
 	
@@ -29,5 +30,7 @@
 @property (nonatomic, retain) UILabel *uiAuthor;
 @property (nonatomic, retain) UIImageView *uiRating;
 @property (nonatomic, retain) UITableViewCell *uiCell;
+
+- (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity;
 
 @end

@@ -41,6 +41,7 @@
 		0A94C0AB10FE6AA300CC32C0 /* switchOffPlain.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94C0A710FE6AA300CC32C0 /* switchOffPlain.png */; };
 		0A94C0AC10FE6AA300CC32C0 /* switchBlueBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94C0A810FE6AA300CC32C0 /* switchBlueBg.png */; };
 		0A94C12010FE97B800CC32C0 /* UISwitch-Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94C11F10FE97B800CC32C0 /* UISwitch-Extended.m */; };
+		0A94C27210FFD0E400CC32C0 /* TalkAddComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94C27110FFD0E400CC32C0 /* TalkAddComment.m */; };
 		0AB4A60A10EC37DB003A48FC /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */; };
 		0AB4A65910ED5C9F003A48FC /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A64E10ED5C9F003A48FC /* NSObject+SBJSON.m */; };
 		0AB4A65A10ED5C9F003A48FC /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A65010ED5C9F003A48FC /* NSString+SBJSON.m */; };
@@ -124,6 +125,8 @@
 		0A94C0A810FE6AA300CC32C0 /* switchBlueBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switchBlueBg.png; path = Classes/switchBlueBg.png; sourceTree = "<group>"; };
 		0A94C11E10FE97B800CC32C0 /* UISwitch-Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch-Extended.h"; sourceTree = "<group>"; };
 		0A94C11F10FE97B800CC32C0 /* UISwitch-Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch-Extended.m"; sourceTree = "<group>"; };
+		0A94C27010FFD0E400CC32C0 /* TalkAddComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkAddComment.h; sourceTree = "<group>"; };
+		0A94C27110FFD0E400CC32C0 /* TalkAddComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkAddComment.m; sourceTree = "<group>"; };
 		0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		0AB4A64C10ED5C9F003A48FC /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				0A77DB8410F7C961006A7C67 /* EventAttend.m */,
 				0A94BE0410F8FC8700CC32C0 /* TalkGetComments.h */,
 				0A94BE0510F8FC8700CC32C0 /* TalkGetComments.m */,
+				0A94C27010FFD0E400CC32C0 /* TalkAddComment.h */,
+				0A94C27110FFD0E400CC32C0 /* TalkAddComment.m */,
 			);
 			name = "API caller";
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				0A94BEFD10F9580D00CC32C0 /* TalkCommentsViewCell.m in Sources */,
 				0A94C04510FBE3F000CC32C0 /* NewCommentViewCell.m in Sources */,
 				0A94C12010FE97B800CC32C0 /* UISwitch-Extended.m in Sources */,
+				0A94C27210FFD0E400CC32C0 /* TalkAddComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

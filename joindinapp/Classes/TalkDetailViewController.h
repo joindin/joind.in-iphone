@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TalkDetailModel.h"
+#import "EventDetailModel.h"
 
 @interface TalkDetailViewController : UIViewController {
-	TalkDetailModel *talk;
+	TalkDetailModel  *talk;
+	EventDetailModel *event;
 	
 	IBOutlet UILabel    *uiTitle;
 	IBOutlet UILabel    *uiSpeaker;
@@ -22,7 +24,8 @@
 	IBOutlet UILabel    *uiNumComments;
 }
 
-@property (nonatomic, retain) TalkDetailModel *talk;
+@property (nonatomic, retain) TalkDetailModel  *talk;
+@property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) UILabel *uiTitle;
 @property (nonatomic, retain) UILabel *uiSpeaker;
 @property (nonatomic, retain) UILabel *uiDate;

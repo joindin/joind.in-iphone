@@ -13,12 +13,19 @@
 	IBOutlet UIButton *uiSubmit;
 	IBOutlet UITextView *uiComment;
 	IBOutlet UIActivityIndicatorView *uiActivity;
+	
+	id commentDelegate;
 }
 
 @property (nonatomic, retain) UIButton *uiSubmit;
 @property (nonatomic, retain) UITextView *uiComment;
 @property (nonatomic, retain) UIActivityIndicatorView *uiActivity;
+@property (nonatomic, retain) id commentDelegate;
 
 - (IBAction) uiSubmitted:(id)sender;
 
+@end
+
+@protocol CommentSubmitter
+- (void)submitComment:(NSString *)comment  activityIndicator:(UIActivityIndicatorView *)activity;
 @end

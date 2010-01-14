@@ -13,6 +13,7 @@
 @implementation TalkDetailViewController
 
 @synthesize talk;
+@synthesize event;
 @synthesize uiTitle;
 @synthesize uiSpeaker;
 @synthesize uiDate;
@@ -35,16 +36,29 @@
 	
 	self.uiDate.text = dateGiven;
 	self.uiDesc.text = self.talk.desc;
-	self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
 	
-	//NSLog(@"Talk rating is %d", self.talk.rating);
-	if (self.talk.rating >= 0 && self.talk.rating <= 5) {
-		self.uiRating.hidden   = NO;
-		self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", self.talk.rating]];
-		self.uiNotRated.hidden = YES;
+	if ([self.talk hasFinished]) {
+		self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
+		
+		self.uiRating.hidden      = NO;
+		self.uiNotRated.hidden    = NO;
+		self.uiNumComments.hidden = NO;
+		self.uiComments.hidden    = NO;		
+		
+		//NSLog(@"Talk rating is %d", self.talk.rating);
+		if (self.talk.rating >= 0 && self.talk.rating <= 5) {
+			//self.uiRating.hidden   = NO;
+			self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", self.talk.rating]];
+			self.uiNotRated.hidden = YES;
+		} else {
+			//self.uiNotRated.hidden = NO;
+			self.uiRating.hidden   = YES;
+		}
 	} else {
-		self.uiNotRated.hidden = NO;
-		self.uiRating.hidden   = YES;
+		self.uiRating.hidden      = YES;
+		self.uiNotRated.hidden    = YES;
+		self.uiNumComments.hidden = YES;
+		self.uiComments.hidden    = YES;
 	}
 }
 

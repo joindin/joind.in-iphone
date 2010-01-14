@@ -161,7 +161,7 @@
 			}
 		}
 		
-		NSLog(@"Attending %i Authd %i Obj %@ type %@", edm.userAttend, edm.isAuthd, [event objectForKey:@"user_attending"], [[event objectForKey:@"user_attending"] class]);
+		//NSLog(@"Attending %i Authd %i Obj %@ type %@", edm.userAttend, edm.isAuthd, [event objectForKey:@"user_attending"], [[event objectForKey:@"user_attending"] class]);
 
 		
 		if (edm.active && !edm.pending && !edm.private && ((!limit) || (limit && edm.userAttend))) {

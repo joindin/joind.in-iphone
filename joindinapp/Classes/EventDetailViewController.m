@@ -109,7 +109,8 @@
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
-	talkDetailViewController.talk = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
+	talkDetailViewController.talk  = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
+	talkDetailViewController.event = self.event;
 	[self.navigationController pushViewController:talkDetailViewController animated:YES];
 	[tableView deselectRowAtIndexPath:indexPath animated:YES]; // Deselect the talk row in the event detail screen
 	[talkDetailViewController release];
