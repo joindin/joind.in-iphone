@@ -29,7 +29,23 @@
 }
 
 - (NSString *)getApiUrl {
-	return @"http://lorna.adsl.magicmonkey.org/api";
+	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+	switch ([userPrefs integerForKey:@"apiurl"]) {
+		case 0:
+			return @"http://joind.in/api";
+			break;
+		case 1:
+			return @"http://lorna.rivendell.local/api";
+			break;
+		case 2:
+			return @"http://lorna.adsl.magicmonkey.org/api";
+			break;
+		default:
+			return @"http://lorna.adsl.magicmonkey.org/api";
+			break;
+	}
+	
+	//return @"http://lorna.adsl.magicmonkey.org/api";
 	//return @"http://lorna.rivendell.local/api";
 	//return @"http://joind.in/api";
 }

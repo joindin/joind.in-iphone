@@ -62,4 +62,6 @@
 @property (nonatomic, assign) BOOL        isAuthd;
 @property (nonatomic, assign) BOOL        userAttend;
 
+-(BOOL)hasFinished;
+
 @end

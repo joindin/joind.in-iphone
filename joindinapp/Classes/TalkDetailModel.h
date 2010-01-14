@@ -11,8 +11,8 @@
 @interface TalkDetailModel : NSObject {
 	NSString   *title;      // talk_title
 	NSString   *speaker;    // speaker
-	NSUInteger  Id;         // tid
-	NSUInteger  eventId;    // eid
+	NSUInteger  Id;         // tid or ID
+	NSUInteger  eventId;    // eid or event_id
 	NSString   *slidesLink; // slides_link
 	NSDate     *given;      // date_given
 	NSString   *desc;       // talk_desc

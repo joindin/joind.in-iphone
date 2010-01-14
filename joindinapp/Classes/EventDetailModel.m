@@ -33,4 +33,8 @@
 @synthesize isAuthd;
 @synthesize userAttend;
 
+-(BOOL)hasFinished {
+	return ([self.end compare:[NSDate date]] == NSOrderedAscending);
+}
+
 @end
