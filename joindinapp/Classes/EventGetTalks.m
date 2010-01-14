@@ -36,14 +36,14 @@
 			tdm.speaker = @"";
 		}
 		
-		if ([[talk objectForKey:@"tid"] isKindOfClass:[NSString class]]) {
-			tdm.Id         = [[talk objectForKey:@"tid"] integerValue];
+		if ([[talk objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
+			tdm.Id         = [[talk objectForKey:@"ID"] integerValue];
 		} else {
 			tdm.Id = 0;
 		}
 		
-		if ([[talk objectForKey:@"eid"] isKindOfClass:[NSString class]]) {
-			tdm.eventId    = [[talk objectForKey:@"eid"] integerValue];
+		if ([[talk objectForKey:@"event_id"] isKindOfClass:[NSString class]]) {
+			tdm.eventId    = [[talk objectForKey:@"event_id"] integerValue];
 		} else {
 			tdm.eventId = 0;
 		}

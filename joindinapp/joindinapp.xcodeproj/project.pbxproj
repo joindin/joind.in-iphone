@@ -26,6 +26,21 @@
 		0A7DF15C10EFEF060028D49B /* EventGetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF15B10EFEF060028D49B /* EventGetList.m */; };
 		0A7DF19610EFF86B0028D49B /* EventGetTalks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF19510EFF86B0028D49B /* EventGetTalks.m */; };
 		0A7DF2A510F00A560028D49B /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */; };
+		0A94BD6C10F8DAC300CC32C0 /* attended.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD6B10F8DAC300CC32C0 /* attended.png */; };
+		0A94BD7310F8DBAF00CC32C0 /* notattended.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD7210F8DBAF00CC32C0 /* notattended.png */; };
+		0A94BD8F10F8E3AD00CC32C0 /* todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD8E10F8E3AD00CC32C0 /* todo.txt */; };
+		0A94BDC910F8EE2E00CC32C0 /* TalkCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */; };
+		0A94BDCA10F8EE2E00CC32C0 /* TalkCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BDC810F8EE2E00CC32C0 /* TalkCommentsView.xib */; };
+		0A94BDED10F8F7AE00CC32C0 /* TalkCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BDEC10F8F7AE00CC32C0 /* TalkCommentListModel.m */; };
+		0A94BDF210F8FA3300CC32C0 /* TalkCommentDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BDF110F8FA3300CC32C0 /* TalkCommentDetailModel.m */; };
+		0A94BE0610F8FC8700CC32C0 /* TalkGetComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BE0510F8FC8700CC32C0 /* TalkGetComments.m */; };
+		0A94BEFD10F9580D00CC32C0 /* TalkCommentsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */; };
+		0A94BF3210F96D8200CC32C0 /* TalkCommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BF3110F96D8200CC32C0 /* TalkCommentsCell.xib */; };
+		0A94C04510FBE3F000CC32C0 /* NewCommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94C04410FBE3F000CC32C0 /* NewCommentViewCell.m */; };
+		0A94C0AA10FE6AA300CC32C0 /* switchThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94C0A610FE6AA300CC32C0 /* switchThumb.png */; };
+		0A94C0AB10FE6AA300CC32C0 /* switchOffPlain.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94C0A710FE6AA300CC32C0 /* switchOffPlain.png */; };
+		0A94C0AC10FE6AA300CC32C0 /* switchBlueBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94C0A810FE6AA300CC32C0 /* switchBlueBg.png */; };
+		0A94C12010FE97B800CC32C0 /* UISwitch-Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94C11F10FE97B800CC32C0 /* UISwitch-Extended.m */; };
 		0AB4A60A10EC37DB003A48FC /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */; };
 		0AB4A65910ED5C9F003A48FC /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A64E10ED5C9F003A48FC /* NSObject+SBJSON.m */; };
 		0AB4A65A10ED5C9F003A48FC /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A65010ED5C9F003A48FC /* NSString+SBJSON.m */; };
@@ -87,6 +102,28 @@
 		0A7DF19510EFF86B0028D49B /* EventGetTalks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventGetTalks.m; sourceTree = "<group>"; };
 		0A7DF2A210F00A560028D49B /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
+		0A94BD6B10F8DAC300CC32C0 /* attended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attended.png; sourceTree = "<group>"; };
+		0A94BD7210F8DBAF00CC32C0 /* notattended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notattended.png; sourceTree = "<group>"; };
+		0A94BD8E10F8E3AD00CC32C0 /* todo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
+		0A94BDC610F8EE2E00CC32C0 /* TalkCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCommentsViewController.h; sourceTree = "<group>"; };
+		0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkCommentsViewController.m; sourceTree = "<group>"; };
+		0A94BDC810F8EE2E00CC32C0 /* TalkCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TalkCommentsView.xib; path = Classes/TalkCommentsView.xib; sourceTree = "<group>"; };
+		0A94BDEB10F8F7AE00CC32C0 /* TalkCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCommentListModel.h; sourceTree = "<group>"; };
+		0A94BDEC10F8F7AE00CC32C0 /* TalkCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkCommentListModel.m; sourceTree = "<group>"; };
+		0A94BDF010F8FA3300CC32C0 /* TalkCommentDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCommentDetailModel.h; sourceTree = "<group>"; };
+		0A94BDF110F8FA3300CC32C0 /* TalkCommentDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkCommentDetailModel.m; sourceTree = "<group>"; };
+		0A94BE0410F8FC8700CC32C0 /* TalkGetComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkGetComments.h; sourceTree = "<group>"; };
+		0A94BE0510F8FC8700CC32C0 /* TalkGetComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkGetComments.m; sourceTree = "<group>"; };
+		0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCommentsViewCell.h; sourceTree = "<group>"; };
+		0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkCommentsViewCell.m; sourceTree = "<group>"; };
+		0A94BF3110F96D8200CC32C0 /* TalkCommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCommentsCell.xib; sourceTree = "<group>"; };
+		0A94C04310FBE3F000CC32C0 /* NewCommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCommentViewCell.h; sourceTree = "<group>"; };
+		0A94C04410FBE3F000CC32C0 /* NewCommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentViewCell.m; sourceTree = "<group>"; };
+		0A94C0A610FE6AA300CC32C0 /* switchThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switchThumb.png; path = Classes/switchThumb.png; sourceTree = "<group>"; };
+		0A94C0A710FE6AA300CC32C0 /* switchOffPlain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switchOffPlain.png; path = Classes/switchOffPlain.png; sourceTree = "<group>"; };
+		0A94C0A810FE6AA300CC32C0 /* switchBlueBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switchBlueBg.png; path = Classes/switchBlueBg.png; sourceTree = "<group>"; };
+		0A94C11E10FE97B800CC32C0 /* UISwitch-Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch-Extended.h"; sourceTree = "<group>"; };
+		0A94C11F10FE97B800CC32C0 /* UISwitch-Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch-Extended.m"; sourceTree = "<group>"; };
 		0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		0AB4A64C10ED5C9F003A48FC /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -152,6 +189,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0A94C22210FFC6FA00CC32C0 /* Custom views */,
 				0A7DF15910EFEEB70028D49B /* API caller */,
 				0AB4A6CA10EE0818003A48FC /* Utils */,
 				0A8E195D10EE328E00F0F885 /* View controllers */,
@@ -176,6 +214,8 @@
 				0A7DF19510EFF86B0028D49B /* EventGetTalks.m */,
 				0A77DB8310F7C961006A7C67 /* EventAttend.h */,
 				0A77DB8410F7C961006A7C67 /* EventAttend.m */,
+				0A94BE0410F8FC8700CC32C0 /* TalkGetComments.h */,
+				0A94BE0510F8FC8700CC32C0 /* TalkGetComments.m */,
 			);
 			name = "API caller";
 			sourceTree = "<group>";
@@ -195,8 +235,21 @@
 				0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */,
 				0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */,
 				0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */,
+				0A94BDC610F8EE2E00CC32C0 /* TalkCommentsViewController.h */,
+				0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */,
 			);
 			name = "View controllers";
+			sourceTree = "<group>";
+		};
+		0A94C22210FFC6FA00CC32C0 /* Custom views */ = {
+			isa = PBXGroup;
+			children = (
+				0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */,
+				0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */,
+				0A94C04310FBE3F000CC32C0 /* NewCommentViewCell.h */,
+				0A94C04410FBE3F000CC32C0 /* NewCommentViewCell.m */,
+			);
+			name = "Custom views";
 			sourceTree = "<group>";
 		};
 		0AB4A64B10ED5C9F003A48FC /* JSON */ = {
@@ -230,6 +283,10 @@
 				0A7DED4E10EE79160028D49B /* TalkListModel.m */,
 				0A7DED5010EE79200028D49B /* TalkDetailModel.h */,
 				0A7DED5110EE79200028D49B /* TalkDetailModel.m */,
+				0A94BDEB10F8F7AE00CC32C0 /* TalkCommentListModel.h */,
+				0A94BDEC10F8F7AE00CC32C0 /* TalkCommentListModel.m */,
+				0A94BDF010F8FA3300CC32C0 /* TalkCommentDetailModel.h */,
+				0A94BDF110F8FA3300CC32C0 /* TalkCommentDetailModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -237,6 +294,8 @@
 		0AB4A6CA10EE0818003A48FC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0A94C11E10FE97B800CC32C0 /* UISwitch-Extended.h */,
+				0A94C11F10FE97B800CC32C0 /* UISwitch-Extended.m */,
 				0AE85D3D10F515E5002C4C98 /* NSString+md5.h */,
 				0AE85D3E10F515E5002C4C98 /* NSString+md5.m */,
 			);
@@ -246,6 +305,11 @@
 		0AE8579B10F02419002C4C98 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A94C0A610FE6AA300CC32C0 /* switchThumb.png */,
+				0A94C0A710FE6AA300CC32C0 /* switchOffPlain.png */,
+				0A94C0A810FE6AA300CC32C0 /* switchBlueBg.png */,
+				0A94BD7210F8DBAF00CC32C0 /* notattended.png */,
+				0A94BD6B10F8DAC300CC32C0 /* attended.png */,
 				0A77DA6410F69881006A7C67 /* attending.png */,
 				0A77DA6510F69881006A7C67 /* notattending.png */,
 				0AE857A410F024A5002C4C98 /* rating-0.gif */,
@@ -271,6 +335,8 @@
 				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
 				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
 				0A41E10410F54C8B00FBFE86 /* SettingsView.xib */,
+				0A94BDC810F8EE2E00CC32C0 /* TalkCommentsView.xib */,
+				0A94BF3110F96D8200CC32C0 /* TalkCommentsCell.xib */,
 			);
 			name = "NIB files";
 			sourceTree = "<group>";
@@ -313,6 +379,7 @@
 				0A6D1E3E10EE561700E941EE /* Entitlements.plist */,
 				0A41DEF510F518B000FBFE86 /* Entitlementsadhoc.plist */,
 				0A41E05410F53E9B00FBFE86 /* Settings.bundle */,
+				0A94BD8E10F8E3AD00CC32C0 /* todo.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -397,6 +464,14 @@
 				0A41E10610F54C8B00FBFE86 /* SettingsView.xib in Resources */,
 				0A77DA6610F69881006A7C67 /* attending.png in Resources */,
 				0A77DA6710F69881006A7C67 /* notattending.png in Resources */,
+				0A94BD6C10F8DAC300CC32C0 /* attended.png in Resources */,
+				0A94BD7310F8DBAF00CC32C0 /* notattended.png in Resources */,
+				0A94BD8F10F8E3AD00CC32C0 /* todo.txt in Resources */,
+				0A94BDCA10F8EE2E00CC32C0 /* TalkCommentsView.xib in Resources */,
+				0A94BF3210F96D8200CC32C0 /* TalkCommentsCell.xib in Resources */,
+				0A94C0AA10FE6AA300CC32C0 /* switchThumb.png in Resources */,
+				0A94C0AB10FE6AA300CC32C0 /* switchOffPlain.png in Resources */,
+				0A94C0AC10FE6AA300CC32C0 /* switchBlueBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +506,13 @@
 				0A41E10510F54C8B00FBFE86 /* SettingsViewController.m in Sources */,
 				0A77D98D10F6876F006A7C67 /* APIError.m in Sources */,
 				0A77DB8510F7C961006A7C67 /* EventAttend.m in Sources */,
+				0A94BDC910F8EE2E00CC32C0 /* TalkCommentsViewController.m in Sources */,
+				0A94BDED10F8F7AE00CC32C0 /* TalkCommentListModel.m in Sources */,
+				0A94BDF210F8FA3300CC32C0 /* TalkCommentDetailModel.m in Sources */,
+				0A94BE0610F8FC8700CC32C0 /* TalkGetComments.m in Sources */,
+				0A94BEFD10F9580D00CC32C0 /* TalkCommentsViewCell.m in Sources */,
+				0A94C04510FBE3F000CC32C0 /* NewCommentViewCell.m in Sources */,
+				0A94C12010FE97B800CC32C0 /* UISwitch-Extended.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

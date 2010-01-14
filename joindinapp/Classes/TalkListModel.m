@@ -19,9 +19,9 @@
 	return self;
 }
 
-- (void)addTalk:(TalkDetailModel *)edm {
-	[edm retain];
-	[self.talks addObject:edm];
+- (void)addTalk:(TalkDetailModel *)tdm {
+	[tdm retain];
+	[self.talks addObject:tdm];
 }
 
 - (TalkDetailModel *)getTalkDetailModelAtIndex:(NSUInteger)idx {

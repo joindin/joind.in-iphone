@@ -24,7 +24,8 @@
 	IBOutlet UIButton *uiDescButton;
 	IBOutlet UIActivityIndicatorView *uiLoadTalksIndicator;
 	IBOutlet UIView   *uiTableHeaderView;
-	IBOutlet UIButton *uiAttending;
+	IBOutlet UISwitch *uiAttending;
+	IBOutlet UILabel  *uiAttendingLabel;
 }
 
 - (IBAction)uiDescButtonPressed:(id)sender;
@@ -32,7 +33,7 @@
 
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error;
 - (void)gotEventAttend:(APIError *)err;
-- (void)setAttendingImage;
+- (void)setupAttending;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) UIButton *uiDescButton;
 @property (nonatomic, retain) UIActivityIndicatorView *uiLoadTalksIndicator;
 @property (nonatomic, retain) UIView   *uiTableHeaderView;
-@property (nonatomic, retain) UIButton *uiAttending;
+@property (nonatomic, retain) UISwitch *uiAttending;
+@property (nonatomic, retain) UILabel  *uiAttendingLabel;
 
 @end

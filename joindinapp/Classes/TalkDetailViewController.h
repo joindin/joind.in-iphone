@@ -17,6 +17,9 @@
 	IBOutlet UILabel    *uiDate;
 	IBOutlet UITextView *uiDesc;
 	IBOutlet UIImageView *uiRating;
+	IBOutlet UIButton   *uiComments;
+	IBOutlet UILabel    *uiNotRated;
+	IBOutlet UILabel    *uiNumComments;
 }
 
 @property (nonatomic, retain) TalkDetailModel *talk;
@@ -25,5 +28,10 @@
 @property (nonatomic, retain) UILabel *uiDate;
 @property (nonatomic, retain) UITextView *uiDesc;
 @property (nonatomic, retain) UIImageView *uiRating;
+@property (nonatomic, retain) UIButton *uiComments;
+@property (nonatomic, retain) UILabel *uiNotRated;
+@property (nonatomic, retain) UILabel *uiNumComments;
+
+-(IBAction)uiViewComments:(id)sender;
 
 @end

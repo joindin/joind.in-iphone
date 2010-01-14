@@ -7,6 +7,7 @@
 //
 
 #import "TalkDetailViewController.h"
+#import "TalkCommentsViewController.h"
 
 
 @implementation TalkDetailViewController
@@ -17,28 +18,41 @@
 @synthesize uiDate;
 @synthesize uiDesc;
 @synthesize uiRating;
+@synthesize uiComments;
+@synthesize uiNotRated;
+@synthesize uiNumComments;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	self.title = talk.title;
-	self.uiTitle.text = talk.title;
-	self.uiSpeaker.text = talk.speaker;
+	self.title = self.talk.title;
+	self.uiTitle.text = self.talk.title;
+	self.uiSpeaker.text = self.talk.speaker;
 	
 	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 	[outputFormatter setDateFormat:@"d MMM yyyy"];
-	NSString *dateGiven = [outputFormatter stringFromDate:talk.given];
+	NSString *dateGiven = [outputFormatter stringFromDate:self.talk.given];
 	[outputFormatter release];
 	
 	self.uiDate.text = dateGiven;
-	self.uiDesc.text = talk.desc;
+	self.uiDesc.text = self.talk.desc;
+	self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
 	
 	//NSLog(@"Talk rating is %d", self.talk.rating);
-	if (self.talk.rating > 0 && self.talk.rating <= 5) {
-		self.uiRating.hidden = NO;
-		self.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", talk.rating]];
+	if (self.talk.rating >= 0 && self.talk.rating <= 5) {
+		self.uiRating.hidden   = NO;
+		self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", self.talk.rating]];
+		self.uiNotRated.hidden = YES;
 	} else {
-		self.uiRating.hidden = YES;
+		self.uiNotRated.hidden = NO;
+		self.uiRating.hidden   = YES;
 	}
+}
+
+-(IBAction)uiViewComments:(id)sender {
+	TalkCommentsViewController *vc = [[TalkCommentsViewController alloc] initWithNibName:@"TalkCommentsView" bundle:nil];
+	vc.talk = self.talk;
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];
 }
 
 - (void)didReceiveMemoryWarning {

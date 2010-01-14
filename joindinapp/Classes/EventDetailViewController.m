@@ -15,6 +15,7 @@
 #import "EventGetTalks.h"
 #import "SettingsViewController.h"
 #import "EventAttend.h"
+#import "UISwitch-Extended.h"
 
 @implementation EventDetailViewController
 
@@ -28,16 +29,22 @@
 @synthesize uiLoadTalksIndicator;
 @synthesize uiTableHeaderView;
 @synthesize uiAttending;
+@synthesize uiAttendingLabel;
 
 #pragma mark View loaders
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(uiSettingsButtonPressed)];
+	//self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(uiSettingsButtonPressed)];
 
 	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventDetailView" owner:self options:nil];
 	self.uiTableHeaderView = [nibViews objectAtIndex: 1];
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
+	
+	self.uiAttending = [UISwitch switchWithLeftText:@"yes" andRight:@" no"];
+	self.uiAttending.center = CGPointMake(270.0f, 175.0f);
+	self.uiAttending.on = event.userAttend;
+	[[self view] addSubview:self.uiAttending];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,7 +60,7 @@
 	NSString *endDate   = [outputFormatter stringFromDate:event.end];
 	[outputFormatter release];
 	
-	[self setAttendingImage];
+	[self setupAttending];
 	
 	if ([startDate compare:endDate] == NSOrderedSame) {
 		self.uiDate.text = startDate;
@@ -67,21 +74,21 @@
 	
 }
 
-- (void)setAttendingImage {
+- (void)setupAttending {
 	if (self.event.isAuthd == YES) {
 		self.uiAttending.hidden = NO;
+		self.uiAttendingLabel.hidden = NO;
 	} else {
 		self.uiAttending.hidden = YES;
+		self.uiAttendingLabel.hidden = YES;
 	}
 	
-	NSString *imageName;
-	if (self.event.userAttend) {
-		imageName = @"attending";
+	if ([self.event hasFinished]) {
+		self.uiAttendingLabel.text = @"Attended";
 	} else {
-		imageName = @"notattending";
-	}	
-	[self.uiAttending setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageName ofType:@"png"]] forState:UIControlStateNormal];
-	[imageName release];
+		self.uiAttendingLabel.text = @"Attending";
+	}
+	self.uiAttending.on = event.userAttend;
 	
 }
 
@@ -172,7 +179,7 @@
 	if (err == nil) {
 		self.event.userAttend = !self.event.userAttend;
 		[APICaller clearCache];
-		[self setAttendingImage];
+		[self setupAttending];
 	}
 }
 
