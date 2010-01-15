@@ -26,6 +26,7 @@
 	IBOutlet UIView   *uiTableHeaderView;
 	IBOutlet UISwitch *uiAttending;
 	IBOutlet UILabel  *uiAttendingLabel;
+	IBOutlet UIActivityIndicatorView *uiAttendingIndicator;
 }
 
 - (IBAction)uiDescButtonPressed:(id)sender;
@@ -47,5 +48,7 @@
 @property (nonatomic, retain) UIView   *uiTableHeaderView;
 @property (nonatomic, retain) UISwitch *uiAttending;
 @property (nonatomic, retain) UILabel  *uiAttendingLabel;
+@property (nonatomic, retain) UIActivityIndicatorView *uiAttendingIndicator;
+
 
 @end

@@ -30,6 +30,7 @@
 @synthesize uiTableHeaderView;
 @synthesize uiAttending;
 @synthesize uiAttendingLabel;
+@synthesize uiAttendingIndicator;
 
 #pragma mark View loaders
 
@@ -61,6 +62,8 @@
 	[outputFormatter release];
 	
 	[self setupAttending];
+	
+	[self.uiAttending addTarget:self action:@selector(uiAttendingButtonPressed:) forControlEvents:UIControlEventValueChanged];
 	
 	if ([startDate compare:endDate] == NSOrderedSame) {
 		self.uiDate.text = startDate;
@@ -156,6 +159,7 @@
 }
 
 - (IBAction)uiAttendingButtonPressed:(id)sender {
+	[self.uiAttendingIndicator startAnimating];
 	EventAttend *e = [APICaller EventAttend:self];
 	[e call:self.event];
 }
@@ -177,6 +181,7 @@
 }
 
 - (void)gotEventAttend:(APIError *)err {
+	[self.uiAttendingIndicator stopAnimating];
 	if (err == nil) {
 		self.event.userAttend = !self.event.userAttend;
 		[APICaller clearCache];
