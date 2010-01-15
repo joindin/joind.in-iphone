@@ -31,6 +31,6 @@
 @property (nonatomic, retain) UIImageView *uiRating;
 @property (nonatomic, retain) UITableViewCell *uiCell;
 
-- (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity;
+- (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity rating:(NSUInteger)rating;
 
 @end

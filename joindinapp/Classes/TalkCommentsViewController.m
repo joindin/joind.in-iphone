@@ -27,6 +27,7 @@
     [super viewWillAppear:animated];
 	TalkGetComments *t = [APICaller TalkGetComments:self];
 	[t call:self.talk];
+	
 }
 
 - (void)gotTalkComments:(TalkCommentListModel *)tclm error:(APIError *)err {
@@ -59,7 +60,9 @@
 		[alert show];
 		[alert release];
 	} else {
-		[(UITableView *)[self view] reloadData];
+		// Reload comments
+		TalkGetComments *t = [APICaller TalkGetComments:self];
+		[t call:self.talk];
 	}
 }
 
@@ -154,10 +157,10 @@
 	}
 }
 
-- (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity {
+- (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity rating:(NSUInteger)rating {
 	[activity startAnimating];
 	TalkAddComment *t = [APICaller TalkAddComment:self];
-	[t call:self.talk rating:3 comment:comment private:NO];
+	[t call:self.talk rating:rating comment:comment private:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
