@@ -50,6 +50,8 @@
 	//return @"http://joind.in/api";
 }
 
+#pragma mark Cache control methods
+
 - (BOOL)checkCacheForRequest:(NSString *)_reqJSON toUrl:(NSString *)_url ignoreExpiry:(BOOL)ignoreExpiry {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
 	NSString *filename = [NSString stringWithFormat:@"%@/%@.json",  [paths objectAtIndex:0], [[NSString stringWithFormat:@"%@%@", _reqJSON, _url] md5]];
@@ -81,7 +83,7 @@
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
 	NSMutableDictionary *d = [NSMutableDictionary dictionaryWithCapacity:2];
 	[d setObject:responseString forKey:@"data"];
-	[d setObject:[NSString stringWithFormat:@"%f", [[NSDate dateWithTimeIntervalSinceNow:60.0f] timeIntervalSince1970]] forKey:@"expires"];
+	[d setObject:[NSString stringWithFormat:@"%f", [[NSDate dateWithTimeIntervalSinceNow:600.0f] timeIntervalSince1970]] forKey:@"expires"];
 	NSString *filename = [NSString stringWithFormat:@"%@/%@.json", [paths objectAtIndex:0], [[NSString stringWithFormat:@"%@%@", _reqJSON, _url] md5]];
 	[[d JSONRepresentation] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
