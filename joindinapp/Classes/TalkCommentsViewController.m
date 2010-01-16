@@ -45,13 +45,23 @@
 
 - (void)gotAddedTalkComment:(APIError *)error {
 	if (error != nil) {
-		//NSLog(@"Error: %@", error.msg);
 		UIAlertView *alert;
 		if (error.type == ERR_CREDENTIALS) {
 			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
 											  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		} else {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
+			NSMutableString *msg = [NSMutableString stringWithCapacity:1];
+			[msg setString:@""];
+			if ([error.msg class] == [NSArray class]) {
+				for(NSString *eachMsg in (NSArray *)error.msg) {
+					[msg appendString:@", "];
+					[msg appendString:eachMsg];
+				}
+			} else {
+				[msg appendString:error.msg];
+			}
+			NSLog(@"Error string %@", error.msg);
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg 
 											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			// Reload comments
 			TalkGetComments *t = [APICaller TalkGetComments:self];
@@ -153,6 +163,7 @@
 			}
 		}
 		cell.commentDelegate = self;
+		cell.rating = 3;
 		return cell;
 	}
 }

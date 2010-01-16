@@ -73,10 +73,10 @@
 		//NSLog(@"Error: %@", error.msg);
 		UIAlertView *alert;
 		if (error.type == ERR_CREDENTIALS) {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
 														   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		} else {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
 														   delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		}
 		[alert show];
