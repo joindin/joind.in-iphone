@@ -15,8 +15,6 @@ enum {
 	ERR_UNKNOWN = 3
 };
 
-
-
 @interface APIError : NSObject {
 	NSString *msg;
 	APIErrType type;

@@ -169,7 +169,7 @@
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error{
 	if (error != nil) {
 		//NSLog(@"Error: %@", error.msg);
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:error.msg 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:(NSString *)error.msg 
 													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
