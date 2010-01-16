@@ -114,8 +114,8 @@
 			tdm.langAbbr = @"";
 		}
 		
-		if ([[talk objectForKey:@"ccount"] isKindOfClass:[NSString class]]) {
-			tdm.numComments       = [[talk objectForKey:@"ccount"] integerValue];
+		if ([[talk objectForKey:@"comment_count"] isKindOfClass:[NSString class]]) {
+			tdm.numComments       = [[talk objectForKey:@"comment_count"] integerValue];
 		} else {
 			tdm.numComments = 0;
 		}

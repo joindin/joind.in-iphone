@@ -169,8 +169,14 @@
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error{
 	if (error != nil) {
 		//NSLog(@"Error: %@", error.msg);
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:(NSString *)error.msg 
-													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		UIAlertView *alert;
+		if (error.type == ERR_CREDENTIALS) {
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
+											  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		} else {
+			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
+											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		}
 		[alert show];
 		[alert release];
 	} else {

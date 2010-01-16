@@ -12,7 +12,7 @@
 @implementation TalkGetComments
 
 - (void)call:(TalkDetailModel *)talk {
-	[self callAPI:@"talk" action:@"getcomments" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", talk.Id] forKey:@"talk_id"] needAuth:YES canCache:NO];
+	[self callAPI:@"talk" action:@"getcomments" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", talk.Id] forKey:@"talk_id"] needAuth:NO canCache:YES];
 }
 
 - (void)gotData:(NSObject *)obj {

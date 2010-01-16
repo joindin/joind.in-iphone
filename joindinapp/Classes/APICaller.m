@@ -38,8 +38,6 @@
 			return @"http://lorna.rivendell.local/api";
 			break;
 		case 2:
-			return @"http://lorna.adsl.magicmonkey.org/api";
-			break;
 		default:
 			return @"http://lorna.adsl.magicmonkey.org/api";
 			break;
@@ -162,17 +160,20 @@
 	
 	self.url = [NSString stringWithFormat:@"%@/%@", [self getApiUrl], type];
 	
-	if ((!canCache) || (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO])) {
-		NSMutableURLRequest *req;
-		req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:3.0f];
-		[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
-		[req setHTTPMethod:@"POST"];
-		[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-		
-		// Make asynchronous request (and store it in case it needs to be cancelled)
-		self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
-		[req release];
+//	if ((!canCache) || (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO])) {
+	
+	if (canCache) {
+		[self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO];
 	}
+	NSMutableURLRequest *req;
+	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:3.0f];
+	[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
+	[req setHTTPMethod:@"POST"];
+	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+	
+	// Make asynchronous request (and store it in case it needs to be cancelled)
+	self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
+	[req release];
 	
 }
 
