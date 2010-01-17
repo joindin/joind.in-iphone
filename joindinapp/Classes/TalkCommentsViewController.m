@@ -98,7 +98,11 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+	if (self.talk.allowComments) {
+		return 2;
+	} else {
+		return 1;
+	}
 }
 
 

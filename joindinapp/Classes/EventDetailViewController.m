@@ -190,7 +190,7 @@
 	[self.uiAttendingIndicator stopAnimating];
 	if (err == nil) {
 		self.event.userAttend = !self.event.userAttend;
-		[APICaller clearCache];
+		//[APICaller clearCache];
 		[self setupAttending];
 	}
 }

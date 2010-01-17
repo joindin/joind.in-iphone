@@ -27,6 +27,7 @@
 @synthesize langAbbr;
 @synthesize numComments;
 @synthesize lastComment;
+@synthesize allowComments;
 
 -(BOOL)hasFinished {
 	return ([self.given compare:[NSDate dateWithTimeIntervalSinceNow:-86400]] == NSOrderedAscending);

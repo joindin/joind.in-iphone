@@ -25,8 +25,9 @@
 	NSUInteger  speakerId;  // owner_id
 	BOOL        private;    // private
 	NSString   *langAbbr;   // lang_abbr
-	NSUInteger  numComments;// ccount
+	NSUInteger  numComments;// ccount or comment_count
 	NSDate     *lastComment;// last_comment_date
+	BOOL        allowComments; // allow_comments
 }
 
 @property (nonatomic, retain) NSString   *title;
@@ -46,6 +47,7 @@
 @property (nonatomic, retain) NSString   *langAbbr;
 @property (nonatomic, assign) NSUInteger  numComments;
 @property (nonatomic, retain) NSDate     *lastComment;
+@property (nonatomic, assign) BOOL        allowComments;
 
 -(BOOL)hasFinished;
 
