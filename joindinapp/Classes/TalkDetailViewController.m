@@ -68,40 +68,60 @@
 	
 	if (withExtraInfo) {
 		
+		self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
+		
+		NSString *btnLabel;
+		
+		self.uiRating.hidden      = NO;
+		self.uiNotRated.hidden    = NO;
+		self.uiNumComments.hidden = NO;
+		self.uiComments.hidden    = NO;
+		
 		if (self.talk.allowComments) {
-			[self.uiComments setTitle:@"View / add comments" forState:UIControlStateNormal];
-			[self.uiComments setTitle:@"View / add comments" forState:UIControlStateHighlighted];
-			[self.uiComments setTitle:@"View / add comments" forState:UIControlStateDisabled];
-			[self.uiComments setTitle:@"View / add comments" forState:UIControlStateSelected];
+			
+			if (self.talk.numComments > 0) {
+				btnLabel = @"View / add comments";
+			} else {
+				btnLabel = @"Add comment";
+			}
+			
 		} else {
-			[self.uiComments setTitle:@"View comments" forState:UIControlStateNormal];
-			[self.uiComments setTitle:@"View comments" forState:UIControlStateHighlighted];
-			[self.uiComments setTitle:@"View comments" forState:UIControlStateDisabled];
-			[self.uiComments setTitle:@"View comments" forState:UIControlStateSelected];
+			
+			if (self.talk.numComments > 0) {
+				
+				btnLabel = @"View comments";
+				
+			} else {
+				
+				self.uiRating.hidden      = YES;
+				self.uiNotRated.hidden    = YES;
+				self.uiNumComments.hidden = YES;
+				self.uiComments.hidden    = YES;
+				
+				btnLabel = @"No comments";
+			}
+			
 		}
 		
-		if (true || [self.talk hasFinished]) {
-			self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
-			
-			self.uiRating.hidden      = NO;
-			self.uiNotRated.hidden    = NO;
-			self.uiNumComments.hidden = NO;
-			self.uiComments.hidden    = NO;		
-			
-			if (self.talk.rating >= 0 && self.talk.rating <= 5) {
-				//self.uiRating.hidden   = NO;
-				self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", self.talk.rating]];
-				self.uiNotRated.hidden = YES;
-			} else {
-				//self.uiNotRated.hidden = NO;
-				self.uiRating.hidden   = YES;
-			}
+		[self.uiComments setTitle:btnLabel forState:UIControlStateNormal];
+		[self.uiComments setTitle:btnLabel forState:UIControlStateHighlighted];
+		
+		if (self.talk.rating >= 0 && self.talk.rating <= 5) {
+			//self.uiRating.hidden   = NO;
+			self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", self.talk.rating]];
+			self.uiNotRated.hidden = YES;
 		} else {
-			self.uiRating.hidden      = YES;
-			self.uiNotRated.hidden    = YES;
-			self.uiNumComments.hidden = YES;
-			self.uiComments.hidden    = YES;
+			//self.uiNotRated.hidden = NO;
+			self.uiRating.hidden   = YES;
 		}
+		
+	} else {
+		
+		self.uiRating.hidden      = YES;
+		self.uiNotRated.hidden    = YES;
+		self.uiNumComments.hidden = YES;
+		self.uiComments.hidden    = YES;
+		
 	}
 	
 }
