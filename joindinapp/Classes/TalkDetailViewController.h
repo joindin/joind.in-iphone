@@ -22,6 +22,7 @@
 	IBOutlet UIButton   *uiComments;
 	IBOutlet UILabel    *uiNotRated;
 	IBOutlet UILabel    *uiNumComments;
+	IBOutlet UIActivityIndicatorView *uiLoading;
 }
 
 @property (nonatomic, retain) TalkDetailModel  *talk;
@@ -34,7 +35,9 @@
 @property (nonatomic, retain) UIButton *uiComments;
 @property (nonatomic, retain) UILabel *uiNotRated;
 @property (nonatomic, retain) UILabel *uiNumComments;
+@property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
 
 -(IBAction)uiViewComments:(id)sender;
+-(void)setupScreen:(BOOL)withExtraInfo;
 
 @end
