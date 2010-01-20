@@ -63,6 +63,7 @@
 		0AE857AF10F024A5002C4C98 /* rating-5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A910F024A5002C4C98 /* rating-5.gif */; };
 		0AE85D3F10F515E5002C4C98 /* NSString+md5.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE85D3E10F515E5002C4C98 /* NSString+md5.m */; };
 		0AEC4203110285F400705B06 /* TalkGetDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC4202110285F400705B06 /* TalkGetDetail.m */; };
+		0AEC433C1103932F00705B06 /* UserValidate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC433B1103932F00705B06 /* UserValidate.m */; };
 		0AF708F610F0107200CDEBE6 /* SplashScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */; };
 		0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7099310F01AFE00CDEBE6 /* logo.gif */; };
 		0AF709C810F01EB600CDEBE6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF709C710F01EB600CDEBE6 /* Default.png */; };
@@ -164,6 +165,8 @@
 		0AE85D3E10F515E5002C4C98 /* NSString+md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+md5.m"; sourceTree = "<group>"; };
 		0AEC4201110285F400705B06 /* TalkGetDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkGetDetail.h; sourceTree = "<group>"; };
 		0AEC4202110285F400705B06 /* TalkGetDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkGetDetail.m; sourceTree = "<group>"; };
+		0AEC433A1103932F00705B06 /* UserValidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserValidate.h; sourceTree = "<group>"; };
+		0AEC433B1103932F00705B06 /* UserValidate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserValidate.m; sourceTree = "<group>"; };
 		0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashScreenView.xib; sourceTree = "<group>"; };
 		0AF7099310F01AFE00CDEBE6 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
 		0AF709C710F01EB600CDEBE6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				0A94C27110FFD0E400CC32C0 /* TalkAddComment.m */,
 				0AEC4201110285F400705B06 /* TalkGetDetail.h */,
 				0AEC4202110285F400705B06 /* TalkGetDetail.m */,
+				0AEC433A1103932F00705B06 /* UserValidate.h */,
+				0AEC433B1103932F00705B06 /* UserValidate.m */,
 			);
 			name = "API caller";
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				0A94C12010FE97B800CC32C0 /* UISwitch-Extended.m in Sources */,
 				0A94C27210FFD0E400CC32C0 /* TalkAddComment.m in Sources */,
 				0AEC4203110285F400705B06 /* TalkGetDetail.m in Sources */,
+				0AEC433C1103932F00705B06 /* UserValidate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

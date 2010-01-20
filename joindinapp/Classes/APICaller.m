@@ -29,6 +29,7 @@
 }
 
 - (NSString *)getApiUrl {
+	return @"http://lorna.rivendell.local/api";
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
 	switch ([userPrefs integerForKey:@"apiurl"]) {
 		case 0:
@@ -109,31 +110,27 @@
 	
 	if (needAuth) {
 		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-		NSString *user = [userPrefs stringForKey:@"username"];
-		NSString *pass = [userPrefs stringForKey:@"password"];
-		
-		/*
-		 NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-		 [userPrefs setObject:@"testuser" forKey:@"username"];
-		 [userPrefs setObject:@"testpass" forKey:@"password"];
-		 [userPrefs synchronize];
-		 */
-		
-		if (user == nil) {
-			user = @"";
+		BOOL useLogin = [userPrefs boolForKey:@"uselogin"];
+		if (useLogin) {
+			NSString *user = [userPrefs stringForKey:@"username"];
+			NSString *pass = [userPrefs stringForKey:@"password"];
+			
+			if (user == nil) {
+				user = @"";
+			}
+			if (pass == nil) {
+				pass = @"";
+			}
+			
+			//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
+			
+			NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
+			[reqAuth setObject:user forKey:@"user"];
+			[reqAuth setObject:[pass md5] forKey:@"pass"];
+			
+			[reqRequest setObject:reqAuth forKey:@"auth"];
+			[reqAuth    release];
 		}
-		if (pass == nil) {
-			pass = @"";
-		}
-		
-		//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
-		
-		NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
-		[reqAuth setObject:user forKey:@"user"];
-		[reqAuth setObject:[pass md5] forKey:@"pass"];
-		
-		[reqRequest setObject:reqAuth forKey:@"auth"];
-		[reqAuth    release];
 	}
 	
 	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
