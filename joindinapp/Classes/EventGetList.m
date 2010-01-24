@@ -147,18 +147,35 @@
 			edm.numComments = 0;
 		}
 		
+		// User attending logic is a bit weird in the API - there appears to be 3 possible responses:
+		// 1     = "User logged in, user attending event"
+		// 0     = "User not logged in"
+		// false = "User logged in, user not attending event"
+		
 		if ([event objectForKey:@"user_attending"] == nil) {
 			edm.isAuthd     = NO;
 			edm.userAttend  = NO;
 		} else {
-			edm.isAuthd     = YES;
-			if ([[event objectForKey:@"user_attending"] isKindOfClass:[NSString class]]) {
-				edm.userAttend = ([[[event objectForKey:@"user_attending"] lowercaseString] compare:@"y"] == NSOrderedSame);
+			id attend = [event objectForKey:@"user_attending"];
+			NSLog(@"attending %i %@ type %@", attend, attend, [attend class]);
+			
+			if ([attend isKindOfClass:[NSString class]]) {
+				
+				edm.isAuthd    = NO;
+				edm.userAttend = NO;
+				
 			} else if ([[event objectForKey:@"user_attending"] isKindOfClass:[NSNumber class]]) {
-				edm.userAttend = ([[event objectForKey:@"user_attending"] boolValue]);
+				
+				edm.isAuthd    = YES;
+				edm.userAttend = [attend boolValue];
+				
 			} else {
+				
 				NSLog(@"Can't recognise type %@", [[event objectForKey:@"user_attending"] class]);
+				edm.isAuthd    = NO;
+				edm.userAttend = NO;
 			}
+			
 		}
 		
 		//NSLog(@"Attending %i Authd %i Obj %@ type %@", edm.userAttend, edm.isAuthd, [event objectForKey:@"user_attending"], [[event objectForKey:@"user_attending"] class]);

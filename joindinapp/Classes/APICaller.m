@@ -29,23 +29,9 @@
 }
 
 - (NSString *)getApiUrl {
-	return @"http://lorna.rivendell.local/api";
-	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-	switch ([userPrefs integerForKey:@"apiurl"]) {
-		case 0:
-			return @"http://joind.in/api";
-			break;
-		case 1:
-			return @"http://lorna.rivendell.local/api";
-			break;
-		case 2:
-		default:
-			return @"http://lorna.adsl.magicmonkey.org/api";
-			break;
-	}
-	
-	//return @"http://lorna.adsl.magicmonkey.org/api";
 	//return @"http://lorna.rivendell.local/api";
+	//return @"http://lorna.adsl.magicmonkey.org/api";
+	return @"http://lorna.rivendell.local/api";
 	//return @"http://joind.in/api";
 }
 
@@ -153,7 +139,7 @@
 	
 	[reqObject  release];
 	
-	//NSLog(@"JSON request is %@", reqJSON);
+	NSLog(@"JSON request is %@", reqJSON);
 	
 	self.url = [NSString stringWithFormat:@"%@/%@", [self getApiUrl], type];
 	
@@ -209,7 +195,7 @@
 
 - (void)gotResponse:(NSString *)responseString {	
 	// Parse response
-	//NSLog(@"Response is %@", responseString);
+	NSLog(@"Response is %@", responseString);
 	SBJSON *jsonParser = [SBJSON new];
 	NSObject *obj = [jsonParser objectWithString:responseString error:NULL];
 	//NSLog(@"Got obj %@", obj);

@@ -15,22 +15,29 @@
 @synthesize uiUser;
 @synthesize uiPass;
 @synthesize uiLimitEvents;
-@synthesize uiAPIUrl;
 @synthesize uiSignIn;
 @synthesize uiOk;
 @synthesize uiUserLabel;
 @synthesize uiPassLabel;
 @synthesize uiLimitLabel;
+@synthesize uiChecking;
+@synthesize uiContent;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	/*
+	UIScrollView
+	self.uiContent.contentFrame = CGRectMake(self.uiContent.frame.origin.x, self.uiContent.frame.origin.y, 
+    							  self.uiContent.frame.size.width, self.uiContent.frame.size.height +500);
+	*/
+	
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
 	self.uiUser.text      = [userPrefs stringForKey:@"username"];
 	self.uiPass.text      = [userPrefs stringForKey:@"password"];
 	self.uiLimitEvents.on = [userPrefs boolForKey:@"limitevents"];
 	self.uiSignIn.on      = [userPrefs boolForKey:@"uselogin"];
-	[self.uiAPIUrl selectRow:[userPrefs integerForKey:@"apiurl"] inComponent:0 animated:NO];
 	[self setupSignedIn];
+	
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -75,6 +82,8 @@
 
 - (IBAction) submitScreen:(id)sender {
 	if (self.uiSignIn.on) {
+		[self.uiChecking startAnimating];
+		self.uiOk.hidden = YES;
 		UserValidate *u = [APICaller UserValidate:self];
 		[u call:self.uiUser.text password:self.uiPass.text];		
 	} else {
@@ -89,12 +98,12 @@
 	[userPrefs setObject:self.uiUser.text    forKey:@"username"];
 	[userPrefs setObject:self.uiPass.text    forKey:@"password"];
 	[userPrefs setBool:self.uiLimitEvents.on forKey:@"limitevents"];
-	[userPrefs setInteger:[self.uiAPIUrl selectedRowInComponent:0] forKey:@"apiurl"];
 	[userPrefs synchronize];
 	[APICaller clearCache];
 }
 
 - (void)gotUserValidateData:(BOOL)success error:(APIError *)err {
+	[self.uiChecking stopAnimating];
 	if (success) {
 		[self savePrefs];
 		[self.navigationController popViewControllerAnimated:YES];
@@ -104,41 +113,12 @@
 										  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
+		self.uiOk.hidden = NO;
 	}
 }
 
 -(IBAction)doneEditing:(id)sender {
 	[sender resignFirstResponder];
 }
-
-#pragma mark UIPickerView methods
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
-	return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-	return 3;
-}
-
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	switch (row) {
-		case 0:
-			return @"http://joind.in/api";
-			break;
-		case 1:
-			return @"http://lorna.rivendell.local/api";
-			break;
-		case 2:
-			return @"http://lorna.adsl.magicmonkey.org/api";
-			break;
-		default:
-			return @"http://lorna.adsl.magicmonkey.org/api";
-			break;
-	}
-}
-
-
-
 @end
 
