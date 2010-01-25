@@ -16,20 +16,6 @@
 }
 
 - (void)gotData:(NSObject *)obj {
-	/*
-	{
-        ID = 2434;
-        active = 1;
-        comment = "Brilliant talk!";
-        "comment_type" = <null>;
-        "date_made" = 1263048733;
-        private = 0;
-        rating = 5;
-        "talk_id" = 1254;
-        uname = kevin;
-        "user_id" = 1386;
-    }
-	*/
 	TalkCommentListModel *tclm = [[[TalkCommentListModel alloc] init] autorelease];
 	
 	NSDictionary *d = (NSDictionary *)obj;

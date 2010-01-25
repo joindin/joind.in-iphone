@@ -22,14 +22,27 @@
 @synthesize uiLimitLabel;
 @synthesize uiChecking;
 @synthesize uiContent;
+@synthesize keyboardIsShowing;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	/*
-	UIScrollView
-	self.uiContent.contentFrame = CGRectMake(self.uiContent.frame.origin.x, self.uiContent.frame.origin.y, 
-    							  self.uiContent.frame.size.width, self.uiContent.frame.size.height +500);
-	*/
+	
+	// Let me know if the keyboard is going to appear / disappear
+	[[NSNotificationCenter defaultCenter]
+			addObserver:self
+			selector:@selector(keyboardWillShow:)
+			name:UIKeyboardWillShowNotification
+			object:nil];
+	[[NSNotificationCenter defaultCenter]
+			addObserver:self
+			selector:@selector(keyboardWillHide:)
+			name:UIKeyboardWillHideNotification
+			object:nil];
+	
+	self.keyboardIsShowing = NO;
+	
+	// Set the initial scroll view size
+	self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
 	
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
 	self.uiUser.text      = [userPrefs stringForKey:@"username"];
@@ -50,6 +63,27 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+- (void) keyboardWillShow:(NSNotification *)note {
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+    NSUInteger keyboardHeight = keyboardBounds.size.height;
+	
+	CGRect frame = self.uiContent.frame;
+	//frame.origin.y = 216;
+	frame.size.height -= keyboardHeight;
+	self.uiContent.frame = frame;
+}
+
+- (void) keyboardWillHide:(NSNotification *)note {
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+    NSUInteger keyboardHeight = keyboardBounds.size.height;
+	
+	CGRect frame = self.uiContent.frame;
+	frame.size.height += keyboardHeight;
+	self.uiContent.frame = frame;
 }
 
 - (IBAction) changedSignIn:(UISwitch *)sender {

@@ -20,6 +20,8 @@
 	IBOutlet UILabel      *uiLimitLabel;
 	IBOutlet UIActivityIndicatorView *uiChecking;
 	IBOutlet UIScrollView *uiContent;
+	
+	BOOL keyboardIsShowing;
 }
 
 @property (nonatomic, retain) UITextField  *uiUser;
@@ -32,6 +34,7 @@
 @property (nonatomic, retain) UILabel      *uiLimitLabel;
 @property (nonatomic, retain) UIActivityIndicatorView *uiChecking;
 @property (nonatomic, retain) UIScrollView *uiContent;
+@property (nonatomic, assign) BOOL keyboardIsShowing;
 
 - (IBAction) changedSignIn:(UISwitch *)sender;
 - (IBAction) submitScreen:(id)sender;
