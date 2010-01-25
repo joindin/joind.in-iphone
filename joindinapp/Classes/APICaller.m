@@ -31,8 +31,8 @@
 - (NSString *)getApiUrl {
 	//return @"http://lorna.rivendell.local/api";
 	//return @"http://lorna.adsl.magicmonkey.org/api";
-	return @"http://lorna.rivendell.local/api";
-	//return @"http://joind.in/api";
+	//return @"http://lorna.rivendell.local/api";
+	return @"http://joind.in/api";
 }
 
 #pragma mark Cache control methods
