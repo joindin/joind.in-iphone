@@ -21,9 +21,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
 	[self performSelector:@selector(startApp) withObject:nil afterDelay:0.5f];
-
 }
 
 - (void)startApp {

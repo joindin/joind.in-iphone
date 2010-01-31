@@ -133,6 +133,7 @@
 	}
 	
 	[self.delegate gotTalkDetailData:tdm error:nil];
+	[tdm release];
 
 }
 

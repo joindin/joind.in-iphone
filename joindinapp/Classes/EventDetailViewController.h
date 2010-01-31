@@ -27,10 +27,13 @@
 	IBOutlet UISwitch *uiAttending;
 	IBOutlet UILabel  *uiAttendingLabel;
 	IBOutlet UIActivityIndicatorView *uiAttendingIndicator;
+	IBOutlet UIButton *uiComments;
+	IBOutlet UIActivityIndicatorView *uiLoading;
 }
 
 - (IBAction)uiDescButtonPressed:(id)sender;
 - (IBAction)uiAttendingButtonPressed:(id)sender;
+- (IBAction)uiCommentsButtonPressed:(id)sender;
 
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error;
 - (void)gotEventAttend:(APIError *)err;
@@ -49,6 +52,7 @@
 @property (nonatomic, retain) UISwitch *uiAttending;
 @property (nonatomic, retain) UILabel  *uiAttendingLabel;
 @property (nonatomic, retain) UIActivityIndicatorView *uiAttendingIndicator;
-
+@property (nonatomic, retain) UIButton *uiComments;
+@property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
 
 @end

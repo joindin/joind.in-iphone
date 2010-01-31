@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "APIError.h"
 
+//#define API_URL @"http://joind.in/api"
+#define API_URL @"http://lorna.rivendell.local/api";
+//#define API_URL @"http://lorna.adsl.magicmonkey.org/api";
+//#define API_URL @"http://lorna.rivendell.local/api";
+
 @interface APICaller : NSObject {
 	id delegate;
 	NSMutableData *urlData;

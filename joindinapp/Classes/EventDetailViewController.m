@@ -16,6 +16,8 @@
 #import "SettingsViewController.h"
 #import "EventAttend.h"
 #import "UISwitch-Extended.h"
+#import "EventCommentsViewController.h"
+#import "EventGetDetail.h"
 
 @implementation EventDetailViewController
 
@@ -31,6 +33,8 @@
 @synthesize uiAttending;
 @synthesize uiAttendingLabel;
 @synthesize uiAttendingIndicator;
+@synthesize uiComments;
+@synthesize uiLoading;
 
 #pragma mark View loaders
 
@@ -43,7 +47,7 @@
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
 	
 	self.uiAttending = [UISwitch switchWithLeftText:@"yes" andRight:@" no"];
-	self.uiAttending.center = CGPointMake(270.0f, 175.0f);
+	self.uiAttending.center = CGPointMake(270.0f, 225.0f);
 	self.uiAttending.on = event.userAttend;
 	[[self view] addSubview:self.uiAttending];
 }
@@ -71,10 +75,42 @@
 		self.uiDate.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
 	}
 	
+	
+	[self.uiLoading startAnimating];
+	self.uiComments.hidden    = YES;
+	EventGetDetail *ed = [APICaller EventGetDetail:self];
+	[ed call:self.event];
+	
 	[self.uiLoadTalksIndicator startAnimating];	
 	EventGetTalks *e = [APICaller EventGetTalks:self];
 	[e call:self.event];
 	
+}
+
+- (void)gotEventDetailData:(EventDetailModel *)edm error:(APIError *)err {
+	self.event = edm;
+	[self.uiLoading stopAnimating];
+	// Set button label
+	NSString *btnLabel;
+	if (edm.allowComments) {
+		if (edm.numComments > 0) {
+			btnLabel = @"View / add comments";
+		} else {
+			btnLabel = @"Add comment";
+		}
+		self.uiComments.enabled = YES;
+	} else {
+		if (edm.numComments > 0) {
+			btnLabel = @"View comments";
+			self.uiComments.enabled = YES;
+		} else {
+			btnLabel = @"No comments";
+			self.uiComments.enabled = NO;
+		}
+	}
+	self.uiComments.hidden = NO;
+	[self.uiComments setTitle:btnLabel forState:UIControlStateNormal];
+	[self.uiComments setTitle:btnLabel forState:UIControlStateHighlighted];
 }
 
 - (void)setupAttending {
@@ -162,6 +198,13 @@
 	[self.uiAttendingIndicator startAnimating];
 	EventAttend *e = [APICaller EventAttend:self];
 	[e call:self.event];
+}
+
+- (IBAction)uiCommentsButtonPressed:(id)sender {
+	EventCommentsViewController *ecvc = [[EventCommentsViewController alloc] initWithNibName:@"EventCommentsView" bundle:nil];
+	ecvc.event = self.event;
+	[self.navigationController pushViewController:ecvc animated:YES];
+	[ecvc release];
 }
 
 #pragma mark Utility methods
