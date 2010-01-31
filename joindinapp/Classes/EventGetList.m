@@ -94,7 +94,7 @@
 		}
 		
 		if ([[event objectForKey:@"pending"] isKindOfClass:[NSString class]]) {
-			edm.pending = ([[[event objectForKey:@"pending"] lowercaseString] compare:@"y"] == NSOrderedSame);
+			edm.pending = ([[[event objectForKey:@"pending"] lowercaseString] isEqualToString:@"y"]);
 		} else {
 			edm.pending = NO;
 		}
@@ -124,15 +124,21 @@
 		}
 		
 		if ([[event objectForKey:@"event_voting"] isKindOfClass:[NSString class]]) {
-			edm.voting  = ([[[event objectForKey:@"event_voting"] lowercaseString] compare:@"y"] == NSOrderedSame);
+			edm.voting  = ([[[event objectForKey:@"event_voting"] lowercaseString] isEqualToString:@"y"]);
 		} else {
 			edm.voting  = NO;
 		}
 		
 		if ([[event objectForKey:@"private"] isKindOfClass:[NSString class]]) {
-			edm.private = ([[[event objectForKey:@"private"] lowercaseString] compare:@"y"] == NSOrderedSame);
+			edm.private = ([[[event objectForKey:@"private"] lowercaseString] isEqualToString:@"y"]);
 		} else {
 			edm.private = NO;
+		}
+		
+		if ([[event objectForKey:@"allow_comments"] isKindOfClass:[NSString class]]) {
+			edm.allowComments = ([[[event objectForKey:@"allow_comments"] lowercaseString] isEqualToString:@"y"]);
+		} else {
+			edm.allowComments = NO;
 		}
 		
 		if ([[event objectForKey:@"num_attend"] isKindOfClass:[NSString class]]) {
@@ -157,21 +163,21 @@
 			edm.userAttend  = NO;
 		} else {
 			id attend = [event objectForKey:@"user_attending"];
-			NSLog(@"attending %i %@ type %@", attend, attend, [attend class]);
+			//NSLog(@"attending %i %@ type %@", attend, attend, [attend class]);
 			
 			if ([attend isKindOfClass:[NSString class]]) {
 				
 				edm.isAuthd    = NO;
 				edm.userAttend = NO;
 				
-			} else if ([[event objectForKey:@"user_attending"] isKindOfClass:[NSNumber class]]) {
+			} else if ([attend isKindOfClass:[NSNumber class]]) {
 				
 				edm.isAuthd    = YES;
 				edm.userAttend = [attend boolValue];
 				
 			} else {
 				
-				NSLog(@"Can't recognise type %@", [[event objectForKey:@"user_attending"] class]);
+				NSLog(@"Can't recognise type %@", [attend class]);
 				edm.isAuthd    = NO;
 				edm.userAttend = NO;
 			}

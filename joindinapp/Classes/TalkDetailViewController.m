@@ -45,7 +45,7 @@
 -(void) gotTalkDetailData:(TalkDetailModel *)tdm error:(APIError *)error {
 	[self.uiLoading stopAnimating];
 	
-	[self.talk release];
+	//[self.talk release];
 	self.talk = tdm;
 	
 	[self setupScreen:YES];
@@ -68,7 +68,11 @@
 	
 	if (withExtraInfo) {
 		
-		self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
+		if (self.talk.numComments == 1) {
+			self.uiNumComments.text = [NSString stringWithFormat:@"1 comment"];
+		} else {
+			self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
+		}
 		
 		NSString *btnLabel;
 		

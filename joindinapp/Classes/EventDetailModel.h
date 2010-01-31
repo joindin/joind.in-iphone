@@ -29,7 +29,8 @@
 	BOOL        private;
 	NSUInteger  numAttend;
 	NSUInteger  numComments;
-	
+	BOOL        allowComments;
+
 	// Auth'd user details
 	BOOL        isAuthd;
 	BOOL        userAttend;
@@ -59,6 +60,7 @@
 @property (nonatomic, assign) BOOL        private;
 @property (nonatomic, assign) NSUInteger  numAttend;
 @property (nonatomic, assign) NSUInteger  numComments;
+@property (nonatomic, assign) BOOL        allowComments;
 @property (nonatomic, assign) BOOL        isAuthd;
 @property (nonatomic, assign) BOOL        userAttend;
 

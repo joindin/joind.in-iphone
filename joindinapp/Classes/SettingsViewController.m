@@ -42,7 +42,7 @@
 	self.keyboardIsShowing = NO;
 	
 	// Set the initial scroll view size
-	self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
+	//self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
 	
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
 	self.uiUser.text      = [userPrefs stringForKey:@"username"];
@@ -66,24 +66,30 @@
 }
 
 - (void) keyboardWillShow:(NSNotification *)note {
-    CGRect keyboardBounds;
-    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
-    NSUInteger keyboardHeight = keyboardBounds.size.height;
-	
-	CGRect frame = self.uiContent.frame;
-	//frame.origin.y = 216;
-	frame.size.height -= keyboardHeight;
-	self.uiContent.frame = frame;
+	if (!self.keyboardIsShowing) {
+		CGRect keyboardBounds;
+		[[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+		NSUInteger keyboardHeight = keyboardBounds.size.height;
+		
+		CGRect frame = self.uiContent.frame;
+		frame.size.height -= keyboardHeight;
+		self.uiContent.frame = frame;
+		self.keyboardIsShowing = YES;
+	}
 }
 
 - (void) keyboardWillHide:(NSNotification *)note {
-    CGRect keyboardBounds;
-    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
-    NSUInteger keyboardHeight = keyboardBounds.size.height;
+	if (self.keyboardIsShowing) {
+		CGRect keyboardBounds;
+		[[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+		NSUInteger keyboardHeight = keyboardBounds.size.height;
+		
+		CGRect frame = self.uiContent.frame;
+		frame.size.height += keyboardHeight;
+		self.uiContent.frame = frame;
+		self.keyboardIsShowing = NO;
+	}
 	
-	CGRect frame = self.uiContent.frame;
-	frame.size.height += keyboardHeight;
-	self.uiContent.frame = frame;
 }
 
 - (IBAction) changedSignIn:(UISwitch *)sender {
@@ -91,6 +97,7 @@
 }
 
 - (void) setupSignedIn {
+
 	if (self.uiSignIn.on) {
 		self.uiUser.enabled        = YES;
 		self.uiPass.enabled        = YES;
@@ -112,6 +119,7 @@
 		self.uiPassLabel.hidden    = YES;
 		self.uiLimitLabel.hidden   = YES;
 	}
+	self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
 }
 
 - (IBAction) submitScreen:(id)sender {

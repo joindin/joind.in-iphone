@@ -128,7 +128,7 @@
 					<object class="IBUILabel" id="95806808">
 						<reference key="NSNextResponder" ref="742448254"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{11, 171}, {63, 29}}</string>
+						<string key="NSFrame">{{11, 213}, {63, 29}}</string>
 						<reference key="NSSuperview" ref="742448254"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -161,7 +161,7 @@
 					<object class="IBUIActivityIndicatorView" id="354060846">
 						<reference key="NSNextResponder" ref="742448254"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{82, 175}, {20, 20}}</string>
+						<string key="NSFrame">{{82, 217}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="742448254"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -197,7 +197,7 @@
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<object class="NSFont" key="IBUIFont">
+						<object class="NSFont" key="IBUIFont" id="93991915">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
@@ -208,7 +208,7 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor">
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="1057748832">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
@@ -216,7 +216,7 @@
 					<object class="IBUILabel" id="1053090220">
 						<reference key="NSNextResponder" ref="742448254"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{169, 164}, {58, 21}}</string>
+						<string key="NSFrame">{{169, 216}, {58, 21}}</string>
 						<reference key="NSSuperview" ref="742448254"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -235,7 +235,53 @@
 					<object class="IBUIActivityIndicatorView" id="181056820">
 						<reference key="NSNextResponder" ref="742448254"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{146, 165}, {20, 20}}</string>
+						<string key="NSFrame">{{146, 217}, {20, 20}}</string>
+						<reference key="NSSuperview" ref="742448254"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<int key="IBUIStyle">2</int>
+					</object>
+					<object class="IBUIButton" id="64134091">
+						<reference key="NSNextResponder" ref="742448254"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{253, 72}, {67, 89}}</string>
+						<reference key="NSSuperview" ref="742448254"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="93991915"/>
+						<reference key="IBUIHighlightedTitleColor" ref="4236891"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="1057748832"/>
+					</object>
+					<object class="IBUIButton" id="656828749">
+						<reference key="NSNextResponder" ref="742448254"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{11, 169}, {299, 35}}</string>
+						<reference key="NSSuperview" ref="742448254"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="93991915"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Comments</string>
+						<reference key="IBUIHighlightedTitleColor" ref="4236891"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="1057748832"/>
+					</object>
+					<object class="IBUIActivityIndicatorView" id="982638234">
+						<reference key="NSNextResponder" ref="742448254"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{150, 176}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="742448254"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -243,7 +289,7 @@
 						<int key="IBUIStyle">2</int>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 200}</string>
+				<string key="NSFrameSize">{320, 247}</string>
 				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="4236891"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -349,6 +395,40 @@
 					</object>
 					<int key="connectionID">59</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">uiDescButtonPressed:</string>
+						<reference key="source" ref="64134091"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">61</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">uiComments</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="656828749"/>
+					</object>
+					<int key="connectionID">63</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">uiCommentsButtonPressed:</string>
+						<reference key="source" ref="656828749"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">64</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">uiLoading</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="982638234"/>
+					</object>
+					<int key="connectionID">66</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -386,10 +466,13 @@
 							<reference ref="154323254"/>
 							<reference ref="492471708"/>
 							<reference ref="319513857"/>
+							<reference ref="64134091"/>
 							<reference ref="95806808"/>
 							<reference ref="354060846"/>
 							<reference ref="1053090220"/>
 							<reference ref="181056820"/>
+							<reference ref="656828749"/>
+							<reference ref="982638234"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Table header view</string>
@@ -444,6 +527,21 @@
 						<reference key="object" ref="181056820"/>
 						<reference key="parent" ref="742448254"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">60</int>
+						<reference key="object" ref="64134091"/>
+						<reference key="parent" ref="742448254"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">62</int>
+						<reference key="object" ref="656828749"/>
+						<reference key="parent" ref="742448254"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">65</int>
+						<reference key="object" ref="982638234"/>
+						<reference key="parent" ref="742448254"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -465,6 +563,9 @@
 					<string>56.IBPluginDependency</string>
 					<string>58.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
+					<string>60.IBPluginDependency</string>
+					<string>62.IBPluginDependency</string>
+					<string>65.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -477,7 +578,10 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{418, 464}, {320, 247}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{418, 511}, {320, 200}}</string>
+					<string>{{638, 426}, {320, 247}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -503,7 +607,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">59</int>
+			<int key="maxID">66</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -516,10 +620,12 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>uiAttendingButtonPressed:</string>
+							<string>uiCommentsButtonPressed:</string>
 							<string>uiDescButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -531,10 +637,12 @@
 							<string>uiAttending</string>
 							<string>uiAttendingIndicator</string>
 							<string>uiAttendingLabel</string>
+							<string>uiComments</string>
 							<string>uiDate</string>
 							<string>uiDesc</string>
 							<string>uiDescButton</string>
 							<string>uiLoadTalksIndicator</string>
+							<string>uiLoading</string>
 							<string>uiLocation</string>
 							<string>uiTableHeaderView</string>
 							<string>uiTitle</string>
@@ -544,9 +652,11 @@
 							<string>UISwitch</string>
 							<string>UIActivityIndicatorView</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
+							<string>UIActivityIndicatorView</string>
 							<string>UIActivityIndicatorView</string>
 							<string>UILabel</string>
 							<string>UIView</string>

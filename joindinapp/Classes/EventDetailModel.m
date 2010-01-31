@@ -30,6 +30,7 @@
 @synthesize private;
 @synthesize numAttend;
 @synthesize numComments;
+@synthesize allowComments;
 @synthesize isAuthd;
 @synthesize userAttend;
 
