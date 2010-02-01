@@ -115,7 +115,7 @@
 					<object class="IBUIImageView" id="1044476821">
 						<reference key="NSNextResponder" ref="195400931"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{183, 89}, {117, 21}}</string>
+						<string key="NSFrame">{{211, 94}, {60, 11}}</string>
 						<reference key="NSSuperview" ref="195400931"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -125,13 +125,13 @@
 					<object class="IBUILabel" id="1013680542">
 						<reference key="NSNextResponder" ref="195400931"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{183, 106}, {117, 21}}</string>
+						<string key="NSFrame">{{183, 102}, {117, 21}}</string>
 						<reference key="NSSuperview" ref="195400931"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">8888 comments</string>
-						<object class="NSFont" key="IBUIFont">
+						<object class="NSFont" key="IBUIFont" id="741419901">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">12</double>
 							<int key="NSfFlags">16</int>
@@ -174,16 +174,19 @@
 					<object class="IBUILabel" id="332125550">
 						<reference key="NSNextResponder" ref="195400931"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{192, 89}, {99, 21}}</string>
+						<string key="NSFrame">{{192, 89}, {97, 21}}</string>
 						<reference key="NSSuperview" ref="195400931"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Not rated yet</string>
+						<reference key="IBUIFont" ref="741419901"/>
 						<reference key="IBUITextColor" ref="826615291"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUITextAlignment">1</int>
 					</object>
 					<object class="IBUIActivityIndicatorView" id="657514640">
 						<reference key="NSNextResponder" ref="195400931"/>
@@ -334,11 +337,11 @@
 							<reference ref="185818344"/>
 							<reference ref="456705862"/>
 							<reference ref="624397399"/>
-							<reference ref="1044476821"/>
 							<reference ref="332125550"/>
 							<reference ref="193535436"/>
 							<reference ref="1013680542"/>
 							<reference ref="657514640"/>
+							<reference ref="1044476821"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
