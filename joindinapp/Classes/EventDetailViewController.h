@@ -29,6 +29,7 @@
 	IBOutlet UIActivityIndicatorView *uiAttendingIndicator;
 	IBOutlet UIButton *uiComments;
 	IBOutlet UIActivityIndicatorView *uiLoading;
+	IBOutlet UILabel  *uiHashtag;
 }
 
 - (IBAction)uiDescButtonPressed:(id)sender;
@@ -54,5 +55,6 @@
 @property (nonatomic, retain) UIActivityIndicatorView *uiAttendingIndicator;
 @property (nonatomic, retain) UIButton *uiComments;
 @property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
+@property (nonatomic, retain) UILabel  *uiHashtag;
 
 @end

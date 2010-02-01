@@ -35,6 +35,7 @@
 @synthesize uiAttendingIndicator;
 @synthesize uiComments;
 @synthesize uiLoading;
+@synthesize uiHashtag;
 
 #pragma mark View loaders
 
@@ -48,21 +49,21 @@
 	
 	self.uiAttending = [UISwitch switchWithLeftText:@"yes" andRight:@" no"];
 	self.uiAttending.center = CGPointMake(270.0f, 225.0f);
-	self.uiAttending.on = event.userAttend;
 	[[self view] addSubview:self.uiAttending];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	self.title = event.name;
-	self.uiTitle.text = event.name;
-	self.uiDesc.text = event.description;
-	self.uiLocation.text = event.location;
+	self.uiAttending.on = self.event.userAttend;
+	self.title = self.event.name;
+	self.uiTitle.text = self.event.name;
+	self.uiDesc.text = self.event.description;
+	self.uiLocation.text = self.event.location;
 	
 	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 	[outputFormatter setDateFormat:@"d MMM yyyy"];
-	NSString *startDate = [outputFormatter stringFromDate:event.start];
-	NSString *endDate   = [outputFormatter stringFromDate:event.end];
+	NSString *startDate = [outputFormatter stringFromDate:self.event.start];
+	NSString *endDate   = [outputFormatter stringFromDate:self.event.end];
 	[outputFormatter release];
 	
 	[self setupAttending];
@@ -75,6 +76,12 @@
 		self.uiDate.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
 	}
 	
+	if (self.event.hashtag != nil && ![self.event.hashtag isEqualToString:@""]) {
+		self.uiHashtag.hidden = NO;
+		self.uiHashtag.text = self.event.hashtag;
+	} else {
+		self.uiHashtag.hidden = YES;
+	}
 	
 	[self.uiLoading startAnimating];
 	self.uiComments.hidden    = YES;
