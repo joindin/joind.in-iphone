@@ -23,8 +23,15 @@
 @synthesize rating;
 
 - (IBAction) uiSubmitted:(id)sender {
-	self.uiSubmit.hidden = YES;
-	[self.commentDelegate submitComment:self.uiComment.text activityIndicator:self.uiActivity rating:self.rating];
+	if (self.rating == 0) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)@"Please choose a rating"
+											  delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	} else {
+		self.uiSubmit.hidden = YES;
+		[self.commentDelegate submitComment:self.uiComment.text activityIndicator:self.uiActivity rating:self.rating];
+	}
 }
 
 - (IBAction) uiRatingPressed:(id)sender {
