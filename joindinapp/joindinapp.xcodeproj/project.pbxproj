@@ -249,26 +249,26 @@
 				0AB4A6D510EE0BBC003A48FC /* APICaller.m */,
 				0A77D98B10F6876F006A7C67 /* APIError.h */,
 				0A77D98C10F6876F006A7C67 /* APIError.m */,
+				0A9D75C311137A130037C5CD /* EventAddComment.h */,
+				0A9D75C411137A130037C5CD /* EventAddComment.m */,
+				0A77DB8310F7C961006A7C67 /* EventAttend.h */,
+				0A77DB8410F7C961006A7C67 /* EventAttend.m */,
+				0AA90CC6110E66CE00301602 /* EventGetComments.h */,
+				0AA90CC7110E66CE00301602 /* EventGetComments.m */,
+				0A9D763D1113B0B80037C5CD /* EventGetDetail.h */,
+				0A9D763E1113B0B80037C5CD /* EventGetDetail.m */,
 				0A7DF15A10EFEF060028D49B /* EventGetList.h */,
 				0A7DF15B10EFEF060028D49B /* EventGetList.m */,
 				0A7DF19410EFF86B0028D49B /* EventGetTalks.h */,
 				0A7DF19510EFF86B0028D49B /* EventGetTalks.m */,
-				0A77DB8310F7C961006A7C67 /* EventAttend.h */,
-				0A77DB8410F7C961006A7C67 /* EventAttend.m */,
-				0A94BE0410F8FC8700CC32C0 /* TalkGetComments.h */,
-				0A94BE0510F8FC8700CC32C0 /* TalkGetComments.m */,
 				0A94C27010FFD0E400CC32C0 /* TalkAddComment.h */,
 				0A94C27110FFD0E400CC32C0 /* TalkAddComment.m */,
+				0A94BE0410F8FC8700CC32C0 /* TalkGetComments.h */,
+				0A94BE0510F8FC8700CC32C0 /* TalkGetComments.m */,
 				0AEC4201110285F400705B06 /* TalkGetDetail.h */,
 				0AEC4202110285F400705B06 /* TalkGetDetail.m */,
 				0AEC433A1103932F00705B06 /* UserValidate.h */,
 				0AEC433B1103932F00705B06 /* UserValidate.m */,
-				0AA90CC6110E66CE00301602 /* EventGetComments.h */,
-				0AA90CC7110E66CE00301602 /* EventGetComments.m */,
-				0A9D75C311137A130037C5CD /* EventAddComment.h */,
-				0A9D75C411137A130037C5CD /* EventAddComment.m */,
-				0A9D763D1113B0B80037C5CD /* EventGetDetail.h */,
-				0A9D763E1113B0B80037C5CD /* EventGetDetail.m */,
 			);
 			name = "API caller";
 			sourceTree = "<group>";
@@ -276,22 +276,22 @@
 		0A8E195D10EE328E00F0F885 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
-				28C286DF0D94DF7D0034E888 /* EventListViewController.h */,
-				28C286E00D94DF7D0034E888 /* EventListViewController.m */,
-				0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */,
-				0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */,
-				0A7DEDFD10EE844B0028D49B /* TalkDetailViewController.h */,
-				0A7DEDFE10EE844B0028D49B /* TalkDetailViewController.m */,
-				0A7DF07710EFAEAA0028D49B /* EventDescriptionViewController.h */,
-				0A7DF07810EFAEAA0028D49B /* EventDescriptionViewController.m */,
-				0A7DF2A210F00A560028D49B /* SplashScreenViewController.h */,
-				0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */,
-				0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */,
-				0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */,
-				0A94BDC610F8EE2E00CC32C0 /* TalkCommentsViewController.h */,
-				0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */,
 				0AA90CA0110E610000301602 /* EventCommentsViewController.h */,
 				0AA90CA1110E610000301602 /* EventCommentsViewController.m */,
+				0A7DF07710EFAEAA0028D49B /* EventDescriptionViewController.h */,
+				0A7DF07810EFAEAA0028D49B /* EventDescriptionViewController.m */,
+				0AB4A60710EC37DB003A48FC /* EventDetailViewController.h */,
+				0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */,
+				28C286DF0D94DF7D0034E888 /* EventListViewController.h */,
+				28C286E00D94DF7D0034E888 /* EventListViewController.m */,
+				0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */,
+				0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */,
+				0A7DF2A210F00A560028D49B /* SplashScreenViewController.h */,
+				0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */,
+				0A94BDC610F8EE2E00CC32C0 /* TalkCommentsViewController.h */,
+				0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */,
+				0A7DEDFD10EE844B0028D49B /* TalkDetailViewController.h */,
+				0A7DEDFE10EE844B0028D49B /* TalkDetailViewController.m */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -299,14 +299,14 @@
 		0A94C22210FFC6FA00CC32C0 /* Custom views */ = {
 			isa = PBXGroup;
 			children = (
-				0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */,
-				0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */,
+				0AA90D111110DD1700301602 /* EventCommentsViewCell.h */,
+				0AA90D121110DD1700301602 /* EventCommentsViewCell.m */,
 				0A94C04310FBE3F000CC32C0 /* NewCommentViewCell.h */,
 				0A94C04410FBE3F000CC32C0 /* NewCommentViewCell.m */,
 				0AA90D0C1110D8CD00301602 /* NewEventCommentViewCell.h */,
 				0AA90D0D1110D8CD00301602 /* NewEventCommentViewCell.m */,
-				0AA90D111110DD1700301602 /* EventCommentsViewCell.h */,
-				0AA90D121110DD1700301602 /* EventCommentsViewCell.m */,
+				0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */,
+				0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */,
 			);
 			name = "Custom views";
 			sourceTree = "<group>";
@@ -334,22 +334,22 @@
 		0AB4A69B10ED882A003A48FC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0AA90CBB110E65DD00301602 /* EventCommentDetailModel.h */,
+				0AA90CBC110E65DD00301602 /* EventCommentDetailModel.m */,
+				0AA90CB6110E655900301602 /* EventCommentListModel.h */,
+				0AA90CB7110E655900301602 /* EventCommentListModel.m */,
 				0AB4A69C10ED8986003A48FC /* EventDetailModel.h */,
 				0AB4A69D10ED8986003A48FC /* EventDetailModel.m */,
 				0AB4A69F10ED8999003A48FC /* EventListModel.h */,
 				0AB4A6A010ED8999003A48FC /* EventListModel.m */,
-				0A7DED4D10EE79160028D49B /* TalkListModel.h */,
-				0A7DED4E10EE79160028D49B /* TalkListModel.m */,
-				0A7DED5010EE79200028D49B /* TalkDetailModel.h */,
-				0A7DED5110EE79200028D49B /* TalkDetailModel.m */,
-				0A94BDEB10F8F7AE00CC32C0 /* TalkCommentListModel.h */,
-				0A94BDEC10F8F7AE00CC32C0 /* TalkCommentListModel.m */,
 				0A94BDF010F8FA3300CC32C0 /* TalkCommentDetailModel.h */,
 				0A94BDF110F8FA3300CC32C0 /* TalkCommentDetailModel.m */,
-				0AA90CB6110E655900301602 /* EventCommentListModel.h */,
-				0AA90CB7110E655900301602 /* EventCommentListModel.m */,
-				0AA90CBB110E65DD00301602 /* EventCommentDetailModel.h */,
-				0AA90CBC110E65DD00301602 /* EventCommentDetailModel.m */,
+				0A94BDEB10F8F7AE00CC32C0 /* TalkCommentListModel.h */,
+				0A94BDEC10F8F7AE00CC32C0 /* TalkCommentListModel.m */,
+				0A7DED5010EE79200028D49B /* TalkDetailModel.h */,
+				0A7DED5110EE79200028D49B /* TalkDetailModel.m */,
+				0A7DED4D10EE79160028D49B /* TalkListModel.h */,
+				0A7DED4E10EE79160028D49B /* TalkListModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -357,10 +357,10 @@
 		0AB4A6CA10EE0818003A48FC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0A94C11E10FE97B800CC32C0 /* UISwitch-Extended.h */,
-				0A94C11F10FE97B800CC32C0 /* UISwitch-Extended.m */,
 				0AE85D3D10F515E5002C4C98 /* NSString+md5.h */,
 				0AE85D3E10F515E5002C4C98 /* NSString+md5.m */,
+				0A94C11E10FE97B800CC32C0 /* UISwitch-Extended.h */,
+				0A94C11F10FE97B800CC32C0 /* UISwitch-Extended.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -393,17 +393,17 @@
 		0AE8579C10F02426002C4C98 /* NIB files */ = {
 			isa = PBXGroup;
 			children = (
+				0A9D762C1113AA970037C5CD /* EventCommentsCell.xib */,
+				0AA90CA2110E610000301602 /* EventCommentsView.xib */,
+				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
+				0A7DEFF610EEDC510028D49B /* EventDetailView.xib */,
 				28F335F01007B36200424DE2 /* EventListView.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				0A7DEDFF10EE844B0028D49B /* TalkDetailView.xib */,
-				0A7DEFF610EEDC510028D49B /* EventDetailView.xib */,
-				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
-				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
 				0A41E10410F54C8B00FBFE86 /* SettingsView.xib */,
-				0A94BDC810F8EE2E00CC32C0 /* TalkCommentsView.xib */,
+				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
 				0A94BF3110F96D8200CC32C0 /* TalkCommentsCell.xib */,
-				0AA90CA2110E610000301602 /* EventCommentsView.xib */,
-				0A9D762C1113AA970037C5CD /* EventCommentsCell.xib */,
+				0A94BDC810F8EE2E00CC32C0 /* TalkCommentsView.xib */,
+				0A7DEDFF10EE844B0028D49B /* TalkDetailView.xib */,
 			);
 			name = "NIB files";
 			sourceTree = "<group>";
