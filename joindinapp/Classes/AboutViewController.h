@@ -13,4 +13,7 @@
 
 }
 
+- (IBAction) uiClearCache:(id)sender;
+- (IBAction) uiWebsite:(id)sender;
+
 @end

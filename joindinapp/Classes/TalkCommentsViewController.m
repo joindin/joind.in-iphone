@@ -12,6 +12,7 @@
 #import "TalkCommentsViewCell.h"
 #import "NewCommentViewCell.h"
 #import "SettingsViewController.h"
+#import "TalkCommentsLoadingViewCell.h"
 
 @implementation TalkCommentsViewController
 
@@ -27,7 +28,7 @@
     [super viewWillAppear:animated];
 	TalkGetComments *t = [APICaller TalkGetComments:self];
 	[t call:self.talk];
-	
+	self.title = self.talk.title;
 }
 
 - (void)gotTalkComments:(TalkCommentListModel *)tclm error:(APIError *)err {
@@ -109,7 +110,11 @@
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
-		return [self.comments getNumComments];
+		if ([self.comments getNumComments] == 0) {
+			return 1; // "Loading" spinner
+		} else {
+			return [self.comments getNumComments];
+		}
 	} else {
 		return 1;
 	}
@@ -121,38 +126,57 @@
 	tableView.allowsSelection = NO;
 	
 	if ([indexPath section] == 0) {
-		static NSString *CellIdentifier = @"TalkCommentCell";
 		
-		TalkCommentsViewCell *cell = (TalkCommentsViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil) {
-			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TalkCommentsCell" owner:nil options:nil];
-			for (id currentObject in topLevelObjects) {
-				if ([currentObject isKindOfClass:[TalkCommentsViewCell class]]) {
-					cell = (TalkCommentsViewCell *)currentObject;
-					break;
+		if ([self.comments getNumComments] == 0) {
+			static NSString *CellIdentifier = @"TalkCommentsLoadingCell";
+			
+			TalkCommentsLoadingViewCell *cell = (TalkCommentsLoadingViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TalkCommentsCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[TalkCommentsLoadingViewCell class]]) {
+						cell = (TalkCommentsLoadingViewCell *)currentObject;
+						break;
+					}
 				}
 			}
+			
+			return cell;
+			
+		} else {
+			static NSString *CellIdentifier = @"TalkCommentCell";
+			
+			TalkCommentsViewCell *cell = (TalkCommentsViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TalkCommentsCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[TalkCommentsViewCell class]]) {
+						cell = (TalkCommentsViewCell *)currentObject;
+						break;
+					}
+				}
+			}
+			
+			cell.uiAuthor.text  = [self.comments getTalkCommentAtIndex:[indexPath row]].username;
+			cell.uiComment.text = [self.comments getTalkCommentAtIndex:[indexPath row]].comment;
+			cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
+			
+			[cell.uiComment sizeToFit];
+			
+			//CGSize suggestedSize = [cell.uiComment.text sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:cell.uiComment.lineBreakMode];
+			
+			CGRect f = cell.uiComment.frame;
+			
+			CGRect f2 = cell.uiAuthor.frame;
+			f2.origin.y = f.size.height + 0.0f;
+			cell.uiAuthor.frame = f2;
+			
+			CGRect f3 = cell.uiRating.frame;
+			f3.origin.y = f.size.height + 0.0f;
+			cell.uiRating.frame = f3;
+			
+			return cell;
 		}
-		
-		cell.uiAuthor.text  = [self.comments getTalkCommentAtIndex:[indexPath row]].username;
-		cell.uiComment.text = [self.comments getTalkCommentAtIndex:[indexPath row]].comment;
-		cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
-		
-		[cell.uiComment sizeToFit];
-		
-		//CGSize suggestedSize = [cell.uiComment.text sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:cell.uiComment.lineBreakMode];
-		
-		CGRect f = cell.uiComment.frame;
-		
-		CGRect f2 = cell.uiAuthor.frame;
-		f2.origin.y = f.size.height + 0.0f;
-		cell.uiAuthor.frame = f2;
-		
-		CGRect f3 = cell.uiRating.frame;
-		f3.origin.y = f.size.height + 0.0f;
-		cell.uiRating.frame = f3;
-		
-		return cell;
 	} else {
 		static NSString *CellIdentifier = @"NewCommentViewCell";
 		
@@ -180,9 +204,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == 0) {
-		NSString *commentText = [self.comments getTalkCommentAtIndex:[indexPath row]].comment;
-		CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
-		return suggestedSize.height + 30.0f;
+		if ([self.comments getNumComments] == 0) {
+			return 50.0f;
+		} else {
+			NSString *commentText = [self.comments getTalkCommentAtIndex:[indexPath row]].comment;
+			CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
+			return suggestedSize.height + 30.0f;
+		}
 	} else {
 		return 108.0f;
 	}

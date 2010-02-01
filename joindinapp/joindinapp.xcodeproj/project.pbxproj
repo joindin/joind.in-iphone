@@ -52,6 +52,7 @@
 		0A9D78A0111777560037C5CD /* EventTalkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D789F111777560037C5CD /* EventTalkCell.xib */; };
 		0A9D78CB11177C3A0037C5CD /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D78C911177C3A0037C5CD /* AboutViewController.m */; };
 		0A9D78CC11177C3A0037C5CD /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D78CA11177C3A0037C5CD /* AboutViewController.xib */; };
+		0A9D7944111794080037C5CD /* TalkCommentsLoadingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7943111794080037C5CD /* TalkCommentsLoadingViewCell.m */; };
 		0AA90CA3110E610000301602 /* EventCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA90CA1110E610000301602 /* EventCommentsViewController.m */; };
 		0AA90CA4110E610000301602 /* EventCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA90CA2110E610000301602 /* EventCommentsView.xib */; };
 		0AA90CB8110E655900301602 /* EventCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA90CB7110E655900301602 /* EventCommentListModel.m */; };
@@ -160,6 +161,8 @@
 		0A9D78C811177C3A0037C5CD /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		0A9D78C911177C3A0037C5CD /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		0A9D78CA11177C3A0037C5CD /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AboutViewController.xib; path = Classes/AboutViewController.xib; sourceTree = "<group>"; };
+		0A9D7942111794080037C5CD /* TalkCommentsLoadingViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCommentsLoadingViewCell.h; sourceTree = "<group>"; };
+		0A9D7943111794080037C5CD /* TalkCommentsLoadingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkCommentsLoadingViewCell.m; sourceTree = "<group>"; };
 		0AA90CA0110E610000301602 /* EventCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCommentsViewController.h; sourceTree = "<group>"; };
 		0AA90CA1110E610000301602 /* EventCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCommentsViewController.m; sourceTree = "<group>"; };
 		0AA90CA2110E610000301602 /* EventCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EventCommentsView.xib; path = Classes/EventCommentsView.xib; sourceTree = "<group>"; };
@@ -315,14 +318,16 @@
 			children = (
 				0AA90D111110DD1700301602 /* EventCommentsViewCell.h */,
 				0AA90D121110DD1700301602 /* EventCommentsViewCell.m */,
+				0A9D7872111771890037C5CD /* EventTalkViewCell.h */,
+				0A9D7873111771890037C5CD /* EventTalkViewCell.m */,
 				0A94C04310FBE3F000CC32C0 /* NewCommentViewCell.h */,
 				0A94C04410FBE3F000CC32C0 /* NewCommentViewCell.m */,
 				0AA90D0C1110D8CD00301602 /* NewEventCommentViewCell.h */,
 				0AA90D0D1110D8CD00301602 /* NewEventCommentViewCell.m */,
+				0A9D7942111794080037C5CD /* TalkCommentsLoadingViewCell.h */,
+				0A9D7943111794080037C5CD /* TalkCommentsLoadingViewCell.m */,
 				0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */,
 				0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */,
-				0A9D7872111771890037C5CD /* EventTalkViewCell.h */,
-				0A9D7873111771890037C5CD /* EventTalkViewCell.m */,
 			);
 			name = "Custom views";
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 				0A9D763F1113B0B80037C5CD /* EventGetDetail.m in Sources */,
 				0A9D7874111771890037C5CD /* EventTalkViewCell.m in Sources */,
 				0A9D78CB11177C3A0037C5CD /* AboutViewController.m in Sources */,
+				0A9D7944111794080037C5CD /* TalkCommentsLoadingViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
