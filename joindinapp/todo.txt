@@ -1,3 +1,11 @@
+ * Refresh button for comments (and others?)
+ * Cache clear button in "about" screen
+ * Next/previous for filling-in the form fields
+ * Remove the "sign-in" switch
+ * Anonymous commenting
+ * Look at all of the layouts
+ 
  * Tweet about this talk
  * Tweet about this event
- 
+ * Location-awareness (which event I'm at, directions etc)
+ * "Add to calendar" button
