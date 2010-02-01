@@ -48,7 +48,7 @@
 							<object class="IBUILabel" id="134592533">
 								<reference key="NSNextResponder" ref="532758622"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 2}, {290, 21}}</string>
+								<string key="NSFrame">{{10, 2}, {267, 21}}</string>
 								<reference key="NSSuperview" ref="532758622"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -102,7 +102,7 @@
 							<object class="IBUILabel" id="1034046156">
 								<reference key="NSNextResponder" ref="532758622"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{78, 22}, {222, 21}}</string>
+								<string key="NSFrame">{{78, 22}, {199, 21}}</string>
 								<reference key="NSSuperview" ref="532758622"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -131,6 +131,47 @@
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 								<int key="IBUIContentMode">4</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">rating-0.gif</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="194625417">
+								<reference key="NSNextResponder" ref="532758622"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{276, 13}, {21, 21}}</string>
+								<reference key="NSSuperview" ref="532758622"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<int key="IBUIContentMode">4</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">icon-comment.gif</string>
+								</object>
+							</object>
+							<object class="IBUILabel" id="236438945">
+								<reference key="NSNextResponder" ref="532758622"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{276, 13}, {21, 16}}</string>
+								<reference key="NSSuperview" ref="532758622"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="IBUIText">100</string>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica</string>
+									<double key="NSSize">10</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
+								</object>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">8</float>
+								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
 						<string key="NSFrameSize">{320, 43}</string>
@@ -192,6 +233,14 @@
 					</object>
 					<int key="connectionID">11</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">uiNumComments</string>
+						<reference key="source" ref="52133191"/>
+						<reference key="destination" ref="236438945"/>
+					</object>
+					<int key="connectionID">14</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -222,6 +271,8 @@
 							<reference ref="134592533"/>
 							<reference ref="549269228"/>
 							<reference ref="1034046156"/>
+							<reference ref="194625417"/>
+							<reference ref="236438945"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -244,6 +295,19 @@
 						<int key="objectID">10</int>
 						<reference key="object" ref="549269228"/>
 						<reference key="parent" ref="52133191"/>
+						<string key="objectName">Rating</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">12</int>
+						<reference key="object" ref="194625417"/>
+						<reference key="parent" ref="52133191"/>
+						<string key="objectName">Comment icon</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">13</int>
+						<reference key="object" ref="236438945"/>
+						<reference key="parent" ref="52133191"/>
+						<string key="objectName">Num comments</string>
 					</object>
 				</object>
 			</object>
@@ -253,6 +317,8 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-2.CustomClassName</string>
 					<string>10.IBPluginDependency</string>
+					<string>12.IBPluginDependency</string>
+					<string>13.IBPluginDependency</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
@@ -264,8 +330,10 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>EventTalkViewCell</string>
-					<string>{{399, 486}, {320, 44}}</string>
+					<string>{{393, 436}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -288,7 +356,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">11</int>
+			<int key="maxID">14</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -301,6 +369,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>uiDetail</string>
+							<string>uiNumComments</string>
 							<string>uiRating</string>
 							<string>uiSpeaker</string>
 							<string>uiTalkName</string>
@@ -308,6 +377,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIButton</string>
+							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>

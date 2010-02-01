@@ -185,6 +185,7 @@
 	cell.uiTalkName.text = tdm.title;
 	cell.uiSpeaker.text  = tdm.speaker;
 	cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
+	cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
 	
 	return cell;
 	//cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];

@@ -15,5 +15,6 @@
 @synthesize uiTalkName;
 @synthesize uiSpeaker;
 @synthesize uiRating;
+@synthesize uiNumComments;
 
 @end
