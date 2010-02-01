@@ -1,14 +1,12 @@
 
  * Refresh button for comments (and others?)
- * Cache clear button in "about" screen
- * Next/previous for filling-in the form fields
+ * Next/previous for filling-in the form fields (maybe just the return button for the username goes to the password field?)
  * Remove the "sign-in" switch
  * Anonymous commenting - API problem
  * Look at all of the layouts
  * Activity spinner on talk listing
  * Change the no-comments-on-this-talk behaviour
  * Settings screen jumps when kbd disappears
- * Shrink the rating images
  
  * Tweet about this talk
  * Tweet about this event

@@ -7,6 +7,7 @@
 //
 
 #import "AboutViewController.h"
+#import "APICaller.h"
 
 
 @implementation AboutViewController
@@ -53,5 +54,12 @@
     [super dealloc];
 }
 
+- (IBAction) uiClearCache:(id)sender {
+	[APICaller clearCache];
+}
+
+- (IBAction) uiWebsite:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://joind.in/"]];
+}
 
 @end

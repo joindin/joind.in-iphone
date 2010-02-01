@@ -14,6 +14,7 @@
 #import "EventCommentsViewCell.h"
 #import "NewEventCommentViewCell.h"
 #import "SettingsViewController.h"
+#import "TalkCommentsLoadingViewCell.h"
 
 @implementation EventCommentsViewController
 
@@ -28,7 +29,7 @@
     [super viewWillAppear:animated];
 	EventGetComments *e = [APICaller EventGetComments:self];
 	[e call:self.event];
-	
+	self.title = self.event.name;
 }
 
 - (void)gotEventComments:(EventCommentListModel *)eclm error:(APIError *)err {
@@ -110,7 +111,11 @@
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
-		return [self.comments getNumComments];
+		if ([self.comments getNumComments] == 0) {
+			return 1; // "Loading" spinner
+		} else {
+			return [self.comments getNumComments];
+		}
 	} else {
 		return 1;
 	}
@@ -122,30 +127,50 @@
 	tableView.allowsSelection = NO;
 	
 	if ([indexPath section] == 0) {
-		static NSString *CellIdentifier = @"EventCommentCell";
 		
-		EventCommentsViewCell *cell = (EventCommentsViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil) {
-			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventCommentsCell" owner:nil options:nil];
-			for (id currentObject in topLevelObjects) {
-				if ([currentObject isKindOfClass:[EventCommentsViewCell class]]) {
-					cell = (EventCommentsViewCell *)currentObject;
-					break;
+		if ([self.comments getNumComments] == 0) {
+			static NSString *CellIdentifier = @"TalkCommentsLoadingCell";
+			
+			TalkCommentsLoadingViewCell *cell = (TalkCommentsLoadingViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TalkCommentsCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[TalkCommentsLoadingViewCell class]]) {
+						cell = (TalkCommentsLoadingViewCell *)currentObject;
+						break;
+					}
 				}
 			}
+			
+			return cell;
+			
+		} else {			
+			
+			static NSString *CellIdentifier = @"EventCommentCell";
+			
+			EventCommentsViewCell *cell = (EventCommentsViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventCommentsCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[EventCommentsViewCell class]]) {
+						cell = (EventCommentsViewCell *)currentObject;
+						break;
+					}
+				}
+			}
+			
+			cell.uiAuthor.text  = [self.comments getEventCommentAtIndex:[indexPath row]].username;
+			cell.uiComment.text = [self.comments getEventCommentAtIndex:[indexPath row]].comment;
+			[cell.uiComment sizeToFit];
+			
+			CGRect f = cell.uiComment.frame;
+			
+			CGRect f2 = cell.uiAuthor.frame;
+			f2.origin.y = f.size.height + 0.0f;
+			cell.uiAuthor.frame = f2;
+			
+			return cell;
 		}
-		
-		cell.uiAuthor.text  = [self.comments getEventCommentAtIndex:[indexPath row]].username;
-		cell.uiComment.text = [self.comments getEventCommentAtIndex:[indexPath row]].comment;
-		[cell.uiComment sizeToFit];
-		
-		CGRect f = cell.uiComment.frame;
-		
-		CGRect f2 = cell.uiAuthor.frame;
-		f2.origin.y = f.size.height + 0.0f;
-		cell.uiAuthor.frame = f2;
-		
-		return cell;
 	} else {
 		static NSString *CellIdentifier = @"NewEventCommentViewCell";
 		
@@ -173,9 +198,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == 0) {
-		NSString *commentText = [self.comments getEventCommentAtIndex:[indexPath row]].comment;
-		CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
-		return suggestedSize.height + 30.0f;
+		if ([self.comments getNumComments] == 0) {
+			return 50.0f;
+		} else {
+			
+			NSString *commentText = [self.comments getEventCommentAtIndex:[indexPath row]].comment;
+			CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
+			return suggestedSize.height + 30.0f;
+		}
 	} else {
 		return 108.0f;
 	}
