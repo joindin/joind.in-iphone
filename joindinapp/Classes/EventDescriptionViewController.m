@@ -12,6 +12,7 @@
 @implementation EventDescriptionViewController
 @synthesize event;
 @synthesize uiDescription;
+@synthesize uiWebsite;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -23,11 +24,22 @@
 }
 */
 
+/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+*/
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	self.title = self.event.name;
 	self.uiDescription.text = self.event.description;
+	if (self.event.url != nil && ![self.event.url isEqualToString:@""]) {
+		self.uiWebsite.hidden = NO;
+	} else {
+		self.uiWebsite.hidden = YES;
+	}
 }
 
 /*
@@ -37,6 +49,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
+
+- (IBAction) uiWebsitePressed:(id)sender {
+	if (self.event.url != nil && ![self.event.url isEqualToString:@""]) {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.event.url]];
+	}
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

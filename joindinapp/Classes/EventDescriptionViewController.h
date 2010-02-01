@@ -13,9 +13,13 @@
 @interface EventDescriptionViewController : UIViewController {
 	EventDetailModel *event;
 	IBOutlet UITextView *uiDescription;
+	IBOutlet UIButton *uiWebsite;
 }
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) UITextView *uiDescription;
+@property (nonatomic, retain) UIButton *uiWebsite;
+
+- (IBAction) uiWebsitePressed:(id)sender;
 
 @end
