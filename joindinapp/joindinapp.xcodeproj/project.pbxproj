@@ -50,6 +50,8 @@
 		0A9D7871111770FB0037C5CD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D7870111770FB0037C5CD /* arrow.png */; };
 		0A9D7874111771890037C5CD /* EventTalkViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7873111771890037C5CD /* EventTalkViewCell.m */; };
 		0A9D78A0111777560037C5CD /* EventTalkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D789F111777560037C5CD /* EventTalkCell.xib */; };
+		0A9D78CB11177C3A0037C5CD /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D78C911177C3A0037C5CD /* AboutViewController.m */; };
+		0A9D78CC11177C3A0037C5CD /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D78CA11177C3A0037C5CD /* AboutViewController.xib */; };
 		0AA90CA3110E610000301602 /* EventCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA90CA1110E610000301602 /* EventCommentsViewController.m */; };
 		0AA90CA4110E610000301602 /* EventCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA90CA2110E610000301602 /* EventCommentsView.xib */; };
 		0AA90CB8110E655900301602 /* EventCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA90CB7110E655900301602 /* EventCommentListModel.m */; };
@@ -155,6 +157,9 @@
 		0A9D7872111771890037C5CD /* EventTalkViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTalkViewCell.h; sourceTree = "<group>"; };
 		0A9D7873111771890037C5CD /* EventTalkViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTalkViewCell.m; sourceTree = "<group>"; };
 		0A9D789F111777560037C5CD /* EventTalkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTalkCell.xib; sourceTree = "<group>"; };
+		0A9D78C811177C3A0037C5CD /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		0A9D78C911177C3A0037C5CD /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		0A9D78CA11177C3A0037C5CD /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AboutViewController.xib; path = Classes/AboutViewController.xib; sourceTree = "<group>"; };
 		0AA90CA0110E610000301602 /* EventCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCommentsViewController.h; sourceTree = "<group>"; };
 		0AA90CA1110E610000301602 /* EventCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCommentsViewController.m; sourceTree = "<group>"; };
 		0AA90CA2110E610000301602 /* EventCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EventCommentsView.xib; path = Classes/EventCommentsView.xib; sourceTree = "<group>"; };
@@ -283,6 +288,8 @@
 		0A8E195D10EE328E00F0F885 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A9D78C811177C3A0037C5CD /* AboutViewController.h */,
+				0A9D78C911177C3A0037C5CD /* AboutViewController.m */,
 				0AA90CA0110E610000301602 /* EventCommentsViewController.h */,
 				0AA90CA1110E610000301602 /* EventCommentsViewController.m */,
 				0A7DF07710EFAEAA0028D49B /* EventDescriptionViewController.h */,
@@ -403,6 +410,7 @@
 		0AE8579C10F02426002C4C98 /* NIB files */ = {
 			isa = PBXGroup;
 			children = (
+				0A9D78CA11177C3A0037C5CD /* AboutViewController.xib */,
 				0A9D762C1113AA970037C5CD /* EventCommentsCell.xib */,
 				0AA90CA2110E610000301602 /* EventCommentsView.xib */,
 				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
@@ -556,6 +564,7 @@
 				0A9D762D1113AA970037C5CD /* EventCommentsCell.xib in Resources */,
 				0A9D7871111770FB0037C5CD /* arrow.png in Resources */,
 				0A9D78A0111777560037C5CD /* EventTalkCell.xib in Resources */,
+				0A9D78CC11177C3A0037C5CD /* AboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +618,7 @@
 				0A9D75C511137A130037C5CD /* EventAddComment.m in Sources */,
 				0A9D763F1113B0B80037C5CD /* EventGetDetail.m in Sources */,
 				0A9D7874111771890037C5CD /* EventTalkViewCell.m in Sources */,
+				0A9D78CB11177C3A0037C5CD /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

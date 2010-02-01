@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "APICaller.h"
 #import "UserValidate.h"
+#import "AboutViewController.h"
 
 @implementation SettingsViewController
 
@@ -24,20 +25,32 @@
 @synthesize uiContent;
 @synthesize keyboardIsShowing;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-	
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(aboutBtnPressed)];
 	// Let me know if the keyboard is going to appear / disappear
 	[[NSNotificationCenter defaultCenter]
-			addObserver:self
-			selector:@selector(keyboardWillShow:)
-			name:UIKeyboardWillShowNotification
-			object:nil];
+				 addObserver:self
+					selector:@selector(keyboardWillShow:)
+						name:UIKeyboardWillShowNotification
+					  object:nil];
 	[[NSNotificationCenter defaultCenter]
-			addObserver:self
-			selector:@selector(keyboardWillHide:)
-			name:UIKeyboardWillHideNotification
-			object:nil];
+				 addObserver:self
+					selector:@selector(keyboardWillHide:)
+						name:UIKeyboardWillHideNotification
+					  object:nil];
+	
+}
+
+- (void)aboutBtnPressed {
+	AboutViewController *vc = [[AboutViewController alloc] init];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];	
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 	
 	self.keyboardIsShowing = NO;
 	
