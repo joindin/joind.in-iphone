@@ -229,9 +229,9 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="1010208473"/>
-								<object class="NSCustomResource" key="IBUINormalImage" id="90719896">
+								<object class="NSCustomResource" key="IBUINormalImage" id="596741469">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">rating-on.gif</string>
+									<string key="NSResourceName">rating-off.gif</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="90465309">
@@ -250,7 +250,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="1010208473"/>
-								<reference key="IBUINormalImage" ref="90719896"/>
+								<reference key="IBUINormalImage" ref="596741469"/>
 							</object>
 							<object class="IBUIButton" id="646943252">
 								<reference key="NSNextResponder" ref="195038617"/>
@@ -268,7 +268,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="1010208473"/>
-								<reference key="IBUINormalImage" ref="90719896"/>
+								<reference key="IBUINormalImage" ref="596741469"/>
 							</object>
 							<object class="IBUIButton" id="432591626">
 								<reference key="NSNextResponder" ref="195038617"/>
@@ -286,10 +286,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="1010208473"/>
-								<object class="NSCustomResource" key="IBUINormalImage" id="501405815">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">rating-off.gif</string>
-								</object>
+								<reference key="IBUINormalImage" ref="596741469"/>
 							</object>
 							<object class="IBUIButton" id="343989453">
 								<reference key="NSNextResponder" ref="195038617"/>
@@ -307,7 +304,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="1010208473"/>
-								<reference key="IBUINormalImage" ref="501405815"/>
+								<reference key="IBUINormalImage" ref="596741469"/>
 							</object>
 							<object class="IBUILabel" id="350799209">
 								<reference key="NSNextResponder" ref="195038617"/>
@@ -665,7 +662,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>NewCommentViewCell</string>
-					<string>{{0, 637}, {326, 108}}</string>
+					<string>{{168, 438}, {326, 108}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>

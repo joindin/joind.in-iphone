@@ -167,7 +167,7 @@
 			}
 		}
 		cell.commentDelegate = self;
-		cell.rating = 3;
+		cell.rating = 0;
 		return cell;
 	}
 }
