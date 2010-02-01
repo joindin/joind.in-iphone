@@ -110,7 +110,7 @@
 					<object class="IBUILabel" id="78367410">
 						<reference key="NSNextResponder" ref="742448254"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{11, 27}, {280, 21}}</string>
+						<string key="NSFrame">{{11, 27}, {299, 21}}</string>
 						<reference key="NSSuperview" ref="742448254"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -288,6 +288,24 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<int key="IBUIStyle">2</int>
 					</object>
+					<object class="IBUILabel" id="155575891">
+						<reference key="NSNextResponder" ref="742448254"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{196, 47}, {114, 21}}</string>
+						<reference key="NSSuperview" ref="742448254"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="IBUIText">Hashtag</string>
+						<reference key="IBUIFont" ref="917963698"/>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAgMC42AA</bytes>
+						</object>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">1</int>
+						<float key="IBUIMinimumFontSize">10</float>
+					</object>
 				</object>
 				<string key="NSFrameSize">{320, 247}</string>
 				<reference key="NSSuperview"/>
@@ -429,6 +447,14 @@
 					</object>
 					<int key="connectionID">66</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">uiHashtag</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="155575891"/>
+					</object>
+					<int key="connectionID">68</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -473,6 +499,7 @@
 							<reference ref="181056820"/>
 							<reference ref="656828749"/>
 							<reference ref="982638234"/>
+							<reference ref="155575891"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Table header view</string>
@@ -542,6 +569,11 @@
 						<reference key="object" ref="982638234"/>
 						<reference key="parent" ref="742448254"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">67</int>
+						<reference key="object" ref="155575891"/>
+						<reference key="parent" ref="742448254"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -566,6 +598,7 @@
 					<string>60.IBPluginDependency</string>
 					<string>62.IBPluginDependency</string>
 					<string>65.IBPluginDependency</string>
+					<string>67.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -579,6 +612,7 @@
 					<string>{{418, 464}, {320, 247}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{638, 426}, {320, 247}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -607,7 +641,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">66</int>
+			<int key="maxID">68</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -641,6 +675,7 @@
 							<string>uiDate</string>
 							<string>uiDesc</string>
 							<string>uiDescButton</string>
+							<string>uiHashtag</string>
 							<string>uiLoadTalksIndicator</string>
 							<string>uiLoading</string>
 							<string>uiLocation</string>
@@ -656,6 +691,7 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
+							<string>UILabel</string>
 							<string>UIActivityIndicatorView</string>
 							<string>UIActivityIndicatorView</string>
 							<string>UILabel</string>
