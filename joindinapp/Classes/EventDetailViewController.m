@@ -18,6 +18,8 @@
 #import "UISwitch-Extended.h"
 #import "EventCommentsViewController.h"
 #import "EventGetDetail.h"
+#import "EventTalkViewCell.h"
+#import <UIKit/UIKit.h>
 
 @implementation EventDetailViewController
 
@@ -165,6 +167,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+	TalkDetailModel *tdm = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
+
+	static NSString *CellIdentifier = @"EventTalkCommentCell";
+	
+	EventTalkViewCell *cell = (EventTalkViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTalkCell" owner:nil options:nil];
+		for (id currentObject in topLevelObjects) {
+			if ([currentObject isKindOfClass:[EventTalkViewCell class]]) {
+				cell = (EventTalkViewCell *)currentObject;
+				break;
+			}
+		}
+	}
+	
+	cell.uiTalkName.text = tdm.title;
+	cell.uiSpeaker.text  = tdm.speaker;
+	cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
+	
+	return cell;
+	//cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
+	
+	/*
 	UITableViewCell *vc;
 	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
 	[vc autorelease];
@@ -183,6 +208,7 @@
 	vc.selectionStyle = UITableViewCellSelectionStyleBlue;
 	
 	return vc;
+	*/
 	
 }
 
