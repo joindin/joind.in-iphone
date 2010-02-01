@@ -14,11 +14,13 @@
 	IBOutlet UILabel     *uiTalkName;
 	IBOutlet UILabel     *uiSpeaker;
 	IBOutlet UIImageView *uiRating;
+	IBOutlet UILabel     *uiNumComments;
 }
 
 @property (nonatomic,retain) UIButton    *uiDetail;
 @property (nonatomic,retain) UILabel     *uiTalkName;
 @property (nonatomic,retain) UILabel     *uiSpeaker;
 @property (nonatomic,retain) UIImageView *uiRating;
+@property (nonatomic,retain) UILabel     *uiNumComments;
 
 @end

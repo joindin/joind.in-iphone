@@ -21,6 +21,8 @@
 	IBOutlet UIImageView *uiRating;
 	IBOutlet UITableViewCell *uiCell;
 	
+	BOOL commentsLoaded;
+	
 }
 
 @property (nonatomic, retain) TalkDetailModel *talk;
@@ -30,6 +32,8 @@
 @property (nonatomic, retain) UILabel *uiAuthor;
 @property (nonatomic, retain) UIImageView *uiRating;
 @property (nonatomic, retain) UITableViewCell *uiCell;
+
+@property (nonatomic, assign) BOOL commentsLoaded;
 
 - (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity rating:(NSUInteger)rating;
 

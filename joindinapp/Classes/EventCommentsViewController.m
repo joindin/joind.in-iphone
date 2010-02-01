@@ -20,6 +20,7 @@
 
 @synthesize event;
 @synthesize comments;
+@synthesize commentsLoaded;
 
 @synthesize uiComment;
 @synthesize uiAuthor;
@@ -27,6 +28,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	self.commentsLoaded = NO;
 	EventGetComments *e = [APICaller EventGetComments:self];
 	[e call:self.event];
 	self.title = self.event.name;
@@ -34,6 +36,7 @@
 
 - (void)gotEventComments:(EventCommentListModel *)eclm error:(APIError *)err {
 	if (err == nil) {
+		self.commentsLoaded = YES;
 		self.comments = eclm;
 		[(UITableView *)[self view] reloadData];
 	} else {
@@ -111,10 +114,10 @@
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
-		if ([self.comments getNumComments] == 0) {
-			return 1; // "Loading" spinner
-		} else {
+		if (self.commentsLoaded) {
 			return [self.comments getNumComments];
+		} else {
+			return 1; // "Loading" spinner
 		}
 	} else {
 		return 1;
@@ -128,23 +131,7 @@
 	
 	if ([indexPath section] == 0) {
 		
-		if ([self.comments getNumComments] == 0) {
-			static NSString *CellIdentifier = @"TalkCommentsLoadingCell";
-			
-			TalkCommentsLoadingViewCell *cell = (TalkCommentsLoadingViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			if (cell == nil) {
-				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TalkCommentsCell" owner:nil options:nil];
-				for (id currentObject in topLevelObjects) {
-					if ([currentObject isKindOfClass:[TalkCommentsLoadingViewCell class]]) {
-						cell = (TalkCommentsLoadingViewCell *)currentObject;
-						break;
-					}
-				}
-			}
-			
-			return cell;
-			
-		} else {			
+		if (self.commentsLoaded) {
 			
 			static NSString *CellIdentifier = @"EventCommentCell";
 			
@@ -170,6 +157,24 @@
 			cell.uiAuthor.frame = f2;
 			
 			return cell;
+			
+		} else {			
+			
+			static NSString *CellIdentifier = @"TalkCommentsLoadingCell";
+			
+			TalkCommentsLoadingViewCell *cell = (TalkCommentsLoadingViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TalkCommentsCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[TalkCommentsLoadingViewCell class]]) {
+						cell = (TalkCommentsLoadingViewCell *)currentObject;
+						break;
+					}
+				}
+			}
+			
+			return cell;
+			
 		}
 	} else {
 		static NSString *CellIdentifier = @"NewEventCommentViewCell";
@@ -198,13 +203,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == 0) {
-		if ([self.comments getNumComments] == 0) {
-			return 50.0f;
-		} else {
+		if (self.commentsLoaded) {
 			
 			NSString *commentText = [self.comments getEventCommentAtIndex:[indexPath row]].comment;
 			CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
 			return suggestedSize.height + 30.0f;
+		} else {
+			return 50.0f;
 		}
 	} else {
 		return 108.0f;
