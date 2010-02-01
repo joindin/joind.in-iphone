@@ -77,4 +77,19 @@
 	}
 }
 
+// Poor-man's initialiser
+- (void) doStuff {
+	self.rating = 0;
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(textGotFocus:)
+												 name:UITextViewTextDidBeginEditingNotification
+											   object:self.uiComment];
+}
+
+- (void) textGotFocus:(NSNotification*)notification {
+	if ([self.uiComment.text isEqualToString:@"Type comment..."]) {
+		self.uiComment.text = @"";
+	}
+}
+
 @end

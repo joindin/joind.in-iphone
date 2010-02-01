@@ -22,6 +22,8 @@
 @property (nonatomic, retain) id EventCommentDelegate;
 
 - (IBAction) uiSubmitted:(id)sender;
+- (void) doStuff;
+- (void) textGotFocus:(NSNotification*)notification;
 
 @end
 
