@@ -160,6 +160,7 @@
 			}
 		}
 		cell.EventCommentDelegate = self;
+		[cell doStuff];
 		return cell;
 	}
 }

@@ -37,6 +37,8 @@
 
 - (IBAction) uiSubmitted:(id)sender;
 - (IBAction) uiRatingPressed:(id)sender;
+- (void) doStuff;
+- (void) textGotFocus:(NSNotification*)notification;
 
 @end
 
