@@ -39,7 +39,7 @@
 					selector:@selector(keyboardWillHide:)
 						name:UIKeyboardWillHideNotification
 					  object:nil];
-	
+	self.title = @"Settings";
 }
 
 - (void)aboutBtnPressed {
