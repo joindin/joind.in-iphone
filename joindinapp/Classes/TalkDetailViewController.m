@@ -37,7 +37,8 @@
 	self.uiNotRated.hidden    = YES;
 	self.uiNumComments.hidden = YES;
 	self.uiComments.hidden    = YES;
-	
+	self.uiComments.enabled   = YES;
+
 	TalkGetDetail *t = [APICaller TalkGetDetail:self];
 	[t call:self.talk];
 }
@@ -80,7 +81,8 @@
 		self.uiNotRated.hidden    = NO;
 		self.uiNumComments.hidden = NO;
 		self.uiComments.hidden    = NO;
-		
+		self.uiComments.enabled   = YES;
+
 		if (self.talk.allowComments) {
 			
 			if (self.talk.numComments > 0) {
@@ -100,7 +102,8 @@
 				self.uiRating.hidden      = YES;
 				self.uiNotRated.hidden    = YES;
 				self.uiNumComments.hidden = YES;
-				self.uiComments.hidden    = YES;
+				self.uiComments.hidden    = NO;
+				self.uiComments.enabled   = NO;
 				
 				btnLabel = @"No comments";
 			}
@@ -125,6 +128,7 @@
 		self.uiNotRated.hidden    = YES;
 		self.uiNumComments.hidden = YES;
 		self.uiComments.hidden    = YES;
+		self.uiComments.enabled   = YES;
 		
 	}
 	

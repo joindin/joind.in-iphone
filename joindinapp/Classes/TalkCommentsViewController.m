@@ -155,11 +155,11 @@
 			CGRect f = cell.uiComment.frame;
 			
 			CGRect f2 = cell.uiAuthor.frame;
-			f2.origin.y = f.size.height + 0.0f;
+			f2.origin.y = f.size.height + 6.0f;
 			cell.uiAuthor.frame = f2;
 			
 			CGRect f3 = cell.uiRating.frame;
-			f3.origin.y = f.size.height + 0.0f;
+			f3.origin.y = f.size.height + 13.0f;
 			cell.uiRating.frame = f3;
 			
 			return cell;
