@@ -1,5 +1,4 @@
 
- * Refresh button for comments (and others?)
  * Next/previous for filling-in the form fields (maybe just the return button for the username goes to the password field?)
  * Remove the "sign-in" switch
  * Anonymous commenting - API problem

@@ -30,13 +30,27 @@
 	self.commentsLoaded = NO;
 	TalkGetComments *t = [APICaller TalkGetComments:self];
 	[t call:self.talk];
-	self.title = self.talk.title;
+	self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
+	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refreshBtnPressed)];
+
+}
+
+- (void)refreshBtnPressed {
+	self.commentsLoaded = NO;
+	self.comments = nil;
+	self.title = @"";
+	[APICaller clearCache];
+	TalkGetComments *t = [APICaller TalkGetComments:self];
+	[t call:self.talk];
+	[(UITableView *)[self view] reloadData];
 }
 
 - (void)gotTalkComments:(TalkCommentListModel *)tclm error:(APIError *)err {
 	if (err == nil) {
 		self.commentsLoaded = YES;
 		self.comments = tclm;
+		self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
 		[(UITableView *)[self view] reloadData];
 	} else {
 		UIAlertView *alert;
