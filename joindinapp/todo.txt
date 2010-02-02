@@ -4,11 +4,10 @@
  * Remove the "sign-in" switch
  * Anonymous commenting - API problem
  * Look at all of the layouts
- * Activity spinner on talk listing
- * Change the no-comments-on-this-talk behaviour
  * Settings screen jumps when kbd disappears
  
  * Tweet about this talk
  * Tweet about this event
  * Location-awareness (which event I'm at, directions etc)
- * "Add to calendar" button
+ 
+ * "Add to calendar" button - No APIs in iPhone to access calendar :(
