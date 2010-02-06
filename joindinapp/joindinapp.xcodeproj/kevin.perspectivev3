@@ -341,10 +341,7 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>0A94C22210FFC6FA00CC32C0</string>
-								<string>0A7DF15910EFEEB70028D49B</string>
 								<string>0A8E195D10EE328E00F0F885</string>
-								<string>0AB4A69B10ED882A003A48FC</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>0AE8579C10F02426002C4C98</string>
 								<string>0A41E05410F53E9B00FBFE86</string>
@@ -353,14 +350,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
-									<integer>15</integer>
+									<integer>13</integer>
+									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 22}, {194, 660}}</string>
+							<string>{{0, 0}, {194, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -395,7 +392,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>0AB4A5F310EC3496003A48FC</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>APICaller.m</string>
+								<string>EventDetailViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -403,11 +400,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>0AB4A5F410EC3496003A48FC</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>APICaller.m</string>
+										<string>EventDetailViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>0A17368B111D6B7800C23D83</string>
+										<string>0A1736A0111D707A00C23D83</string>
 										<key>history</key>
 										<array>
 											<string>0A7DED5610EE7C4A0028D49B</string>
@@ -512,7 +509,6 @@
 											<string>0A17351C111CD6E400C23D83</string>
 											<string>0A173534111CD7C100C23D83</string>
 											<string>0A173539111CD7E000C23D83</string>
-											<string>0A173541111CD97E00C23D83</string>
 											<string>0A173568111CEC1600C23D83</string>
 											<string>0A17356A111CEC1600C23D83</string>
 											<string>0A1735D1111CF95500C23D83</string>
@@ -524,9 +520,10 @@
 											<string>0A17364E111D00E300C23D83</string>
 											<string>0A17364F111D00E300C23D83</string>
 											<string>0A173663111D01A800C23D83</string>
-											<string>0A173668111D01C200C23D83</string>
 											<string>0A17367F111D683400C23D83</string>
-											<string>0A17368A111D6B5900C23D83</string>
+											<string>0A173692111D6FCA00C23D83</string>
+											<string>0A173693111D6FCA00C23D83</string>
+											<string>0A173694111D6FCA00C23D83</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -826,7 +823,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>287140728.92510098</real>
+	<real>287142010.59187102</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
