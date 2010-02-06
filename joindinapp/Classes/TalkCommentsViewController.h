@@ -38,5 +38,8 @@
 @property (nonatomic, assign) BOOL commentsLoaded;
 
 - (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity rating:(NSUInteger)rating;
+- (void)focusNewComment;
+- (void)addBtnPressed;
+- (void)refreshBtnPressed;
 
 @end
