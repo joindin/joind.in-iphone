@@ -152,6 +152,7 @@
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	
 	// Make asynchronous request (and store it in case it needs to be cancelled)
+	NSLog(@"Sending request");
 	self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
 	[req release];
 	
@@ -164,12 +165,14 @@
 #pragma mark URL callback methods
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	//NSLog(@"Connection failed");
 	if (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:YES]) {
 		[self gotError:[APIError APIErrorWithMsg:@"Network error" type:ERR_NETWORK]];
 	}
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	//NSLog(@"Got data...");
 	[self.urlData appendData:data];
 }
 
@@ -177,6 +180,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	//NSLog(@"Finished loading");
 	NSString *responseString = [[NSString alloc] initWithData:self.urlData encoding:NSUTF8StringEncoding];
 	
 	// Reset buffer
@@ -190,7 +194,7 @@
 
 }
 
-- (void)gotResponse:(NSString *)responseString {	
+- (void)gotResponse:(NSString *)responseString {
 	// Parse response
 	//NSLog(@"Response is %@", responseString);
 	SBJSON *jsonParser = [SBJSON new];
