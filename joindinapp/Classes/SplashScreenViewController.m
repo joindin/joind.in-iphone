@@ -21,7 +21,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self performSelector:@selector(startApp) withObject:nil afterDelay:0.5f];
+	[self performSelector:@selector(startApp) withObject:nil afterDelay:0.7f];
 }
 
 - (void)startApp {
@@ -34,6 +34,10 @@
 	[rvc release];
 	 */
 	[[self view] removeFromSuperview];
+}
+
+- (IBAction) pressedWebsite {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://joind.in/"]];
 }
 
 - (void)didReceiveMemoryWarning {

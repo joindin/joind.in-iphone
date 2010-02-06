@@ -19,12 +19,14 @@
 #import "EventCommentsViewController.h"
 #import "EventGetDetail.h"
 #import "EventTalkViewCell.h"
+#import "UserGetComments.h"
 #import <UIKit/UIKit.h>
 
 @implementation EventDetailViewController
 
 @synthesize event;
 @synthesize talks;
+@synthesize comments;
 @synthesize uiTitle;
 @synthesize uiDate;
 @synthesize uiLocation;
@@ -94,6 +96,9 @@
 	EventGetTalks *e = [APICaller EventGetTalks:self];
 	[e call:self.event];
 	
+	UserGetComments *u = [APICaller UserGetComments:self];
+	[u call:nil];
+	
 }
 
 - (void)gotEventDetailData:(EventDetailModel *)edm error:(APIError *)err {
@@ -138,6 +143,15 @@
 	}
 	self.uiAttending.on = event.userAttend;
 	
+}
+
+- (void)gotUserComments:(UserCommentListModel *)uclm error:(APIError *)err {
+	if (uclm == nil) {
+		// Can ignore errors - probably to do with the user not being logged-in
+	} else {
+		self.comments = uclm;
+		[(UITableView *)self.view reloadData];
+	}
 }
 
 #pragma mark Table view methods
@@ -186,6 +200,14 @@
 	cell.uiSpeaker.text  = tdm.speaker;
 	cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
 	cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+	
+	UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
+
+	if (utcdm == nil) {
+		cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
+	} else {
+		cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
+	}
 	
 	return cell;
 	//cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
