@@ -13,6 +13,8 @@
 	IBOutlet UIActivityIndicatorView *uiLoading;
 }
 
+- (IBAction) pressedWebsite;
+
 @property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
 
 @end
