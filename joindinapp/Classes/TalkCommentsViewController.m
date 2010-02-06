@@ -54,13 +54,16 @@
 - (void)addBtnPressed {
 	
 	NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-	[[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-	
+	[[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+	[self performSelector:@selector(focusNewComment) withObject:nil afterDelay:0.1f];
+}
+
+- (void)focusNewComment {
 	if (self.newCommentCell != nil) {
 		[self.newCommentCell.uiComment becomeFirstResponder];
 	} else {
 		// Cell hasn't loaded yet - wait until the scroll is at the bottom and then focus the UITextView
-		[self performSelector:@selector(addBtnPressed) withObject:nil afterDelay:0.1f];
+		[self performSelector:@selector(focusNewComment) withObject:nil afterDelay:0.1f];
 	}
 }
 

@@ -34,6 +34,9 @@
 @property (nonatomic, retain) UITableViewCell *uiCell;
 
 - (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity;
+- (void)addBtnPressed;
+- (void)refreshBtnPressed;
+- (void)focusNewComment;
 
 
 @end
