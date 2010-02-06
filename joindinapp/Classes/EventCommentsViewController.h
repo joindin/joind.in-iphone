@@ -16,6 +16,7 @@
 	EventDetailModel *event;
 	EventCommentListModel *comments;
 	BOOL commentsLoaded;
+	NewEventCommentViewCell *newCommentCell;
 	
 	IBOutlet UILabel *uiComment;
 	IBOutlet UILabel *uiAuthor;
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) EventCommentListModel *comments;
 @property (nonatomic, assign) BOOL commentsLoaded;
+@property (nonatomic, assign) NewEventCommentViewCell *newCommentCell;
 
 @property (nonatomic, retain) UILabel *uiComment;
 @property (nonatomic, retain) UILabel *uiAuthor;

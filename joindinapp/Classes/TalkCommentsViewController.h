@@ -15,6 +15,7 @@
 @interface TalkCommentsViewController : UITableViewController <CommentSubmitter> {
 	TalkDetailModel *talk;
 	TalkCommentListModel *comments;
+	NewCommentViewCell *newCommentCell;
 	
 	IBOutlet UILabel *uiComment;
 	IBOutlet UILabel *uiAuthor;
@@ -27,6 +28,7 @@
 
 @property (nonatomic, retain) TalkDetailModel *talk;
 @property (nonatomic, retain) TalkCommentListModel *comments;
+@property (nonatomic, retain) NewCommentViewCell *newCommentCell;
 
 @property (nonatomic, retain) UILabel *uiComment;
 @property (nonatomic, retain) UILabel *uiAuthor;

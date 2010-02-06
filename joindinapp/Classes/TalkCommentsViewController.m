@@ -18,6 +18,7 @@
 
 @synthesize talk;
 @synthesize comments;
+@synthesize newCommentCell;
 
 @synthesize uiComment;
 @synthesize uiAuthor;
@@ -30,20 +31,37 @@
 	self.commentsLoaded = NO;
 	TalkGetComments *t = [APICaller TalkGetComments:self];
 	[t call:self.talk];
-	self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
+	self.title = @"Loading...";
 	
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refreshBtnPressed)];
+	if (self.talk.allowComments) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBtnPressed)];
+	} else {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshBtnPressed)];
+	}
 
 }
 
 - (void)refreshBtnPressed {
 	self.commentsLoaded = NO;
 	self.comments = nil;
-	self.title = @"";
+	self.title = @"Loading...";
 	[APICaller clearCache];
 	TalkGetComments *t = [APICaller TalkGetComments:self];
 	[t call:self.talk];
-	[(UITableView *)[self view] reloadData];
+	[[self tableView] reloadData];
+}
+
+- (void)addBtnPressed {
+	
+	NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+	[[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+	
+	if (self.newCommentCell != nil) {
+		[self.newCommentCell.uiComment becomeFirstResponder];
+	} else {
+		// Cell hasn't loaded yet - wait until the scroll is at the bottom and then focus the UITextView
+		[self performSelector:@selector(addBtnPressed) withObject:nil afterDelay:0.1f];
+	}
 }
 
 - (void)gotTalkComments:(TalkCommentListModel *)tclm error:(APIError *)err {
@@ -51,7 +69,7 @@
 		self.commentsLoaded = YES;
 		self.comments = tclm;
 		self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
-		[(UITableView *)[self view] reloadData];
+		[[self tableView] reloadData];
 	} else {
 		UIAlertView *alert;
 			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:err.msg 
@@ -209,6 +227,7 @@
 		}
 		cell.commentDelegate = self;
 		[cell doStuff];
+		self.newCommentCell = cell;
 		return cell;
 	}
 }
