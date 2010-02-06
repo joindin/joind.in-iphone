@@ -14,7 +14,7 @@
 //#define API_URL @"http://lorna.adsl.magicmonkey.org/api";
 //#define API_URL @"http://lorna.rivendell.local/api";
 
-#define CACHE_TIME 600 // In seconds
+#define CACHE_TIME 86400 // In seconds
 
 @interface APICaller : NSObject {
 	id delegate;
