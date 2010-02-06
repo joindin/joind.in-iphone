@@ -77,7 +77,7 @@
 		if ([[comment objectForKey:@"uname"] isKindOfClass:[NSString class]]) {
 			tcdm.username = [comment objectForKey:@"uname"];
 		} else {
-			tcdm.username = @"";
+			tcdm.username = @"ANONYMOUS";
 		}
 		
 		if ([[comment objectForKey:@"user_id"] isKindOfClass:[NSString class]]) {
