@@ -152,7 +152,7 @@
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	
 	// Make asynchronous request (and store it in case it needs to be cancelled)
-	NSLog(@"Sending request");
+	//NSLog(@"Sending request");
 	self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
 	[req release];
 	

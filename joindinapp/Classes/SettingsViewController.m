@@ -16,11 +16,8 @@
 @synthesize uiUser;
 @synthesize uiPass;
 @synthesize uiLimitEvents;
-@synthesize uiSignIn;
 @synthesize uiOk;
-@synthesize uiUserLabel;
-@synthesize uiPassLabel;
-@synthesize uiLimitLabel;
+@synthesize uiLogout;
 @synthesize uiChecking;
 @synthesize uiContent;
 @synthesize keyboardIsShowing;
@@ -55,14 +52,12 @@
 	self.keyboardIsShowing = NO;
 	
 	// Set the initial scroll view size
-	//self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
+	self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
 	
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
 	self.uiUser.text      = [userPrefs stringForKey:@"username"];
 	self.uiPass.text      = [userPrefs stringForKey:@"password"];
 	self.uiLimitEvents.on = [userPrefs boolForKey:@"limitevents"];
-	self.uiSignIn.on      = [userPrefs boolForKey:@"uselogin"];
-	[self setupSignedIn];
 	
 }
 
@@ -105,56 +100,31 @@
 	
 }
 
-- (IBAction) changedSignIn:(UISwitch *)sender {
-	[self setupSignedIn];
-}
-
-- (void) setupSignedIn {
-
-	if (self.uiSignIn.on) {
-		self.uiUser.enabled        = YES;
-		self.uiPass.enabled        = YES;
-		self.uiLimitEvents.enabled = YES;
-		self.uiUser.hidden         = NO;
-		self.uiPass.hidden         = NO;
-		self.uiLimitEvents.hidden  = NO;
-		self.uiUserLabel.hidden    = NO;
-		self.uiPassLabel.hidden    = NO;
-		self.uiLimitLabel.hidden   = NO;
-	} else {
-		self.uiUser.enabled        = NO;
-		self.uiPass.enabled        = NO;
-		self.uiLimitEvents.enabled = NO;
-		self.uiUser.hidden         = YES;
-		self.uiPass.hidden         = YES;
-		self.uiLimitEvents.hidden  = YES;
-		self.uiUserLabel.hidden    = YES;
-		self.uiPassLabel.hidden    = YES;
-		self.uiLimitLabel.hidden   = YES;
-	}
-	self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
-}
-
 - (IBAction) submitScreen:(id)sender {
-	if (self.uiSignIn.on) {
+	if ([self.uiUser.text isEqualToString:@""]) {
+		[self savePrefs];
+		[self.navigationController popViewControllerAnimated:YES];
+	} else {
 		[self.uiChecking startAnimating];
 		self.uiOk.hidden = YES;
 		UserValidate *u = [APICaller UserValidate:self];
 		[u call:self.uiUser.text password:self.uiPass.text];		
-	} else {
-		[self savePrefs];
-		[self.navigationController popViewControllerAnimated:YES];
 	}
+}
+
+- (IBAction) logout:(id)sender {
+	self.uiUser.text = @"";
+	self.uiPass.text = @"";
+	[self submitScreen:sender];
 }
 
 - (void) savePrefs {
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-	[userPrefs setBool:self.uiSignIn.on      forKey:@"uselogin"];
 	[userPrefs setObject:self.uiUser.text    forKey:@"username"];
 	[userPrefs setObject:self.uiPass.text    forKey:@"password"];
 	[userPrefs setBool:self.uiLimitEvents.on forKey:@"limitevents"];
 	[userPrefs synchronize];
-	[APICaller clearCache];
+	//[APICaller clearCache];
 }
 
 - (void)gotUserValidateData:(BOOL)success error:(APIError *)err {
@@ -172,7 +142,12 @@
 	}
 }
 
--(IBAction)doneEditing:(id)sender {
+-(IBAction)doneEditingUser:(id)sender {
+	[sender resignFirstResponder];
+	[self.uiPass becomeFirstResponder];
+}
+
+-(IBAction)doneEditingPass:(id)sender {
 	[sender resignFirstResponder];
 }
 @end

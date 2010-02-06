@@ -14,16 +14,6 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Use login details</string>
-			<key>Key</key>
-			<string>uselogin</string>
-			<key>DefaultValue</key>
-			<string>No</string>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
 			<string>Username</string>
