@@ -73,7 +73,6 @@
 	if (err == nil) {
 		self.commentsLoaded = YES;
 		self.comments = eclm;
-		self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
 		[[self tableView] reloadData];
 	} else {
 		UIAlertView *alert;
@@ -82,6 +81,7 @@
 		[alert show];
 		[alert release];
 	}
+	self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
 }
 
 - (void)gotAddedEventComment:(APIError *)error {
@@ -107,6 +107,7 @@
 			// Reload comments
 			EventGetComments *e = [APICaller EventGetComments:self];
 			[e call:self.event];
+			self.title = @"Loading...";
 		}
 		[alert show];
 		[alert release];
@@ -114,6 +115,7 @@
 		// Reload comments
 		EventGetComments *e = [APICaller EventGetComments:self];
 		[e call:self.event];
+		self.title = @"Loading...";
 	}
 }
 

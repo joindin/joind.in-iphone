@@ -11,9 +11,9 @@
 
 @implementation EventAddComment
 
-- (void)call:(EventDetailModel *)talk comment:(NSString *)comment {
+- (void)call:(EventDetailModel *)event comment:(NSString *)comment {
 	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:4];
-	[params setObject:[NSString stringWithFormat:@"%d", talk.Id] forKey:@"talk_id"];
+	[params setObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"];
 	[params setObject:comment forKey:@"comment"];
 	[self callAPI:@"event" action:@"addcomment" params:params needAuth:YES canCache:NO];
 }
