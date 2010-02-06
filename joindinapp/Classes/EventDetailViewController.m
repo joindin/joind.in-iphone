@@ -52,7 +52,7 @@
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
 	
 	self.uiAttending = [UISwitch switchWithLeftText:@"yes" andRight:@" no"];
-	self.uiAttending.center = CGPointMake(270.0f, 247.0f);
+	self.uiAttending.center = CGPointMake(263.0f, 258.0f);
 	[[self view] addSubview:self.uiAttending];
 }
 
