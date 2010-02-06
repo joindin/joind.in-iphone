@@ -21,6 +21,7 @@
 @synthesize event;
 @synthesize comments;
 @synthesize commentsLoaded;
+@synthesize newCommentCell;
 
 @synthesize uiComment;
 @synthesize uiAuthor;
@@ -31,14 +32,45 @@
 	self.commentsLoaded = NO;
 	EventGetComments *e = [APICaller EventGetComments:self];
 	[e call:self.event];
-	self.title = self.event.name;
+	self.title = @"Loading...";
+	
+	if (self.event.allowComments) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBtnPressed)];
+	} else {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshBtnPressed)];
+	}
+	
+}
+
+- (void)refreshBtnPressed {
+	self.commentsLoaded = NO;
+	self.comments = nil;
+	self.title = @"Loading...";
+	[APICaller clearCache];
+	EventGetComments *e = [APICaller EventGetComments:self];
+	[e call:self.event];
+	[[self tableView] reloadData];
+}
+
+- (void)addBtnPressed {
+	
+	NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+	[[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+	
+	if (self.newCommentCell != nil) {
+		[self.newCommentCell.uiComment becomeFirstResponder];
+	} else {
+		// Cell hasn't loaded yet - wait until the scroll is at the bottom and then focus the UITextView
+		[self performSelector:@selector(addBtnPressed) withObject:nil afterDelay:0.1f];
+	}
 }
 
 - (void)gotEventComments:(EventCommentListModel *)eclm error:(APIError *)err {
 	if (err == nil) {
 		self.commentsLoaded = YES;
 		self.comments = eclm;
-		[(UITableView *)[self view] reloadData];
+		self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
+		[[self tableView] reloadData];
 	} else {
 		UIAlertView *alert;
 		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:err.msg 
@@ -190,6 +222,7 @@
 			}
 		}
 		cell.EventCommentDelegate = self;
+		self.newCommentCell = cell;
 		[cell doStuff];
 		return cell;
 	}
