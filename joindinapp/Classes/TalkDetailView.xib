@@ -97,7 +97,7 @@
 					<object class="IBUITextView" id="624397399">
 						<reference key="NSNextResponder" ref="195400931"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 154}, {280, 262}}</string>
+						<string key="NSFrame">{{10, 154}, {300, 262}}</string>
 						<reference key="NSSuperview" ref="195400931"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
