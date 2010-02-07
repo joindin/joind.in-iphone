@@ -142,6 +142,10 @@
 	}
 }
 
+- (IBAction) gotoRegister:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://joind.in/user/register/"]];
+}
+
 -(IBAction)doneEditingUser:(id)sender {
 	[sender resignFirstResponder];
 	[self.uiPass becomeFirstResponder];

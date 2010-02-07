@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="46"/>
+			<integer value="99"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -176,7 +176,7 @@
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="IBUIText">In order to comment on talks and see which events you are attending, you will have to sign in using a joind.in username and password.</string>
+								<string key="IBUIText">Sign in using your joind.in username and password in order to leave comments with your name, track which events you are attending etc</string>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica</string>
 									<double key="NSSize">12</double>
@@ -191,7 +191,7 @@
 							<object class="IBUIButton" id="491353201">
 								<reference key="NSNextResponder" ref="210612350"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{173, 361}, {127, 37}}</string>
+								<string key="NSFrame">{{173, 294}, {127, 37}}</string>
 								<reference key="NSSuperview" ref="210612350"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -220,7 +220,7 @@
 							<object class="IBUIActivityIndicatorView" id="516944766">
 								<reference key="NSNextResponder" ref="210612350"/>
 								<int key="NSvFlags">-2147483356</int>
-								<string key="NSFrame">{{226, 369}, {20, 20}}</string>
+								<string key="NSFrame">{{226, 302}, {20, 20}}</string>
 								<reference key="NSSuperview" ref="210612350"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -230,7 +230,7 @@
 							<object class="IBUIButton" id="625327616">
 								<reference key="NSNextResponder" ref="210612350"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 361}, {127, 37}}</string>
+								<string key="NSFrame">{{20, 294}, {127, 37}}</string>
 								<reference key="NSSuperview" ref="210612350"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -239,6 +239,44 @@
 								<reference key="IBUIFont" ref="421810844"/>
 								<int key="IBUIButtonType">1</int>
 								<string key="IBUINormalTitle">Logout</string>
+								<reference key="IBUIHighlightedTitleColor" ref="55238263"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
+								</object>
+								<reference key="IBUINormalTitleShadowColor" ref="109721608"/>
+							</object>
+							<object class="IBUILabel" id="745077380">
+								<reference key="NSNextResponder" ref="210612350"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{20, 381}, {280, 21}}</string>
+								<reference key="NSSuperview" ref="210612350"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="IBUIText">No account?  Tap here to register on the joind.in website.</string>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica</string>
+									<double key="NSSize">10</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<reference key="IBUITextColor" ref="833426069"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">1</int>
+							</object>
+							<object class="IBUIButton" id="625190227">
+								<reference key="NSNextResponder" ref="210612350"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{20, 381}, {280, 21}}</string>
+								<reference key="NSSuperview" ref="210612350"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<reference key="IBUIFont" ref="421810844"/>
 								<reference key="IBUIHighlightedTitleColor" ref="55238263"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
@@ -371,6 +409,15 @@
 					</object>
 					<int key="connectionID">97</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">gotoRegister:</string>
+						<reference key="source" ref="625190227"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">100</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -417,6 +464,8 @@
 							<reference ref="106549711"/>
 							<reference ref="625327616"/>
 							<reference ref="516944766"/>
+							<reference ref="745077380"/>
+							<reference ref="625190227"/>
 						</object>
 						<reference key="parent" ref="26597840"/>
 					</object>
@@ -478,6 +527,16 @@
 						<reference key="object" ref="625327616"/>
 						<reference key="parent" ref="210612350"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">98</int>
+						<reference key="object" ref="745077380"/>
+						<reference key="parent" ref="210612350"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">99</int>
+						<reference key="object" ref="625190227"/>
+						<reference key="parent" ref="210612350"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -501,6 +560,8 @@
 					<string>8.IBEditorWindowLastContentRect</string>
 					<string>8.IBPluginDependency</string>
 					<string>93.IBPluginDependency</string>
+					<string>98.IBPluginDependency</string>
+					<string>99.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -521,6 +582,8 @@
 					<string>{{627, 141}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -539,7 +602,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">97</int>
+			<int key="maxID">100</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -567,11 +630,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>doneEditingPass:</string>
 							<string>doneEditingUser:</string>
+							<string>gotoRegister:</string>
 							<string>logout:</string>
 							<string>submitScreen:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
