@@ -40,7 +40,7 @@
 }
 
 - (void)aboutBtnPressed {
-	AboutViewController *vc = [[AboutViewController alloc] init];
+	AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutView" bundle:nil];
 	[self.navigationController pushViewController:vc animated:YES];
 	[vc release];	
 	

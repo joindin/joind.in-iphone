@@ -93,27 +93,24 @@
 	
 	if (needAuth) {
 		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-		BOOL useLogin = [userPrefs boolForKey:@"uselogin"];
-		if (useLogin) {
-			NSString *user = [userPrefs stringForKey:@"username"];
-			NSString *pass = [userPrefs stringForKey:@"password"];
-			
-			if (user == nil) {
-				user = @"";
-			}
-			if (pass == nil) {
-				pass = @"";
-			}
-			
-			//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
-			
-			NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
-			[reqAuth setObject:user forKey:@"user"];
-			[reqAuth setObject:[pass md5] forKey:@"pass"];
-			
-			[reqRequest setObject:reqAuth forKey:@"auth"];
-			[reqAuth    release];
+		NSString *user = [userPrefs stringForKey:@"username"];
+		NSString *pass = [userPrefs stringForKey:@"password"];
+		
+		if (user == nil) {
+			user = @"";
 		}
+		if (pass == nil) {
+			pass = @"";
+		}
+		
+		//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
+		
+		NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
+		[reqAuth setObject:user forKey:@"user"];
+		[reqAuth setObject:[pass md5] forKey:@"pass"];
+		
+		[reqRequest setObject:reqAuth forKey:@"auth"];
+		[reqAuth    release];
 	}
 	
 	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
