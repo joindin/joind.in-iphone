@@ -23,8 +23,12 @@
     
     // Override point for customization after app launch    
 	
+	// This is what happens when launched from a URL:
+	//[self application:application handleOpenURL:[NSURL URLWithString:@"joindin://event/110"]];
+	
 	[window addSubview:[splashScreenViewController view]];
     [window makeKeyAndVisible];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -40,21 +44,24 @@
 	
     NSString *URLString = [url absoluteString];
 	
-    //[[NSUserDefaults standardUserDefaults] setObject:URLString forKey:@"url"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+	NSArray *components = [URLString componentsSeparatedByString:@"/"];
 	
-	/*
-	NSURL *logurl = [NSURL URLWithString:@"http://kevin.rivendell.local/?url2"];
-	NSError *error;
-	NSMutableURLRequest* liveRequest = [[NSMutableURLRequest alloc] initWithURL:logurl];
-	[liveRequest setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-	[liveRequest setValue:@"headervalue" forHTTPHeaderField:@"headerfield"];
-	NSURLResponse* response;
-	NSData* myData = [NSURLConnection sendSynchronousRequest:liveRequest returningResponse:&response error:&error];
-	NSString * checkResponse = [[NSString alloc] initWithData:myData encoding:NSASCIIStringEncoding];
-	*/
+	NSString *type  = [components objectAtIndex:2];
+	NSString *reqid = [components objectAtIndex:3];
 	
-    return YES;
+	if (type != nil) {
+		if (reqid != nil) {
+			if ([type isEqualToString:@"event"]) {
+				[splashScreenViewController gotoEventScreenWithEventId:[reqid integerValue]];
+				return YES;
+			} else if ([type isEqualToString:@"talk"]) {
+				[splashScreenViewController gotoTalkScreenWithTalkId:[reqid integerValue]];
+				return YES;
+			}
+		}
+	}
+	
+    return NO;
 }
 
 #pragma mark -

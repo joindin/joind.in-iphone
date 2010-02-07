@@ -11,8 +11,8 @@
 
 @implementation TalkGetDetail
 
-- (void)call:(TalkDetailModel *)talk {
-	[self callAPI:@"talk" action:@"getdetail" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", talk.Id] forKey:@"talk_id"] needAuth:YES canCache:YES];
+- (void)call:(NSUInteger)talkId {
+	[self callAPI:@"talk" action:@"getdetail" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", talkId] forKey:@"talk_id"] needAuth:YES canCache:YES];
 }
 
 - (void)gotData:(NSObject *)obj {

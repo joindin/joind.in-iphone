@@ -7,14 +7,36 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventDetailModel.h"
+#import "EventGetDetail.h"
+#import "TalkDetailModel.h"
+#import "TalkGetDetail.h"
 
-
-@interface SplashScreenViewController : UIViewController {
+@interface SplashScreenViewController : UIViewController <EventGetDetailResponse, TalkGetDetailResponse> {
 	IBOutlet UIActivityIndicatorView *uiLoading;
+	UINavigationController *navC;
+	
+	BOOL havePendingAction;
+	NSUInteger pendingEventId;
+	NSUInteger pendingTalkId;
 }
 
 - (IBAction) pressedWebsite;
 
+- (void) performPendingActions;
+
+- (void) gotoEventScreenWithEventId:(NSUInteger)eventId;
+- (void) gotoEventScreenWithEventDetailModel:(EventDetailModel *)edm;
+- (void) reallyGotoEventScreenWithEventId:(NSUInteger)eventId;
+
+- (void) gotoTalkScreenWithTalkId:(NSUInteger)talkId;
+- (void) gotoTalkScreenWithTalkDetailModel:(TalkDetailModel *)tdm;
+- (void) reallyGotoTalkScreenWithTalkId:(NSUInteger)talkId;
+
 @property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
+@property (nonatomic, retain) UINavigationController *navC;
+@property (nonatomic, assign) BOOL havePendingAction;
+@property (nonatomic, assign) NSUInteger pendingEventId;
+@property (nonatomic, assign) NSUInteger pendingTalkId;
 
 @end

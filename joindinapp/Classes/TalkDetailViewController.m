@@ -40,7 +40,7 @@
 	self.uiComments.enabled   = YES;
 
 	TalkGetDetail *t = [APICaller TalkGetDetail:self];
-	[t call:self.talk];
+	[t call:self.talk.Id];
 }
 
 -(void) gotTalkDetailData:(TalkDetailModel *)tdm error:(APIError *)error {

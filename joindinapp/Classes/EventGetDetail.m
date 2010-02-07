@@ -11,8 +11,8 @@
 
 @implementation EventGetDetail
 
-- (void)call:(EventDetailModel *)talk {
-	[self callAPI:@"event" action:@"getdetail" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", talk.Id] forKey:@"event_id"] needAuth:YES canCache:YES];
+- (void)call:(NSUInteger)eventId {
+	[self callAPI:@"event" action:@"getdetail" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", eventId] forKey:@"event_id"] needAuth:YES canCache:YES];
 }
 
 - (void)gotData:(NSObject *)obj {
