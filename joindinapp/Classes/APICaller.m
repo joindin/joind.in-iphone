@@ -150,6 +150,11 @@
 	[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
 	[req setHTTPMethod:@"POST"];
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+	//[req setValue:[NSString stringWithFormat:@"%@ %@ %@ %@", [UIDevice currentDevice].uniqueIdentifier, [UIDevice currentDevice].model, [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion] forHTTPHeaderField:@"X-Device-Info"];
+	[req setValue:[UIDevice currentDevice].uniqueIdentifier forHTTPHeaderField:@"X-Device-UDID"];
+	[req setValue:[UIDevice currentDevice].model			forHTTPHeaderField:@"X-Device-Model"];
+	[req setValue:[UIDevice currentDevice].systemName		forHTTPHeaderField:@"X-Device-SystemName"];
+	[req setValue:[UIDevice currentDevice].systemVersion	forHTTPHeaderField:@"X-Device-SystemVersion"];
 	
 	// Make asynchronous request (and store it in case it needs to be cancelled)
 	//NSLog(@"Sending request");
