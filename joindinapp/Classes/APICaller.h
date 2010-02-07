@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "APIError.h"
 
-//#define API_URL @"http://joind.in/api"
-#define API_URL @"http://lorna.rivendell.local/api";
+#define API_URL @"http://joind.in/api"
+//#define API_URL @"http://lorna.rivendell.local/api";
 //#define API_URL @"http://lorna.adsl.magicmonkey.org/api";
 //#define API_URL @"http://lorna.rivendell.local/api";
 
-#define CACHE_TIME 86400 // In seconds
+#define CACHE_TIME 7*86400 // In seconds
 
 @interface APICaller : NSObject {
 	id delegate;
