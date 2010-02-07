@@ -8,9 +8,12 @@
 
 #import "AboutViewController.h"
 #import "APICaller.h"
+#import "CreditsViewController.h"
 
 
 @implementation AboutViewController
+
+@synthesize uiVersion;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -27,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.title = @"About";
+	self.uiVersion.text = [NSString stringWithFormat:@"Version: %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
 }
 
 /*
@@ -61,5 +65,16 @@
 - (IBAction) uiWebsite:(id)sender {
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://joind.in/"]];
 }
+
+- (IBAction) uiSupportWebsite:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://joind.in/about/iphone_support/"]];
+}
+
+- (IBAction) uiCredits:(id)sender {
+	CreditsViewController *vc = [[CreditsViewController alloc] initWithNibName:@"CreditsView" bundle:nil];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];		
+}
+
 
 @end
