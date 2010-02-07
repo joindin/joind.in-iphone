@@ -15,7 +15,7 @@
 
 }
 
-- (void)call:(TalkDetailModel *)talk;
+- (void)call:(NSUInteger)talkId;
 - (void)gotData:(NSObject *)obj;
 - (void)gotError:(NSObject *)error;
 

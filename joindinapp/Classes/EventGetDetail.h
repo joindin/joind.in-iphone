@@ -15,7 +15,7 @@
 
 }
 
-- (void)call:(EventDetailModel *)event;
+- (void)call:(NSUInteger)eventId;
 - (void)gotData:(NSObject *)obj;
 - (void)gotError:(NSObject *)error;
 
