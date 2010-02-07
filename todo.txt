@@ -1,0 +1,10 @@
+ * Bookmark talks / events?
+ * Deep-link to talk / event using joindin://talk/123 or joindin://event/123
+ * Tweet about this talk
+ * Tweet about this event
+ * Location-awareness (which event I'm at, directions etc)
+ * Talk timings (API problem)
+ * Registration via the API
+ 
+ * "Add to calendar" button - No APIs in iPhone to access calendar :(
+ * Settings screen jumps when kbd disappears
