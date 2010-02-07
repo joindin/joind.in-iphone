@@ -30,7 +30,6 @@
 		0A7DF2A510F00A560028D49B /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */; };
 		0A94BD6C10F8DAC300CC32C0 /* attended.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD6B10F8DAC300CC32C0 /* attended.png */; };
 		0A94BD7310F8DBAF00CC32C0 /* notattended.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD7210F8DBAF00CC32C0 /* notattended.png */; };
-		0A94BD8F10F8E3AD00CC32C0 /* todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD8E10F8E3AD00CC32C0 /* todo.txt */; };
 		0A94BDC910F8EE2E00CC32C0 /* TalkCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */; };
 		0A94BDCA10F8EE2E00CC32C0 /* TalkCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BDC810F8EE2E00CC32C0 /* TalkCommentsView.xib */; };
 		0A94BDED10F8F7AE00CC32C0 /* TalkCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BDEC10F8F7AE00CC32C0 /* TalkCommentListModel.m */; };
@@ -138,7 +137,6 @@
 		0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		0A94BD6B10F8DAC300CC32C0 /* attended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attended.png; sourceTree = "<group>"; };
 		0A94BD7210F8DBAF00CC32C0 /* notattended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notattended.png; sourceTree = "<group>"; };
-		0A94BD8E10F8E3AD00CC32C0 /* todo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
 		0A94BDC610F8EE2E00CC32C0 /* TalkCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCommentsViewController.h; sourceTree = "<group>"; };
 		0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TalkCommentsViewController.m; sourceTree = "<group>"; };
 		0A94BDC810F8EE2E00CC32C0 /* TalkCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TalkCommentsView.xib; path = Classes/TalkCommentsView.xib; sourceTree = "<group>"; };
@@ -519,7 +517,6 @@
 				0A6D1E3E10EE561700E941EE /* Entitlements.plist */,
 				0A41DEF510F518B000FBFE86 /* Entitlementsadhoc.plist */,
 				0A41E05410F53E9B00FBFE86 /* Settings.bundle */,
-				0A94BD8E10F8E3AD00CC32C0 /* todo.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -608,7 +605,6 @@
 				0A77DA6710F69881006A7C67 /* notattending.png in Resources */,
 				0A94BD6C10F8DAC300CC32C0 /* attended.png in Resources */,
 				0A94BD7310F8DBAF00CC32C0 /* notattended.png in Resources */,
-				0A94BD8F10F8E3AD00CC32C0 /* todo.txt in Resources */,
 				0A94BDCA10F8EE2E00CC32C0 /* TalkCommentsView.xib in Resources */,
 				0A94BF3210F96D8200CC32C0 /* TalkCommentsCell.xib in Resources */,
 				0A94C0AA10FE6AA300CC32C0 /* switchThumb.png in Resources */,
