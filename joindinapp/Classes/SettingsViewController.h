@@ -34,6 +34,7 @@
 - (IBAction) logout:(id)sender;
 - (IBAction) doneEditingUser:(id)sender;
 - (IBAction) doneEditingPass:(id)sender;
+- (IBAction) gotoRegister:(id)sender;
 - (void) savePrefs;
 
 @end

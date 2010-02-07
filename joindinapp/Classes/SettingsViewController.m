@@ -40,7 +40,7 @@
 }
 
 - (void)aboutBtnPressed {
-	AboutViewController *vc = [[AboutViewController alloc] init];
+	AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutView" bundle:nil];
 	[self.navigationController pushViewController:vc animated:YES];
 	[vc release];	
 	
@@ -140,6 +140,10 @@
 		[alert release];
 		self.uiOk.hidden = NO;
 	}
+}
+
+- (IBAction) gotoRegister:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://joind.in/user/register/"]];
 }
 
 -(IBAction)doneEditingUser:(id)sender {

@@ -10,10 +10,14 @@
 
 
 @interface AboutViewController : UIViewController {
-
+	IBOutlet UILabel *uiVersion;
 }
+
+@property (nonatomic, retain) UILabel *uiVersion;
 
 - (IBAction) uiClearCache:(id)sender;
 - (IBAction) uiWebsite:(id)sender;
+- (IBAction) uiSupportWebsite:(id)sender;
+- (IBAction) uiCredits:(id)sender;
 
 @end

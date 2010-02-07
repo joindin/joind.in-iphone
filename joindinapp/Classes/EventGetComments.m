@@ -65,7 +65,7 @@
 		if ([[comment objectForKey:@"cname"] isKindOfClass:[NSString class]]) {
 			ecdm.username = [comment objectForKey:@"cname"];
 		} else {
-			ecdm.username = @"";
+			ecdm.username = @"ANONYMOUS";
 		}
 		
 		if ([[comment objectForKey:@"user_id"] isKindOfClass:[NSString class]]) {
