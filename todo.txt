@@ -5,6 +5,7 @@
  * Talk timings (API problem)
  * Registration via the API
  * More speaker-oriented info perhaps?  Not really app-specific, but may be of interest
+ * Push messages?
  
  * "Add to calendar" button - No APIs in iPhone to access calendar :(
  * Settings screen jumps when kbd disappears
