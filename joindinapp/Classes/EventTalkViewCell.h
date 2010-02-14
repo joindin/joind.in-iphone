@@ -16,6 +16,7 @@
 	IBOutlet UIImageView *uiRating;
 	IBOutlet UILabel     *uiNumComments;
 	IBOutlet UIImageView *uiCommentBubble;
+	IBOutlet UIImageView *uiTalkType;
 }
 
 @property (nonatomic,retain) UIButton    *uiDetail;
@@ -24,5 +25,6 @@
 @property (nonatomic,retain) UIImageView *uiRating;
 @property (nonatomic,retain) UILabel     *uiNumComments;
 @property (nonatomic,retain) UIImageView *uiCommentBubble;
+@property (nonatomic,retain) UIImageView *uiTalkType;
 
 @end

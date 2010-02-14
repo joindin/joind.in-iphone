@@ -182,7 +182,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	TalkDetailModel *tdm = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
-
+	NSLog(@"Talk type %@", tdm.type);
 	static NSString *CellIdentifier = @"EventTalkCommentCell";
 	
 	EventTalkViewCell *cell = (EventTalkViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -200,6 +200,18 @@
 	cell.uiSpeaker.text  = tdm.speaker;
 	cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
 	cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+	
+	if ([tdm.type isEqualToString:@"Talk"]) {
+		cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
+	} else if ([tdm.type isEqualToString:@"Keynote"]) {
+		cell.uiTalkType.image  = [UIImage imageNamed:@"keynote.gif"];
+	} else if ([tdm.type isEqualToString:@"Social Event"]) {
+		cell.uiTalkType.image  = [UIImage imageNamed:@"social-event.gif"];
+	} else if ([tdm.type isEqualToString:@"Event Related"]) {
+		cell.uiTalkType.image  = [UIImage imageNamed:@"workshop.gif"];
+	} else {
+		cell.uiTalkType.image  = nil;
+	}
 	
 	UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
 
