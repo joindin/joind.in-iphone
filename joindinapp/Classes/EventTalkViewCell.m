@@ -17,5 +17,6 @@
 @synthesize uiRating;
 @synthesize uiNumComments;
 @synthesize uiCommentBubble;
+@synthesize uiTalkType;
 
 @end
