@@ -50,5 +50,6 @@
 @property (nonatomic, assign) BOOL        allowComments;
 
 -(BOOL)hasFinished;
+-(NSComparisonResult)comparator:(TalkDetailModel *)otherModel;
 
 @end

@@ -194,6 +194,8 @@
 		[edm release];
 	}
 	
+	[elm sort];
+	
 	[self.delegate gotEventListData:elm error:nil];
 	
 }

@@ -138,6 +138,7 @@
 		[tdm release];
 		
 	}
+	[tlm sort];
 	[self.delegate gotTalksForEvent:tlm error:nil];
 }
 

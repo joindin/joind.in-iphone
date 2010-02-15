@@ -65,5 +65,6 @@
 @property (nonatomic, assign) BOOL        userAttend;
 
 -(BOOL)hasFinished;
+-(NSComparisonResult)comparator:(EventDetailModel *)otherModel;
 
 @end
