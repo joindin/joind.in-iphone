@@ -18,5 +18,7 @@
 - (void)addEvent:(EventDetailModel *)edm;
 - (EventDetailModel *)getEventDetailModelAtIndex:(NSUInteger)idx;
 - (NSUInteger)getNumEvents;
+- (void)sort;
+- (void)sort:(BOOL)forwards;
 
 @end

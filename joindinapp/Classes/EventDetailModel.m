@@ -38,4 +38,8 @@
 	return ([self.end compare:[NSDate date]] == NSOrderedAscending);
 }
 
+-(NSComparisonResult)comparator:(EventDetailModel *)otherModel {
+	return [self.start compare:otherModel.start];
+}
+
 @end

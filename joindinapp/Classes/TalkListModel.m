@@ -28,6 +28,23 @@
 	return [self.talks objectAtIndex:idx];
 }
 
+- (void)sort {
+	[self sort:true];
+}
+
+- (void)sort:(BOOL)forwards {
+	[self.talks sortUsingSelector:@selector(comparator:)];
+	if (!forwards) {
+		// Reverse the array
+		int n = [self.talks count];
+		for (int i=0; i<n/2; ++i) {
+			id c  = [[self.talks objectAtIndex:i] retain];
+			[self.talks replaceObjectAtIndex:i withObject:[self.talks objectAtIndex:n-i-1]];
+			[self.talks replaceObjectAtIndex:n-i-1 withObject:c];
+		}
+	}
+}
+
 - (NSUInteger)getNumTalks {
 	return [self.talks count];
 }

@@ -83,6 +83,12 @@
 		[alert release];
 		
 	} else {
+		
+		if (self.uiEventRange.selectedSegmentIndex == 0) {
+			// Chosen event range is "past" therefore reverse the event array
+			[eventListData sort:false];
+		}
+		
 		self.confListData = eventListData;
 		[(UITableView *)[self view] reloadData];
 	}

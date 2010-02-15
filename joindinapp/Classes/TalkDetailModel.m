@@ -33,4 +33,8 @@
 	return ([self.given compare:[NSDate dateWithTimeIntervalSinceNow:-86400]] == NSOrderedAscending);
 }
 
+-(NSComparisonResult)comparator:(TalkDetailModel *)otherModel {
+	return [self.given compare:otherModel.given];
+}
+
 @end

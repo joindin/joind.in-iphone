@@ -18,5 +18,7 @@
 - (void)addTalk:(TalkDetailModel *)tdm;
 - (TalkDetailModel *)getTalkDetailModelAtIndex:(NSUInteger)idx;
 - (NSUInteger)getNumTalks;
+- (void)sort;
+- (void)sort:(BOOL)forwards;
 
 @end
