@@ -19,6 +19,7 @@
 #import "EventCommentsViewController.h"
 #import "EventGetDetail.h"
 #import "EventTalkViewCell.h"
+#import "EventTalkDateHeaderViewCell.h"
 #import "UserGetComments.h"
 #import <UIKit/UIKit.h>
 
@@ -88,6 +89,7 @@
 	}
 	
 	[self.uiLoading startAnimating];
+	[self.talks sort];
 	self.uiComments.hidden    = YES;
 	EventGetDetail *ed = [APICaller EventGetDetail:self];
 	[ed call:self.event.Id];
@@ -98,6 +100,7 @@
 	
 	UserGetComments *u = [APICaller UserGetComments:self];
 	[u call:nil];
+	
 	
 }
 
@@ -157,94 +160,147 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	
 	if (self.talks == nil) {
 		return 0;
 	} else {
-		return 1;
+		NSDictionary *allDates = [self.talks getTalksByDate];
+
+		return [allDates count];
 	}
+	
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.talks getNumTalks];
+	
+	NSDictionary *allDates = [self.talks getTalksByDate];
+	NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	NSString *relevantDate = [dates objectAtIndex:section];
+	NSArray *talksOnDate = [allDates objectForKey:relevantDate];
+	
+	return ([talksOnDate count] + 1);
 }
 
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
-	talkDetailViewController.talk  = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
-	talkDetailViewController.event = self.event;
-	[self.navigationController pushViewController:talkDetailViewController animated:YES];
-	[tableView deselectRowAtIndexPath:indexPath animated:YES]; // Deselect the talk row in the event detail screen
-	[talkDetailViewController release];
+	
+	if ([indexPath row] == 0) {
+		
+	} else {
+		
+		NSDictionary *allDates = [self.talks getTalksByDate];
+		NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
+		NSString *relevantDate = [dates objectAtIndex:[indexPath section]];
+		NSArray *talksOnDate = [allDates objectForKey:relevantDate];
+		TalkDetailModel *tdm = [talksOnDate objectAtIndex:([indexPath row] - 1)];
+		
+		TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
+		talkDetailViewController.talk  = tdm;
+		talkDetailViewController.event = self.event;
+		[self.navigationController pushViewController:talkDetailViewController animated:YES];
+		[tableView deselectRowAtIndexPath:indexPath animated:YES]; // Deselect the talk row in the event detail screen
+		[talkDetailViewController release];
+	}
+	
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	TalkDetailModel *tdm = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
-	NSLog(@"Talk type %@", tdm.type);
-	static NSString *CellIdentifier = @"EventTalkCommentCell";
-	
-	EventTalkViewCell *cell = (EventTalkViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTalkCell" owner:nil options:nil];
-		for (id currentObject in topLevelObjects) {
-			if ([currentObject isKindOfClass:[EventTalkViewCell class]]) {
-				cell = (EventTalkViewCell *)currentObject;
-				break;
+	if ([indexPath row] == 0) {
+		static NSString *CellIdentifier2 = @"EventTalkDateHeaderViewCell";
+		
+		EventTalkDateHeaderViewCell *cell = (EventTalkDateHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+		if (cell == nil) {
+			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTalkCell" owner:nil options:nil];
+			for (id currentObject in topLevelObjects) {
+				if ([currentObject isKindOfClass:[EventTalkDateHeaderViewCell class]]) {
+					cell = (EventTalkDateHeaderViewCell *)currentObject;
+					break;
+				}
 			}
 		}
-	}
-	
-	cell.uiTalkName.text = tdm.title;
-	cell.uiSpeaker.text  = tdm.speaker;
-	cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
-	cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
-	
-	if ([tdm.type isEqualToString:@"Talk"]) {
-		cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
-	} else if ([tdm.type isEqualToString:@"Keynote"]) {
-		cell.uiTalkType.image  = [UIImage imageNamed:@"keynote.gif"];
-	} else if ([tdm.type isEqualToString:@"Social Event"]) {
-		cell.uiTalkType.image  = [UIImage imageNamed:@"social-event.gif"];
-	} else if ([tdm.type isEqualToString:@"Event Related"]) {
-		cell.uiTalkType.image  = [UIImage imageNamed:@"workshop.gif"];
+		
+		// Set background color
+		UIView *bg = [[UIView alloc] initWithFrame:cell.frame];
+		bg.backgroundColor = [UIColor blueColor]; // or any color
+		cell.backgroundView = bg;
+		[bg release];
+		
+		// Get date of first talk in this day
+		NSDictionary *allDates = [self.talks getTalksByDate];
+		NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
+		NSString *relevantDate = [dates objectAtIndex:[indexPath section]];
+		NSArray *talksOnDate = [allDates objectForKey:relevantDate];
+		
+		TalkDetailModel *tdm = [talksOnDate objectAtIndex:0];
+		NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:tdm.given];
+		NSString *dateString = [NSString stringWithFormat:@"%d-%d-%d", [dateComponents day], [dateComponents month], [dateComponents year]];
+		
+		cell.dateLabel.text = dateString;
+		
+		return cell;
+		
 	} else {
-		cell.uiTalkType.image  = nil;
+		
+		// Get relevant talk on relevant date
+		NSDictionary *allDates = [self.talks getTalksByDate];
+		NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
+		NSString *relevantDate = [dates objectAtIndex:[indexPath section]];
+		NSArray *talksOnDate = [allDates objectForKey:relevantDate];
+		
+		TalkDetailModel *tdm = [talksOnDate objectAtIndex:([indexPath row] - 1)];
+		
+		static NSString *CellIdentifier = @"EventTalkCommentCell";
+		
+		EventTalkViewCell *cell = (EventTalkViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTalkCell" owner:nil options:nil];
+			for (id currentObject in topLevelObjects) {
+				if ([currentObject isKindOfClass:[EventTalkViewCell class]]) {
+					cell = (EventTalkViewCell *)currentObject;
+					break;
+				}
+			}
+		}
+		
+		cell.uiTalkName.text = tdm.title;
+		cell.uiSpeaker.text  = tdm.speaker;
+		cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
+		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+		
+		if ([tdm.type isEqualToString:@"Talk"]) {
+			cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
+		} else if ([tdm.type isEqualToString:@"Keynote"]) {
+			cell.uiTalkType.image  = [UIImage imageNamed:@"keynote.gif"];
+		} else if ([tdm.type isEqualToString:@"Social Event"]) {
+			cell.uiTalkType.image  = [UIImage imageNamed:@"social-event.gif"];
+		} else if ([tdm.type isEqualToString:@"Event Related"]) {
+			cell.uiTalkType.image  = [UIImage imageNamed:@"workshop.gif"];
+		} else {
+			cell.uiTalkType.image  = nil;
+		}
+		
+		UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
+		
+		if (utcdm == nil) {
+			cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
+		} else {
+			cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
+		}
+		
+		return cell;
 	}
 	
-	UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
+}
 
-	if (utcdm == nil) {
-		cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if ([indexPath row] == 0) {
+		return 17.0f;
 	} else {
-		cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
+		return 45.0f;
 	}
-	
-	return cell;
-	//cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
-	
-	/*
-	UITableViewCell *vc;
-	vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-	[vc autorelease];
-	
-	TalkDetailModel *tdm = [self.talks getTalkDetailModelAtIndex:[indexPath row]];
-	
-	vc.textLabel.text = tdm.title;
-	vc.textLabel.adjustsFontSizeToFitWidth = NO;
-	vc.textLabel.font = [UIFont systemFontOfSize:14];
-	
-	vc.detailTextLabel.text = tdm.speaker;
-	vc.detailTextLabel.adjustsFontSizeToFitWidth = NO;
-	vc.detailTextLabel.font = [UIFont systemFontOfSize:12];
-	
-	vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	vc.selectionStyle = UITableViewCellSelectionStyleBlue;
-	
-	return vc;
-	*/
-	
 }
 
 #pragma mark User-action handlers

@@ -98,6 +98,7 @@
 		0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7099310F01AFE00CDEBE6 /* logo.gif */; };
 		0AF7FAB1112876BA003B1978 /* joindin_iphone_large.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7FAAF112876BA003B1978 /* joindin_iphone_large.jpg */; };
 		0AF7FAB2112876BA003B1978 /* joindin_iphone_small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7FAB0112876BA003B1978 /* joindin_iphone_small.jpg */; };
+		0AF7FB1A112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF7FB19112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m */; };
 		1D3623260D0F684500981E51 /* joindinappAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* joindinappAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -251,6 +252,8 @@
 		0AF7099310F01AFE00CDEBE6 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
 		0AF7FAAF112876BA003B1978 /* joindin_iphone_large.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = joindin_iphone_large.jpg; sourceTree = "<group>"; };
 		0AF7FAB0112876BA003B1978 /* joindin_iphone_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = joindin_iphone_small.jpg; sourceTree = "<group>"; };
+		0AF7FB18112A0D0D003B1978 /* EventTalkDateHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTalkDateHeaderViewCell.h; sourceTree = "<group>"; };
+		0AF7FB19112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTalkDateHeaderViewCell.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* joindinappAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joindinappAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* joindinappAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = joindinappAppDelegate.m; sourceTree = "<group>"; };
@@ -372,6 +375,8 @@
 				0A9D7943111794080037C5CD /* TalkCommentsLoadingViewCell.m */,
 				0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */,
 				0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */,
+				0AF7FB18112A0D0D003B1978 /* EventTalkDateHeaderViewCell.h */,
+				0AF7FB19112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m */,
 			);
 			name = "Custom views";
 			sourceTree = "<group>";
@@ -712,6 +717,7 @@
 				0A9D7A81111A2C640037C5CD /* UserTalkCommentDetailModel.m in Sources */,
 				0A9D7A84111A2E460037C5CD /* UserEventCommentDetailModel.m in Sources */,
 				0AC4E4AB111EE58D0095B3DA /* CreditsViewController.m in Sources */,
+				0AF7FB1A112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

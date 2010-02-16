@@ -185,7 +185,6 @@
 		}
 		
 		//NSLog(@"Attending %i Authd %i Obj %@ type %@", edm.userAttend, edm.isAuthd, [event objectForKey:@"user_attending"], [[event objectForKey:@"user_attending"] class]);
-
 		
 		if (edm.active && !edm.pending && !edm.private && ((!limit) || (limit && edm.userAttend))) {
 			[elm addEvent:edm];
@@ -194,7 +193,7 @@
 		[edm release];
 	}
 	
-	[elm sort];
+	//[elm sort];
 	
 	[self.delegate gotEventListData:elm error:nil];
 	
