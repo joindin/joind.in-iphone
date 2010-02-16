@@ -20,5 +20,7 @@
 - (NSUInteger)getNumTalks;
 - (void)sort;
 - (void)sort:(BOOL)forwards;
+- (NSDictionary *)getTalksByDate;
+- (NSArray *)getTalksOnDate:(NSDate *)date;
 
 @end
