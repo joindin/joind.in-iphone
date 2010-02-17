@@ -229,10 +229,9 @@
 		
 		// Get date of first talk in this day
 		TalkDetailModel *tdm = [self.talks getTalkForDayAndRowByIndex:[indexPath section] rowIndex:0];
-		NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:tdm.given];
-		NSString *dateString = [NSString stringWithFormat:@"%d-%d-%d", [dateComponents day], [dateComponents month], [dateComponents year]];
-		
-		cell.dateLabel.text = dateString;
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
+		cell.dateLabel.text = [dateFormatter stringFromDate:tdm.given];
 		
 		return cell;
 		

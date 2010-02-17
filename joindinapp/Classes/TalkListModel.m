@@ -53,8 +53,9 @@
 	NSMutableDictionary *allDates = [[NSMutableDictionary alloc] initWithCapacity:1];
 	for (TalkDetailModel *tdm in self.talks) {
 		// First get the date
-		NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:tdm.given];
-		NSString *dateString = [NSString stringWithFormat:@"%d%d%d", [dateComponents year], [dateComponents month], [dateComponents day]];
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
+		NSString *dateString = [dateFormatter stringFromDate:tdm.given];
 		//NSLog(@"Addr of dateString: %i", &dateString);
 		
 		if ([allDates objectForKey:dateString] == nil) {
@@ -74,14 +75,11 @@
 	NSMutableArray *allTalks = [[NSMutableArray alloc] init];
 	
 	for (TalkDetailModel *tdm in self.talks) {
-		// First get the date of the talk
-		NSDateComponents *dateComponents1 = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:tdm.given];
-		NSString *dateString1 = [NSString stringWithFormat:@"%d%d%d", [dateComponents1 year], [dateComponents1 month], [dateComponents1 day]];
-		// Get the date to compare
-		NSDateComponents *dateComponents2 = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:date];
-		NSString *dateString2 = [NSString stringWithFormat:@"%d%d%d", [dateComponents2 year], [dateComponents2 month], [dateComponents2 day]];
 		
-		if ([dateString1 isEqualToString:dateString2]) {
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
+		
+		if ([[dateFormatter stringFromDate:tdm.given] isEqualToString:[dateFormatter stringFromDate:date]]) {
 			[allTalks addObject:tdm];
 		}
 	}
