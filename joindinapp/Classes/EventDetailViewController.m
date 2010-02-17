@@ -188,11 +188,7 @@
 		
 	} else {
 		
-		NSDictionary *allDates = [self.talks getTalksByDate];
-		NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
-		NSString *relevantDate = [dates objectAtIndex:[indexPath section]];
-		NSArray *talksOnDate = [allDates objectForKey:relevantDate];
-		TalkDetailModel *tdm = [talksOnDate objectAtIndex:([indexPath row] - 1)];
+		TalkDetailModel *tdm = [self.talks getTalkForDayAndRowByIndex:[indexPath section] rowIndex:([indexPath row] - 1)];
 		
 		TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] initWithNibName:@"TalkDetailView" bundle:nil];
 		talkDetailViewController.talk  = tdm;
@@ -228,12 +224,7 @@
 		[bg release];
 		
 		// Get date of first talk in this day
-		NSDictionary *allDates = [self.talks getTalksByDate];
-		NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
-		NSString *relevantDate = [dates objectAtIndex:[indexPath section]];
-		NSArray *talksOnDate = [allDates objectForKey:relevantDate];
-		
-		TalkDetailModel *tdm = [talksOnDate objectAtIndex:0];
+		TalkDetailModel *tdm = [self.talks getTalkForDayAndRowByIndex:[indexPath section] rowIndex:0];
 		NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:tdm.given];
 		NSString *dateString = [NSString stringWithFormat:@"%d-%d-%d", [dateComponents day], [dateComponents month], [dateComponents year]];
 		
@@ -244,12 +235,7 @@
 	} else {
 		
 		// Get relevant talk on relevant date
-		NSDictionary *allDates = [self.talks getTalksByDate];
-		NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
-		NSString *relevantDate = [dates objectAtIndex:[indexPath section]];
-		NSArray *talksOnDate = [allDates objectForKey:relevantDate];
-		
-		TalkDetailModel *tdm = [talksOnDate objectAtIndex:([indexPath row] - 1)];
+		TalkDetailModel *tdm = [self.talks getTalkForDayAndRowByIndex:[indexPath section] rowIndex:([indexPath row] - 1)];
 		
 		static NSString *CellIdentifier = @"EventTalkCommentCell";
 		
