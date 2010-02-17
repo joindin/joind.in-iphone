@@ -89,4 +89,14 @@
 	return allTalks;
 }
 
+- (TalkDetailModel *)getTalkForDayAndRowByIndex:(NSUInteger)dayIndex rowIndex:(NSUInteger)rowIndex {
+	NSDictionary *allDates = [self getTalksByDate];
+	NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	NSString *relevantDate = [dates objectAtIndex:dayIndex];
+	NSArray *talksOnDate = [allDates objectForKey:relevantDate];
+	
+	TalkDetailModel *tdm = [talksOnDate objectAtIndex:rowIndex];
+	return tdm;	
+}
+
 @end
