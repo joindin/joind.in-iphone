@@ -55,6 +55,8 @@
 	self.uiAttending = [UISwitch switchWithLeftText:@"yes" andRight:@" no"];
 	self.uiAttending.center = CGPointMake(263.0f, 258.0f);
 	[[self view] addSubview:self.uiAttending];
+	
+	[self view].backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -218,10 +220,12 @@
 		}
 		
 		// Set background color
+		/*
 		UIView *bg = [[UIView alloc] initWithFrame:cell.frame];
-		bg.backgroundColor = [UIColor blueColor]; // or any color
+		bg.backgroundColor = [UIColor groupTableViewBackgroundColor]; // or any color
 		cell.backgroundView = bg;
 		[bg release];
+		 */
 		
 		// Get date of first talk in this day
 		TalkDetailModel *tdm = [self.talks getTalkForDayAndRowByIndex:[indexPath section] rowIndex:0];
