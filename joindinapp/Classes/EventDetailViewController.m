@@ -232,6 +232,7 @@
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
 		cell.dateLabel.text = [dateFormatter stringFromDate:tdm.given];
+		[dateFormatter release];
 		
 		return cell;
 		
