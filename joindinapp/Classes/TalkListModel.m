@@ -24,6 +24,23 @@
 - (void)addTalk:(TalkDetailModel *)tdm {
 	[tdm retain];
 	[self.talks addObject:tdm];
+	
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
+	NSString *dateString = [dateFormatter stringFromDate:tdm.given];
+	
+	if ([self.talksByDate objectForKey:dateString] == nil) {
+		NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
+		[thing addObject:tdm];
+		[self.talksByDate setObject:thing forKey:dateString];
+		[thing release];
+	} else {
+		NSMutableArray *thing = [self.talksByDate objectForKey:dateString];
+		[thing addObject:tdm];
+	}
+	
+	[dateFormatter release];
+	
 }
 
 - (TalkDetailModel *)getTalkDetailModelAtIndex:(NSUInteger)idx {
@@ -52,28 +69,7 @@
 }
 
 - (NSDictionary *)getTalksByDate {
-	
-	// @todo: Add some caching here, as performance is terrible
-	NSMutableDictionary *allDates = [[[NSMutableDictionary alloc] initWithCapacity:1] autorelease];
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
-	for (TalkDetailModel *tdm in self.talks) {
-		// First get the date
-		NSString *dateString = [dateFormatter stringFromDate:tdm.given];
-		//NSLog(@"Addr of dateString: %i", &dateString);
-		
-		if ([allDates objectForKey:dateString] == nil) {
-			NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
-			[thing addObject:tdm];
-			[allDates setObject:thing forKey:dateString];
-			[thing release];
-		} else {
-			NSMutableArray *thing = [allDates objectForKey:dateString];
-			[thing addObject:tdm];
-		}
-	}
-	[dateFormatter release];
-	return allDates;
+	return self.talksByDate;
 }
 
 - (NSArray *)getTalksOnDate:(NSDate *)date {
