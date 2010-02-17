@@ -13,9 +13,11 @@
 @implementation TalkListModel
 
 @synthesize talks;
+@synthesize talksByDate;
 
 - (TalkListModel *)init {
 	self.talks = [NSMutableArray array];
+	self.talksByDate = [[NSMutableDictionary alloc] init];
 	return self;
 }
 
@@ -38,7 +40,7 @@
 		// Reverse the array
 		int n = [self.talks count];
 		for (int i=0; i<n/2; ++i) {
-			id c  = [[self.talks objectAtIndex:i] retain];
+			id c  = [self.talks objectAtIndex:i];
 			[self.talks replaceObjectAtIndex:i withObject:[self.talks objectAtIndex:n-i-1]];
 			[self.talks replaceObjectAtIndex:n-i-1 withObject:c];
 		}
@@ -50,11 +52,13 @@
 }
 
 - (NSDictionary *)getTalksByDate {
-	NSMutableDictionary *allDates = [[NSMutableDictionary alloc] initWithCapacity:1];
+	
+	// @todo: Add some caching here, as performance is terrible
+	NSMutableDictionary *allDates = [[[NSMutableDictionary alloc] initWithCapacity:1] autorelease];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
 	for (TalkDetailModel *tdm in self.talks) {
 		// First get the date
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
 		NSString *dateString = [dateFormatter stringFromDate:tdm.given];
 		//NSLog(@"Addr of dateString: %i", &dateString);
 		
@@ -62,27 +66,30 @@
 			NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
 			[thing addObject:tdm];
 			[allDates setObject:thing forKey:dateString];
+			[thing release];
 		} else {
 			NSMutableArray *thing = [allDates objectForKey:dateString];
 			[thing addObject:tdm];
 		}
 	}
+	[dateFormatter release];
 	return allDates;
 }
 
 - (NSArray *)getTalksOnDate:(NSDate *)date {
 	
-	NSMutableArray *allTalks = [[NSMutableArray alloc] init];
+	NSMutableArray *allTalks = [[[NSMutableArray alloc] init] autorelease];
+	
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
 	
 	for (TalkDetailModel *tdm in self.talks) {
-		
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
-		
 		if ([[dateFormatter stringFromDate:tdm.given] isEqualToString:[dateFormatter stringFromDate:date]]) {
 			[allTalks addObject:tdm];
 		}
 	}
+	
+	[dateFormatter release];
 	
 	return allTalks;
 }

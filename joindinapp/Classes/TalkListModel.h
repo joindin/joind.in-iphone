@@ -11,9 +11,11 @@
 
 @interface TalkListModel : NSObject {
 	NSMutableArray *talks;
+	NSMutableDictionary *talksByDate;
 }
 
 @property(nonatomic, retain) NSMutableArray *talks;
+@property(nonatomic, retain) NSMutableDictionary *talksByDate;
 
 - (void)addTalk:(TalkDetailModel *)tdm;
 - (TalkDetailModel *)getTalkDetailModelAtIndex:(NSUInteger)idx;
