@@ -52,6 +52,7 @@
 }
 
 - (void)sort:(BOOL)forwards {
+	
 	[self.talks sortUsingSelector:@selector(comparator:)];
 	if (!forwards) {
 		// Reverse the array
@@ -62,6 +63,26 @@
 			[self.talks replaceObjectAtIndex:n-i-1 withObject:c];
 		}
 	}
+	
+	// Re-index the array in talksByDate
+	self.talksByDate = [[NSMutableDictionary alloc] init];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
+	for (TalkDetailModel *tdm in self.talks) {
+		NSString *dateString = [dateFormatter stringFromDate:tdm.given];
+		if ([self.talksByDate objectForKey:dateString] == nil) {
+			NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
+			[thing addObject:tdm];
+			[self.talksByDate setObject:thing forKey:dateString];
+			[thing release];
+		} else {
+			NSMutableArray *thing = [self.talksByDate objectForKey:dateString];
+			[thing addObject:tdm];
+		}
+	}
+	[dateFormatter release];
+	
+	
 }
 
 - (NSUInteger)getNumTalks {

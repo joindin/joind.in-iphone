@@ -17,6 +17,7 @@
 	IBOutlet UILabel     *uiNumComments;
 	IBOutlet UIImageView *uiCommentBubble;
 	IBOutlet UIImageView *uiTalkType;
+	IBOutlet UILabel     *uiTime;
 }
 
 @property (nonatomic,retain) UIButton    *uiDetail;
@@ -26,5 +27,6 @@
 @property (nonatomic,retain) UILabel     *uiNumComments;
 @property (nonatomic,retain) UIImageView *uiCommentBubble;
 @property (nonatomic,retain) UIImageView *uiTalkType;
+@property (nonatomic,retain) UILabel     *uiTime;
 
 @end
