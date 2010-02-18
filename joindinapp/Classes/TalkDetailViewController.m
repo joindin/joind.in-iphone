@@ -62,6 +62,12 @@
 	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 	[outputFormatter setDateFormat:@"d MMM yyyy"];
 	NSString *dateGiven = [outputFormatter stringFromDate:self.talk.given];
+	
+	[outputFormatter setDateFormat:@"h:mma"];
+	NSString *timeGiven = [[outputFormatter stringFromDate:self.talk.given] lowercaseString];
+	if (![timeGiven isEqualToString:@"12:00am"]) {
+		dateGiven = [NSString stringWithFormat:@"%@ %@", dateGiven, timeGiven];
+	}
 	[outputFormatter release];	
 	
 	self.uiDate.text = dateGiven;
