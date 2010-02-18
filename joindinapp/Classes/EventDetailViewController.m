@@ -259,6 +259,13 @@
 		cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
 		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
 		
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"h:mma"];
+		cell.uiTime.text     = [[dateFormatter stringFromDate:tdm.given] lowercaseString];
+		if ([cell.uiTime.text isEqualToString:@"12:00am"]) {
+			cell.uiTime.text = @"";
+		}
+		
 		if ([tdm.type isEqualToString:@"Talk"]) {
 			cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
 		} else if ([tdm.type isEqualToString:@"Keynote"]) {

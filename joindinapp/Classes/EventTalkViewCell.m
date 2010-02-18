@@ -18,5 +18,6 @@
 @synthesize uiNumComments;
 @synthesize uiCommentBubble;
 @synthesize uiTalkType;
+@synthesize uiTime;
 
 @end
