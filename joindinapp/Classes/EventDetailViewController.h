@@ -32,11 +32,14 @@
 	IBOutlet UIButton *uiComments;
 	IBOutlet UIActivityIndicatorView *uiLoading;
 	IBOutlet UILabel  *uiHashtag;
+	
+	IBOutlet UIButton *uiHashtagButton;
 }
 
 - (IBAction)uiDescButtonPressed:(id)sender;
 - (IBAction)uiAttendingButtonPressed:(id)sender;
 - (IBAction)uiCommentsButtonPressed:(id)sender;
+- (IBAction)uiHashtagButtonPressed:(id)sender;
 
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error;
 - (void)gotEventAttend:(APIError *)err;
@@ -59,5 +62,7 @@
 @property (nonatomic, retain) UIButton *uiComments;
 @property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
 @property (nonatomic, retain) UILabel  *uiHashtag;
+
+@property (nonatomic, retain) UIButton *uiHashtagButton;
 
 @end
