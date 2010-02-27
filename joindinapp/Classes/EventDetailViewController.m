@@ -41,6 +41,7 @@
 @synthesize uiComments;
 @synthesize uiLoading;
 @synthesize uiHashtag;
+@synthesize uiHashtagButton;
 
 #pragma mark View loaders
 
@@ -111,6 +112,7 @@
 	[self.uiLoading stopAnimating];
 	// Set button label
 	NSString *btnLabel;
+	/*
 	if (edm.allowComments) {
 		if (edm.numComments > 0) {
 			btnLabel = @"View / add comments";
@@ -127,6 +129,7 @@
 			self.uiComments.enabled = NO;
 		}
 	}
+	 */btnLabel = @"Comments / Tweets / Photos";self.uiComments.enabled = YES;
 	self.uiComments.hidden = NO;
 	[self.uiComments setTitle:btnLabel forState:UIControlStateNormal];
 	[self.uiComments setTitle:btnLabel forState:UIControlStateHighlighted];
@@ -326,6 +329,9 @@
 	ecvc.event = self.event;
 	[self.navigationController pushViewController:ecvc animated:YES];
 	[ecvc release];
+}
+
+- (IBAction)uiHashtagButtonPressed:(id)sender {
 }
 
 #pragma mark Utility methods

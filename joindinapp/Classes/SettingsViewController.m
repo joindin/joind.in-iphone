@@ -20,6 +20,7 @@
 @synthesize uiLogout;
 @synthesize uiChecking;
 @synthesize uiContent;
+@synthesize uiLocalTime;
 @synthesize keyboardIsShowing;
 
 - (void)viewDidLoad {
@@ -55,9 +56,16 @@
 	self.uiContent.contentSize = CGSizeMake(self.uiContent.frame.size.width, self.uiContent.frame.size.height);
 	
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+	
+	if ([userPrefs stringForKey:@"timezonedisplay"] == nil) {
+		[userPrefs setObject:@"event" forKey:@"timezonedisplay"];
+		[userPrefs synchronize];
+	}
+	
 	self.uiUser.text      = [userPrefs stringForKey:@"username"];
 	self.uiPass.text      = [userPrefs stringForKey:@"password"];
 	self.uiLimitEvents.on = [userPrefs boolForKey:@"limitevents"];
+	self.uiLocalTime.on   = [[userPrefs stringForKey:@"timezonedisplay"] isEqualToString:@"event"];
 	
 }
 
@@ -123,6 +131,11 @@
 	[userPrefs setObject:self.uiUser.text    forKey:@"username"];
 	[userPrefs setObject:self.uiPass.text    forKey:@"password"];
 	[userPrefs setBool:self.uiLimitEvents.on forKey:@"limitevents"];
+	if (self.uiLocalTime.on) {
+		[userPrefs setObject:@"event" forKey:@"timezonedisplay"];
+	} else {
+		[userPrefs setObject:@"you"   forKey:@"timezonedisplay"];
+	}
 	[userPrefs synchronize];
 	//[APICaller clearCache];
 }

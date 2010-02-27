@@ -17,6 +17,7 @@
 	IBOutlet UIButton     *uiLogout;
 	IBOutlet UIActivityIndicatorView *uiChecking;
 	IBOutlet UIScrollView *uiContent;
+	IBOutlet UISwitch     *uiLocalTime;
 	
 	BOOL keyboardIsShowing;
 }
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) UIActivityIndicatorView *uiChecking;
 @property (nonatomic, retain) UIScrollView *uiContent;
 @property (nonatomic, assign) BOOL keyboardIsShowing;
+@property (nonatomic, retain) UISwitch     *uiLocalTime;
 
 - (IBAction) submitScreen:(id)sender;
 - (IBAction) logout:(id)sender;

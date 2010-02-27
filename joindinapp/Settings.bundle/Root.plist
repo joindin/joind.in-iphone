@@ -58,6 +58,32 @@
 			<key>DefaultValue</key>
 			<string></string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Display settings</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Display times</string>
+			<key>Key</key>
+			<string>timezonedisplay</string>
+			<key>DefaultValue</key>
+			<string>event</string>
+			<key>Values</key>
+			<array>
+				<string>event</string>
+				<string>you</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Local to event</string>
+				<string>Local to you</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -19,7 +19,8 @@
 @synthesize description;
 @synthesize active;
 @synthesize stub;
-@synthesize tzOffset;
+@synthesize tzCont;
+@synthesize tzPlace;
 @synthesize icon;
 @synthesize pending;
 @synthesize hashtag;

@@ -297,7 +297,7 @@
 					<object class="IBUILabel" id="155575891">
 						<reference key="NSNextResponder" ref="742448254"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{196, 47}, {114, 21}}</string>
+						<string key="NSFrame">{{190, 47}, {120, 21}}</string>
 						<reference key="NSSuperview" ref="742448254"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -313,7 +313,7 @@
 						<float key="IBUIMinimumFontSize">10</float>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 288}</string>
+				<string key="NSFrameSize">{320, 289}</string>
 				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="4236891"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -503,9 +503,9 @@
 							<reference ref="656828749"/>
 							<reference ref="1053090220"/>
 							<reference ref="181056820"/>
-							<reference ref="155575891"/>
 							<reference ref="982638234"/>
 							<reference ref="95806808"/>
+							<reference ref="155575891"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Table header view</string>
@@ -617,7 +617,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{418, 464}, {320, 247}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{638, 385}, {320, 288}}</string>
+					<string>{{638, 384}, {320, 289}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -647,7 +647,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">75</int>
+			<int key="maxID">78</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -662,9 +662,11 @@
 							<string>uiAttendingButtonPressed:</string>
 							<string>uiCommentsButtonPressed:</string>
 							<string>uiDescButtonPressed:</string>
+							<string>uiHashtagButtonPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -682,6 +684,7 @@
 							<string>uiDesc</string>
 							<string>uiDescButton</string>
 							<string>uiHashtag</string>
+							<string>uiHashtagButton</string>
 							<string>uiLoadTalksIndicator</string>
 							<string>uiLoading</string>
 							<string>uiLocation</string>
@@ -698,6 +701,7 @@
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UIActivityIndicatorView</string>
 							<string>UIActivityIndicatorView</string>
 							<string>UILabel</string>

@@ -70,10 +70,16 @@
 		edm.stub    = @"";
 	}
 	
-	if ([[event objectForKey:@"event_tz"] isKindOfClass:[NSString class]]) {
-		edm.tzOffset = [[event objectForKey:@"event_tz"] integerValue];
+	if ([[event objectForKey:@"event_tz_cont"] isKindOfClass:[NSString class]]) {
+		edm.tzCont  = [event objectForKey:@"event_tz_cont"];
 	} else {
-		edm.tzOffset = 0;
+		edm.tzCont  = @"";
+	}
+	
+	if ([[event objectForKey:@"event_tz_place"] isKindOfClass:[NSString class]]) {
+		edm.tzPlace = [event objectForKey:@"event_tz_place"];
+	} else {
+		edm.tzPlace = @"";
 	}
 	
 	if ([[event objectForKey:@"event_icon"] isKindOfClass:[NSString class]]) {

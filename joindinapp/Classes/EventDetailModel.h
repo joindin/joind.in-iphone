@@ -18,7 +18,8 @@
 	NSString   *description;
 	BOOL        active;
 	NSString   *stub;
-	NSInteger   tzOffset;
+	NSString   *tzCont;
+	NSString   *tzPlace;
 	NSString   *icon;
 	BOOL        pending;
 	NSString   *hashtag;
@@ -49,7 +50,8 @@
 @property (nonatomic, retain) NSString   *description;
 @property (nonatomic, assign) BOOL        active;
 @property (nonatomic, retain) NSString   *stub;
-@property (nonatomic, assign) NSInteger   tzOffset;
+@property (nonatomic, retain) NSString   *tzCont;
+@property (nonatomic, retain) NSString   *tzPlace;
 @property (nonatomic, retain) NSString   *icon;
 @property (nonatomic, assign) BOOL        pending;
 @property (nonatomic, retain) NSString   *hashtag;
