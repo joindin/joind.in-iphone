@@ -110,9 +110,13 @@
 		[alert show];
 		[alert release];
 	} else {
+		// Nip back to event screen
+		[self.navigationController popViewControllerAnimated:YES];
+		/* (doesn't seem to be re-init'ing the "Add comment" cell)
 		// Reload comments
 		TalkGetComments *t = [APICaller TalkGetComments:self];
 		[t call:self.talk];
+		 */
 	}
 }
 
@@ -217,7 +221,7 @@
 			return cell;
 		}
 	} else {
-		static NSString *CellIdentifier = @"NewCommentViewCell";
+		static NSString *CellIdentifier = @"NewCommentViewCellz";
 		
 		NewCommentViewCell *cell = (NewCommentViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {

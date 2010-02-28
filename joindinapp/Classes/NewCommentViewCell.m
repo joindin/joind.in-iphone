@@ -28,6 +28,12 @@
 											  delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
+	} else if ([self.uiComment.text isEqualToString:@"Type comment..."] || [self.uiComment.text isEqualToString:@""]) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)@"Please type a comment"
+													   delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[self.uiComment becomeFirstResponder];
+		[alert show];
+		[alert release];
 	} else {
 		self.uiSubmit.hidden = YES;
 		[self.commentDelegate submitComment:self.uiComment.text activityIndicator:self.uiActivity rating:self.rating];

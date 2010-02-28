@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EventDetailModel.h"
 
 @interface TalkDetailModel : NSObject {
 	NSString   *title;      // talk_title
@@ -51,5 +52,7 @@
 
 -(BOOL)hasFinished;
 -(NSComparisonResult)comparator:(TalkDetailModel *)otherModel;
+-(NSString *)getDateString:(EventDetailModel *)event;
+-(NSString *)getTimeString:(EventDetailModel *)event;
 
 @end

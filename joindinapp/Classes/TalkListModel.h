@@ -8,15 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "TalkDetailModel.h"
+#import "EventDetailModel.h"
 
 @interface TalkListModel : NSObject {
 	NSMutableArray *talks;
 	NSMutableDictionary *talksByDate;
+	EventDetailModel *event;
 }
 
 @property(nonatomic, retain) NSMutableArray *talks;
 @property(nonatomic, retain) NSMutableDictionary *talksByDate;
+@property(nonatomic, retain) EventDetailModel *event;
 
+- (id)initWithEvent:(EventDetailModel *)_edm;
 - (void)addTalk:(TalkDetailModel *)tdm;
 - (TalkDetailModel *)getTalkDetailModelAtIndex:(NSUInteger)idx;
 - (NSUInteger)getNumTalks;
