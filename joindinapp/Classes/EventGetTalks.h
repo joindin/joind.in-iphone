@@ -11,7 +11,10 @@
 #import "TalkListModel.h"
 
 @interface EventGetTalks : APICaller {
+	EventDetailModel *event;
 }
+
+@property (nonatomic, retain) EventDetailModel *event;
 
 - (void)call:(EventDetailModel *)event;
 - (void)gotData:(NSObject *)obj;

@@ -14,10 +14,12 @@
 
 @synthesize talks;
 @synthesize talksByDate;
+@synthesize event;
 
-- (TalkListModel *)init {
+- (id)initWithEvent:(EventDetailModel *)_edm {
 	self.talks = [NSMutableArray array];
 	self.talksByDate = [[NSMutableDictionary alloc] init];
+	self.event = _edm;
 	return self;
 }
 
@@ -25,9 +27,7 @@
 	[tdm retain];
 	[self.talks addObject:tdm];
 	
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
-	NSString *dateString = [dateFormatter stringFromDate:tdm.given];
+	NSString *dateString = [tdm getDateString:self.event];
 	
 	if ([self.talksByDate objectForKey:dateString] == nil) {
 		NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
@@ -38,8 +38,6 @@
 		NSMutableArray *thing = [self.talksByDate objectForKey:dateString];
 		[thing addObject:tdm];
 	}
-	
-	[dateFormatter release];
 	
 }
 
@@ -66,10 +64,8 @@
 	
 	// Re-index the array in talksByDate
 	self.talksByDate = [[NSMutableDictionary alloc] init];
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
 	for (TalkDetailModel *tdm in self.talks) {
-		NSString *dateString = [dateFormatter stringFromDate:tdm.given];
+		NSString *dateString = [tdm getDateString:self.event];
 		if ([self.talksByDate objectForKey:dateString] == nil) {
 			NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
 			[thing addObject:tdm];
@@ -80,8 +76,6 @@
 			[thing addObject:tdm];
 		}
 	}
-	[dateFormatter release];
-	
 	
 }
 
@@ -101,7 +95,7 @@
 	[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
 	
 	for (TalkDetailModel *tdm in self.talks) {
-		if ([[dateFormatter stringFromDate:tdm.given] isEqualToString:[dateFormatter stringFromDate:date]]) {
+		if ([[tdm getDateString:self.event] isEqualToString:[dateFormatter stringFromDate:date]]) {
 			[allTalks addObject:tdm];
 		}
 	}

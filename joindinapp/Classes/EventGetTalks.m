@@ -12,13 +12,15 @@
 #import "TalkDetailModel.h"
 
 @implementation EventGetTalks
+@synthesize event;
 
-- (void)call:(EventDetailModel *)event {
-	[self callAPI:@"event" action:@"gettalks" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"] needAuth:YES];
+- (void)call:(EventDetailModel *)_event {
+	[self callAPI:@"event" action:@"gettalks" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", _event.Id] forKey:@"event_id"] needAuth:YES];
+	self.event = _event;
 }
 
 - (void)gotData:(NSObject *)obj {
-	TalkListModel *tlm = [[[TalkListModel alloc] init] autorelease];
+	TalkListModel *tlm = [[[TalkListModel alloc] initWithEvent:self.event] autorelease];
 	
 	NSDictionary *d = (NSDictionary *)obj;
 	for (NSDictionary *talk in d) {

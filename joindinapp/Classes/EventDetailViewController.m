@@ -232,10 +232,7 @@
 		
 		// Get date of first talk in this day
 		TalkDetailModel *tdm = [self.talks getTalkForDayAndRowByIndex:[indexPath section] rowIndex:0];
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EEE d MMM yyyy"];
-		cell.dateLabel.text = [dateFormatter stringFromDate:tdm.given];
-		[dateFormatter release];
+	 	cell.dateLabel.text = [tdm getDateString:self.event];
 		
 		return cell;
 		
@@ -262,12 +259,7 @@
 		cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
 		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
 		
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"h:mma"];
-		cell.uiTime.text     = [[dateFormatter stringFromDate:tdm.given] lowercaseString];
-		if ([cell.uiTime.text isEqualToString:@"12:00am"]) {
-			cell.uiTime.text = @"";
-		}
+		cell.uiTime.text     = [tdm getTimeString:self.event];
 		
 		if ([tdm.type isEqualToString:@"Talk"]) {
 			cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
