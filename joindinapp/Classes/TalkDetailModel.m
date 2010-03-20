@@ -28,6 +28,12 @@
 @synthesize numComments;
 @synthesize lastComment;
 @synthesize allowComments;
+@synthesize tracks;
+
+-(id)init {
+	self.tracks = [[TracksListModel alloc] init];
+	return self;
+}
 
 -(BOOL)hasFinished {
 	return ([self.given compare:[NSDate dateWithTimeIntervalSinceNow:-86400]] == NSOrderedAscending);
@@ -63,6 +69,8 @@
 	NSInteger destinationGMTOffset = [destTZ secondsFromGMTForDate:self.given];
 	NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
 	
+	//NSLog(@"Dest offset [%d] Source offset [%d]", destinationGMTOffset, sourceGMTOffset);
+	
 	NSDate* destDate = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:self.given] autorelease];
 	return destDate;
 }
@@ -71,11 +79,16 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:format];
 	NSString *retval = [dateFormatter stringFromDate:[self getAdjustedDateGiven:event]];
+	[dateFormatter release];
  	return retval;
 }
 
 - (NSString *)getDateString:(EventDetailModel *)event {
 	return [self getFormattedDateString:event format:@"EEE d MMM yyyy"];
+}
+
+- (NSString *)getSortableDateString:(EventDetailModel *)event {
+	return [self getFormattedDateString:event format:@"yyyy-MM-dd"];
 }
 
 - (NSString *)getTimeString:(EventDetailModel *)event {

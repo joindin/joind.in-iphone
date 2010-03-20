@@ -27,7 +27,7 @@
 	[tdm retain];
 	[self.talks addObject:tdm];
 	
-	NSString *dateString = [tdm getDateString:self.event];
+	NSString *dateString = [tdm getSortableDateString:self.event];
 	
 	if ([self.talksByDate objectForKey:dateString] == nil) {
 		NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
@@ -65,7 +65,7 @@
 	// Re-index the array in talksByDate
 	self.talksByDate = [[NSMutableDictionary alloc] init];
 	for (TalkDetailModel *tdm in self.talks) {
-		NSString *dateString = [tdm getDateString:self.event];
+		NSString *dateString = [tdm getSortableDateString:self.event];
 		if ([self.talksByDate objectForKey:dateString] == nil) {
 			NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
 			[thing addObject:tdm];
@@ -76,7 +76,7 @@
 			[thing addObject:tdm];
 		}
 	}
-	
+		
 }
 
 - (NSUInteger)getNumTalks {
@@ -87,6 +87,7 @@
 	return self.talksByDate;
 }
 
+/*
 - (NSArray *)getTalksOnDate:(NSDate *)date {
 	
 	NSMutableArray *allTalks = [[[NSMutableArray alloc] init] autorelease];
@@ -104,8 +105,10 @@
 	
 	return allTalks;
 }
+*/
 
 - (TalkDetailModel *)getTalkForDayAndRowByIndex:(NSUInteger)dayIndex rowIndex:(NSUInteger)rowIndex {
+	
 	NSDictionary *allDates = [self getTalksByDate];
 	NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
 	NSString *relevantDate = [dates objectAtIndex:dayIndex];

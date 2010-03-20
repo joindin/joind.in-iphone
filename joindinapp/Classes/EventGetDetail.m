@@ -150,6 +150,42 @@
 		edm.numComments = 0;
 	}
 	
+	
+	if ([[event objectForKey:@"tracks"] isKindOfClass:[NSArray class]]) {
+		NSArray *tks = [event objectForKey:@"tracks"];
+		TrackDetailModel *tkdm;
+		for (NSDictionary *tk in tks) {
+			tkdm = [[TrackDetailModel alloc] init];
+			
+			if ([[tk objectForKey:@"track_name"] isKindOfClass:[NSString class]]) {
+				tkdm.name = [tk objectForKey:@"track_name"];
+			} else {
+				tkdm.name = @"";
+			}
+			
+			if ([[tk objectForKey:@"track_desc"] isKindOfClass:[NSString class]]) {
+				tkdm.desc = [tk objectForKey:@"track_desc"];
+			} else {
+				tkdm.desc = @"";
+			}
+			
+			if ([[tk objectForKey:@"track_color"] isKindOfClass:[NSString class]]) {
+				tkdm.color = [tk objectForKey:@"track_color"];
+			} else {
+				tkdm.color = @"";
+			}
+			
+			if ([[tk objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
+				tkdm.Id = [[tk objectForKey:@"ID"] integerValue];
+			} else {
+				tkdm.Id = 0;
+			}
+			
+			[edm.tracks addTrack:tkdm];
+			[tkdm release];
+		}
+	}
+	
 	// User attending logic is a bit weird in the API - there appears to be 3 possible responses:
 	// 1     = "User logged in, user attending event"
 	// 0     = "User not logged in"
@@ -180,6 +216,8 @@
 		}
 		
 	}
+	
+	NSLog(@"Tracks are [%d]", [edm.tracks getNumTracks]);
 	
 	[self.delegate gotEventDetailData:edm error:nil];
 	

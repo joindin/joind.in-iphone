@@ -7,7 +7,7 @@
 //
 
 #import "EventDetailModel.h"
-
+#import "TracksListModel.h"
 
 @implementation EventDetailModel
 
@@ -34,6 +34,12 @@
 @synthesize allowComments;
 @synthesize isAuthd;
 @synthesize userAttend;
+@synthesize tracks;
+
+-(id)init {
+	self.tracks = [[TracksListModel alloc] init];
+	return self;
+}
 
 -(BOOL)hasFinished {
 	return ([self.end compare:[NSDate date]] == NSOrderedAscending);
@@ -41,6 +47,10 @@
 
 -(NSComparisonResult)comparator:(EventDetailModel *)otherModel {
 	return [self.start compare:otherModel.start];
+}
+
+-(BOOL)hasTracks {
+	return ([self.tracks getNumTracks] > 0);
 }
 
 @end

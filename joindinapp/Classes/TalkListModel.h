@@ -27,7 +27,7 @@
 - (void)sort;
 - (void)sort:(BOOL)forwards;
 - (NSDictionary *)getTalksByDate;
-- (NSArray *)getTalksOnDate:(NSDate *)date;
+//- (NSArray *)getTalksOnDate:(NSDate *)date;
 - (TalkDetailModel *)getTalkForDayAndRowByIndex:(NSUInteger)dayIndex rowIndex:(NSUInteger)rowIndex;
 
 @end

@@ -19,6 +19,7 @@
 #import "EventCommentsViewController.h"
 #import "EventGetDetail.h"
 #import "EventTalkViewCell.h"
+#import "EventTalkViewCellWithTrack.h"
 #import "EventTalkDateHeaderViewCell.h"
 #import "UserGetComments.h"
 #import <UIKit/UIKit.h>
@@ -179,7 +180,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
 	NSDictionary *allDates = [self.talks getTalksByDate];
-	NSArray *dates = [[allDates allKeys] sortedArrayUsingSelector:@selector(compare:)];
+	NSArray *allKeys = [allDates allKeys];
+	NSArray *dates = [allKeys sortedArrayUsingSelector:@selector(compare:)];
 	NSString *relevantDate = [dates objectAtIndex:section];
 	NSArray *talksOnDate = [allDates objectForKey:relevantDate];
 	
@@ -241,47 +243,94 @@
 		// Get relevant talk on relevant date
 		TalkDetailModel *tdm = [self.talks getTalkForDayAndRowByIndex:[indexPath section] rowIndex:([indexPath row] - 1)];
 		
-		static NSString *CellIdentifier = @"EventTalkCommentCell";
+		if ([self.event hasTracks]) {
 		
-		EventTalkViewCell *cell = (EventTalkViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil) {
-			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTalkCell" owner:nil options:nil];
-			for (id currentObject in topLevelObjects) {
-				if ([currentObject isKindOfClass:[EventTalkViewCell class]]) {
-					cell = (EventTalkViewCell *)currentObject;
-					break;
+			static NSString *CellIdentifier = @"EventTalkViewCellWithTrack";
+			
+			EventTalkViewCellWithTrack *cell = (EventTalkViewCellWithTrack *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTalkCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[EventTalkViewCellWithTrack class]]) {
+						cell = (EventTalkViewCellWithTrack *)currentObject;
+						break;
+					}
 				}
 			}
-		}
-		
-		cell.uiTalkName.text = tdm.title;
-		cell.uiSpeaker.text  = tdm.speaker;
-		cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
-		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
-		
-		cell.uiTime.text     = [tdm getTimeString:self.event];
-		
-		if ([tdm.type isEqualToString:@"Talk"]) {
-			cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
-		} else if ([tdm.type isEqualToString:@"Keynote"]) {
-			cell.uiTalkType.image  = [UIImage imageNamed:@"keynote.gif"];
-		} else if ([tdm.type isEqualToString:@"Social Event"]) {
-			cell.uiTalkType.image  = [UIImage imageNamed:@"social-event.gif"];
-		} else if ([tdm.type isEqualToString:@"Event Related"]) {
-			cell.uiTalkType.image  = [UIImage imageNamed:@"workshop.gif"];
+			
+			cell.uiTalkName.text = tdm.title;
+			cell.uiSpeaker.text  = tdm.speaker;
+			cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
+			cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+			
+			cell.uiTime.text     = [tdm getTimeString:self.event];
+			
+			if ([tdm.type isEqualToString:@"Talk"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
+			} else if ([tdm.type isEqualToString:@"Keynote"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"keynote.gif"];
+			} else if ([tdm.type isEqualToString:@"Social Event"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"social-event.gif"];
+			} else if ([tdm.type isEqualToString:@"Event Related"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"workshop.gif"];
+			} else {
+				cell.uiTalkType.image  = nil;
+			}
+			
+			UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
+			
+			if (utcdm == nil) {
+				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
+			} else {
+				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
+			}
+			
+			cell.uiTracks.text = [tdm.tracks getStringTrackList];
+			
+			return cell;
 		} else {
-			cell.uiTalkType.image  = nil;
+			static NSString *CellIdentifier = @"EventTalkViewCell";
+			
+			EventTalkViewCell *cell = (EventTalkViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EventTalkCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[EventTalkViewCell class]]) {
+						cell = (EventTalkViewCell *)currentObject;
+						break;
+					}
+				}
+			}
+			
+			cell.uiTalkName.text = tdm.title;
+			cell.uiSpeaker.text  = tdm.speaker;
+			cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
+			cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+			
+			cell.uiTime.text     = [tdm getTimeString:self.event];
+			
+			if ([tdm.type isEqualToString:@"Talk"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"talk.gif"];
+			} else if ([tdm.type isEqualToString:@"Keynote"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"keynote.gif"];
+			} else if ([tdm.type isEqualToString:@"Social Event"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"social-event.gif"];
+			} else if ([tdm.type isEqualToString:@"Event Related"]) {
+				cell.uiTalkType.image  = [UIImage imageNamed:@"workshop.gif"];
+			} else {
+				cell.uiTalkType.image  = nil;
+			}
+			
+			UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
+			
+			if (utcdm == nil) {
+				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
+			} else {
+				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
+			}
+			
+			return cell;
 		}
-		
-		UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
-		
-		if (utcdm == nil) {
-			cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
-		} else {
-			cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
-		}
-		
-		return cell;
 	}
 	
 }
@@ -291,7 +340,11 @@
 	if ([indexPath row] == 0) {
 		return 17.0f;
 	} else {
-		return 45.0f;
+		if ([self.event hasTracks]) {
+			return 60.0f;
+		} else {
+			return 45.0f;
+		}
 	}
 }
 

@@ -97,7 +97,7 @@
 					<object class="IBUITextView" id="624397399">
 						<reference key="NSNextResponder" ref="195400931"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 154}, {300, 262}}</string>
+						<string key="NSFrame">{{10, 165}, {300, 251}}</string>
 						<reference key="NSSuperview" ref="195400931"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -423,7 +423,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{629, 265}, {320, 480}}</string>
+					<string>{{624, 169}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
