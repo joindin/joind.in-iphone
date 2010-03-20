@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "TracksListModel.h"
 
 @interface EventDetailModel : NSObject {
 	NSString   *name;
@@ -31,6 +31,7 @@
 	NSUInteger  numAttend;
 	NSUInteger  numComments;
 	BOOL        allowComments;
+	TracksListModel *tracks;
 
 	// Auth'd user details
 	BOOL        isAuthd;
@@ -65,8 +66,11 @@
 @property (nonatomic, assign) BOOL        allowComments;
 @property (nonatomic, assign) BOOL        isAuthd;
 @property (nonatomic, assign) BOOL        userAttend;
+@property (nonatomic, retain) TracksListModel    *tracks;
 
+-(id)init;
 -(BOOL)hasFinished;
 -(NSComparisonResult)comparator:(EventDetailModel *)otherModel;
+-(BOOL)hasTracks;
 
 @end

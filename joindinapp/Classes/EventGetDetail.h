@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "APICaller.h"
 #import "EventDetailModel.h"
-
+#import "TracksListModel.h"
 
 @interface EventGetDetail : APICaller {
 

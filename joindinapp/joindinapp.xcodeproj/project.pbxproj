@@ -81,6 +81,9 @@
 		0AB4A6D610EE0BBC003A48FC /* APICaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A6D510EE0BBC003A48FC /* APICaller.m */; };
 		0AC4E4AB111EE58D0095B3DA /* CreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4E4A9111EE58D0095B3DA /* CreditsViewController.m */; };
 		0AC4E4AC111EE58D0095B3DA /* CreditsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4E4AA111EE58D0095B3DA /* CreditsView.xib */; };
+		0ACE785E1155589600B02BEC /* EventTalkViewCellWithTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE785D1155589600B02BEC /* EventTalkViewCellWithTrack.m */; };
+		0ACE78A511555DFC00B02BEC /* TracksListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE78A411555DFC00B02BEC /* TracksListModel.m */; };
+		0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE78B7115565D500B02BEC /* TrackDetailModel.m */; };
 		0AE857AA10F024A5002C4C98 /* rating-0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A410F024A5002C4C98 /* rating-0.gif */; };
 		0AE857AB10F024A5002C4C98 /* rating-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A510F024A5002C4C98 /* rating-1.gif */; };
 		0AE857AC10F024A5002C4C98 /* rating-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A610F024A5002C4C98 /* rating-2.gif */; };
@@ -232,6 +235,12 @@
 		0AC4E4A8111EE58D0095B3DA /* CreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsViewController.h; sourceTree = "<group>"; };
 		0AC4E4A9111EE58D0095B3DA /* CreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditsViewController.m; sourceTree = "<group>"; };
 		0AC4E4AA111EE58D0095B3DA /* CreditsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CreditsView.xib; path = Classes/CreditsView.xib; sourceTree = "<group>"; };
+		0ACE785C1155589600B02BEC /* EventTalkViewCellWithTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTalkViewCellWithTrack.h; sourceTree = "<group>"; };
+		0ACE785D1155589600B02BEC /* EventTalkViewCellWithTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTalkViewCellWithTrack.m; sourceTree = "<group>"; };
+		0ACE78A311555DFC00B02BEC /* TracksListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksListModel.h; sourceTree = "<group>"; };
+		0ACE78A411555DFC00B02BEC /* TracksListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksListModel.m; sourceTree = "<group>"; };
+		0ACE78B6115565D500B02BEC /* TrackDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailModel.h; sourceTree = "<group>"; };
+		0ACE78B7115565D500B02BEC /* TrackDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackDetailModel.m; sourceTree = "<group>"; };
 		0AE857A410F024A5002C4C98 /* rating-0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-0.gif"; sourceTree = "<group>"; };
 		0AE857A510F024A5002C4C98 /* rating-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-1.gif"; sourceTree = "<group>"; };
 		0AE857A610F024A5002C4C98 /* rating-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-2.gif"; sourceTree = "<group>"; };
@@ -365,8 +374,12 @@
 			children = (
 				0AA90D111110DD1700301602 /* EventCommentsViewCell.h */,
 				0AA90D121110DD1700301602 /* EventCommentsViewCell.m */,
+				0AF7FB18112A0D0D003B1978 /* EventTalkDateHeaderViewCell.h */,
+				0AF7FB19112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m */,
 				0A9D7872111771890037C5CD /* EventTalkViewCell.h */,
 				0A9D7873111771890037C5CD /* EventTalkViewCell.m */,
+				0ACE785C1155589600B02BEC /* EventTalkViewCellWithTrack.h */,
+				0ACE785D1155589600B02BEC /* EventTalkViewCellWithTrack.m */,
 				0A94C04310FBE3F000CC32C0 /* NewCommentViewCell.h */,
 				0A94C04410FBE3F000CC32C0 /* NewCommentViewCell.m */,
 				0AA90D0C1110D8CD00301602 /* NewEventCommentViewCell.h */,
@@ -375,8 +388,6 @@
 				0A9D7943111794080037C5CD /* TalkCommentsLoadingViewCell.m */,
 				0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */,
 				0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */,
-				0AF7FB18112A0D0D003B1978 /* EventTalkDateHeaderViewCell.h */,
-				0AF7FB19112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m */,
 			);
 			name = "Custom views";
 			sourceTree = "<group>";
@@ -420,6 +431,10 @@
 				0A7DED5110EE79200028D49B /* TalkDetailModel.m */,
 				0A7DED4D10EE79160028D49B /* TalkListModel.h */,
 				0A7DED4E10EE79160028D49B /* TalkListModel.m */,
+				0ACE78B6115565D500B02BEC /* TrackDetailModel.h */,
+				0ACE78B7115565D500B02BEC /* TrackDetailModel.m */,
+				0ACE78A311555DFC00B02BEC /* TracksListModel.h */,
+				0ACE78A411555DFC00B02BEC /* TracksListModel.m */,
 				0A9D7A45111A1F4A0037C5CD /* UserCommentListModel.h */,
 				0A9D7A46111A1F4A0037C5CD /* UserCommentListModel.m */,
 				0A9D7A42111A1F3C0037C5CD /* UserCommentDetailModel.h */,
@@ -718,6 +733,9 @@
 				0A9D7A84111A2E460037C5CD /* UserEventCommentDetailModel.m in Sources */,
 				0AC4E4AB111EE58D0095B3DA /* CreditsViewController.m in Sources */,
 				0AF7FB1A112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m in Sources */,
+				0ACE785E1155589600B02BEC /* EventTalkViewCellWithTrack.m in Sources */,
+				0ACE78A511555DFC00B02BEC /* TracksListModel.m in Sources */,
+				0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

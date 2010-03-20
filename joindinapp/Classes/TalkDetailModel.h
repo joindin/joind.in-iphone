@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "EventDetailModel.h"
+#import "TracksListModel.h"
 
 @interface TalkDetailModel : NSObject {
 	NSString   *title;      // talk_title
@@ -29,6 +30,7 @@
 	NSUInteger  numComments;// ccount or comment_count
 	NSDate     *lastComment;// last_comment_date
 	BOOL        allowComments; // allow_comments
+	TracksListModel *tracks; // tracks (array)
 }
 
 @property (nonatomic, retain) NSString   *title;
@@ -49,10 +51,13 @@
 @property (nonatomic, assign) NSUInteger  numComments;
 @property (nonatomic, retain) NSDate     *lastComment;
 @property (nonatomic, assign) BOOL        allowComments;
+@property (nonatomic, retain) TracksListModel *tracks;
 
+-(id)init;
 -(BOOL)hasFinished;
 -(NSComparisonResult)comparator:(TalkDetailModel *)otherModel;
 -(NSString *)getDateString:(EventDetailModel *)event;
+-(NSString *)getSortableDateString:(EventDetailModel *)event;
 -(NSString *)getTimeString:(EventDetailModel *)event;
 
 @end
