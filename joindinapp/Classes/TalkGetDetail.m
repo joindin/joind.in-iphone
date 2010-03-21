@@ -132,6 +132,41 @@
 		tdm.allowComments = NO;
 	}
 	
+	if ([[talk objectForKey:@"tracks"] isKindOfClass:[NSArray class]]) {
+		NSArray *tks = [talk objectForKey:@"tracks"];
+		TrackDetailModel *tkdm;
+		for (NSDictionary *tk in tks) {
+			tkdm = [[TrackDetailModel alloc] init];
+			
+			if ([[tk objectForKey:@"track_name"] isKindOfClass:[NSString class]]) {
+				tkdm.name = [tk objectForKey:@"track_name"];
+			} else {
+				tkdm.name = @"";
+			}
+			
+			if ([[tk objectForKey:@"track_desc"] isKindOfClass:[NSString class]]) {
+				tkdm.desc = [tk objectForKey:@"track_desc"];
+			} else {
+				tkdm.desc = @"";
+			}
+			
+			if ([[tk objectForKey:@"track_color"] isKindOfClass:[NSString class]]) {
+				tkdm.color = [tk objectForKey:@"track_color"];
+			} else {
+				tkdm.color = @"";
+			}
+			
+			if ([[tk objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
+				tkdm.Id = [[tk objectForKey:@"ID"] integerValue];
+			} else {
+				tkdm.Id = 0;
+			}
+			
+			[tdm.tracks addTrack:tkdm];
+			[tkdm release];
+		}
+	}
+	
 	[self.delegate gotTalkDetailData:tdm error:nil];
 	[tdm release];
 
