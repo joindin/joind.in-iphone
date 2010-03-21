@@ -25,6 +25,7 @@
 @synthesize uiNotRated;
 @synthesize uiNumComments;
 @synthesize uiLoading;
+@synthesize uiTracks;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -38,6 +39,7 @@
 	self.uiNumComments.hidden = YES;
 	self.uiComments.hidden    = YES;
 	self.uiComments.enabled   = YES;
+	self.uiTracks.hidden      = YES;
 
 	TalkGetDetail *t = [APICaller TalkGetDetail:self];
 	[t call:self.talk.Id];
@@ -128,6 +130,13 @@
 			self.uiRating.hidden   = YES;
 		}
 		
+		if ([self.event hasTracks]) {
+			self.uiTracks.text = [self.talk.tracks getStringTrackList];
+			self.uiTracks.hidden = NO;
+		} else {
+			self.uiTracks.text = @"";
+		}
+		
 	} else {
 		
 		self.uiRating.hidden      = YES;
@@ -135,6 +144,7 @@
 		self.uiNumComments.hidden = YES;
 		self.uiComments.hidden    = YES;
 		self.uiComments.enabled   = YES;
+		self.uiTracks.hidden      = YES;
 		
 	}
 	
