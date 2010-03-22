@@ -41,8 +41,16 @@
 	return self;
 }
 
+-(BOOL)isNowOn {
+	return ([self hasStarted] && ![self hasFinished]);
+}
+
 -(BOOL)hasFinished {
 	return ([self.end compare:[NSDate date]] == NSOrderedAscending);
+}
+
+-(BOOL)hasStarted {
+	return ([self.start compare:[NSDate date]] == NSOrderedAscending);
 }
 
 -(NSComparisonResult)comparator:(EventDetailModel *)otherModel {

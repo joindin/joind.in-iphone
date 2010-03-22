@@ -69,7 +69,9 @@
 @property (nonatomic, retain) TracksListModel    *tracks;
 
 -(id)init;
+-(BOOL)isNowOn;
 -(BOOL)hasFinished;
+-(BOOL)hasStarted;
 -(NSComparisonResult)comparator:(EventDetailModel *)otherModel;
 -(BOOL)hasTracks;
 

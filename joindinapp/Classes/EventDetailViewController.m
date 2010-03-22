@@ -14,6 +14,7 @@
 #import "APICaller.h"
 #import "EventGetTalks.h"
 #import "SettingsViewController.h"
+#import "NowNextViewController.h"
 #import "EventAttend.h"
 #import "UISwitch-Extended.h"
 #import "EventCommentsViewController.h"
@@ -105,6 +106,9 @@
 	UserGetComments *u = [APICaller UserGetComments:self];
 	[u call:nil];
 	
+	if ([self.event isNowOn]) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Now/next" style:UIBarButtonItemStylePlain target:self action:@selector(nowNextBtnPressed)];
+	}
 	
 }
 
@@ -113,7 +117,7 @@
 	[self.uiLoading stopAnimating];
 	// Set button label
 	NSString *btnLabel;
-	/*
+	
 	if (edm.allowComments) {
 		if (edm.numComments > 0) {
 			btnLabel = @"View / add comments";
@@ -130,10 +134,19 @@
 			self.uiComments.enabled = NO;
 		}
 	}
-	 */btnLabel = @"Comments / Tweets / Photos";self.uiComments.enabled = YES;
+	//btnLabel = @"Comments / Tweets / Photos";self.uiComments.enabled = YES;
 	self.uiComments.hidden = NO;
 	[self.uiComments setTitle:btnLabel forState:UIControlStateNormal];
 	[self.uiComments setTitle:btnLabel forState:UIControlStateHighlighted];
+	
+}
+
+- (void)nowNextBtnPressed {
+	NowNextViewController *nowNextViewController = [[NowNextViewController alloc] initWithNibName:@"NowNextView" bundle:nil];
+	nowNextViewController.event = self.event;
+	nowNextViewController.talks = self.talks;
+	[self.navigationController pushViewController:nowNextViewController animated:YES];
+	[nowNextViewController release];
 }
 
 - (void)setupAttending {
@@ -287,6 +300,10 @@
 			
 			cell.uiTracks.text = [tdm.tracks getStringTrackList];
 			
+			if ([tdm onNow]) {
+				cell.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
+			}
+
 			return cell;
 		} else {
 			static NSString *CellIdentifier = @"EventTalkViewCell";

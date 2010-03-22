@@ -31,6 +31,7 @@
 	NSDate     *lastComment;// last_comment_date
 	BOOL        allowComments; // allow_comments
 	TracksListModel *tracks; // tracks (array)
+	NSString   *nowNext;    // now_next
 }
 
 @property (nonatomic, retain) NSString   *title;
@@ -52,6 +53,7 @@
 @property (nonatomic, retain) NSDate     *lastComment;
 @property (nonatomic, assign) BOOL        allowComments;
 @property (nonatomic, retain) TracksListModel *tracks;
+@property (nonatomic, retain) NSString   *nowNext;
 
 -(id)init;
 -(BOOL)hasFinished;
@@ -59,5 +61,7 @@
 -(NSString *)getDateString:(EventDetailModel *)event;
 -(NSString *)getSortableDateString:(EventDetailModel *)event;
 -(NSString *)getTimeString:(EventDetailModel *)event;
+-(BOOL)onNow;
+-(BOOL)onNext;
 
 @end
