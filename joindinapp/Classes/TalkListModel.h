@@ -14,11 +14,15 @@
 	NSMutableArray *talks;
 	NSMutableDictionary *talksByDate;
 	EventDetailModel *event;
+	NSMutableArray *talksNow;
+	NSMutableArray *talksNext;
 }
 
 @property(nonatomic, retain) NSMutableArray *talks;
 @property(nonatomic, retain) NSMutableDictionary *talksByDate;
 @property(nonatomic, retain) EventDetailModel *event;
+@property(nonatomic, retain) NSMutableArray *talksNow;
+@property(nonatomic, retain) NSMutableArray *talksNext;
 
 - (id)initWithEvent:(EventDetailModel *)_edm;
 - (void)addTalk:(TalkDetailModel *)tdm;

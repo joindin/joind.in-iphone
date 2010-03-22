@@ -29,6 +29,7 @@
 @synthesize lastComment;
 @synthesize allowComments;
 @synthesize tracks;
+@synthesize nowNext;
 
 -(id)init {
 	self.tracks = [[TracksListModel alloc] init];
@@ -97,6 +98,14 @@
 		retval = @"";
 	}
 	return retval;
+}
+
+- (BOOL)onNow {
+	return [self.nowNext isEqualToString:@"now"];
+}
+
+- (BOOL)onNext {
+	return [self.nowNext isEqualToString:@"next"];
 }
 
 @end

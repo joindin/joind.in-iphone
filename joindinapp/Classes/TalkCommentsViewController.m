@@ -100,7 +100,7 @@
 			} else {
 				[msg appendString:error.msg];
 			}
-			NSLog(@"Error string %@", error.msg);
+			//NSLog(@"Error string %@", error.msg);
 			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg 
 											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			// Reload comments

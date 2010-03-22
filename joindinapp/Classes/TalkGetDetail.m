@@ -132,6 +132,12 @@
 		tdm.allowComments = NO;
 	}
 	
+	if ([[talk objectForKey:@"now_next"] isKindOfClass:[NSString class]]) {
+		tdm.nowNext       = [[talk objectForKey:@"now_next"] lowercaseString];
+	} else {
+		tdm.nowNext       = @"";
+	}
+	
 	if ([[talk objectForKey:@"tracks"] isKindOfClass:[NSArray class]]) {
 		NSArray *tks = [talk objectForKey:@"tracks"];
 		TrackDetailModel *tkdm;

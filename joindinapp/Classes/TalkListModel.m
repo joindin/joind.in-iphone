@@ -15,11 +15,15 @@
 @synthesize talks;
 @synthesize talksByDate;
 @synthesize event;
+@synthesize talksNow;
+@synthesize talksNext;
 
 - (id)initWithEvent:(EventDetailModel *)_edm {
 	self.talks = [NSMutableArray array];
 	self.talksByDate = [[NSMutableDictionary alloc] init];
 	self.event = _edm;
+	self.talksNow  = [NSMutableArray array];
+	self.talksNext = [NSMutableArray array];
 	return self;
 }
 
@@ -37,6 +41,13 @@
 	} else {
 		NSMutableArray *thing = [self.talksByDate objectForKey:dateString];
 		[thing addObject:tdm];
+	}
+	
+	if ([tdm onNow]) {
+		[self.talksNow addObject:tdm];
+	}
+	if ([tdm onNext]) {
+		[self.talksNext addObject:tdm];
 	}
 	
 }

@@ -84,6 +84,8 @@
 		0ACE785E1155589600B02BEC /* EventTalkViewCellWithTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE785D1155589600B02BEC /* EventTalkViewCellWithTrack.m */; };
 		0ACE78A511555DFC00B02BEC /* TracksListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE78A411555DFC00B02BEC /* TracksListModel.m */; };
 		0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE78B7115565D500B02BEC /* TrackDetailModel.m */; };
+		0ACE7AA81156E71800B02BEC /* NowNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE7AA61156E71800B02BEC /* NowNextViewController.m */; };
+		0ACE7AA91156E71800B02BEC /* NowNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ACE7AA71156E71800B02BEC /* NowNextView.xib */; };
 		0AE857AA10F024A5002C4C98 /* rating-0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A410F024A5002C4C98 /* rating-0.gif */; };
 		0AE857AB10F024A5002C4C98 /* rating-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A510F024A5002C4C98 /* rating-1.gif */; };
 		0AE857AC10F024A5002C4C98 /* rating-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A610F024A5002C4C98 /* rating-2.gif */; };
@@ -241,6 +243,9 @@
 		0ACE78A411555DFC00B02BEC /* TracksListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksListModel.m; sourceTree = "<group>"; };
 		0ACE78B6115565D500B02BEC /* TrackDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailModel.h; sourceTree = "<group>"; };
 		0ACE78B7115565D500B02BEC /* TrackDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackDetailModel.m; sourceTree = "<group>"; };
+		0ACE7AA51156E71800B02BEC /* NowNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowNextViewController.h; sourceTree = "<group>"; };
+		0ACE7AA61156E71800B02BEC /* NowNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowNextViewController.m; sourceTree = "<group>"; };
+		0ACE7AA71156E71800B02BEC /* NowNextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NowNextView.xib; path = Classes/NowNextView.xib; sourceTree = "<group>"; };
 		0AE857A410F024A5002C4C98 /* rating-0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-0.gif"; sourceTree = "<group>"; };
 		0AE857A510F024A5002C4C98 /* rating-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-1.gif"; sourceTree = "<group>"; };
 		0AE857A610F024A5002C4C98 /* rating-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-2.gif"; sourceTree = "<group>"; };
@@ -357,6 +362,8 @@
 				0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */,
 				28C286DF0D94DF7D0034E888 /* EventListViewController.h */,
 				28C286E00D94DF7D0034E888 /* EventListViewController.m */,
+				0ACE7AA51156E71800B02BEC /* NowNextViewController.h */,
+				0ACE7AA61156E71800B02BEC /* NowNextViewController.m */,
 				0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */,
 				0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */,
 				0A7DF2A210F00A560028D49B /* SplashScreenViewController.h */,
@@ -502,6 +509,7 @@
 				28F335F01007B36200424DE2 /* EventListView.xib */,
 				0A9D789F111777560037C5CD /* EventTalkCell.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				0ACE7AA71156E71800B02BEC /* NowNextView.xib */,
 				0A41E10410F54C8B00FBFE86 /* SettingsView.xib */,
 				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
 				0A94BF3110F96D8200CC32C0 /* TalkCommentsCell.xib */,
@@ -669,6 +677,7 @@
 				0AEE471111286D93009FE0BE /* workshop.gif in Resources */,
 				0AF7FAB1112876BA003B1978 /* joindin_iphone_large.jpg in Resources */,
 				0AF7FAB2112876BA003B1978 /* joindin_iphone_small.jpg in Resources */,
+				0ACE7AA91156E71800B02BEC /* NowNextView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +745,7 @@
 				0ACE785E1155589600B02BEC /* EventTalkViewCellWithTrack.m in Sources */,
 				0ACE78A511555DFC00B02BEC /* TracksListModel.m in Sources */,
 				0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */,
+				0ACE7AA81156E71800B02BEC /* NowNextViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

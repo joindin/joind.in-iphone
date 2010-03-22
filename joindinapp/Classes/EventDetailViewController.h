@@ -44,6 +44,7 @@
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error;
 - (void)gotEventAttend:(APIError *)err;
 - (void)setupAttending;
+- (void)nowNextBtnPressed;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;

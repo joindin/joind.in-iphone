@@ -217,8 +217,6 @@
 		
 	}
 	
-	NSLog(@"Tracks are [%d]", [edm.tracks getNumTracks]);
-	
 	[self.delegate gotEventDetailData:edm error:nil];
 	
 	[edm release];
