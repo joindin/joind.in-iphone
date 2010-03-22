@@ -107,7 +107,12 @@
 	[u call:nil];
 	
 	if ([self.event isNowOn]) {
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Now/next" style:UIBarButtonItemStylePlain target:self action:@selector(nowNextBtnPressed)];
+		for (TalkDetailModel *tdm in self.talks.talks) {
+			if ([tdm onNow] || [tdm onNext]) {
+				self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Now/next" style:UIBarButtonItemStylePlain target:self action:@selector(nowNextBtnPressed)];
+				break;
+			}
+		}
 	}
 	
 }
