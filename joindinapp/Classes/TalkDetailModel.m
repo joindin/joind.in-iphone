@@ -47,8 +47,10 @@
 - (NSDate *)getAdjustedDateGiven:(EventDetailModel *)event {
 	NSTimeZone *sourceTZ;
 	NSTimeZone *destTZ;
+	NSTimeZone *localTZ;
 	
 	sourceTZ = [NSTimeZone timeZoneWithName:@"UTC"];
+	localTZ = [NSTimeZone systemTimeZone];
 	
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
 	if ([userPrefs stringForKey:@"timezonedisplay"] == nil) {
@@ -68,7 +70,8 @@
 	
 	NSInteger sourceGMTOffset = [sourceTZ secondsFromGMTForDate:self.given];
 	NSInteger destinationGMTOffset = [destTZ secondsFromGMTForDate:self.given];
-	NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+	NSInteger localGMTOffset = [localTZ secondsFromGMTForDate:self.given];
+	NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset - localGMTOffset;
 	
 	//NSLog(@"Dest offset [%d] Source offset [%d]", destinationGMTOffset, sourceGMTOffset);
 	

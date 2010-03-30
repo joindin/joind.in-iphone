@@ -61,16 +61,11 @@
 	self.uiTitle.text = self.talk.title;
 	self.uiSpeaker.text = self.talk.speaker;
 	
-	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-	[outputFormatter setDateFormat:@"d MMM yyyy"];
-	NSString *dateGiven = [outputFormatter stringFromDate:self.talk.given];
-	
-	[outputFormatter setDateFormat:@"h:mma"];
-	NSString *timeGiven = [[outputFormatter stringFromDate:self.talk.given] lowercaseString];
+	NSString *dateGiven = [self.talk getDateString:self.event];
+	NSString *timeGiven = [self.talk getTimeString:self.event];
 	if (![timeGiven isEqualToString:@"12:00am"]) {
 		dateGiven = [NSString stringWithFormat:@"%@ %@", dateGiven, timeGiven];
 	}
-	[outputFormatter release];	
 	
 	self.uiDate.text = dateGiven;
 	self.uiDesc.text = self.talk.desc;
