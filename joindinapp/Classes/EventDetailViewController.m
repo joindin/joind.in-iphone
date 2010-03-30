@@ -289,7 +289,7 @@
 				cell.uiTalkType.image  = [UIImage imageNamed:@"keynote.gif"];
 			} else if ([tdm.type isEqualToString:@"Social Event"]) {
 				cell.uiTalkType.image  = [UIImage imageNamed:@"social-event.gif"];
-			} else if ([tdm.type isEqualToString:@"Event Related"]) {
+			} else if ([tdm.type isEqualToString:@"Workshop"]) {
 				cell.uiTalkType.image  = [UIImage imageNamed:@"workshop.gif"];
 			} else {
 				cell.uiTalkType.image  = nil;
