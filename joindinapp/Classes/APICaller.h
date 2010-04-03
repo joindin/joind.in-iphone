@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "APIError.h"
 
-//#define API_URL @"http://joind.in/api"
-#define API_URL @"http://test.joind.in/api"
-//#define API_URL @"http://kevin.rivendell.local/api";
+#define API_URL @"http://joind.in/api"
+//#define API_URL @"http://test.joind.in/api"
+//#define API_URL @"http://kevin.adsl.magicmonkey.org/api";
 //#define API_URL @"http://localhost/api";
 //#define API_URL @"http://lorna.adsl.magicmonkey.org/api";
 //#define API_URL @"http://lorna.rivendell.local/api";
