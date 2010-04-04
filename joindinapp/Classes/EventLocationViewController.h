@@ -13,15 +13,19 @@
 @interface EventLocationViewController : UIViewController <MKMapViewDelegate> {
 	IBOutlet MKMapView *uiMap;
 	IBOutlet UISegmentedControl *uiMapType;
-	MKPlacemark *uiPlacemark;
+	IBOutlet UIButton *uiShowMe;
+	IBOutlet UIButton *uiShowEvent;
 	EventDetailModel *event;
 }
 
 - (void)initMap;
+- (IBAction) uiShowMePressed:(id)sender;
+- (IBAction) uiShowEventPressed:(id)sender;
 
 @property (nonatomic, retain) MKMapView *uiMap;
-@property (nonatomic, retain) MKPlacemark *uiPlacemark;
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) UISegmentedControl *uiMapType;
+@property (nonatomic, retain) UIButton *uiShowMe;
+@property (nonatomic, retain) UIButton *uiShowEvent;
 
 @end
