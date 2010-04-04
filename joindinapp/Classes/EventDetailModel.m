@@ -34,6 +34,8 @@
 @synthesize allowComments;
 @synthesize isAuthd;
 @synthesize userAttend;
+@synthesize event_lat;
+@synthesize event_long;
 @synthesize tracks;
 
 -(id)init {

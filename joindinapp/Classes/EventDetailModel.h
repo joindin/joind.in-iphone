@@ -32,16 +32,13 @@
 	NSUInteger  numComments;
 	BOOL        allowComments;
 	TracksListModel *tracks;
+	float       event_lat;
+	float       event_long;
 
 	// Auth'd user details
 	BOOL        isAuthd;
 	BOOL        userAttend;
 
-	/*
-	 event_lat: For future use 
-	 event_long: For future use 
-	 */
-	
 }
 @property (nonatomic, retain) NSString   *name;
 @property (nonatomic, retain) NSDate     *start;
@@ -66,6 +63,8 @@
 @property (nonatomic, assign) BOOL        allowComments;
 @property (nonatomic, assign) BOOL        isAuthd;
 @property (nonatomic, assign) BOOL        userAttend;
+@property (nonatomic, assign) float       event_lat;
+@property (nonatomic, assign) float       event_long;
 @property (nonatomic, retain) TracksListModel    *tracks;
 
 -(id)init;
