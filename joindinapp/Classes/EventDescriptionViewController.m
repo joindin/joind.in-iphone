@@ -33,9 +33,12 @@
 */
 
 - (void)viewWillAppear:(BOOL)animated {
+	
 	[super viewWillAppear:animated];
+	
 	self.title = self.event.name;
 	self.uiDescription.text = self.event.description;
+	
 	if (self.event.url != nil && ![self.event.url isEqualToString:@""]) {
 		self.uiWebsite.hidden = NO;
 	} else {
@@ -48,7 +51,19 @@
 	} else {
 		self.uiHashtag.hidden = YES;
 	}
-		
+	
+	// 332, 357, 416
+	CGRect _frame = self.uiDescription.frame;
+	if (self.uiHashtag.hidden) {
+		if (self.uiWebsite.hidden) {
+			_frame.size.height = 416;
+		} else {
+			_frame.size.height = 357;
+		}
+	} else {
+		_frame.size.height = 332;
+	}
+	self.uiDescription.frame = _frame;
 }
 
 /*
