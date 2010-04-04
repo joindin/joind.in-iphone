@@ -150,6 +150,18 @@
 		edm.numComments = 0;
 	}
 	
+	if ([[event objectForKey:@"event_lat"] isKindOfClass:[NSString class]]) {
+		edm.event_lat = [[event objectForKey:@"event_lat"] floatValue];
+	} else {
+		edm.numComments = 0;
+	}
+	
+	if ([[event objectForKey:@"event_long"] isKindOfClass:[NSString class]]) {
+		edm.event_long = [[event objectForKey:@"event_long"] floatValue];
+	} else {
+		edm.numComments = 0;
+	}
+	
 	
 	if ([[event objectForKey:@"tracks"] isKindOfClass:[NSArray class]]) {
 		NSArray *tks = [event objectForKey:@"tracks"];

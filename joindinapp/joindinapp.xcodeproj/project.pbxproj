@@ -14,6 +14,8 @@
 		0A41E10510F54C8B00FBFE86 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */; };
 		0A41E10610F54C8B00FBFE86 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A41E10410F54C8B00FBFE86 /* SettingsView.xib */; };
 		0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6D1E3E10EE561700E941EE /* Entitlements.plist */; };
+		0A72BF271167EE5D0019C2DF /* EventLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A72BF251167EE5D0019C2DF /* EventLocationViewController.m */; };
+		0A72BF281167EE5D0019C2DF /* EventLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A72BF261167EE5D0019C2DF /* EventLocationView.xib */; };
 		0A77D98D10F6876F006A7C67 /* APIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A77D98C10F6876F006A7C67 /* APIError.m */; };
 		0A77DA6610F69881006A7C67 /* attending.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A77DA6410F69881006A7C67 /* attending.png */; };
 		0A77DA6710F69881006A7C67 /* notattending.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A77DA6510F69881006A7C67 /* notattending.png */; };
@@ -79,6 +81,8 @@
 		0AB4A69E10ED8986003A48FC /* EventDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A69D10ED8986003A48FC /* EventDetailModel.m */; };
 		0AB4A6A110ED8999003A48FC /* EventListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A6A010ED8999003A48FC /* EventListModel.m */; };
 		0AB4A6D610EE0BBC003A48FC /* APICaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4A6D510EE0BBC003A48FC /* APICaller.m */; };
+		0AB86EE21167F11D007E1038 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB86EE11167F11D007E1038 /* MapKit.framework */; };
+		0AB86F7B11681434007E1038 /* EventMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB86F7A11681434007E1038 /* EventMapAnnotation.m */; };
 		0AC4E4AB111EE58D0095B3DA /* CreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4E4A9111EE58D0095B3DA /* CreditsViewController.m */; };
 		0AC4E4AC111EE58D0095B3DA /* CreditsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4E4AA111EE58D0095B3DA /* CreditsView.xib */; };
 		0ACE785E1155589600B02BEC /* EventTalkViewCellWithTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE785D1155589600B02BEC /* EventTalkViewCellWithTrack.m */; };
@@ -123,6 +127,9 @@
 		0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		0A41E10410F54C8B00FBFE86 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsView.xib; path = Classes/SettingsView.xib; sourceTree = "<group>"; };
 		0A6D1E3E10EE561700E941EE /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		0A72BF241167EE5D0019C2DF /* EventLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLocationViewController.h; sourceTree = "<group>"; };
+		0A72BF251167EE5D0019C2DF /* EventLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLocationViewController.m; sourceTree = "<group>"; };
+		0A72BF261167EE5D0019C2DF /* EventLocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EventLocationView.xib; path = Classes/EventLocationView.xib; sourceTree = "<group>"; };
 		0A77D98B10F6876F006A7C67 /* APIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIError.h; sourceTree = "<group>"; };
 		0A77D98C10F6876F006A7C67 /* APIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIError.m; sourceTree = "<group>"; };
 		0A77DA6410F69881006A7C67 /* attending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attending.png; sourceTree = "<group>"; };
@@ -234,6 +241,9 @@
 		0AB4A6A010ED8999003A48FC /* EventListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListModel.m; sourceTree = "<group>"; };
 		0AB4A6D410EE0BBC003A48FC /* APICaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICaller.h; sourceTree = "<group>"; };
 		0AB4A6D510EE0BBC003A48FC /* APICaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICaller.m; sourceTree = "<group>"; };
+		0AB86EE11167F11D007E1038 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0AB86F7911681434007E1038 /* EventMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMapAnnotation.h; sourceTree = "<group>"; };
+		0AB86F7A11681434007E1038 /* EventMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMapAnnotation.m; sourceTree = "<group>"; };
 		0AC4E4A8111EE58D0095B3DA /* CreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsViewController.h; sourceTree = "<group>"; };
 		0AC4E4A9111EE58D0095B3DA /* CreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditsViewController.m; sourceTree = "<group>"; };
 		0AC4E4AA111EE58D0095B3DA /* CreditsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CreditsView.xib; path = Classes/CreditsView.xib; sourceTree = "<group>"; };
@@ -291,6 +301,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				0AB86EE21167F11D007E1038 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +373,8 @@
 				0AB4A60810EC37DB003A48FC /* EventDetailViewController.m */,
 				28C286DF0D94DF7D0034E888 /* EventListViewController.h */,
 				28C286E00D94DF7D0034E888 /* EventListViewController.m */,
+				0A72BF241167EE5D0019C2DF /* EventLocationViewController.h */,
+				0A72BF251167EE5D0019C2DF /* EventLocationViewController.m */,
 				0ACE7AA51156E71800B02BEC /* NowNextViewController.h */,
 				0ACE7AA61156E71800B02BEC /* NowNextViewController.m */,
 				0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */,
@@ -430,6 +443,8 @@
 				0AB4A69D10ED8986003A48FC /* EventDetailModel.m */,
 				0AB4A69F10ED8999003A48FC /* EventListModel.h */,
 				0AB4A6A010ED8999003A48FC /* EventListModel.m */,
+				0AB86F7911681434007E1038 /* EventMapAnnotation.h */,
+				0AB86F7A11681434007E1038 /* EventMapAnnotation.m */,
 				0A94BDF010F8FA3300CC32C0 /* TalkCommentDetailModel.h */,
 				0A94BDF110F8FA3300CC32C0 /* TalkCommentDetailModel.m */,
 				0A94BDEB10F8F7AE00CC32C0 /* TalkCommentListModel.h */,
@@ -507,6 +522,7 @@
 				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
 				0A7DEFF610EEDC510028D49B /* EventDetailView.xib */,
 				28F335F01007B36200424DE2 /* EventListView.xib */,
+				0A72BF261167EE5D0019C2DF /* EventLocationView.xib */,
 				0A9D789F111777560037C5CD /* EventTalkCell.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				0ACE7AA71156E71800B02BEC /* NowNextView.xib */,
@@ -578,6 +594,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				0AB86EE11167F11D007E1038 /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -678,6 +695,7 @@
 				0AF7FAB1112876BA003B1978 /* joindin_iphone_large.jpg in Resources */,
 				0AF7FAB2112876BA003B1978 /* joindin_iphone_small.jpg in Resources */,
 				0ACE7AA91156E71800B02BEC /* NowNextView.xib in Resources */,
+				0A72BF281167EE5D0019C2DF /* EventLocationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +764,8 @@
 				0ACE78A511555DFC00B02BEC /* TracksListModel.m in Sources */,
 				0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */,
 				0ACE7AA81156E71800B02BEC /* NowNextViewController.m in Sources */,
+				0A72BF271167EE5D0019C2DF /* EventLocationViewController.m in Sources */,
+				0AB86F7B11681434007E1038 /* EventMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

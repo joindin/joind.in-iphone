@@ -22,6 +22,7 @@
 #import "EventTalkViewCell.h"
 #import "EventTalkViewCellWithTrack.h"
 #import "EventTalkDateHeaderViewCell.h"
+#import "EventLocationViewController.h"
 #import "UserGetComments.h"
 #import <UIKit/UIKit.h>
 
@@ -44,6 +45,7 @@
 @synthesize uiLoading;
 @synthesize uiHashtag;
 @synthesize uiHashtagButton;
+@synthesize uiLocationButton;
 
 #pragma mark View loaders
 
@@ -399,6 +401,13 @@
 }
 
 - (IBAction)uiHashtagButtonPressed:(id)sender {
+}
+
+- (IBAction)uiLocationButtonPressed:(id)sender {
+	EventLocationViewController *locVC = [[EventLocationViewController alloc] initWithNibName:@"EventLocationView" bundle:nil];
+	locVC.event = self.event;
+	[self.navigationController pushViewController:locVC animated:YES];
+	[locVC release];
 }
 
 #pragma mark Utility methods
