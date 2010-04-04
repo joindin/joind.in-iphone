@@ -14,11 +14,13 @@
 	EventDetailModel *event;
 	IBOutlet UITextView *uiDescription;
 	IBOutlet UIButton *uiWebsite;
+	IBOutlet UILabel  *uiHashtag;
 }
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) UITextView *uiDescription;
 @property (nonatomic, retain) UIButton *uiWebsite;
+@property (nonatomic, retain) UILabel  *uiHashtag;
 
 - (IBAction) uiWebsitePressed:(id)sender;
 

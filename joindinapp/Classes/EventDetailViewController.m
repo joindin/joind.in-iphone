@@ -43,8 +43,6 @@
 @synthesize uiAttendingIndicator;
 @synthesize uiComments;
 @synthesize uiLoading;
-@synthesize uiHashtag;
-@synthesize uiHashtagButton;
 @synthesize uiLocationButton;
 
 #pragma mark View loaders
@@ -72,6 +70,12 @@
 	self.uiDesc.text = self.event.description;
 	self.uiLocation.text = self.event.location;
 	
+	if (self.event.event_lat != 0) {
+		self.uiLocationButton.hidden = NO;
+	} else {
+		self.uiLocationButton.hidden = YES;
+	}
+	
 	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 	[outputFormatter setDateFormat:@"d MMM yyyy"];
 	NSString *startDate = [outputFormatter stringFromDate:self.event.start];
@@ -86,13 +90,6 @@
 		self.uiDate.text = startDate;
 	} else {
 		self.uiDate.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
-	}
-	
-	if (self.event.hashtag != nil && ![self.event.hashtag isEqualToString:@""]) {
-		self.uiHashtag.hidden = NO;
-		self.uiHashtag.text = self.event.hashtag;
-	} else {
-		self.uiHashtag.hidden = YES;
 	}
 	
 	[self.uiLoading startAnimating];
@@ -145,6 +142,13 @@
 	self.uiComments.hidden = NO;
 	[self.uiComments setTitle:btnLabel forState:UIControlStateNormal];
 	[self.uiComments setTitle:btnLabel forState:UIControlStateHighlighted];
+	
+	if (self.event.event_lat != 0) {
+		self.uiLocationButton.hidden = NO;
+	} else {
+		self.uiLocationButton.hidden = YES;
+	}
+
 	
 }
 
@@ -398,9 +402,6 @@
 	ecvc.event = self.event;
 	[self.navigationController pushViewController:ecvc animated:YES];
 	[ecvc release];
-}
-
-- (IBAction)uiHashtagButtonPressed:(id)sender {
 }
 
 - (IBAction)uiLocationButtonPressed:(id)sender {

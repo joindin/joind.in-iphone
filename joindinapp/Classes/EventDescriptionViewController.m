@@ -13,6 +13,7 @@
 @synthesize event;
 @synthesize uiDescription;
 @synthesize uiWebsite;
+@synthesize uiHashtag;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -40,6 +41,14 @@
 	} else {
 		self.uiWebsite.hidden = YES;
 	}
+	
+	if (self.event.hashtag != nil && ![self.event.hashtag isEqualToString:@""]) {
+		self.uiHashtag.hidden = NO;
+		self.uiHashtag.text = self.event.hashtag;
+	} else {
+		self.uiHashtag.hidden = YES;
+	}
+		
 }
 
 /*
