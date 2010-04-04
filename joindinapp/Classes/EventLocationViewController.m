@@ -14,7 +14,8 @@
 
 @synthesize uiMap;
 @synthesize uiMapType;
-@synthesize uiPlacemark;
+@synthesize uiShowMe;
+@synthesize uiShowEvent;
 @synthesize event;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -40,6 +41,48 @@
 			self.uiMap.mapType = MKMapTypeHybrid;
 			break;
 	}
+}
+
+- (IBAction) uiShowMePressed:(id)sender {
+	
+	self.uiMap.showsUserLocation = YES;
+	
+	MKCoordinateRegion region;
+	
+	CLLocationCoordinate2D evtLocation;
+	evtLocation.latitude = self.event.event_lat;
+	evtLocation.longitude = self.event.event_long;
+	
+	CLLocationCoordinate2D myLocation;
+	myLocation = self.uiMap.userLocation.location.coordinate;
+	
+	CLLocationCoordinate2D centreLocation;
+	centreLocation.latitude = (evtLocation.latitude + myLocation.latitude) / 2;
+	centreLocation.longitude = (evtLocation.longitude + myLocation.longitude) / 2;
+	
+	MKCoordinateSpan span;
+	if ((evtLocation.latitude - myLocation.latitude) > 0) {
+		span.latitudeDelta = (evtLocation.latitude - myLocation.latitude);
+	} else {
+		span.latitudeDelta = (myLocation.latitude - evtLocation.latitude);
+	}
+	if ((evtLocation.longitude - myLocation.longitude) > 0) {
+		span.longitudeDelta = (evtLocation.longitude - myLocation.longitude);
+	} else {
+		span.longitudeDelta = (myLocation.longitude - evtLocation.longitude);
+	}
+
+	region.span = span;
+	region.center = centreLocation;
+	
+	MKCoordinateRegion adjustedRegion = [self.uiMap regionThatFits:region];
+	
+	[self.uiMap setRegion:adjustedRegion animated:TRUE];
+	
+}
+
+- (IBAction) uiShowEventPressed:(id)sender {
+	[self initMap];
 }
 
 - (void)initMap {
