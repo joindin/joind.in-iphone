@@ -152,6 +152,7 @@
 	[req setValue:[UIDevice currentDevice].model			forHTTPHeaderField:@"X-Device-Model"];
 	[req setValue:[UIDevice currentDevice].systemName		forHTTPHeaderField:@"X-Device-SystemName"];
 	[req setValue:[UIDevice currentDevice].systemVersion	forHTTPHeaderField:@"X-Device-SystemVersion"];
+	[req setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]	forHTTPHeaderField:@"X-App-Version"];
 	
 	// Make asynchronous request (and store it in case it needs to be cancelled)
 	//NSLog(@"Sending request");
