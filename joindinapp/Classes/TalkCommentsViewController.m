@@ -221,7 +221,7 @@
 			return cell;
 		}
 	} else {
-		static NSString *CellIdentifier = @"NewCommentViewCellz";
+		static NSString *CellIdentifier = @"NewCommentViewCell";
 		
 		NewCommentViewCell *cell = (NewCommentViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {
