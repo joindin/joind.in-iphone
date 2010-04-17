@@ -190,9 +190,9 @@
 			
 			[cell.uiComment sizeToFit];
 			
-			//CGSize suggestedSize = [cell.uiComment.text sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:cell.uiComment.lineBreakMode];
-			
 			CGRect f = cell.uiComment.frame;
+			f.size.width = 297.0f;
+			cell.uiComment.frame = f;
 			
 			CGRect f2 = cell.uiAuthor.frame;
 			f2.origin.y = f.size.height + 6.0f;

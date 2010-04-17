@@ -313,6 +313,8 @@
 			
 			if ([tdm onNow]) {
 				cell.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
+			} else {
+				cell.backgroundColor = [UIColor whiteColor];
 			}
 
 			return cell;
@@ -355,6 +357,12 @@
 				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
 			} else {
 				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
+			}
+			
+			if ([tdm onNow]) {
+				cell.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
+			} else {
+				cell.backgroundColor = [UIColor whiteColor];
 			}
 			
 			return cell;
