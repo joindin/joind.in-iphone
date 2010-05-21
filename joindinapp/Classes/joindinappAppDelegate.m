@@ -27,7 +27,10 @@
 	//[self application:application handleOpenURL:[NSURL URLWithString:@"joindin://event/110"]];
 	
 	[window addSubview:[splashScreenViewController view]];
-    [window makeKeyAndVisible];
+	[window makeKeyAndVisible];
+	
+	// Go straight to an event: (note that you probably want to remove the joindin:// handler if you do this)
+	//[splashScreenViewController gotoEventScreenWithEventId:142];
 
 }
 
