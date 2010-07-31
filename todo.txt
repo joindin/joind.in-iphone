@@ -1,3 +1,4 @@
+ * Add LICENSE file
  * Bookmark talks / events?
  * Tweet about this talk
  * Tweet about this event
