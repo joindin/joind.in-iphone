@@ -234,8 +234,9 @@
 	[edm release];
 }
 
-- (void)gotError:(NSObject *)error {
-	
+- (void)gotError:(APIError *)error {
+	//NSLog(@"here");
+	[self.delegate gotEventDetailData:nil error:error];
 }
 
 @end
