@@ -42,6 +42,9 @@
 	
 	NSDictionary *d = (NSDictionary *)obj;
 	for (NSDictionary *comment in d) {
+		if ([comment isKindOfClass:[NSString class]]) {
+			continue;
+		}
 		
 		if ([comment objectForKey:@"talk_id"] != nil) {
 			
