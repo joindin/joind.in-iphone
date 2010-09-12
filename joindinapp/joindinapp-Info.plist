@@ -20,7 +20,12 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>joindin_iphone_small.jpg</string>
+	<string>joindin_iphone_small.png</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>joindin_iphone_small.png</string>
+		<string>joindin_ipad_small.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>in.joind.joindinapp</string>
 	<key>CFBundleInfoDictionaryVersion</key>

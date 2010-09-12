@@ -30,6 +30,9 @@
 		0A7DF15C10EFEF060028D49B /* EventGetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF15B10EFEF060028D49B /* EventGetList.m */; };
 		0A7DF19610EFF86B0028D49B /* EventGetTalks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF19510EFF86B0028D49B /* EventGetTalks.m */; };
 		0A7DF2A510F00A560028D49B /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */; };
+		0A8167B8123D464400D0082E /* joindin_ipad_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8167B5123D464400D0082E /* joindin_ipad_small.png */; };
+		0A8167B9123D464400D0082E /* joindin_iphone_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8167B6123D464400D0082E /* joindin_iphone_large.png */; };
+		0A8167BA123D464400D0082E /* joindin_iphone_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8167B7123D464400D0082E /* joindin_iphone_small.png */; };
 		0A94BD6C10F8DAC300CC32C0 /* attended.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD6B10F8DAC300CC32C0 /* attended.png */; };
 		0A94BD7310F8DBAF00CC32C0 /* notattended.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A94BD7210F8DBAF00CC32C0 /* notattended.png */; };
 		0A94BDC910F8EE2E00CC32C0 /* TalkCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A94BDC710F8EE2E00CC32C0 /* TalkCommentsViewController.m */; };
@@ -153,6 +156,9 @@
 		0A7DF19510EFF86B0028D49B /* EventGetTalks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventGetTalks.m; sourceTree = "<group>"; };
 		0A7DF2A210F00A560028D49B /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		0A7DF2A310F00A560028D49B /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
+		0A8167B5123D464400D0082E /* joindin_ipad_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joindin_ipad_small.png; sourceTree = "<group>"; };
+		0A8167B6123D464400D0082E /* joindin_iphone_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joindin_iphone_large.png; sourceTree = "<group>"; };
+		0A8167B7123D464400D0082E /* joindin_iphone_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joindin_iphone_small.png; sourceTree = "<group>"; };
 		0A94BD6B10F8DAC300CC32C0 /* attended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attended.png; sourceTree = "<group>"; };
 		0A94BD7210F8DBAF00CC32C0 /* notattended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notattended.png; sourceTree = "<group>"; };
 		0A94BDC610F8EE2E00CC32C0 /* TalkCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkCommentsViewController.h; sourceTree = "<group>"; };
@@ -485,6 +491,9 @@
 		0AE8579B10F02419002C4C98 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A8167B5123D464400D0082E /* joindin_ipad_small.png */,
+				0A8167B6123D464400D0082E /* joindin_iphone_large.png */,
+				0A8167B7123D464400D0082E /* joindin_iphone_small.png */,
 				0AF7FAAF112876BA003B1978 /* joindin_iphone_large.jpg */,
 				0AF7FAB0112876BA003B1978 /* joindin_iphone_small.jpg */,
 				0AEE470911286D75009FE0BE /* Category icons */,
@@ -697,6 +706,9 @@
 				0AF7FAB2112876BA003B1978 /* joindin_iphone_small.jpg in Resources */,
 				0ACE7AA91156E71800B02BEC /* NowNextView.xib in Resources */,
 				0A72BF281167EE5D0019C2DF /* EventLocationView.xib in Resources */,
+				0A8167B8123D464400D0082E /* joindin_ipad_small.png in Resources */,
+				0A8167B9123D464400D0082E /* joindin_iphone_large.png in Resources */,
+				0A8167BA123D464400D0082E /* joindin_iphone_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +797,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Adhoc;
@@ -841,7 +853,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -858,8 +870,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
