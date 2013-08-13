@@ -250,7 +250,7 @@
 		if (self.commentsLoaded) {
 			
 			NSString *commentText = [self.comments getEventCommentAtIndex:[indexPath row]].comment;
-			CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
+			CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:NSLineBreakByTruncatingTail];
 			return suggestedSize.height + 30.0f;
 		} else {
 			return 50.0f;
