@@ -89,7 +89,7 @@
 - (void) keyboardWillShow:(NSNotification *)note {
 	if (!self.keyboardIsShowing) {
 		CGRect keyboardBounds;
-		[[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+		[[note.userInfo valueForKey:UIKeyboardFrameBeginUserInfoKey] getValue: &keyboardBounds];
 		NSUInteger keyboardHeight = keyboardBounds.size.height;
 		
 		CGRect frame = self.uiContent.frame;
@@ -102,7 +102,7 @@
 - (void) keyboardWillHide:(NSNotification *)note {
 	if (self.keyboardIsShowing) {
 		CGRect keyboardBounds;
-		[[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+		[[note.userInfo valueForKey:UIKeyboardFrameBeginUserInfoKey] getValue: &keyboardBounds];
 		NSUInteger keyboardHeight = keyboardBounds.size.height;
 		
 		CGRect frame = self.uiContent.frame;
