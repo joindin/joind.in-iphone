@@ -39,6 +39,7 @@
 
 - (void)gotData:(NSObject *)obj {
 	UserCommentListModel *uclm = [[[UserCommentListModel alloc] init] autorelease];
+<<<<<<< HEAD
     
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSDictionary *d = (NSDictionary *)obj;
@@ -168,6 +169,136 @@
             }
         }
     }
+=======
+	
+	NSDictionary *d = (NSDictionary *)obj;
+	for (NSDictionary *comment in d) {
+		if ([comment isKindOfClass:[NSString class]]) {
+			continue;
+		}
+		
+		if ([comment objectForKey:@"talk_id"] != nil) {
+			
+			UserTalkCommentDetailModel *ucdm;
+			ucdm = [[UserTalkCommentDetailModel alloc] init];
+			
+			if ([[comment objectForKey:@"talk_id"] isKindOfClass:[NSString class]]) {
+				ucdm.talkId = [[comment objectForKey:@"talk_id"] integerValue];
+			} else {
+				ucdm.talkId = 0;
+			}
+			
+			if ([[comment objectForKey:@"rating"] isKindOfClass:[NSString class]]) {
+				ucdm.rating = [[comment objectForKey:@"rating"] integerValue];
+			} else {
+				ucdm.rating = 0;
+			}
+			
+			if ([[comment objectForKey:@"comment_type"] isKindOfClass:[NSString class]]) {
+				ucdm.type = [comment objectForKey:@"comment_type"];
+			} else {
+				ucdm.type = @"comment";
+			}
+			
+			////
+			
+			if ([[comment objectForKey:@"comment"] isKindOfClass:[NSString class]]) {
+				ucdm.comment = [comment objectForKey:@"comment"];
+			} else {
+				ucdm.comment = @"";
+			}
+			
+			if ([[comment objectForKey:@"date_made"] isKindOfClass:[NSString class]]) {
+				ucdm.made = [NSDate dateWithTimeIntervalSince1970:[[comment objectForKey:@"date_made"] integerValue]];
+			} else {
+				ucdm.made = nil;
+			}
+			
+			if ([[comment objectForKey:@"user_id"] isKindOfClass:[NSString class]]) {
+				ucdm.uid = [[comment objectForKey:@"user_id"] integerValue];
+			} else {
+				ucdm.uid = 0;
+			}
+			
+			if ([[comment objectForKey:@"active"] isKindOfClass:[NSString class]]) {
+				ucdm.active = [[[comment objectForKey:@"active"] lowercaseString] isEqualToString:@"y"];
+			} else if ([[comment objectForKey:@"active"] isKindOfClass:[NSNumber class]]) {
+				ucdm.active = ([[comment objectForKey:@"active"] boolValue]);
+			} else {
+				NSLog(@"Can't recognise type %@", [[comment objectForKey:@"active"] class]);
+			}		
+			
+			if ([[comment objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
+				ucdm.id = [[comment objectForKey:@"ID"] integerValue];
+			} else {
+				ucdm.id = 0;
+			}
+			
+			[uclm addComment:ucdm];
+			[ucdm release];
+			
+		} else if ([comment objectForKey:@"event_id"] != nil) {
+			
+			UserEventCommentDetailModel *ucdm;
+			ucdm = [[UserEventCommentDetailModel alloc] init];
+			
+			if ([[comment objectForKey:@"event_id"] isKindOfClass:[NSString class]]) {
+				ucdm.eventId = [[comment objectForKey:@"event_id"] integerValue];
+			} else {
+				ucdm.eventId = 0;
+			}
+			
+			if ([[comment objectForKey:@"cname"] isKindOfClass:[NSString class]]) {
+				ucdm.commentorName = [comment objectForKey:@"cname"];
+			} else {
+				ucdm.commentorName = @"Anonymous";
+			}
+			
+			/////
+			
+			if ([[comment objectForKey:@"comment"] isKindOfClass:[NSString class]]) {
+				ucdm.comment = [comment objectForKey:@"comment"];
+			} else {
+				ucdm.comment = @"";
+			}
+			
+			if ([[comment objectForKey:@"date_made"] isKindOfClass:[NSString class]]) {
+				ucdm.made = [NSDate dateWithTimeIntervalSince1970:[[comment objectForKey:@"date_made"] integerValue]];
+			} else {
+				ucdm.made = nil;
+			}
+			
+			if ([[comment objectForKey:@"user_id"] isKindOfClass:[NSString class]]) {
+				ucdm.uid = [[comment objectForKey:@"user_id"] integerValue];
+			} else {
+				ucdm.uid = 0;
+			}
+			
+			if ([[comment objectForKey:@"active"] isKindOfClass:[NSString class]]) {
+				ucdm.active = [[[comment objectForKey:@"active"] lowercaseString] isEqualToString:@"y"];
+			} else if ([[comment objectForKey:@"active"] isKindOfClass:[NSNumber class]]) {
+				ucdm.active = ([[comment objectForKey:@"active"] boolValue]);
+			} else {
+				NSLog(@"Can't recognise type %@", [[comment objectForKey:@"active"] class]);
+			}		
+			
+			if ([[comment objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
+				ucdm.id = [[comment objectForKey:@"ID"] integerValue];
+			} else {
+				ucdm.id = 0;
+			}
+			
+			[uclm addComment:ucdm];
+			[ucdm release];
+			
+		} else {
+			
+			continue;
+			
+		}
+		
+	}
+>>>>>>> c4921025259488b0122e366040e2d0960835b67c
 	[self.delegate gotUserComments:uclm error:nil];
 }
 

@@ -36,11 +36,16 @@
 		} else {
 			tdm.title         = @"";
 		}
-		
+		//NSLog(@"Speaker is a %@", [[talk objectForKey:@"speaker"] objectForKey:@"speaker_name"]);
 		if ([[talk objectForKey:@"speaker"] isKindOfClass:[NSString class]]) {
 			tdm.speaker       = [talk objectForKey:@"speaker"];
 		} else {
-			tdm.speaker       = @"";
+			NSDictionary *e = (NSDictionary *)([[talk objectForKey:@"speaker"] objectAtIndex:0]);
+			if ([[e objectForKey:@"speaker_name"] isKindOfClass:[NSString class]]) {
+				tdm.speaker       = [e objectForKey:@"speaker_name"];
+			} else {
+				tdm.speaker       = @"";
+			}
 		}
 		
 		if ([[talk objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
