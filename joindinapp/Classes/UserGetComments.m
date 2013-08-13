@@ -39,7 +39,6 @@
 
 - (void)gotData:(NSObject *)obj {
 	UserCommentListModel *uclm = [[[UserCommentListModel alloc] init] autorelease];
-<<<<<<< HEAD
     
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSDictionary *d = (NSDictionary *)obj;
@@ -169,7 +168,6 @@
             }
         }
     }
-=======
 	
 	NSDictionary *d = (NSDictionary *)obj;
 	for (NSDictionary *comment in d) {
@@ -298,7 +296,6 @@
 		}
 		
 	}
->>>>>>> c4921025259488b0122e366040e2d0960835b67c
 	[self.delegate gotUserComments:uclm error:nil];
 }
 
