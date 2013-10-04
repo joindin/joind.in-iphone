@@ -117,6 +117,15 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* EventListViewController.m */; };
 		28F335F11007B36200424DE2 /* EventListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* EventListView.xib */; };
+		A028B23A17FF580300B86718 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23117FF580300B86718 /* Default~iphone.png */; };
+		A028B23B17FF580300B86718 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23217FF580300B86718 /* Default@2x.png */; };
+		A028B23C17FF580300B86718 /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23317FF580300B86718 /* Default-568h@2x~iphone.png */; };
+		A028B23D17FF580300B86718 /* icon_iphone_retina_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23417FF580300B86718 /* icon_iphone_retina_80x80.png */; };
+		A028B23E17FF580300B86718 /* icon_iphone_retina_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23517FF580300B86718 /* icon_iphone_retina_58x58.png */; };
+		A028B23F17FF580300B86718 /* icon_iphone_retina_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23617FF580300B86718 /* icon_iphone_retina_29x29.png */; };
+		A028B24017FF580300B86718 /* icon_iphone_retina_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23717FF580300B86718 /* icon_iphone_retina_57x57.png */; };
+		A028B24117FF580300B86718 /* icon_iphone_retina_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23817FF580300B86718 /* icon_iphone_retina_114x114.png */; };
+		A028B24217FF580300B86718 /* icon_iphone_retina_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23917FF580300B86718 /* icon_iphone_retina_120x120.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -293,6 +302,15 @@
 		28F335F01007B36200424DE2 /* EventListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListView.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* joindinapp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "joindinapp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A028B23117FF580300B86718 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		A028B23217FF580300B86718 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A028B23317FF580300B86718 /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
+		A028B23417FF580300B86718 /* icon_iphone_retina_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_80x80.png; sourceTree = "<group>"; };
+		A028B23517FF580300B86718 /* icon_iphone_retina_58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_58x58.png; sourceTree = "<group>"; };
+		A028B23617FF580300B86718 /* icon_iphone_retina_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_29x29.png; sourceTree = "<group>"; };
+		A028B23717FF580300B86718 /* icon_iphone_retina_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_57x57.png; sourceTree = "<group>"; };
+		A028B23817FF580300B86718 /* icon_iphone_retina_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_114x114.png; sourceTree = "<group>"; };
+		A028B23917FF580300B86718 /* icon_iphone_retina_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_120x120.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -487,6 +505,15 @@
 		0AE8579B10F02419002C4C98 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A028B23117FF580300B86718 /* Default~iphone.png */,
+				A028B23217FF580300B86718 /* Default@2x.png */,
+				A028B23317FF580300B86718 /* Default-568h@2x~iphone.png */,
+				A028B23417FF580300B86718 /* icon_iphone_retina_80x80.png */,
+				A028B23517FF580300B86718 /* icon_iphone_retina_58x58.png */,
+				A028B23617FF580300B86718 /* icon_iphone_retina_29x29.png */,
+				A028B23717FF580300B86718 /* icon_iphone_retina_57x57.png */,
+				A028B23817FF580300B86718 /* icon_iphone_retina_114x114.png */,
+				A028B23917FF580300B86718 /* icon_iphone_retina_120x120.png */,
 				0AF7FAAF112876BA003B1978 /* joindin_iphone_large.jpg */,
 				0AF7FAB0112876BA003B1978 /* joindin_iphone_small.jpg */,
 				0AEE470911286D75009FE0BE /* Category icons */,
@@ -656,15 +683,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A028B23B17FF580300B86718 /* Default@2x.png in Resources */,
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* EventListView.xib in Resources */,
 				0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */,
+				A028B24017FF580300B86718 /* icon_iphone_retina_57x57.png in Resources */,
 				0A7DEE0110EE844B0028D49B /* TalkDetailView.xib in Resources */,
 				0A7DEFF710EEDC510028D49B /* EventDetailView.xib in Resources */,
 				0A7DF07B10EFAEAA0028D49B /* EventDescriptionView.xib in Resources */,
 				0AF708F610F0107200CDEBE6 /* SplashScreenView.xib in Resources */,
 				0AF7099410F01AFE00CDEBE6 /* logo.gif in Resources */,
 				0AE857AA10F024A5002C4C98 /* rating-0.gif in Resources */,
+				A028B24217FF580300B86718 /* icon_iphone_retina_120x120.png in Resources */,
 				0AE857AB10F024A5002C4C98 /* rating-1.gif in Resources */,
 				0AE857AC10F024A5002C4C98 /* rating-2.gif in Resources */,
 				0AE857AD10F024A5002C4C98 /* rating-3.gif in Resources */,
@@ -679,9 +709,12 @@
 				0A94BD7310F8DBAF00CC32C0 /* notattended.png in Resources */,
 				0A94BDCA10F8EE2E00CC32C0 /* TalkCommentsView.xib in Resources */,
 				0A94BF3210F96D8200CC32C0 /* TalkCommentsCell.xib in Resources */,
+				A028B23A17FF580300B86718 /* Default~iphone.png in Resources */,
+				A028B23D17FF580300B86718 /* icon_iphone_retina_80x80.png in Resources */,
 				0A94C0AA10FE6AA300CC32C0 /* switchThumb.png in Resources */,
 				0A94C0AB10FE6AA300CC32C0 /* switchOffPlain.png in Resources */,
 				0A94C0AC10FE6AA300CC32C0 /* switchBlueBg.png in Resources */,
+				A028B23E17FF580300B86718 /* icon_iphone_retina_58x58.png in Resources */,
 				0A94C36611010F1F00CC32C0 /* rating-off.gif in Resources */,
 				0A94C36711010F1F00CC32C0 /* rating-on.gif in Resources */,
 				0AA90CA4110E610000301602 /* EventCommentsView.xib in Resources */,
@@ -693,13 +726,16 @@
 				0A173517111CD5F900C23D83 /* Default.png in Resources */,
 				0A1735CE111CF68900C23D83 /* icon-comment-user.gif in Resources */,
 				0AC4E4AC111EE58D0095B3DA /* CreditsView.xib in Resources */,
+				A028B23C17FF580300B86718 /* Default-568h@2x~iphone.png in Resources */,
 				0AEE470E11286D93009FE0BE /* keynote.gif in Resources */,
 				0AEE470F11286D93009FE0BE /* social-event.gif in Resources */,
 				0AEE471011286D93009FE0BE /* talk.gif in Resources */,
+				A028B23F17FF580300B86718 /* icon_iphone_retina_29x29.png in Resources */,
 				0AEE471111286D93009FE0BE /* workshop.gif in Resources */,
 				0AF7FAB1112876BA003B1978 /* joindin_iphone_large.jpg in Resources */,
 				0AF7FAB2112876BA003B1978 /* joindin_iphone_small.jpg in Resources */,
 				0ACE7AA91156E71800B02BEC /* NowNextView.xib in Resources */,
+				A028B24117FF580300B86718 /* icon_iphone_retina_114x114.png in Resources */,
 				0A72BF281167EE5D0019C2DF /* EventLocationView.xib in Resources */,
 				1B690B6817BA1EA8008B82C8 /* Default-568h@2x.png in Resources */,
 			);
@@ -802,6 +838,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = joindinapp_Prefix.pch;
 				INFOPLIST_FILE = "joindinapp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = joindinapp;
 				SDKROOT = iphoneos;
 			};
@@ -817,6 +854,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = joindinapp_Prefix.pch;
 				INFOPLIST_FILE = "joindinapp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = joindinapp;
 				SDKROOT = iphoneos;
 			};
@@ -830,6 +868,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = joindinapp_Prefix.pch;
 				INFOPLIST_FILE = "joindinapp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = joindinapp;
 				SDKROOT = iphoneos;
 			};
