@@ -2,17 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>joindin</string>
-			</array>
-			<key>CFBundleURLName</key>
-			<string>in.joind.joindinapp</string>
-		</dict>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -20,7 +9,12 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>joindin_iphone_small.jpg</string>
+	<string>joindin_iphone_small.png</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>joindin_iphone_small.png</string>
+		<string>joindin_ipad_small.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>in.joind.joindinapp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -31,8 +25,19 @@
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>in.joind.joindinapp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>joindin</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>

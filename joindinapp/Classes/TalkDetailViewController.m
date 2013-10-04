@@ -120,8 +120,8 @@
 		
 		[self.uiComments setTitle:btnLabel forState:UIControlStateNormal];
 		[self.uiComments setTitle:btnLabel forState:UIControlStateHighlighted];
-		
-		if (self.talk.rating >= 0 && self.talk.rating <= 5) {
+        NSLog(@"%lu", (unsigned long)self.talk.rating);
+		if (self.talk.rating >= 1 && self.talk.rating <= 5) {
 			//self.uiRating.hidden   = NO;
 			self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", self.talk.rating]];
 			self.uiNotRated.hidden = YES;
