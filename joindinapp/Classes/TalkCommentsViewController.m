@@ -23,7 +23,7 @@
 
 @synthesize talk;
 @synthesize comments;
-@synthesize newCommentCell;
+@synthesize provideCommentCell;
 
 @synthesize uiComment;
 @synthesize uiAuthor;
@@ -65,8 +65,8 @@
 }
 
 - (void)focusNewComment {
-	if (self.newCommentCell != nil) {
-		[self.newCommentCell.uiComment becomeFirstResponder];
+	if (self.provideCommentCell != nil) {
+		[self.provideCommentCell.uiComment becomeFirstResponder];
 	} else {
 		// Cell hasn't loaded yet - wait until the scroll is at the bottom and then focus the UITextView
 		[self performSelector:@selector(focusNewComment) withObject:nil afterDelay:0.1f];
@@ -240,7 +240,7 @@
 		}
 		cell.commentDelegate = self;
 		[cell doStuff];
-		self.newCommentCell = cell;
+		self.provideCommentCell = cell;
 		return cell;
 	}
 }
@@ -255,7 +255,7 @@
 	if ([indexPath section] == 0) {
 		if (self.commentsLoaded) {
 			NSString *commentText = [self.comments getTalkCommentAtIndex:[indexPath row]].comment;
-			CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
+			CGSize suggestedSize = [commentText sizeWithFont:[UIFont systemFontOfSize:12.0f] constrainedToSize:CGSizeMake(297.0f, FLT_MAX) lineBreakMode:NSLineBreakByTruncatingTail];
 			return suggestedSize.height + 30.0f;
 		} else {
 			return 50.0f;
