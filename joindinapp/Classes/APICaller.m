@@ -92,51 +92,55 @@
 	[self callAPI:type action:action params:params needAuth:needAuth canCache:YES];
 }
 
+- (void)callAPI:(NSString *)type params:(NSDictionary *)params needAuth:(BOOL)needAuth {
+	[self callAPI:type action:@"" params:params needAuth:needAuth canCache:YES];
+}
+
 - (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
 	
-	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
+//	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
 	
-	if (needAuth) {
-		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-		NSString *user = [userPrefs stringForKey:@"username"];
-		NSString *pass = [userPrefs stringForKey:@"password"];
-		
-		if (user == nil) {
-			user = @"";
-		}
-		if (pass == nil) {
-			pass = @"";
-		}
-		
-		//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
-		
-		NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
-		[reqAuth setObject:user forKey:@"user"];
-		[reqAuth setObject:[pass md5] forKey:@"pass"];
-		
-		[reqRequest setObject:reqAuth forKey:@"auth"];
-		[reqAuth    release];
-	}
+//	if (needAuth) {
+//		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+//		NSString *user = [userPrefs stringForKey:@"username"];
+//		NSString *pass = [userPrefs stringForKey:@"password"];
+//		
+//		if (user == nil) {
+//			user = @"";
+//		}
+//		if (pass == nil) {
+//			pass = @"";
+//		}
+//		
+//		//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
+//		
+//		NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
+//		[reqAuth setObject:user forKey:@"user"];
+//		[reqAuth setObject:[pass md5] forKey:@"pass"];
+//		
+//		[reqRequest setObject:reqAuth forKey:@"auth"];
+//		[reqAuth    release];
+//	}
 	
-	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
-	[reqAction setObject:action forKey:@"type"];
-	if (params != nil) {
-		[reqAction setObject:params forKey:@"data"];
-	} else {
-		[reqAction setObject:[NSNull null] forKey:@"data"];
-	}
+//	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
+//	[reqAction setObject:action forKey:@"type"];
+//	if (params != nil) {
+//		[reqAction setObject:params forKey:@"data"];
+//	} else {
+//		[reqAction setObject:[NSNull null] forKey:@"data"];
+//	}
 	
-	[reqRequest setObject:reqAction forKey:@"action"];
+//	[reqRequest setObject:reqAction forKey:@"action"];
 	
-	NSMutableDictionary *reqObject = [[NSMutableDictionary alloc] initWithCapacity:1];
-	[reqObject setObject:reqRequest forKey:@"request"];
+//	NSMutableDictionary *reqObject = [[NSMutableDictionary alloc] initWithCapacity:1];
+//	[reqObject setObject:reqRequest forKey:@"request"];
 	
-	[reqRequest release];
-	[reqAction  release];
+//	[reqRequest release];
+//	[reqAction  release];
 	
-	self.reqJSON = [reqObject JSONRepresentation];
+//	self.reqJSON = [reqObject JSONRepresentation];
 	
-	[reqObject  release];
+//	[reqObject  release];
 	
 	//NSLog(@"JSON request is %@", reqJSON);
 	
@@ -149,8 +153,8 @@
 	}
 	NSMutableURLRequest *req;
 	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:3.0f];
-	[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
-	[req setHTTPMethod:@"POST"];
+//	[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
+	[req setHTTPMethod:@"GET"];
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	//[req setValue:[NSString stringWithFormat:@"%@ %@ %@ %@", [UIDevice currentDevice].uniqueIdentifier, [UIDevice currentDevice].model, [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion] forHTTPHeaderField:@"X-Device-Info"];
 	//[req setValue:[UIDevice currentDevice].uniqueIdentifier forHTTPHeaderField:@"X-Device-UDID"];
