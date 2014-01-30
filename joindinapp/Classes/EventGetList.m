@@ -45,13 +45,17 @@
 		
 		
 		if ([[event objectForKey:@"start_date"] isKindOfClass:[NSString class]]) {
-			edm.start = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"start_date"]   integerValue]];
+			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
+			edm.start = [dateFormatter dateFromString:[event objectForKey:@"start_date"]];
 		} else {
 			edm.start = nil;
 		}
 		
 		if ([[event objectForKey:@"end_date"] isKindOfClass:[NSString class]]) {
-			edm.end = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"end_date"]   integerValue]];
+			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
+			edm.end = [dateFormatter dateFromString:[event objectForKey:@"end_date"]];
 		} else {
 			edm.end = nil;
 		}
