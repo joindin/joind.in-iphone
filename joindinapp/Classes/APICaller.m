@@ -144,7 +144,27 @@
 	
 	//NSLog(@"JSON request is %@", reqJSON);
 	
-	self.url = [NSString stringWithFormat:@"%@/%@", [self getApiUrl], type];
+    self.url = [[NSMutableString alloc] init];
+    if ([type hasPrefix:@"http"]) {
+        [self.url setString:type]; // full URL supplied
+    } else {
+        [self.url setString:[NSString stringWithFormat:@"%@/%@", [self getApiUrl], type]];
+
+        // Add query string parameters
+        if ([self.url rangeOfString:@"?"].location == NSNotFound) {
+            [self.url appendString:@"?"];
+        } else {
+            [self.url appendString:@"&"];
+        }
+        NSMutableString *resultString = [[NSMutableString alloc] init];
+        for (NSString* key in [params allKeys]){
+            if ([resultString length] > 0) {
+                [resultString appendString:@"&"];
+            }
+            [resultString appendFormat:@"%@=%@", key, [params objectForKey:key]];
+        }
+        [self.url appendString:resultString];
+    }
 	
 //	if ((!canCache) || (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO])) {
 	

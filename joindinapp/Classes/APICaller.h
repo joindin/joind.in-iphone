@@ -25,14 +25,14 @@
 	NSMutableData *urlData;
 	NSURLConnection *connection;
 	NSString *reqJSON;
-	NSString *url;
+	NSMutableString *url;
 }
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, retain) NSMutableData *urlData;
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSString *reqJSON;
-@property (nonatomic, retain) NSString *url;
+@property (nonatomic, retain) NSMutableString *url;
 
 - (id)initWithDelegate:(id)_delegate;
 - (NSString *)getApiUrl;
