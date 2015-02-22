@@ -96,6 +96,10 @@
 	[self callAPI:type action:@"" params:params needAuth:needAuth canCache:YES];
 }
 
+- (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth {
+	[self callAPI:type action:@"" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
+}
+
 - (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
 	
 //	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
