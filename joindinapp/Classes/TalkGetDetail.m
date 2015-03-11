@@ -16,14 +16,14 @@
 
 @implementation TalkGetDetail
 
-- (void)call:(NSUInteger)talkId {
-	[self callAPI:@"talk" action:@"getdetail" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", talkId] forKey:@"talk_id"] needAuth:YES canCache:YES];
+- (void)call:(NSString *)talkURI {
+    [self callAPI:talkURI needAuth:YES];
 }
 
 - (void)gotData:(NSObject *)obj {
 	TalkDetailModel *tdm = [[TalkDetailModel alloc] init];
-	
-	NSDictionary *talk = [(NSArray *)obj objectAtIndex:0];
+
+	NSDictionary *talk = [[(NSDictionary *)obj objectForKey:@"talks"] objectAtIndex:0];
 	
 	if ([[talk objectForKey:@"talk_title"] isKindOfClass:[NSString class]]) {
 		tdm.title         = [talk objectForKey:@"talk_title"];
@@ -31,22 +31,10 @@
 		tdm.title         = @"";
 	}
 	
-	if ([[talk objectForKey:@"speaker"] isKindOfClass:[NSString class]]) {
-		tdm.speaker       = [talk objectForKey:@"speaker"];
+	if ([[talk objectForKey:@"speakers"] isKindOfClass:[NSArray class]]) {
+        tdm.speakers = [[NSArray alloc] initWithArray:[talk objectForKey:@"speakers"]];
 	} else {
-		tdm.speaker       = @"";
-	}
-	
-	if ([[talk objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
-		tdm.Id            = [[talk objectForKey:@"ID"] integerValue];
-	} else {
-		tdm.Id            = 0;
-	}
-	
-	if ([[talk objectForKey:@"event_id"] isKindOfClass:[NSString class]]) {
-		tdm.eventId       = [[talk objectForKey:@"event_id"] integerValue];
-	} else {
-		tdm.eventId       = 0;
+		tdm.speakers       = [[NSArray alloc] init];
 	}
 	
 	if ([[talk objectForKey:@"slides_link"] isKindOfClass:[NSString class]]) {
@@ -56,21 +44,15 @@
 	}
 	
 	if ([[talk objectForKey:@"date_given"] isKindOfClass:[NSString class]]) {
-		tdm.given         = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"date_given"]   integerValue]];
+		tdm.startDate         = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"date_given"]   integerValue]];
 	} else {
-		tdm.given         = 0;
+		tdm.startDate         = 0;
 	}
 	
-	if ([[talk objectForKey:@"talk_desc"] isKindOfClass:[NSString class]]) {
-		tdm.desc          = [talk objectForKey:@"talk_desc"];
+	if ([[talk objectForKey:@"talk_description"] isKindOfClass:[NSString class]]) {
+		tdm.description          = [talk objectForKey:@"talk_description"];
 	} else {
-		tdm.desc          = @"";
-	}
-	
-	if ([[talk objectForKey:@"lang_name"] isKindOfClass:[NSString class]]) {
-		tdm.langName      = [talk objectForKey:@"lang_name"];
-	} else {
-		tdm.langName      = @"";
+		tdm.description          = @"";
 	}
 	
 	if ([[talk objectForKey:@"lang"] isKindOfClass:[NSString class]]) {
@@ -79,52 +61,28 @@
 		tdm.lang          = 0;
 	}
 	
-	if ([[talk objectForKey:@"tavg"] isKindOfClass:[NSString class]]) {
-		tdm.rating        = [[talk objectForKey:@"tavg"] integerValue];
+	if ([[talk objectForKey:@"average_rating"] isKindOfClass:[NSString class]]) {
+		tdm.rating        = [[talk objectForKey:@"average_rating"] integerValue];
 	} else {
 		tdm.rating        = 0;
 	}
 	
-	if ([[talk objectForKey:@"tcid"] isKindOfClass:[NSString class]]) {
-		tdm.type          = [talk objectForKey:@"tcid"];
+	if ([[talk objectForKey:@"type"] isKindOfClass:[NSString class]]) {
+		tdm.type          = [talk objectForKey:@"type"];
 	} else {
 		tdm.type          = @"";
 	}
 	
-	if ([[talk objectForKey:@"active"] isKindOfClass:[NSString class]]) {
-		tdm.active        = ([[[talk objectForKey:@"active"] lowercaseString] compare:@"y"] == NSOrderedSame);
+    if ([[talk objectForKey:@"stub"] isKindOfClass:[NSString class]]) {
+        tdm.stub          = [talk objectForKey:@"stub"];
+    } else {
+        tdm.stub          = @"";
+    }
+    
+	if ([[talk objectForKey:@"comment_count"] isKindOfClass:[NSString class]]) {
+		tdm.commentCount   = [[talk objectForKey:@"comment_count"] integerValue];
 	} else {
-		tdm.active        = NO;
-	}
-	
-	if ([[talk objectForKey:@"owner_id"] isKindOfClass:[NSString class]]) {
-		tdm.speakerId     = [[talk objectForKey:@"owner_id"] integerValue];
-	} else {
-		tdm.speakerId     = 0;
-	}
-	
-	if ([[talk objectForKey:@"private"] isKindOfClass:[NSString class]]) {
-		tdm.private       = ([[[talk objectForKey:@"private"] lowercaseString] compare:@"y"] == NSOrderedSame);
-	} else {
-		tdm.private       = NO;
-	}
-	
-	if ([[talk objectForKey:@"lang_abbr"] isKindOfClass:[NSString class]]) {
-		tdm.langAbbr      = [talk objectForKey:@"lang_abbr"];
-	} else {
-		tdm.langAbbr      = @"";
-	}
-	
-	if ([[talk objectForKey:@"ccount"] isKindOfClass:[NSString class]]) {
-		tdm.numComments   = [[talk objectForKey:@"ccount"] integerValue];
-	} else {
-		tdm.numComments   = 0;
-	}
-	
-	if ([[talk objectForKey:@"last_comment_date"] isKindOfClass:[NSString class]]) {
-		tdm.lastComment   = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"last_comment_date"]   integerValue]];
-	} else {
-		tdm.lastComment   = 0;
+		tdm.commentCount   = 0;
 	}
 	
 	if ([[talk objectForKey:@"allow_comments"] isKindOfClass:[NSString class]]) {
@@ -135,12 +93,6 @@
 		}
 	} else {
 		tdm.allowComments = NO;
-	}
-	
-	if ([[talk objectForKey:@"now_next"] isKindOfClass:[NSString class]]) {
-		tdm.nowNext       = [[talk objectForKey:@"now_next"] lowercaseString];
-	} else {
-		tdm.nowNext       = @"";
 	}
 	
 	if ([[talk objectForKey:@"tracks"] isKindOfClass:[NSArray class]]) {

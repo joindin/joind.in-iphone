@@ -43,21 +43,20 @@
 			edm.name = @"";
 		}
 		
-		
 		if ([[event objectForKey:@"start_date"] isKindOfClass:[NSString class]]) {
 			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
-			edm.start = [dateFormatter dateFromString:[event objectForKey:@"start_date"]];
+			edm.startDate = [dateFormatter dateFromString:[event objectForKey:@"start_date"]];
 		} else {
-			edm.start = nil;
+			edm.startDate = nil;
 		}
 		
 		if ([[event objectForKey:@"end_date"] isKindOfClass:[NSString class]]) {
 			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
-			edm.end = [dateFormatter dateFromString:[event objectForKey:@"end_date"]];
+			edm.endDate = [dateFormatter dateFromString:[event objectForKey:@"end_date"]];
 		} else {
-			edm.end = nil;
+			edm.endDate = nil;
 		}
 		
 		if ([[event objectForKey:@"location"] isKindOfClass:[NSString class]]) {
@@ -79,9 +78,9 @@
 		}
 		
 		if ([[event objectForKey:@"tz_continent"] isKindOfClass:[NSString class]]) {
-			edm.tzCont  = [event objectForKey:@"tz_continent"];
+			edm.tzContinent  = [event objectForKey:@"tz_continent"];
 		} else {
-			edm.tzCont  = @"";
+			edm.tzContinent  = @"";
 		}
 		
 		if ([[event objectForKey:@"tz_place"] isKindOfClass:[NSString class]]) {
@@ -101,46 +100,87 @@
 		} else {
 			edm.hashtag = nil;
 		}
-		
-		if ([[event objectForKey:@"uri"] isKindOfClass:[NSString class]]) {
-			edm.url     = [event objectForKey:@"uri"];
-		} else {
-			edm.url     = nil;
-		}
-		
+
 		if ([[event objectForKey:@"cfp_start_date"] isKindOfClass:[NSString class]]) {
-			edm.cfpStart = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"cfp_start_date"] integerValue]];
+			edm.cfpStartDate = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"cfp_start_date"] integerValue]];
+        } else {
+            edm.cfpStartDate  = nil;
+        }
+
+        if ([[event objectForKey:@"cfp_end_date"] isKindOfClass:[NSString class]]) {
+			edm.cfpEndDate  = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"cfp_end_date"] integerValue]];
 		} else {
-			edm.cfpStart = nil;
-		}
-		
-		if ([[event objectForKey:@"cfp_end_date"] isKindOfClass:[NSString class]]) {
-			edm.cfpEnd  = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"cfp_end_date"] integerValue]];
-		} else {
-			edm.cfpEnd  = nil;
+			edm.cfpEndDate  = nil;
 		}
 		
         // FIXME boolean
 		if ([[event objectForKey:@"comments_enabled"] isKindOfClass:[NSString class]]) {
-			edm.allowComments = ([[[event objectForKey:@"comments_enabled"] lowercaseString] isEqualToString:@"y"]);
+			edm.commentsEnabled = ([[[event objectForKey:@"comments_enabled"] lowercaseString] isEqualToString:@"y"]);
 		} else {
-			edm.allowComments = NO;
+			edm.commentsEnabled = NO;
 		}
 		
 		if ([[event objectForKey:@"attendee_count"] isKindOfClass:[NSString class]]) {
-			edm.numAttend   = [[event objectForKey:@"attendee_count"] integerValue];
+			edm.attendeeCount   = [[event objectForKey:@"attendee_count"] integerValue];
 		} else {
-			edm.numAttend   = 0;
+			edm.attendeeCount   = 0;
 		}
 		
 		if ([[event objectForKey:@"event_comments_count"] isKindOfClass:[NSString class]]) {
-			edm.numComments = [[event objectForKey:@"event_comments_count"] integerValue];
+			edm.eventCommentsCount = [[event objectForKey:@"event_comments_count"] integerValue];
 		} else {
-			edm.numComments = 0;
+			edm.eventCommentsCount = 0;
 		}
-		
+
+		// URIs
+		if ([[event objectForKey:@"uri"] isKindOfClass:[NSString class]]) {
+			edm.uri     = [event objectForKey:@"uri"];
+		} else {
+			edm.uri     = nil;
+		}
+		if ([[event objectForKey:@"verbose_uri"] isKindOfClass:[NSString class]]) {
+			edm.verboseURI = [event objectForKey:@"verbose_uri"];
+		} else {
+			edm.verboseURI = nil;
+		}
+		if ([[event objectForKey:@"comments_uri"] isKindOfClass:[NSString class]]) {
+			edm.commentsURI = [event objectForKey:@"comments_uri"];
+		} else {
+			edm.commentsURI = nil;
+		}
+		if ([[event objectForKey:@"talks_uri"] isKindOfClass:[NSString class]]) {
+			edm.talksURI = [event objectForKey:@"talks_uri"];
+		} else {
+			edm.talksURI = nil;
+		}
+		if ([[event objectForKey:@"tracks_uri"] isKindOfClass:[NSString class]]) {
+			edm.tracksURI = [event objectForKey:@"tracks_uri"];
+		} else {
+			edm.tracksURI = nil;
+		}
+		if ([[event objectForKey:@"attending_uri"] isKindOfClass:[NSString class]]) {
+			edm.attendingURI = [event objectForKey:@"attending_uri"];
+		} else {
+			edm.attendingURI = nil;
+		}
+		if ([[event objectForKey:@"website_uri"] isKindOfClass:[NSString class]]) {
+			edm.websiteURI = [event objectForKey:@"website_uri"];
+		} else {
+			edm.websiteURI = nil;
+		}
+		if ([[event objectForKey:@"humane_website_uri"] isKindOfClass:[NSString class]]) {
+			edm.humaneWebsiteURI = [event objectForKey:@"humane_website_uri"];
+		} else {
+			edm.humaneWebsiteURI = nil;
+		}
+		if ([[event objectForKey:@"attendees_uri"] isKindOfClass:[NSString class]]) {
+			edm.attendeesURI = [event objectForKey:@"attendees_uri"];
+		} else {
+			edm.attendeesURI = nil;
+        }
+        
 		// Attending?
-		edm.userAttend  = [[event objectForKey:@"attending"] boolValue];
+		edm.attending  = [[event objectForKey:@"attending"] boolValue];
 
 		[elm addEvent:edm];
 		
