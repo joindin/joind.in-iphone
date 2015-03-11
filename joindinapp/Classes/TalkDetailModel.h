@@ -73,6 +73,8 @@
 -(NSString *)getDateString:(EventDetailModel *)event;
 -(NSString *)getSortableDateString:(EventDetailModel *)event;
 -(NSString *)getTimeString:(EventDetailModel *)event;
+-(NSString *)getPrimarySpeakerString;
+-(NSString *)getAllSpeakersString;
 -(BOOL)onNow;
 -(BOOL)onNext;
 

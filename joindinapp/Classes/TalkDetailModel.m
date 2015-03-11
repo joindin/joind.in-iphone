@@ -111,6 +111,25 @@
 	return retval;
 }
 
+- (NSString *)getPrimarySpeakerString {
+    NSInteger speakerCount = self.speakers.count;
+    NSString *speakerLabel = @"";
+    if (speakerCount > 0) {
+        speakerLabel = [[self.speakers objectAtIndex:0] objectForKey:@"speaker_name"];
+        if (speakerCount > 1) {
+            NSString *append = [NSString stringWithFormat:@" + %ld other%@", speakerCount - 1, (speakerCount > 2 ? @"s" : @"")];
+            [speakerLabel stringByAppendingString:append];
+        }
+    }
+    return speakerLabel;
+
+}
+
+- (NSString *)getAllSpeakersString {
+    NSArray *speakerNames = [self.speakers valueForKey:@"speaker_name"];
+    return [speakerNames componentsJoinedByString:@", "];
+}
+
 - (BOOL)onNow {
     return FALSE;
     // FIXME

@@ -64,8 +64,8 @@
 	
 	self.title = self.talk.title;
 	self.uiTitle.text = self.talk.title;
-	self.uiSpeaker.text = self.talk.speaker;
-	
+	self.uiSpeaker.text = [self.talk getAllSpeakersString];
+
 	NSString *dateGiven = [self.talk getDateString:self.event];
 	NSString *timeGiven = [self.talk getTimeString:self.event];
 	if (![timeGiven isEqualToString:@"12:00am"]) {
