@@ -69,13 +69,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	self.uiAttending.on = self.event.userAttend;
+	self.uiAttending.on = self.event.attending;
 	self.title = self.event.name;
 	self.uiTitle.text = self.event.name;
 	self.uiDesc.text = self.event.description;
 	self.uiLocation.text = self.event.location;
 	
-	if (self.event.event_lat != 0) {
+	if (self.event.latitude != 0) {
 		self.uiLocationButton.hidden = NO;
 	} else {
 		self.uiLocationButton.hidden = YES;
@@ -83,8 +83,8 @@
 	
 	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 	[outputFormatter setDateFormat:@"d MMM yyyy"];
-	NSString *startDate = [outputFormatter stringFromDate:self.event.start];
-	NSString *endDate   = [outputFormatter stringFromDate:self.event.end];
+	NSString *startDate = [outputFormatter stringFromDate:self.event.startDate];
+	NSString *endDate   = [outputFormatter stringFromDate:self.event.endDate];
 	[outputFormatter release];
 	
 	[self setupAttending];
@@ -101,7 +101,7 @@
 	[self.talks sort];
 	self.uiComments.hidden    = YES;
 	EventGetDetail *ed = [APICaller EventGetDetail:self];
-	[ed call:self.event.Id];
+	[ed call:self.event.uri];
 	
 	[self.uiLoadTalksIndicator startAnimating];	
 	EventGetTalks *e = [APICaller EventGetTalks:self];
@@ -127,15 +127,15 @@
 	// Set button label
 	NSString *btnLabel;
 	
-	if (edm.allowComments) {
-		if (edm.numComments > 0) {
+	if (edm.commentsEnabled) {
+		if (edm.eventCommentsCount > 0) {
 			btnLabel = @"View / add comments";
 		} else {
 			btnLabel = @"Add comment";
 		}
 		self.uiComments.enabled = YES;
 	} else {
-		if (edm.numComments > 0) {
+		if (edm.eventCommentsCount > 0) {
 			btnLabel = @"View comments";
 			self.uiComments.enabled = YES;
 		} else {
@@ -148,7 +148,7 @@
 	[self.uiComments setTitle:btnLabel forState:UIControlStateNormal];
 	[self.uiComments setTitle:btnLabel forState:UIControlStateHighlighted];
 	
-	if (self.event.event_lat != 0) {
+	if (self.event.latitude != 0) {
 		self.uiLocationButton.hidden = NO;
 	} else {
 		self.uiLocationButton.hidden = YES;
@@ -166,20 +166,20 @@
 }
 
 - (void)setupAttending {
-	if (self.event.isAuthd == YES) {
-		self.uiAttending.hidden = NO;
-		self.uiAttendingLabel.hidden = NO;
-	} else {
-		self.uiAttending.hidden = YES;
-		self.uiAttendingLabel.hidden = YES;
-	}
+//	if (self.event.isAuthd == YES) {
+//		self.uiAttending.hidden = NO;
+//		self.uiAttendingLabel.hidden = NO;
+//	} else {
+//		self.uiAttending.hidden = YES;
+//		self.uiAttendingLabel.hidden = YES;
+//	}
 	
 	if ([self.event hasFinished]) {
 		self.uiAttendingLabel.text = @"Attended";
 	} else {
 		self.uiAttendingLabel.text = @"Attending";
 	}
-	self.uiAttending.on = event.userAttend;
+	self.uiAttending.on = event.attending;
 	
 }
 
@@ -288,9 +288,9 @@
 			}
 			
 			cell.uiTalkName.text = tdm.title;
-			cell.uiSpeaker.text  = tdm.speaker;
+			cell.uiSpeaker.text = [tdm getPrimarySpeakerString];
 			cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
-			cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+			cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.commentCount];
 			
 			cell.uiTime.text     = [tdm getTimeString:self.event];
 			
@@ -338,9 +338,10 @@
 			}
 			
 			cell.uiTalkName.text = tdm.title;
-			cell.uiSpeaker.text  = tdm.speaker;
+			cell.uiSpeaker.text = [tdm getPrimarySpeakerString];
+
 			cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
-			cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+			cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.commentCount];
 			
 			cell.uiTime.text     = [tdm getTimeString:self.event];
 			
@@ -449,7 +450,7 @@
 - (void)gotEventAttend:(APIError *)err {
 	[self.uiAttendingIndicator stopAnimating];
 	if (err == nil) {
-		self.event.userAttend = !self.event.userAttend;
+		self.event.attending = !self.event.attending;
 		//[APICaller clearCache];
 		[self setupAttending];
 	}

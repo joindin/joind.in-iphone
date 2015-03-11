@@ -143,7 +143,7 @@
 		cell.uiTalkName.text = tdm.title;
 		cell.uiSpeaker.text  = tdm.speaker;
 		cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
-		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.commentCount];
 		
 		cell.uiTime.text     = [tdm getTimeString:self.event];
 		
@@ -187,7 +187,7 @@
 		cell.uiTalkName.text = tdm.title;
 		cell.uiSpeaker.text  = tdm.speaker;
 		cell.uiRating.image  = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", tdm.rating]];
-		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.numComments];
+		cell.uiNumComments.text = [NSString stringWithFormat:@"%d", tdm.commentCount];
 		
 		cell.uiTime.text     = [tdm getTimeString:self.event];
 		

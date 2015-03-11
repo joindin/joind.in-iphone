@@ -44,7 +44,7 @@
 	self.title = self.event.name;
 	self.uiDescription.text = self.event.description;
 	
-	if (self.event.url != nil && ![self.event.url isEqualToString:@""]) {
+	if (self.event.href != nil && ![self.event.href isEqualToString:@""]) {
 		self.uiWebsite.hidden = NO;
 	} else {
 		self.uiWebsite.hidden = YES;
@@ -80,8 +80,8 @@
 */
 
 - (IBAction) uiWebsitePressed:(id)sender {
-	if (self.event.url != nil && ![self.event.url isEqualToString:@""]) {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.event.url]];
+	if (self.event.href != nil && ![self.event.href isEqualToString:@""]) {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.event.href]];
 	}
 }
 
