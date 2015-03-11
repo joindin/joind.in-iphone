@@ -16,25 +16,28 @@
 @implementation TalkDetailModel
 
 @synthesize title;
-@synthesize speaker;
-@synthesize Id;
-@synthesize eventId;
-@synthesize slidesLink;
-@synthesize given;
-@synthesize desc;
-@synthesize langName;
-@synthesize lang;
-@synthesize rating;
+@synthesize urlFriendlyTalkTitle;
+@synthesize description;
 @synthesize type;
-@synthesize active;
-@synthesize speakerId;
-@synthesize private;
-@synthesize langAbbr;
-@synthesize numComments;
-@synthesize lastComment;
+@synthesize slidesLink;
+@synthesize lang;
+@synthesize startDate;
+@synthesize duration;
+@synthesize stub;
+@synthesize rating;
 @synthesize allowComments;
+@synthesize commentCount;
+@synthesize starred;
+@synthesize starredCount;
 @synthesize tracks;
-@synthesize nowNext;
+@synthesize speakers;
+@synthesize uri;
+@synthesize verbose_uri;
+@synthesize website_uri;
+@synthesize comments_uri;
+@synthesize starred_uri;
+@synthesize verbose_comments_uri;
+@synthesize event_uri;
 
 -(id)init {
 	self.tracks = [[TracksListModel alloc] init];
@@ -42,11 +45,11 @@
 }
 
 -(BOOL)hasFinished {
-	return ([self.given compare:[NSDate dateWithTimeIntervalSinceNow:-86400]] == NSOrderedAscending);
+	return ([self.startDate compare:[NSDate dateWithTimeIntervalSinceNow:-86400]] == NSOrderedAscending);
 }
 
 -(NSComparisonResult)comparator:(TalkDetailModel *)otherModel {
-	return [self.given compare:otherModel.given];
+	return [self.startDate compare:otherModel.startDate];
 }
 
 - (NSDate *)getAdjustedDateGiven:(EventDetailModel *)event {
@@ -64,7 +67,7 @@
 	}
 	
 	if ([[userPrefs stringForKey:@"timezonedisplay"] isEqualToString:@"event"]) {
-		destTZ = [NSTimeZone timeZoneWithName:[NSString stringWithFormat:@"%@/%@", event.tzCont, event.tzPlace]];
+		destTZ = [NSTimeZone timeZoneWithName:[NSString stringWithFormat:@"%@/%@", event.tzContinent, event.tzPlace]];
 	} else {
 		destTZ = [NSTimeZone systemTimeZone];
 	}
@@ -73,14 +76,14 @@
 		destTZ = [NSTimeZone timeZoneWithName:@"UTC"];
 	}
 	
-	NSInteger sourceGMTOffset = [sourceTZ secondsFromGMTForDate:self.given];
-	NSInteger destinationGMTOffset = [destTZ secondsFromGMTForDate:self.given];
-	NSInteger localGMTOffset = [localTZ secondsFromGMTForDate:self.given];
+	NSInteger sourceGMTOffset = [sourceTZ secondsFromGMTForDate:self.startDate];
+	NSInteger destinationGMTOffset = [destTZ secondsFromGMTForDate:self.startDate];
+	NSInteger localGMTOffset = [localTZ secondsFromGMTForDate:self.startDate];
 	NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset - localGMTOffset;
 	
 	//NSLog(@"Dest offset [%d] Source offset [%d]", destinationGMTOffset, sourceGMTOffset);
 	
-	NSDate* destDate = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:self.given] autorelease];
+	NSDate* destDate = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:self.startDate] autorelease];
 	return destDate;
 }
 
@@ -109,11 +112,15 @@
 }
 
 - (BOOL)onNow {
-	return [self.nowNext isEqualToString:@"now"];
+    return FALSE;
+    // FIXME
+//	return [self.nowNext isEqualToString:@"now"];
 }
 
 - (BOOL)onNext {
-	return [self.nowNext isEqualToString:@"next"];
+    return FALSE;
+    // FIXME
+//	return [self.nowNext isEqualToString:@"next"];
 }
 
 @end

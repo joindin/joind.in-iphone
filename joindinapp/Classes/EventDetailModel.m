@@ -17,34 +17,41 @@
 @implementation EventDetailModel
 
 @synthesize name;
-@synthesize start;
-@synthesize end;
-@synthesize Id;
-@synthesize location;
+@synthesize startDate;
+@synthesize endDate;
 @synthesize description;
-@synthesize active;
 @synthesize stub;
-@synthesize tzCont;
-@synthesize tzPlace;
+@synthesize href;
 @synthesize icon;
-@synthesize pending;
+@synthesize latitude;
+@synthesize longitude;
+@synthesize tzContinent;
+@synthesize tzPlace;
+@synthesize location;
 @synthesize hashtag;
-@synthesize url;
-@synthesize cfpStart;
-@synthesize cfpEnd;
-@synthesize voting;
-@synthesize private;
-@synthesize numAttend;
-@synthesize numComments;
-@synthesize allowComments;
-@synthesize isAuthd;
-@synthesize userAttend;
-@synthesize event_lat;
-@synthesize event_long;
-@synthesize tracks;
+@synthesize attendeeCount;
+@synthesize attending;
+@synthesize commentsEnabled;
+@synthesize eventCommentsCount;
+@synthesize tracksCount;
+@synthesize talksCount;
+@synthesize cfpStartDate;
+@synthesize cfpEndDate;
+@synthesize cfpURL;
+@synthesize talkCommentsCount;
+@synthesize uri;
+@synthesize verboseURI;
+@synthesize commentsURI;
+@synthesize talksURI;
+@synthesize tracksURI;
+@synthesize attendingURI;
+@synthesize websiteURI;
+@synthesize humaneWebsiteURI;
+@synthesize allTalkCommentsURI;
+@synthesize attendeesURI;
+
 
 -(id)init {
-	self.tracks = [[TracksListModel alloc] init];
 	return self;
 }
 
@@ -53,19 +60,19 @@
 }
 
 -(BOOL)hasFinished {
-	return ([self.end compare:[NSDate date]] == NSOrderedAscending);
+	return ([self.endDate compare:[NSDate date]] == NSOrderedAscending);
 }
 
 -(BOOL)hasStarted {
-	return ([self.start compare:[NSDate date]] == NSOrderedAscending);
+	return ([self.startDate compare:[NSDate date]] == NSOrderedAscending);
 }
 
 -(NSComparisonResult)comparator:(EventDetailModel *)otherModel {
-	return [self.start compare:otherModel.start];
+	return [self.startDate compare:otherModel.startDate];
 }
 
 -(BOOL)hasTracks {
-	return ([self.tracks getNumTracks] > 0);
+	return (self.tracksCount > 0);
 }
 
 @end
