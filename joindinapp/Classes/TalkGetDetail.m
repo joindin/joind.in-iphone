@@ -43,9 +43,11 @@
 		tdm.slidesLink    = @"";
 	}
 	
-	if ([[talk objectForKey:@"date_given"] isKindOfClass:[NSString class]]) {
-		tdm.startDate         = [NSDate dateWithTimeIntervalSince1970:[[talk objectForKey:@"date_given"]   integerValue]];
-	} else {
+	if ([[talk objectForKey:@"start_date"] isKindOfClass:[NSString class]]) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+		tdm.startDate         = [dateFormatter dateFromString:[talk objectForKey:@"start_date"]];
+    } else {
 		tdm.startDate         = 0;
 	}
 	
@@ -55,10 +57,10 @@
 		tdm.description          = @"";
 	}
 	
-	if ([[talk objectForKey:@"lang"] isKindOfClass:[NSString class]]) {
-		tdm.lang          = [[talk objectForKey:@"lang"] integerValue];
+	if ([[talk objectForKey:@"language"] isKindOfClass:[NSString class]]) {
+		tdm.lang          = [talk objectForKey:@"language"];
 	} else {
-		tdm.lang          = 0;
+		tdm.lang          = @"";
 	}
 	
 	if ([[talk objectForKey:@"average_rating"] isKindOfClass:[NSString class]]) {
@@ -85,8 +87,8 @@
 		tdm.commentCount   = 0;
 	}
 	
-	if ([[talk objectForKey:@"allow_comments"] isKindOfClass:[NSString class]]) {
-		if ([[[talk objectForKey:@"allow_comments"] lowercaseString] isEqualToString:@"y"] || [[[talk objectForKey:@"allow_comments"] lowercaseString] isEqualToString:@"1"]) {
+	if ([[talk objectForKey:@"comments_enabled"] isKindOfClass:[NSString class]]) {
+		if ([[[talk objectForKey:@"comments_enabled"] lowercaseString] isEqualToString:@"1"]) {
 			tdm.allowComments = YES;
 		} else {
 			tdm.allowComments = NO;
@@ -117,12 +119,6 @@
 				tkdm.color = [tk objectForKey:@"track_color"];
 			} else {
 				tkdm.color = @"";
-			}
-			
-			if ([[tk objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
-				tkdm.Id = [[tk objectForKey:@"ID"] integerValue];
-			} else {
-				tkdm.Id = 0;
 			}
 			
 			[tdm.tracks addTrack:tkdm];
