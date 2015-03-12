@@ -77,7 +77,7 @@
 	if (err == nil) {
 		self.commentsLoaded = YES;
 		self.comments = tclm;
-		self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
+		self.title = [NSString stringWithFormat:@"%d comments", (int) [self.comments getNumComments]];
 		[[self tableView] reloadData];
 	} else {
 		UIAlertView *alert;
@@ -191,7 +191,7 @@
 			
 			cell.uiAuthor.text  = [self.comments getTalkCommentAtIndex:[indexPath row]].username;
 			cell.uiComment.text = [self.comments getTalkCommentAtIndex:[indexPath row]].comment;
-			cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
+			cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", (int) [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
 			
 			[cell.uiComment sizeToFit];
 			

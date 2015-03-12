@@ -70,7 +70,7 @@
 	[self.talks sortUsingSelector:@selector(comparator:)];
 	if (!forwards) {
 		// Reverse the array
-		int n = [self.talks count];
+		int n = (int)[self.talks count];
 		for (int i=0; i<n/2; ++i) {
 			id c  = [self.talks objectAtIndex:i];
 			[self.talks replaceObjectAtIndex:i withObject:[self.talks objectAtIndex:n-i-1]];

@@ -98,7 +98,7 @@
             tdm.uri         = @"";
         }
         NSLog(@"keys: %@", [talk allKeys]);
-        NSLog(@"URI: %s", [talk objectForKey:@"uri"]);
+        NSLog(@"URI: %@", [talk objectForKey:@"uri"]);
         if ([[talk objectForKey:@"verbose_uri"] isKindOfClass:[NSString class]]) {
             tdm.verbose_uri         = [talk objectForKey:@"verbose_uri"];
         } else {

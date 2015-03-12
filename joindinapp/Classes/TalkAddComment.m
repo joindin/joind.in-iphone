@@ -20,7 +20,7 @@
 - (void)call:(TalkDetailModel *)talk rating:(NSUInteger)rating comment:(NSString *)comment private:(BOOL)priv {
 	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:4];
 //	[params setObject:[NSString stringWithFormat:@"%d", talk.Id] forKey:@"talk_id"];
-	[params setObject:[NSString stringWithFormat:@"%d", rating ] forKey:@"rating"];
+	[params setObject:[NSString stringWithFormat:@"%d", (int) rating ] forKey:@"rating"];
 	[params setObject:comment forKey:@"comment"];
 	[params setObject:[NSString stringWithFormat:@"%d", priv   ] forKey:@"private"];
 	[self callAPI:@"talk" action:@"addcomment" params:params needAuth:YES canCache:NO];
