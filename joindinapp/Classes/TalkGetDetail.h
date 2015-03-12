@@ -20,7 +20,7 @@
 
 }
 
-- (void)call:(NSUInteger)talkId;
+- (void)call:(NSString *)talkURI;
 - (void)gotData:(NSObject *)obj;
 - (void)gotError:(NSObject *)error;
 

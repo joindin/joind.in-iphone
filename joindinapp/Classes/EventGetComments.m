@@ -18,7 +18,7 @@
 @implementation EventGetComments
 
 - (void)call:(EventDetailModel *)event {
-	[self callAPI:@"event" action:@"getcomments" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"] needAuth:NO canCache:YES];
+	[self callAPI:event.commentsURI needAuth:NO canCache:YES];
 }
 
 - (void)gotData:(NSObject *)obj {

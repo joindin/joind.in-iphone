@@ -20,7 +20,7 @@
 
 }
 
-- (void)call:(NSUInteger)eventId;
+- (void)call:(NSString *)eventUri;
 - (void)gotData:(NSObject *)obj;
 - (void)gotError:(NSObject *)error;
 
