@@ -17,7 +17,7 @@
 @implementation EventAttend
 
 - (void)call:(EventDetailModel *)event {
-	[self callAPI:@"event" action:@"attend" params:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"eid"] needAuth:YES canCache:NO];
+	[self callAPI:event.attendingURI needAuth:YES canCache:NO];
 }
 
 - (void)gotData:(NSObject *)obj {

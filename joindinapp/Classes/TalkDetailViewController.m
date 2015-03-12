@@ -47,7 +47,7 @@
 	self.uiTracks.hidden      = YES;
 
 	TalkGetDetail *t = [APICaller TalkGetDetail:self];
-	[t call:self.talk.Id];
+	[t call:self.talk.uri];
 }
 
 -(void) gotTalkDetailData:(TalkDetailModel *)tdm error:(APIError *)error {
@@ -64,8 +64,8 @@
 	
 	self.title = self.talk.title;
 	self.uiTitle.text = self.talk.title;
-	self.uiSpeaker.text = self.talk.speaker;
-	
+	self.uiSpeaker.text = [self.talk getAllSpeakersString];
+
 	NSString *dateGiven = [self.talk getDateString:self.event];
 	NSString *timeGiven = [self.talk getTimeString:self.event];
 	if (![timeGiven isEqualToString:@"12:00am"]) {
@@ -73,14 +73,14 @@
 	}
 	
 	self.uiDate.text = dateGiven;
-	self.uiDesc.text = self.talk.desc;
+	self.uiDesc.text = self.talk.description;
 	
 	if (withExtraInfo) {
 		
-		if (self.talk.numComments == 1) {
+		if (self.talk.commentCount == 1) {
 			self.uiNumComments.text = [NSString stringWithFormat:@"1 comment"];
 		} else {
-			self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.numComments];
+			self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.commentCount];
 		}
 		
 		NSString *btnLabel;
@@ -93,7 +93,7 @@
 
 		if (self.talk.allowComments) {
 			
-			if (self.talk.numComments > 0) {
+			if (self.talk.commentCount > 0) {
 				btnLabel = @"View / add comments";
 			} else {
 				btnLabel = @"Add comment";
@@ -101,7 +101,7 @@
 			
 		} else {
 			
-			if (self.talk.numComments > 0) {
+			if (self.talk.commentCount > 0) {
 				
 				btnLabel = @"View comments";
 				

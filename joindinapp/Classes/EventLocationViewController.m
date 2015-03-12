@@ -55,8 +55,8 @@
 	MKCoordinateRegion region;
 	
 	CLLocationCoordinate2D evtLocation;
-	evtLocation.latitude = self.event.event_lat;
-	evtLocation.longitude = self.event.event_long;
+	evtLocation.latitude = self.event.latitude;
+	evtLocation.longitude = self.event.longitude;
 	
 	CLLocationCoordinate2D myLocation;
 	myLocation = self.uiMap.userLocation.location.coordinate;
@@ -97,8 +97,8 @@
 	MKCoordinateRegion region;
 	
 	CLLocationCoordinate2D location;
-	location.latitude=self.event.event_lat;
-	location.longitude=self.event.event_long;
+	location.latitude=self.event.latitude;
+	location.longitude=self.event.longitude;
 	
 	MKCoordinateSpan span;
 	span.latitudeDelta=0.02;

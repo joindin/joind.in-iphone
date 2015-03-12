@@ -39,7 +39,7 @@
 	[e call:self.event];
 	self.title = @"Loading...";
 	
-	if (self.event.allowComments) {
+	if (self.event.commentsEnabled) {
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBtnPressed)];
 	} else {
 		// Removed refresh button because it'll only appear after commenting has closed, so there's no point having a refresh
@@ -146,7 +146,7 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if (self.event.allowComments) {
+	if (self.event.commentsEnabled) {
 		return 2;
 	} else {
 		return 1;

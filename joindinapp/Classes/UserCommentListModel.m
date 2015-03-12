@@ -40,9 +40,9 @@
 	for (id c in self.comments) {
 		if ([c class] == [UserTalkCommentDetailModel class]) {
 			UserTalkCommentDetailModel *d = (UserTalkCommentDetailModel *)c;
-			if (d.talkId == talk.Id) {
-				return d;
-			}
+//			if (d.talkId == talk.Id) {
+//				return d;
+//			}
 		}
 	}
 	return nil;
@@ -52,9 +52,10 @@
 	for (id c in self.comments) {
 		if ([c class] == [UserEventCommentDetailModel class]) {
 			UserEventCommentDetailModel *d = (UserEventCommentDetailModel *)c;
-			if (d.eventId == event.Id) {
-				return d;
-			}
+// TODO
+//			if (d.eventId == event.Id) {
+//				return d;
+//			}
 		}
 	}
 	return nil;

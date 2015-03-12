@@ -182,7 +182,7 @@
 		
 		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 		
-		if (edm.userAttend) {
+		if (edm.attending) {
 			vc.accessoryType = UITableViewCellAccessoryCheckmark;
 		} else {
 			vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -192,8 +192,8 @@
 		
 		NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 		[outputFormatter setDateFormat:@"d MMM yyyy"];
-		NSString *startDate = [outputFormatter stringFromDate:edm.start];
-		NSString *endDate   = [outputFormatter stringFromDate:edm.end];
+		NSString *startDate = [outputFormatter stringFromDate:edm.startDate];
+		NSString *endDate   = [outputFormatter stringFromDate:edm.endDate];
 		[outputFormatter release];
 		
 		if ([startDate compare:endDate] == NSOrderedSame) {

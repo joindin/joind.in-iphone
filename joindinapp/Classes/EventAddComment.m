@@ -17,10 +17,10 @@
 @implementation EventAddComment
 
 - (void)call:(EventDetailModel *)event comment:(NSString *)comment {
-	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:4];
-	[params setObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"];
-	[params setObject:comment forKey:@"comment"];
-	[self callAPI:@"event" action:@"addcomment" params:params needAuth:YES canCache:NO];
+//	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:4];
+//	[params setObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"];
+//	[params setObject:comment forKey:@"comment"];
+//	[self callAPI:@"event" action:@"addcomment" params:params needAuth:YES canCache:NO];
 }
 
 - (void)gotData:(NSObject *)obj {
