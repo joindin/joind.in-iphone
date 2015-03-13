@@ -86,7 +86,7 @@
 		[alert show];
 		[alert release];
 	}
-	self.title = [NSString stringWithFormat:@"%d comments", [self.comments getNumComments]];
+	self.title = [NSString stringWithFormat:@"%d comments", (int) [self.comments getNumComments]];
 }
 
 - (void)gotAddedEventComment:(APIError *)error {

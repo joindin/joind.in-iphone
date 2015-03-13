@@ -59,7 +59,7 @@
 		}
 		// Store the data which made this response
 		self.reqJSON = _reqJSON;
-		self.url = _url;
+		self.url = [[NSMutableString alloc] initWithString:_url];
 		//NSLog(@"Returning cached data");
 		[self gotResponse:[data valueForKey:@"data"]];
 		return YES;
@@ -98,6 +98,10 @@
 
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth {
 	[self callAPI:type action:@"" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
+}
+
+- (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
+    [self callAPI:type action:@"" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:canCache];
 }
 
 - (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {

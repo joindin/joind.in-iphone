@@ -39,6 +39,7 @@
 - (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth;
 - (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache;
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth canCache:(BOOL)canCache;
+- (void)callAPI:(NSString *)type params:(NSDictionary *)params needAuth:(BOOL)needAuth;
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth;
 - (void)cancel;
 - (void)gotResponse:(NSString *)responseString;

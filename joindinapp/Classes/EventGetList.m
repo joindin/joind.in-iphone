@@ -29,8 +29,6 @@
 	
 	EventListModel *elm = [[[EventListModel alloc] init] autorelease];
 	
-	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-
 	
 	for (NSDictionary *event in events) {
 		

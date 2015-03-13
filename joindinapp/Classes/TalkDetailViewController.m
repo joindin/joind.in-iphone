@@ -80,7 +80,7 @@
 		if (self.talk.commentCount == 1) {
 			self.uiNumComments.text = [NSString stringWithFormat:@"1 comment"];
 		} else {
-			self.uiNumComments.text = [NSString stringWithFormat:@"%i comments", self.talk.commentCount];
+			self.uiNumComments.text = [NSString stringWithFormat:@"%lu comments", (unsigned long)self.talk.commentCount];
 		}
 		
 		NSString *btnLabel;
@@ -123,7 +123,7 @@
         NSLog(@"%lu", (unsigned long)self.talk.rating);
 		if (self.talk.rating >= 1 && self.talk.rating <= 5) {
 			//self.uiRating.hidden   = NO;
-			self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", self.talk.rating]];
+			self.uiRating.image    = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", (int) self.talk.rating]];
 			self.uiNotRated.hidden = YES;
 		} else {
 			//self.uiNotRated.hidden = NO;

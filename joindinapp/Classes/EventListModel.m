@@ -41,7 +41,7 @@
 	[self.events sortUsingSelector:@selector(comparator:)];
 	if (!forwards) {
 		// Reverse the array
-		int n = [self.events count];
+		int n = (int)[self.events count];
 		for (int i=0; i<n/2; ++i) {
 			id c  = [self.events objectAtIndex:i];
 			[self.events replaceObjectAtIndex:i withObject:[self.events objectAtIndex:n-i-1]];
