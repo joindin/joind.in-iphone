@@ -32,12 +32,12 @@
 @synthesize tracks;
 @synthesize speakers;
 @synthesize uri;
-@synthesize verbose_uri;
-@synthesize website_uri;
-@synthesize comments_uri;
-@synthesize starred_uri;
-@synthesize verbose_comments_uri;
-@synthesize event_uri;
+@synthesize verboseURI;
+@synthesize websiteURI;
+@synthesize commentsURI;
+@synthesize starredURI;
+@synthesize verboseCommentsURI;
+@synthesize eventURI;
 
 -(id)init {
 	self.tracks = [[TracksListModel alloc] init];

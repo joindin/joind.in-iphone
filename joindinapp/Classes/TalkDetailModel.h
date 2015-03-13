@@ -34,12 +34,12 @@
 	NSArray    *speakers;    // speakers (array)
 
 	NSString   *uri;
-	NSString   *verbose_uri;
-	NSString   *website_uri;
-	NSString   *comments_uri;
-	NSString   *starred_uri;
-	NSString   *verbose_comments_uri;
-	NSString   *event_uri;
+	NSString   *verboseURI;
+	NSString   *websiteURI;
+	NSString   *commentsURI;
+	NSString   *starredURI;
+	NSString   *verboseCommentsURI;
+	NSString   *eventURI;
 }
 
 @property (nonatomic, retain) NSString   *title;
@@ -60,12 +60,12 @@
 @property (nonatomic, retain) NSArray    *speakers;
 
 @property (nonatomic, retain) NSString   *uri;
-@property (nonatomic, retain) NSString   *verbose_uri;
-@property (nonatomic, retain) NSString   *website_uri;
-@property (nonatomic, retain) NSString   *comments_uri;
-@property (nonatomic, retain) NSString   *starred_uri;
-@property (nonatomic, retain) NSString   *verbose_comments_uri;
-@property (nonatomic, retain) NSString   *event_uri;
+@property (nonatomic, retain) NSString   *verboseURI;
+@property (nonatomic, retain) NSString   *websiteURI;
+@property (nonatomic, retain) NSString   *commentsURI;
+@property (nonatomic, retain) NSString   *starredURI;
+@property (nonatomic, retain) NSString   *verboseCommentsURI;
+@property (nonatomic, retain) NSString   *eventURI;
 
 -(id)init;
 -(BOOL)hasFinished;

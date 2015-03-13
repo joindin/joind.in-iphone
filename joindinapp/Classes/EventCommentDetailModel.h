@@ -15,23 +15,19 @@
 
 
 @interface EventCommentDetailModel : NSObject {
-	NSUInteger  eventId;
 	NSString   *comment;
-	NSDate     *made;
-	NSUInteger  Id;
-	BOOL        private;
-	BOOL        active;
-	NSUInteger  userId;
-	NSString   *username;
+	NSDate     *createdDate;
+	NSString   *userDisplayName;
+	NSString   *gravatarHash;
+	NSString   *userURI;
+	NSString   *commentURI;
 }
 
-@property (nonatomic, assign) NSUInteger  eventId;
 @property (nonatomic, retain) NSString   *comment;
-@property (nonatomic, retain) NSDate     *made;
-@property (nonatomic, assign) NSUInteger  Id;
-@property (nonatomic, assign) BOOL        private;
-@property (nonatomic, assign) BOOL        active;
-@property (nonatomic, assign) NSUInteger  userId;
-@property (nonatomic, retain) NSString   *username;
+@property (nonatomic, retain) NSDate     *createdDate;
+@property (nonatomic, retain) NSString   *userDisplayName;
+@property (nonatomic, retain) NSString   *gravatarHash;
+@property (nonatomic, retain) NSString   *userURI;
+@property (nonatomic, retain) NSString   *commentURI;
 
 @end

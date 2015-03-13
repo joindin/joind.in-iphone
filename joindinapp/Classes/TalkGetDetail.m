@@ -63,7 +63,7 @@
 		tdm.lang          = @"";
 	}
 	
-	if ([[talk objectForKey:@"average_rating"] isKindOfClass:[NSString class]]) {
+	if ([[talk objectForKey:@"average_rating"] isKindOfClass:[NSNumber class]]) {
 		tdm.rating        = [[talk objectForKey:@"average_rating"] integerValue];
 	} else {
 		tdm.rating        = 0;
@@ -81,18 +81,14 @@
         tdm.stub          = @"";
     }
     
-	if ([[talk objectForKey:@"comment_count"] isKindOfClass:[NSString class]]) {
+	if ([[talk objectForKey:@"comment_count"] isKindOfClass:[NSNumber class]]) {
 		tdm.commentCount   = [[talk objectForKey:@"comment_count"] integerValue];
 	} else {
 		tdm.commentCount   = 0;
 	}
 	
-	if ([[talk objectForKey:@"comments_enabled"] isKindOfClass:[NSString class]]) {
-		if ([[[talk objectForKey:@"comments_enabled"] lowercaseString] isEqualToString:@"1"]) {
-			tdm.allowComments = YES;
-		} else {
-			tdm.allowComments = NO;
-		}
+	if ([[talk objectForKey:@"comments_enabled"] isKindOfClass:[NSNumber class]]) {
+		tdm.allowComments = ([[talk objectForKey:@"comments_enabled"] integerValue] == 1);
 	} else {
 		tdm.allowComments = NO;
 	}
@@ -126,13 +122,49 @@
 		}
 	}
 	
+	if ([[talk objectForKey:@"uri"] isKindOfClass:[NSString class]]) {
+		tdm.uri		 = [talk objectForKey:@"uri"];
+	} else {
+		tdm.uri		 = @"";
+	}
+	if ([[talk objectForKey:@"verbose_uri"] isKindOfClass:[NSString class]]) {
+		tdm.verboseURI		 = [talk objectForKey:@"verbose_uri"];
+	} else {
+		tdm.verboseURI		 = @"";
+	}
+	if ([[talk objectForKey:@"website_uri"] isKindOfClass:[NSString class]]) {
+		tdm.websiteURI		 = [talk objectForKey:@"website_uri"];
+	} else {
+		tdm.websiteURI		 = @"";
+	}
+	if ([[talk objectForKey:@"comments_uri"] isKindOfClass:[NSString class]]) {
+		tdm.commentsURI		 = [talk objectForKey:@"comments_uri"];
+	} else {
+		tdm.commentsURI		 = @"";
+	}
+	if ([[talk objectForKey:@"starred_uri"] isKindOfClass:[NSString class]]) {
+		tdm.starredURI		 = [talk objectForKey:@"starred_uri"];
+	} else {
+		tdm.starredURI		 = @"";
+	}
+	if ([[talk objectForKey:@"verbose_comments_uri"] isKindOfClass:[NSString class]]) {
+		tdm.verboseCommentsURI		 = [talk objectForKey:@"verbose_comments_uri"];
+	} else {
+		tdm.verboseCommentsURI		 = @"";
+	}
+	if ([[talk objectForKey:@"event_uri"] isKindOfClass:[NSString class]]) {
+		tdm.eventURI		 = [talk objectForKey:@"event_uri"];
+	} else {
+		tdm.eventURI		 = @"";
+	}
+
 	[self.delegate gotTalkDetailData:tdm error:nil];
 	[tdm release];
 
 }
 
 - (void)gotError:(NSObject *)error {
-	
+
 }
 
 @end
