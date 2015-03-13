@@ -189,7 +189,7 @@
 				}
 			}
 			
-			cell.uiAuthor.text  = [self.comments getEventCommentAtIndex:[indexPath row]].username;
+			cell.uiAuthor.text  = [self.comments getEventCommentAtIndex:[indexPath row]].userDisplayName;
 			cell.uiComment.text = [self.comments getEventCommentAtIndex:[indexPath row]].comment;
 			[cell.uiComment sizeToFit];
 			

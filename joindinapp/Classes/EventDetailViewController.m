@@ -101,7 +101,7 @@
 	[self.talks sort];
 	self.uiComments.hidden    = YES;
 	EventGetDetail *ed = [APICaller EventGetDetail:self];
-	[ed call:self.event.uri];
+	[ed call:self.event.verboseURI];
 	
 	[self.uiLoadTalksIndicator startAnimating];	
 	EventGetTalks *e = [APICaller EventGetTalks:self];

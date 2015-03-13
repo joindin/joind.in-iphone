@@ -16,13 +16,11 @@
 
 @implementation EventCommentDetailModel
 
-@synthesize eventId;
 @synthesize comment;
-@synthesize made;
-@synthesize Id;
-@synthesize private;
-@synthesize active;
-@synthesize userId;
-@synthesize username;
+@synthesize createdDate;
+@synthesize userDisplayName;
+@synthesize gravatarHash;
+@synthesize userURI;
+@synthesize commentURI;
 
 @end
