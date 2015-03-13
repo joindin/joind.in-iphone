@@ -17,29 +17,15 @@
 @implementation TalkGetComments
 
 - (void)call:(TalkDetailModel *)talk {
-    [self callAPI:talk.comments_uri needAuth:YES canCache:YES];
+    [self callAPI:talk.commentsURI needAuth:YES canCache:YES];
 }
 
 - (void)gotData:(NSObject *)obj {
 	TalkCommentListModel *tclm = [[[TalkCommentListModel alloc] init] autorelease];
 	
-	NSDictionary *d = (NSDictionary *)obj;
+	NSDictionary *d = [(NSDictionary *)obj objectForKey:@"comments"];
 	for (NSDictionary *comment in d) {
 		TalkCommentDetailModel *tcdm = [[TalkCommentDetailModel alloc] init];
-		
-		if ([[comment objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
-			tcdm.Id = [[comment objectForKey:@"ID"] integerValue];
-		} else {
-			tcdm.Id = 0;
-		}
-		
-		if ([[comment objectForKey:@"active"] isKindOfClass:[NSString class]]) {
-			tcdm.active = ([[[comment objectForKey:@"active"] lowercaseString] compare:@"y"] == NSOrderedSame);
-		} else if ([[comment objectForKey:@"active"] isKindOfClass:[NSNumber class]]) {
-			tcdm.active = ([[comment objectForKey:@"active"] boolValue]);
-		} else {
-			NSLog(@"Can't recognise type %@", [[comment objectForKey:@"active"] class]);
-		}		
 		
 		if ([[comment objectForKey:@"comment"] isKindOfClass:[NSString class]]) {
 			tcdm.comment = [comment objectForKey:@"comment"];
@@ -47,48 +33,30 @@
 			tcdm.comment = @"";
 		}
 		
-		if ([[comment objectForKey:@"type"] isKindOfClass:[NSString class]]) {
-			tcdm.type = [comment objectForKey:@"type"];
-		} else {
-			tcdm.type = @"";
-		}
-		
 		if ([[comment objectForKey:@"date_made"] isKindOfClass:[NSString class]]) {
-			tcdm.made = [NSDate dateWithTimeIntervalSince1970:[[comment objectForKey:@"date_made"] integerValue]];
+			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
+			tcdm.createdDate = [dateFormatter dateFromString:[comment objectForKey:@"created_date"]];
 		} else {
-			tcdm.made = nil;
+			tcdm.createdDate = nil;
 		}
 		
-		if ([[comment objectForKey:@"private"] isKindOfClass:[NSString class]]) {
-			tcdm.private = ([[[comment objectForKey:@"private"] lowercaseString] compare:@"y"] == NSOrderedSame);
-		} else if ([[comment objectForKey:@"private"] isKindOfClass:[NSNumber class]]) {
-			tcdm.private = ([[comment objectForKey:@"private"] boolValue]);
-		} else {
-			NSLog(@"Can't recognise type %@", [[comment objectForKey:@"private"] class]);
-		}		
-		
-		if ([[comment objectForKey:@"rating"] isKindOfClass:[NSString class]]) {
+		if ([[comment objectForKey:@"rating"] isKindOfClass:[NSNumber class]]) {
 			tcdm.rating = [[comment objectForKey:@"rating"] integerValue];
 		} else {
 			tcdm.rating = 0;
 		}
 		
-		if ([[comment objectForKey:@"talk_id"] isKindOfClass:[NSString class]]) {
-			tcdm.talkId = [[comment objectForKey:@"talk_id"] integerValue];
+		if ([[comment objectForKey:@"user_display_name"] isKindOfClass:[NSString class]]) {
+			tcdm.userDisplayName = [comment objectForKey:@"user_display_name"];
 		} else {
-			tcdm.talkId = 0;
+			tcdm.userDisplayName = @"ANONYMOUS";
 		}
 		
-		if ([[comment objectForKey:@"uname"] isKindOfClass:[NSString class]]) {
-			tcdm.username = [comment objectForKey:@"uname"];
+		if ([[comment objectForKey:@"user_uri"] isKindOfClass:[NSString class]]) {
+			tcdm.userURI = [[comment objectForKey:@"user_uri"] integerValue];
 		} else {
-			tcdm.username = @"ANONYMOUS";
-		}
-		
-		if ([[comment objectForKey:@"user_id"] isKindOfClass:[NSString class]]) {
-			tcdm.userId = [[comment objectForKey:@"user_id"] integerValue];
-		} else {
-			tcdm.userId = 0;
+			tcdm.userURI = 0;
 		}
 		
 		

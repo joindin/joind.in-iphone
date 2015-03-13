@@ -189,7 +189,7 @@
 				}
 			}
 			
-			cell.uiAuthor.text  = [self.comments getTalkCommentAtIndex:[indexPath row]].username;
+			cell.uiAuthor.text  = [self.comments getTalkCommentAtIndex:[indexPath row]].userDisplayName;
 			cell.uiComment.text = [self.comments getTalkCommentAtIndex:[indexPath row]].comment;
 			cell.uiRating.image = [UIImage imageNamed:[NSString stringWithFormat:@"rating-%d.gif", (int) [self.comments getTalkCommentAtIndex:[indexPath row]].rating]];
 			

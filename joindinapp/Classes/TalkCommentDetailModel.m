@@ -16,15 +16,10 @@
 
 @implementation TalkCommentDetailModel
 
-@synthesize talkId;
 @synthesize rating;
 @synthesize comment;
-@synthesize type;
-@synthesize made;
-@synthesize Id;
-@synthesize private;
-@synthesize active;
-@synthesize userId;
-@synthesize username;
+@synthesize createdDate;
+@synthesize userDisplayName;
+@synthesize userURI;
 
 @end
