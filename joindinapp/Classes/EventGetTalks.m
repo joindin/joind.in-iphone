@@ -57,7 +57,7 @@
 			tdm.description          = @"";
 		}
 		
-		if ([[talk objectForKey:@"comment_count"] isKindOfClass:[NSString class]]) {
+		if ([[talk objectForKey:@"comment_count"] isKindOfClass:[NSNumber class]]) {
 			tdm.commentCount   = [[talk objectForKey:@"comment_count"] integerValue];
 		} else {
 			tdm.commentCount   = 0;
@@ -97,37 +97,35 @@
         } else {
             tdm.uri         = @"";
         }
-        NSLog(@"keys: %@", [talk allKeys]);
-        NSLog(@"URI: %@", [talk objectForKey:@"uri"]);
         if ([[talk objectForKey:@"verbose_uri"] isKindOfClass:[NSString class]]) {
-            tdm.verbose_uri         = [talk objectForKey:@"verbose_uri"];
+            tdm.verboseURI         = [talk objectForKey:@"verbose_uri"];
         } else {
-            tdm.verbose_uri         = @"";
+            tdm.verboseURI         = @"";
         }
         if ([[talk objectForKey:@"website_uri"] isKindOfClass:[NSString class]]) {
-            tdm.website_uri         = [talk objectForKey:@"website_uri"];
+            tdm.websiteURI         = [talk objectForKey:@"website_uri"];
         } else {
-            tdm.website_uri         = @"";
+            tdm.websiteURI         = @"";
         }
         if ([[talk objectForKey:@"comments_uri"] isKindOfClass:[NSString class]]) {
-            tdm.comments_uri         = [talk objectForKey:@"comments_uri"];
+            tdm.commentsURI         = [talk objectForKey:@"comments_uri"];
         } else {
-            tdm.comments_uri         = @"";
+            tdm.commentsURI         = @"";
         }
         if ([[talk objectForKey:@"starred_uri"] isKindOfClass:[NSString class]]) {
-            tdm.starred_uri         = [talk objectForKey:@"starred_uri"];
+            tdm.starredURI         = [talk objectForKey:@"starred_uri"];
         } else {
-            tdm.starred_uri         = @"";
+            tdm.starredURI         = @"";
         }
         if ([[talk objectForKey:@"verbose_comments_uri"] isKindOfClass:[NSString class]]) {
-            tdm.verbose_comments_uri         = [talk objectForKey:@"verbose_comments_uri"];
+            tdm.verboseCommentsURI         = [talk objectForKey:@"verbose_comments_uri"];
         } else {
-            tdm.verbose_comments_uri         = @"";
+            tdm.verboseCommentsURI         = @"";
         }
         if ([[talk objectForKey:@"event_uri"] isKindOfClass:[NSString class]]) {
-            tdm.event_uri         = [talk objectForKey:@"event_uri"];
+            tdm.eventURI         = [talk objectForKey:@"event_uri"];
         } else {
-            tdm.event_uri         = @"";
+            tdm.eventURI         = @"";
         }
 
         [tlm addTalk:tdm];
