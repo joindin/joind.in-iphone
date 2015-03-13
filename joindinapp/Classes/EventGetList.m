@@ -111,20 +111,19 @@
 			edm.cfpEndDate  = nil;
 		}
 		
-        // FIXME boolean
-		if ([[event objectForKey:@"comments_enabled"] isKindOfClass:[NSString class]]) {
-			edm.commentsEnabled = ([[[event objectForKey:@"comments_enabled"] lowercaseString] isEqualToString:@"y"]);
+		if ([[event objectForKey:@"comments_enabled"] isKindOfClass:[NSNumber class]]) {
+			edm.commentsEnabled = ([[event objectForKey:@"comments_enabled"] integerValue] == 1);
 		} else {
 			edm.commentsEnabled = NO;
 		}
 		
-		if ([[event objectForKey:@"attendee_count"] isKindOfClass:[NSString class]]) {
+		if ([[event objectForKey:@"attendee_count"] isKindOfClass:[NSNumber class]]) {
 			edm.attendeeCount   = [[event objectForKey:@"attendee_count"] integerValue];
 		} else {
 			edm.attendeeCount   = 0;
 		}
 		
-		if ([[event objectForKey:@"event_comments_count"] isKindOfClass:[NSString class]]) {
+		if ([[event objectForKey:@"event_comments_count"] isKindOfClass:[NSNumber class]]) {
 			edm.eventCommentsCount = [[event objectForKey:@"event_comments_count"] integerValue];
 		} else {
 			edm.eventCommentsCount = 0;

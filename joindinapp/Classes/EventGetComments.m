@@ -24,23 +24,9 @@
 - (void)gotData:(NSObject *)obj {
 	EventCommentListModel *eclm = [[[EventCommentListModel alloc] init] autorelease];
 	
-	NSDictionary *d = (NSDictionary *)obj;
+	NSDictionary *d = [(NSDictionary *)obj objectForKey:@"comments"];
 	for (NSDictionary *comment in d) {
 		EventCommentDetailModel *ecdm = [[EventCommentDetailModel alloc] init];
-		
-		if ([[comment objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
-			ecdm.Id = [[comment objectForKey:@"ID"] integerValue];
-		} else {
-			ecdm.Id = 0;
-		}
-		
-		if ([[comment objectForKey:@"active"] isKindOfClass:[NSString class]]) {
-			ecdm.active = [[[comment objectForKey:@"active"] lowercaseString] isEqualToString:@"y"];
-		} else if ([[comment objectForKey:@"active"] isKindOfClass:[NSNumber class]]) {
-			ecdm.active = ([[comment objectForKey:@"active"] boolValue]);
-		} else {
-			NSLog(@"Can't recognise type %@", [[comment objectForKey:@"active"] class]);
-		}		
 		
 		if ([[comment objectForKey:@"comment"] isKindOfClass:[NSString class]]) {
 			ecdm.comment = [comment objectForKey:@"comment"];
@@ -48,42 +34,40 @@
 			ecdm.comment = @"";
 		}
 		
-		if ([[comment objectForKey:@"date_made"] isKindOfClass:[NSString class]]) {
-			ecdm.made = [NSDate dateWithTimeIntervalSince1970:[[comment objectForKey:@"date_made"] integerValue]];
+		if ([[comment objectForKey:@"created_date"] isKindOfClass:[NSString class]]) {
+			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
+			ecdm.createdDate = [dateFormatter dateFromString:[comment objectForKey:@"created_date"]];
 		} else {
-			ecdm.made = nil;
+			ecdm.createdDate = nil;
 		}
 		
-		if ([[comment objectForKey:@"private"] isKindOfClass:[NSString class]]) {
-			ecdm.private = [[[comment objectForKey:@"private"] lowercaseString] isEqualToString:@"y"];
-		} else if ([[comment objectForKey:@"private"] isKindOfClass:[NSNumber class]]) {
-			ecdm.private = ([[comment objectForKey:@"private"] boolValue]);
+		if ([[comment objectForKey:@"user_display_name"] isKindOfClass:[NSString class]]) {
+			ecdm.userDisplayName = [comment objectForKey:@"user_display_name"];
 		} else {
-			NSLog(@"Can't recognise type %@", [[comment objectForKey:@"private"] class]);
-		}		
-		
-		if ([[comment objectForKey:@"event_id"] isKindOfClass:[NSString class]]) {
-			ecdm.eventId = [[comment objectForKey:@"event_id"] integerValue];
-		} else {
-			ecdm.eventId = 0;
+			ecdm.userDisplayName = @"ANONYMOUS";
 		}
 		
-		if ([[comment objectForKey:@"cname"] isKindOfClass:[NSString class]]) {
-			ecdm.username = [comment objectForKey:@"cname"];
+		if ([[comment objectForKey:@"gravatar_hash"] isKindOfClass:[NSString class]]) {
+			ecdm.gravatarHash = [comment objectForKey:@"gravatar_hash"];
 		} else {
-			ecdm.username = @"ANONYMOUS";
+			ecdm.gravatarHash = @"";
 		}
-		
-		if ([[comment objectForKey:@"user_id"] isKindOfClass:[NSString class]]) {
-			ecdm.userId = [[comment objectForKey:@"user_id"] integerValue];
+
+		if ([[comment objectForKey:@"user_uri"] isKindOfClass:[NSString class]]) {
+			ecdm.userURI = [comment objectForKey:@"user_uri"];
 		} else {
-			ecdm.userId = 0;
+			ecdm.userURI = @"";
 		}
-		
-		
-		//if (tdm.active && !tdm.private) {
+
+		if ([[comment objectForKey:@"comment_uri"] isKindOfClass:[NSString class]]) {
+			ecdm.commentURI = [comment objectForKey:@"comment_uri"];
+		} else {
+			ecdm.commentURI = @"";
+		}
+
 		[eclm addComment:ecdm];
-		//}
+
 		[ecdm release];
 		
 	}
