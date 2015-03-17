@@ -159,22 +159,24 @@
     } else {
         [self.url setString:[NSString stringWithFormat:@"%@/%@", [self getApiUrl], type]];
 
-        // Add query string parameters
-        if ([self.url rangeOfString:@"?"].location == NSNotFound) {
-            [self.url appendString:@"?"];
-        } else {
-            [self.url appendString:@"&"];
-        }
-        NSMutableString *resultString = [[NSMutableString alloc] init];
-        for (NSString* key in [params allKeys]){
-            if ([resultString length] > 0) {
-                [resultString appendString:@"&"];
+        if ([method isEqualToString:@"GET"]) {
+            // Add query string parameters
+            if ([self.url rangeOfString:@"?"].location == NSNotFound) {
+                [self.url appendString:@"?"];
+            } else {
+                [self.url appendString:@"&"];
             }
-            [resultString appendFormat:@"%@=%@", key, [params objectForKey:key]];
+            NSMutableString *resultString = [[NSMutableString alloc] init];
+            for (NSString* key in [params allKeys]){
+                if ([resultString length] > 0) {
+                    [resultString appendString:@"&"];
+                }
+                [resultString appendFormat:@"%@=%@", key, [params objectForKey:key]];
+            }
+            [self.url appendString:resultString];
         }
-        [self.url appendString:resultString];
     }
-	
+
 //	if ((!canCache) || (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO])) {
 	
 	if (canCache) {
@@ -182,8 +184,16 @@
 	}
 	NSMutableURLRequest *req;
 	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:3.0f];
-//	[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
-	[req setHTTPMethod:@"GET"];
+
+	// non-GET requests may have a body
+	if (![method isEqualToString:@"GET"] && [params count] > 0) {
+		NSError *error;
+		NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+		NSString *jsonStr = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+		[req setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+
+	[req setHTTPMethod:method];
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	//[req setValue:[NSString stringWithFormat:@"%@ %@ %@ %@", [UIDevice currentDevice].uniqueIdentifier, [UIDevice currentDevice].model, [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion] forHTTPHeaderField:@"X-Device-Info"];
 	//[req setValue:[UIDevice currentDevice].uniqueIdentifier forHTTPHeaderField:@"X-Device-UDID"];
