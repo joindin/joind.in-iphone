@@ -115,7 +115,11 @@
 
 - (IBAction) submitScreen:(id)sender {
 	if ([self.uiUser.text isEqualToString:@""]) {
-		[self savePrefs];
+		NSMutableDictionary *params = [[NSMutableDictionary init] alloc];
+		[params setObject:@"" forKey:@"username"];
+		[params setObject:@"" forKey:@"access_token"];
+		[params setObject:@"" forKey:@"user_uri"];
+		[self setPrefs:params];
 		[self.navigationController popViewControllerAnimated:YES];
 	} else {
 		[self.uiChecking startAnimating];
@@ -131,10 +135,20 @@
 	[self submitScreen:sender];
 }
 
-- (void) savePrefs {
+- (void) setPrefs:(NSDictionary *)params {
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-	[userPrefs setObject:self.uiUser.text    forKey:@"username"];
-	[userPrefs setObject:self.uiPass.text    forKey:@"password"];
+
+	// We expect authentication details to be set here
+	if ([[params objectForKey:@"username"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"username"] forKey:@"username"];
+	}
+	if ([[params objectForKey:@"access_token"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"access_tokene"] forKey:@"access_token"];
+	}
+	if ([[params objectForKey:@"user_uri"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"user_uri"] forKey:@"user_uri"];
+	}
+
 	[userPrefs setBool:self.uiLimitEvents.on forKey:@"limitevents"];
 	if (self.uiLocalTime.on) {
 		[userPrefs setObject:@"event" forKey:@"timezonedisplay"];
@@ -145,10 +159,12 @@
 	//[APICaller clearCache];
 }
 
-- (void)gotUserValidateData:(BOOL)success error:(APIError *)err {
+- (void)gotUserValidateData:(BOOL)success error:(APIError *)err data:(NSDictionary *)data {
 	[self.uiChecking stopAnimating];
 	if (success) {
-		[self savePrefs];
+		NSMutableDictionary *newParams = [[NSMutableDictionary alloc] initWithDictionary:data];
+		[newParams setObject:self.uiUser.text forKey:@"username"];
+		[self setPrefs:newParams];
 		[self.navigationController popViewControllerAnimated:YES];
 	} else {
 		UIAlertView *alert;

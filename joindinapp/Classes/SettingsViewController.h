@@ -42,6 +42,6 @@
 - (IBAction) doneEditingUser:(id)sender;
 - (IBAction) doneEditingPass:(id)sender;
 - (IBAction) gotoRegister:(id)sender;
-- (void) savePrefs;
+- (void) setPrefs:(NSString *)username accessToken:(NSString *)accessToken userURI:(NSString *)userURI;
 
 @end

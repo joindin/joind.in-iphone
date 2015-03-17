@@ -89,23 +89,23 @@
 
 #pragma mark API call
 
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth {
-	[self callAPI:type action:action params:params needAuth:needAuth canCache:YES];
+- (void)callAPI:(NSString *)type method:(NSString *)method params:(NSDictionary *)params needAuth:(BOOL)needAuth {
+	[self callAPI:type method:method params:params needAuth:needAuth canCache:YES];
 }
 
 - (void)callAPI:(NSString *)type params:(NSDictionary *)params needAuth:(BOOL)needAuth {
-	[self callAPI:type action:@"" params:params needAuth:needAuth canCache:YES];
+	[self callAPI:type method:@"GET" params:params needAuth:needAuth canCache:YES];
 }
 
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth {
-	[self callAPI:type action:@"" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
+	[self callAPI:type method:@"GET" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
 }
 
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
-    [self callAPI:type action:@"" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:canCache];
+    [self callAPI:type method:@"GET" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:canCache];
 }
 
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
+- (void)callAPI:(NSString *)type method:(NSString *)method params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
 	
 //	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
 	
