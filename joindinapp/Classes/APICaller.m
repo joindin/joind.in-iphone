@@ -26,6 +26,7 @@
 @synthesize connection;
 @synthesize reqJSON;
 @synthesize url;
+@synthesize lastStatusCode;
 
 - (id)initWithDelegate:(id)_delegate {
 	self.delegate = _delegate;
@@ -217,19 +218,26 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    self.lastStatusCode = (int)[httpResponse statusCode];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	//NSLog(@"Finished loading");
 	NSString *responseString = [[NSString alloc] initWithData:self.urlData encoding:NSUTF8StringEncoding];
 	
 	// Reset buffer
 	[self.urlData release];
 	self.urlData = [[NSMutableData alloc] init];
+
+	if (self.lastStatusCode >= 400 && self.lastStatusCode <= 600) {
+		// Some kind of error
+		[self gotError:responseString];
+	} else {
+		[self writeDataToCache:responseString requestJSON:self.reqJSON toUrl:self.url];
+
+		[self gotResponse:responseString];
+	}
 	
-	[self writeDataToCache:responseString requestJSON:self.reqJSON toUrl:self.url];
-	
-	[self gotResponse:responseString];
 	[responseString release];
 
 }

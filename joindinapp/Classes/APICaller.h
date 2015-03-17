@@ -26,6 +26,7 @@
 	NSURLConnection *connection;
 	NSString *reqJSON;
 	NSMutableString *url;
+	int lastStatusCode;
 }
 
 @property (nonatomic, retain) id delegate;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSString *reqJSON;
 @property (nonatomic, retain) NSMutableString *url;
+@property (nonatomic, assign) int lastStatusCode;
 
 - (id)initWithDelegate:(id)_delegate;
 - (NSString *)getApiUrl;
