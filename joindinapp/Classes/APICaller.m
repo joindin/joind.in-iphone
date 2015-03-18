@@ -106,53 +106,7 @@
 }
 
 - (void)callAPI:(NSString *)type method:(NSString *)method params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
-	
-//	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
-	
-//	if (needAuth) {
-//		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-//		NSString *user = [userPrefs stringForKey:@"username"];
-//		NSString *pass = [userPrefs stringForKey:@"password"];
-//		
-//		if (user == nil) {
-//			user = @"";
-//		}
-//		if (pass == nil) {
-//			pass = @"";
-//		}
-//		
-//		//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
-//		
-//		NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
-//		[reqAuth setObject:user forKey:@"user"];
-//		[reqAuth setObject:[pass md5] forKey:@"pass"];
-//		
-//		[reqRequest setObject:reqAuth forKey:@"auth"];
-//		[reqAuth    release];
-//	}
-	
-//	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
-//	[reqAction setObject:action forKey:@"type"];
-//	if (params != nil) {
-//		[reqAction setObject:params forKey:@"data"];
-//	} else {
-//		[reqAction setObject:[NSNull null] forKey:@"data"];
-//	}
-	
-//	[reqRequest setObject:reqAction forKey:@"action"];
-	
-//	NSMutableDictionary *reqObject = [[NSMutableDictionary alloc] initWithCapacity:1];
-//	[reqObject setObject:reqRequest forKey:@"request"];
-	
-//	[reqRequest release];
-//	[reqAction  release];
-	
-//	self.reqJSON = [reqObject JSONRepresentation];
-	
-//	[reqObject  release];
-	
-	//NSLog(@"JSON request is %@", reqJSON);
-	
+
     self.url = [[NSMutableString alloc] init];
     if ([type hasPrefix:@"http"]) {
         [self.url setString:type]; // full URL supplied
@@ -191,6 +145,21 @@
 		NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
 		NSString *jsonStr = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
 		[req setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+
+	if (needAuth) {
+		// Check we have an access token
+		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+		NSString *accessToken = [userPrefs stringForKey:@"access_token"];
+
+		if (accessToken == nil) {
+			accessToken = @"";
+		}
+		if (accessToken.length > 0) {
+			NSMutableString *authorizationHeader = [[NSMutableString alloc] initWithString:@"Bearer "];
+			[authorizationHeader appendString:accessToken];
+			[req setValue:authorizationHeader forHTTPHeaderField:@"Authorization"];
+		}
 	}
 
 	[req setHTTPMethod:method];

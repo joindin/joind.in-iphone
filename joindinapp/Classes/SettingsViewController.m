@@ -143,7 +143,7 @@
 		[userPrefs setObject:[params objectForKey:@"username"] forKey:@"username"];
 	}
 	if ([[params objectForKey:@"access_token"] isKindOfClass:[NSString class]]) {
-		[userPrefs setObject:[params objectForKey:@"access_tokene"] forKey:@"access_token"];
+		[userPrefs setObject:[params objectForKey:@"access_token"] forKey:@"access_token"];
 	}
 	if ([[params objectForKey:@"user_uri"] isKindOfClass:[NSString class]]) {
 		[userPrefs setObject:[params objectForKey:@"user_uri"] forKey:@"user_uri"];
