@@ -14,6 +14,7 @@
 #import "SettingsViewController.h"
 #import "APICaller.h"
 #import "UserValidate.h"
+#import "UserGetDetail.h"
 #import "AboutViewController.h"
 
 @implementation SettingsViewController
@@ -75,7 +76,9 @@
 	self.uiPass.text      = [userPrefs stringForKey:@"password"];
 	self.uiLimitEvents.on = [userPrefs boolForKey:@"limitevents"];
 	self.uiLocalTime.on   = [[userPrefs stringForKey:@"timezonedisplay"] isEqualToString:@"event"];
-	
+
+	BOOL signedIn = ([userPrefs stringForKey:@"access_token"] != nil); // true if we have an access token
+	[self toggleSignedIn:signedIn];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -122,13 +125,10 @@
 }
 
 - (IBAction) submitScreen:(id)sender {
-	if ([self.uiUser.text isEqualToString:@""]) {
-		NSMutableDictionary *params = [[NSMutableDictionary init] alloc];
-		[params setObject:@"" forKey:@"username"];
-		[params setObject:@"" forKey:@"access_token"];
-		[params setObject:@"" forKey:@"user_uri"];
-		[self setPrefs:params];
-		[self.navigationController popViewControllerAnimated:YES];
+	if ([self.uiUser.text isEqualToString:@""] || [self.uiPass.text isEqualToString:@""]) {
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No details supplied" message:@"Please enter your joind.in username and password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+		[alertView show];
+		[alertView release];
 	} else {
 		[self.uiChecking startAnimating];
 		self.uiOk.hidden = YES;
@@ -140,7 +140,13 @@
 - (IBAction) logout:(id)sender {
 	self.uiUser.text = @"";
 	self.uiPass.text = @"";
-	[self submitScreen:sender];
+
+	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+	[params setObject:@"" forKey:@"username"];
+	[params setObject:@"" forKey:@"access_token"];
+	[params setObject:@"" forKey:@"user_uri"];
+	[self setPrefs:params];
+	[self toggleSignedIn:NO];
 }
 
 - (void) setPrefs:(NSDictionary *)params {
@@ -168,20 +174,47 @@
 }
 
 - (void)gotUserValidateData:(BOOL)success error:(APIError *)err data:(NSDictionary *)data {
-	[self.uiChecking stopAnimating];
+	self.uiOk.hidden = NO;
 	if (success) {
 		NSMutableDictionary *newParams = [[NSMutableDictionary alloc] initWithDictionary:data];
 		[newParams setObject:self.uiUser.text forKey:@"username"];
 		[self setPrefs:newParams];
-		[self.navigationController popViewControllerAnimated:YES];
+
+		// request the user's details so we can get their gravatar image
+		NSString *verboseURI = [NSString stringWithFormat:@"%@?verbose=yes", [data objectForKey:@"user_uri"]];
+		UserGetDetail *userGetDetail = [APICaller UserGetDetail:self];
+		[userGetDetail call:verboseURI];
+
+		[self toggleSignedIn:YES];
+		[self.uiChecking stopAnimating];
 	} else {
+		[self.uiChecking stopAnimating];
 		UIAlertView *alert;
 		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid username/password"
 										  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
-		self.uiOk.hidden = NO;
 	}
+}
+
+- (void)gotUserGetDetailData:(UserDetailModel *)udm error:(APIError *)err {
+	NSMutableString *gravatarURL = [[NSMutableString alloc] initWithString:@"http://www.gravatar.com/avatar/"];
+	if (err == nil) {
+		[gravatarURL appendString:udm.gravatarHash];
+	} else {
+		// Couldn't retrieve user data
+	}
+	[gravatarURL appendFormat:@"?d=mm&s=%f", self.uiUserGravatar.frame.size.width];
+
+	self.uiUserGravatar.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:gravatarURL]]];
+
+	NSString *loggedInText = [NSString stringWithFormat:@"Logged in as %@", udm.username];
+	self.uiLoggedInText.text = loggedInText;
+}
+
+- (void)toggleSignedIn:(BOOL)userIsSignedIn {
+	self.uiSigninView.hidden = userIsSignedIn;
+	self.uiSignedInView.hidden = !userIsSignedIn;
 }
 
 - (IBAction) gotoRegister:(id)sender {
