@@ -27,6 +27,10 @@
 @synthesize uiContent;
 @synthesize uiLocalTime;
 @synthesize keyboardIsShowing;
+@synthesize uiSignedInView;
+@synthesize uiSigninView;
+@synthesize uiUserGravatar;
+@synthesize uiLoggedInText;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -83,6 +87,10 @@
 }
 
 - (void)dealloc {
+    [uiSigninView release];
+    [uiSignedInView release];
+    [uiUserGravatar release];
+    [uiLoggedInText release];
     [super dealloc];
 }
 
@@ -187,6 +195,17 @@
 
 -(IBAction)doneEditingPass:(id)sender {
 	[sender resignFirstResponder];
+}
+- (void)viewDidUnload {
+	[uiSigninView release];
+	uiSigninView = nil;
+	[uiSignedInView release];
+	uiSignedInView = nil;
+	[uiUserGravatar release];
+	uiUserGravatar = nil;
+	[uiLoggedInText release];
+	uiLoggedInText = nil;
+    [super viewDidUnload];
 }
 @end
 
