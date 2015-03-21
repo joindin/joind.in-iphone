@@ -17,8 +17,15 @@
 @implementation UserDetailModel
 
 @synthesize username;
-@synthesize lastLogin;
-@synthesize uid;
 @synthesize fullName;
+@synthesize twitterUsername;
+@synthesize gravatarHash;
+@synthesize uri;
+@synthesize verboseURI;
+@synthesize websiteURI;
+@synthesize talksURI;
+@synthesize attendedEventsURI;
+@synthesize hostedEventsURI;
+@synthesize talkCommentsURI;
 
 @end

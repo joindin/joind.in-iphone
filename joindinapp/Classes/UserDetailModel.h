@@ -16,14 +16,28 @@
 
 @interface UserDetailModel : NSObject {
 	NSString   *username;
-	NSDate     *lastLogin;
-	NSUInteger  uid;
 	NSString   *fullName;
+	NSString   *twitterUsername;
+	NSString   *gravatarHash;
+	NSString   *uri;
+	NSString   *verboseURI;
+	NSString   *websiteURI;
+	NSString   *talksURI;
+	NSString   *attendedEventsURI;
+	NSString   *hostedEventsURI;
+	NSString   *talkCommentsURI;
 }
 
 @property (nonatomic, retain) NSString   *username;
-@property (nonatomic, retain) NSDate     *lastLogin;
-@property (nonatomic, assign) NSUInteger  uid;
 @property (nonatomic, retain) NSString   *fullName;
+@property (nonatomic, retain) NSString   *twitterUsername;
+@property (nonatomic, retain) NSString   *gravatarHash;
+@property (nonatomic, retain) NSString   *uri;
+@property (nonatomic, retain) NSString   *verboseURI;
+@property (nonatomic, retain) NSString   *websiteURI;
+@property (nonatomic, retain) NSString   *talksURI;
+@property (nonatomic, retain) NSString   *attendedEventsURI;
+@property (nonatomic, retain) NSString   *hostedEventsURI;
+@property (nonatomic, retain) NSString   *talkCommentsURI;
 
 @end

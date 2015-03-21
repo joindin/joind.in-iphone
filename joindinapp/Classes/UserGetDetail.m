@@ -16,44 +16,82 @@
 
 @implementation UserGetDetail
 
-- (void)call:(NSString *)user {
-	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
-	[params setValue:user forKey:@"uid"];
-	[self callAPI:@"user" action:@"getdetail" params:params needAuth:YES canCache:NO];
+- (void)call:(NSString *)userURI {
+    [self callAPI:userURI needAuth:NO canCache:YES];
 }
 
 - (void)gotData:(NSObject *)obj {
 	
 	UserDetailModel *udm = [[[UserDetailModel alloc] init] autorelease];
 
-	NSDictionary *response = (NSDictionary *)obj;
-	
-	if ([[response objectForKey:@"username"] isKindOfClass:[NSString class]]) {
-		udm.username = [response objectForKey:@"username"];
-	} else {
-		udm.username = @"";
-	}
-	
-	if ([[response objectForKey:@"last_login"] isKindOfClass:[NSString class]]) {
-		udm.lastLogin = [NSDate dateWithTimeIntervalSince1970:[[response objectForKey:@"last_login"] integerValue]];
-	} else {
-		udm.lastLogin = nil;
-	}
-	
-	if ([[response objectForKey:@"ID"] isKindOfClass:[NSString class]]) {
-		udm.uid = [[response objectForKey:@"ID"] integerValue];
-	} else {
-		udm.uid = 0;
-	}
-	
-	if ([[response objectForKey:@"full_name"] isKindOfClass:[NSString class]]) {
-		udm.fullName = [response objectForKey:@"full_name"];
-	} else {
-		udm.fullName = @"";
-	}
-	
+    NSDictionary *user = [(NSArray *)[(NSDictionary *)obj objectForKey:@"users"] objectAtIndex:0];
+    if ([[user objectForKey:@"username"] isKindOfClass:[NSString class]]) {
+        udm.username = [user objectForKey:@"username"];
+    } else {
+        udm.username = @"";
+    }
+
+    if ([[user objectForKey:@"full_name"] isKindOfClass:[NSString class]]) {
+        udm.fullName = [user objectForKey:@"full_name"];
+    } else {
+        udm.fullName = @"";
+    }
+
+    if ([[user objectForKey:@"twitter_username"] isKindOfClass:[NSString class]]) {
+        udm.twitterUsername = [user objectForKey:@"twitter_username"];
+    } else {
+        udm.twitterUsername = @"";
+    }
+
+    if ([[user objectForKey:@"gravatar_hash"] isKindOfClass:[NSString class]]) {
+        udm.gravatarHash = [user objectForKey:@"gravatar_hash"];
+    } else {
+        udm.gravatarHash = @"";
+    }
+
+    if ([[user objectForKey:@"uri"] isKindOfClass:[NSString class]]) {
+        udm.uri = [user objectForKey:@"uri"];
+    } else {
+        udm.uri = @"";
+    }
+
+    if ([[user objectForKey:@"verbose_uri"] isKindOfClass:[NSString class]]) {
+        udm.verboseURI = [user objectForKey:@"verbose_uri"];
+    } else {
+        udm.verboseURI = @"";
+    }
+
+    if ([[user objectForKey:@"website_uri"] isKindOfClass:[NSString class]]) {
+        udm.websiteURI = [user objectForKey:@"website_uri"];
+    } else {
+        udm.websiteURI = @"";
+    }
+
+    if ([[user objectForKey:@"talks_uri"] isKindOfClass:[NSString class]]) {
+        udm.talksURI = [user objectForKey:@"talks_uri"];
+    } else {
+        udm.talksURI = @"";
+    }
+
+    if ([[user objectForKey:@"attended_events_uri"] isKindOfClass:[NSString class]]) {
+        udm.attendedEventsURI = [user objectForKey:@"attended_events_uri"];
+    } else {
+        udm.attendedEventsURI = @"";
+    }
+
+    if ([[user objectForKey:@"hosted_events_uri"] isKindOfClass:[NSString class]]) {
+        udm.hostedEventsURI = [user objectForKey:@"hosted_events_uri"];
+    } else {
+        udm.hostedEventsURI = @"";
+    }
+
+    if ([[user objectForKey:@"talk_comments_uri"] isKindOfClass:[NSString class]]) {
+        udm.talkCommentsURI = [user objectForKey:@"talk_comments_uri"];
+    } else {
+        udm.talkCommentsURI = @"";
+    }
+
 	[self.delegate gotUserGetDetailData:udm error:nil];
-	
 }
 
 - (void)gotError:(APIError *)error {

@@ -19,7 +19,7 @@
 
 }
 
-- (void)call:(NSString *)user;
+- (void)call:(NSString *)userURI;
 - (void)gotData:(NSObject *)obj;
 - (void)gotError:(APIError *)error;
 
