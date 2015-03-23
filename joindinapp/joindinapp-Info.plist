@@ -46,6 +46,10 @@
 	<string>1.6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>joindInOAuthClientID</key>
+	<string></string>
+	<key>joindInOAuthClientSecret</key>
+	<string></string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 </dict>

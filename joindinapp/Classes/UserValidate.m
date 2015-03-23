@@ -18,12 +18,16 @@
 @implementation UserValidate
 
 - (void)call:(NSString *)user password:(NSString *)pass {
+	// Get OAuth details from application settings
+	NSString *oauthClientID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"joindInOAuthClientID"];
+	NSString *oauthClientSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"joindInOAuthClientSecret"];
+
 	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:5];
 	[params setValue:user       forKey:@"username"];
 	[params setValue:pass       forKey:@"password"];
 	[params setValue:@"password" forKey:@"grant_type"];
-	[params setValue:@"" forKey:@"client_id"];
-	[params setValue:@"" forKey:@"client_secret"];
+	[params setValue:oauthClientID forKey:@"client_id"];
+	[params setValue:oauthClientSecret forKey:@"client_secret"];
 	[self callAPI:@"token" method:@"POST" params:params needAuth:NO canCache:NO];
 }
 
