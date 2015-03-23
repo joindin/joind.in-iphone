@@ -71,14 +71,17 @@
 		[userPrefs setObject:@"event" forKey:@"timezonedisplay"];
 		[userPrefs synchronize];
 	}
-	
-	self.uiUser.text      = [userPrefs stringForKey:@"username"];
-	self.uiPass.text      = [userPrefs stringForKey:@"password"];
+
 	self.uiLimitEvents.on = [userPrefs boolForKey:@"limitevents"];
 	self.uiLocalTime.on   = [[userPrefs stringForKey:@"timezonedisplay"] isEqualToString:@"event"];
 
-	BOOL signedIn = ([userPrefs stringForKey:@"access_token"] != nil); // true if we have an access token
+	NSString *accessToken = [userPrefs stringForKey:@"access_token"];
+	BOOL signedIn = (accessToken != nil && [accessToken length] > 0); // true if we have an access token.
 	[self toggleSignedIn:signedIn];
+	if (signedIn) {
+		[self setUserLoggedInDetails:[userPrefs stringForKey:@"username"]];
+		[self setUserGravatarImage:[userPrefs stringForKey:@"user_gravatar_hash"]];
+	}
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -142,9 +145,10 @@
 	self.uiPass.text = @"";
 
 	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-	[params setObject:@"" forKey:@"username"];
 	[params setObject:@"" forKey:@"access_token"];
+	[params setObject:@"" forKey:@"username"];
 	[params setObject:@"" forKey:@"user_uri"];
+	[params setObject:@"" forKey:@"gravatar_hash"];
 	[self setPrefs:params];
 	[self toggleSignedIn:NO];
 }
@@ -161,6 +165,9 @@
 	}
 	if ([[params objectForKey:@"user_uri"] isKindOfClass:[NSString class]]) {
 		[userPrefs setObject:[params objectForKey:@"user_uri"] forKey:@"user_uri"];
+	}
+	if ([[params objectForKey:@"gravatar_hash"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"gravatar_hash"] forKey:@"user_gravatar_hash"];
 	}
 
 	[userPrefs setBool:self.uiLimitEvents.on forKey:@"limitevents"];
@@ -198,17 +205,29 @@
 }
 
 - (void)gotUserGetDetailData:(UserDetailModel *)udm error:(APIError *)err {
-	NSMutableString *gravatarURL = [[NSMutableString alloc] initWithString:@"http://www.gravatar.com/avatar/"];
 	if (err == nil) {
-		[gravatarURL appendString:udm.gravatarHash];
+		NSDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
+		[params setValue:udm.gravatarHash forKey:@"gravatar_hash"];
+		[self setPrefs:params];
 	} else {
 		// Couldn't retrieve user data
+	}
+	[self setUserGravatarImage:udm.gravatarHash];
+	[self setUserLoggedInDetails:udm.username];
+}
+
+- (void)setUserGravatarImage:(NSString *)gravatarHash {
+	NSMutableString *gravatarURL = [[NSMutableString alloc] initWithString:@"http://www.gravatar.com/avatar/"];
+	if (gravatarHash != nil) {
+		[gravatarURL appendString:gravatarHash];
 	}
 	[gravatarURL appendFormat:@"?d=mm&s=%f", self.uiUserGravatar.frame.size.width];
 
 	self.uiUserGravatar.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:gravatarURL]]];
+}
 
-	NSString *loggedInText = [NSString stringWithFormat:@"Logged in as %@", udm.username];
+- (void)setUserLoggedInDetails:(NSString *)username {
+	NSString *loggedInText = [NSString stringWithFormat:@"Logged in as %@", username];
 	self.uiLoggedInText.text = loggedInText;
 }
 
