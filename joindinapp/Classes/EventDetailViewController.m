@@ -107,8 +107,8 @@
 	EventGetTalks *e = [APICaller EventGetTalks:self];
 	[e call:self.event];
 	
-	UserGetComments *u = [APICaller UserGetComments:self];
-	[u call:nil];
+//	UserGetComments *u = [APICaller UserGetComments:self];
+//	[u call:nil];
 	
 	if ([self.event isNowOn]) {
 		for (TalkDetailModel *tdm in self.talks.talks) {
