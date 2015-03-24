@@ -29,5 +29,5 @@
 @end
 
 @protocol UserValidateResponse
-- (void)gotUserValidateData:(BOOL)success error:(APIError *)err;
+- (void)gotUserValidateData:(BOOL)success error:(APIError *)err data:(NSDictionary *)data;
 @end

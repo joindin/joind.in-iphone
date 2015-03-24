@@ -23,7 +23,13 @@
 	IBOutlet UIActivityIndicatorView *uiChecking;
 	IBOutlet UIScrollView *uiContent;
 	IBOutlet UISwitch     *uiLocalTime;
-	
+	IBOutlet UIImageView *uiUserGravatar;
+	IBOutlet UILabel *uiLoggedInText;
+
+	// Containing views for signed-in/signed-out states
+	IBOutlet UIView *uiSigninView;
+	IBOutlet UIView *uiSignedInView;
+
 	BOOL keyboardIsShowing;
 }
 
@@ -36,12 +42,17 @@
 @property (nonatomic, retain) UIScrollView *uiContent;
 @property (nonatomic, assign) BOOL keyboardIsShowing;
 @property (nonatomic, retain) UISwitch     *uiLocalTime;
+@property (nonatomic, retain) UIImageView  *uiUserGravatar;
+@property (nonatomic, retain) UILabel      *uiLoggedInText;
+@property (nonatomic, retain) UIView       *uiSigninView;
+@property (nonatomic, retain) UIView       *uiSignedInView;
 
 - (IBAction) submitScreen:(id)sender;
 - (IBAction) logout:(id)sender;
 - (IBAction) doneEditingUser:(id)sender;
 - (IBAction) doneEditingPass:(id)sender;
 - (IBAction) gotoRegister:(id)sender;
-- (void) savePrefs;
+- (void) setSignedIn:(BOOL)userSignedIn;
+- (void) setPrefs:(NSDictionary *)params;
 
 @end

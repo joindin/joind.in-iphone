@@ -14,10 +14,6 @@
 #import <Foundation/Foundation.h>
 #import "APIError.h"
 
-//#define API_URL @"http://test.joind.in/api"
-//#define API_URL @"http://localhost/api";
-#define API_URL @"https://api.joind.in/v2.1"
-
 #define CACHE_TIME 7*86400 // In seconds
 
 @interface APICaller : NSObject {
@@ -26,6 +22,7 @@
 	NSURLConnection *connection;
 	NSString *reqJSON;
 	NSMutableString *url;
+	int lastStatusCode;
 }
 
 @property (nonatomic, retain) id delegate;
@@ -33,11 +30,12 @@
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSString *reqJSON;
 @property (nonatomic, retain) NSMutableString *url;
+@property (nonatomic, assign) int lastStatusCode;
 
 - (id)initWithDelegate:(id)_delegate;
 - (NSString *)getApiUrl;
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth;
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache;
+- (void)callAPI:(NSString *)type method:(NSString *)method params:(NSDictionary *)params needAuth:(BOOL)needAuth;
+- (void)callAPI:(NSString *)type method:(NSString *)method params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache;
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth canCache:(BOOL)canCache;
 - (void)callAPI:(NSString *)type params:(NSDictionary *)params needAuth:(BOOL)needAuth;
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth;

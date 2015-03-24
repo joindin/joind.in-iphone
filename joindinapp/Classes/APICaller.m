@@ -26,6 +26,7 @@
 @synthesize connection;
 @synthesize reqJSON;
 @synthesize url;
+@synthesize lastStatusCode;
 
 - (id)initWithDelegate:(id)_delegate {
 	self.delegate = _delegate;
@@ -34,7 +35,7 @@
 }
 
 - (NSString *)getApiUrl {
-	return API_URL;
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"joindInAPIURL"];
 }
 
 #pragma mark Cache control methods
@@ -88,92 +89,48 @@
 
 #pragma mark API call
 
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth {
-	[self callAPI:type action:action params:params needAuth:needAuth canCache:YES];
+- (void)callAPI:(NSString *)type method:(NSString *)method params:(NSDictionary *)params needAuth:(BOOL)needAuth {
+	[self callAPI:type method:method params:params needAuth:needAuth canCache:YES];
 }
 
 - (void)callAPI:(NSString *)type params:(NSDictionary *)params needAuth:(BOOL)needAuth {
-	[self callAPI:type action:@"" params:params needAuth:needAuth canCache:YES];
+	[self callAPI:type method:@"GET" params:params needAuth:needAuth canCache:YES];
 }
 
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth {
-	[self callAPI:type action:@"" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
+	[self callAPI:type method:@"GET" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
 }
 
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
-    [self callAPI:type action:@"" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:canCache];
+    [self callAPI:type method:@"GET" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:canCache];
 }
 
-- (void)callAPI:(NSString *)type action:(NSString *)action params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
-	
-//	NSMutableDictionary *reqRequest = [[NSMutableDictionary alloc] initWithCapacity:2];
-	
-//	if (needAuth) {
-//		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-//		NSString *user = [userPrefs stringForKey:@"username"];
-//		NSString *pass = [userPrefs stringForKey:@"password"];
-//		
-//		if (user == nil) {
-//			user = @"";
-//		}
-//		if (pass == nil) {
-//			pass = @"";
-//		}
-//		
-//		//NSLog(@"Type is %@, action is %@, params are %@", type, action, params);
-//		
-//		NSMutableDictionary *reqAuth = [[NSMutableDictionary alloc] initWithCapacity:2];
-//		[reqAuth setObject:user forKey:@"user"];
-//		[reqAuth setObject:[pass md5] forKey:@"pass"];
-//		
-//		[reqRequest setObject:reqAuth forKey:@"auth"];
-//		[reqAuth    release];
-//	}
-	
-//	NSMutableDictionary *reqAction = [[NSMutableDictionary alloc] initWithCapacity:2];
-//	[reqAction setObject:action forKey:@"type"];
-//	if (params != nil) {
-//		[reqAction setObject:params forKey:@"data"];
-//	} else {
-//		[reqAction setObject:[NSNull null] forKey:@"data"];
-//	}
-	
-//	[reqRequest setObject:reqAction forKey:@"action"];
-	
-//	NSMutableDictionary *reqObject = [[NSMutableDictionary alloc] initWithCapacity:1];
-//	[reqObject setObject:reqRequest forKey:@"request"];
-	
-//	[reqRequest release];
-//	[reqAction  release];
-	
-//	self.reqJSON = [reqObject JSONRepresentation];
-	
-//	[reqObject  release];
-	
-	//NSLog(@"JSON request is %@", reqJSON);
-	
+- (void)callAPI:(NSString *)type method:(NSString *)method params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
+
     self.url = [[NSMutableString alloc] init];
     if ([type hasPrefix:@"http"]) {
         [self.url setString:type]; // full URL supplied
     } else {
         [self.url setString:[NSString stringWithFormat:@"%@/%@", [self getApiUrl], type]];
 
-        // Add query string parameters
-        if ([self.url rangeOfString:@"?"].location == NSNotFound) {
-            [self.url appendString:@"?"];
-        } else {
-            [self.url appendString:@"&"];
-        }
-        NSMutableString *resultString = [[NSMutableString alloc] init];
-        for (NSString* key in [params allKeys]){
-            if ([resultString length] > 0) {
-                [resultString appendString:@"&"];
+        if ([method isEqualToString:@"GET"]) {
+            // Add query string parameters
+            if ([self.url rangeOfString:@"?"].location == NSNotFound) {
+                [self.url appendString:@"?"];
+            } else {
+                [self.url appendString:@"&"];
             }
-            [resultString appendFormat:@"%@=%@", key, [params objectForKey:key]];
+            NSMutableString *resultString = [[NSMutableString alloc] init];
+            for (NSString* key in [params allKeys]){
+                if ([resultString length] > 0) {
+                    [resultString appendString:@"&"];
+                }
+                [resultString appendFormat:@"%@=%@", key, [params objectForKey:key]];
+            }
+            [self.url appendString:resultString];
         }
-        [self.url appendString:resultString];
     }
-	
+
 //	if ((!canCache) || (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO])) {
 	
 	if (canCache) {
@@ -181,8 +138,31 @@
 	}
 	NSMutableURLRequest *req;
 	req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:3.0f];
-//	[req setHTTPBody:[self.reqJSON dataUsingEncoding:NSUTF8StringEncoding]];
-	[req setHTTPMethod:@"GET"];
+
+	// non-GET requests may have a body
+	if (![method isEqualToString:@"GET"] && [params count] > 0) {
+		NSError *error;
+		NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+		NSString *jsonStr = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+		[req setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+
+	if (needAuth) {
+		// Check we have an access token
+		NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+		NSString *accessToken = [userPrefs stringForKey:@"access_token"];
+
+		if (accessToken == nil) {
+			accessToken = @"";
+		}
+		if (accessToken.length > 0) {
+			NSMutableString *authorizationHeader = [[NSMutableString alloc] initWithString:@"Bearer "];
+			[authorizationHeader appendString:accessToken];
+			[req setValue:authorizationHeader forHTTPHeaderField:@"Authorization"];
+		}
+	}
+
+	[req setHTTPMethod:method];
 	[req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	//[req setValue:[NSString stringWithFormat:@"%@ %@ %@ %@", [UIDevice currentDevice].uniqueIdentifier, [UIDevice currentDevice].model, [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion] forHTTPHeaderField:@"X-Device-Info"];
 	//[req setValue:[UIDevice currentDevice].uniqueIdentifier forHTTPHeaderField:@"X-Device-UDID"];
@@ -217,19 +197,26 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    self.lastStatusCode = (int)[httpResponse statusCode];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	//NSLog(@"Finished loading");
 	NSString *responseString = [[NSString alloc] initWithData:self.urlData encoding:NSUTF8StringEncoding];
 	
 	// Reset buffer
 	[self.urlData release];
 	self.urlData = [[NSMutableData alloc] init];
+
+	if (self.lastStatusCode >= 400 && self.lastStatusCode <= 600) {
+		// Some kind of error
+		[self gotError:responseString];
+	} else {
+		[self writeDataToCache:responseString requestJSON:self.reqJSON toUrl:self.url];
+
+		[self gotResponse:responseString];
+	}
 	
-	[self writeDataToCache:responseString requestJSON:self.reqJSON toUrl:self.url];
-	
-	[self gotResponse:responseString];
 	[responseString release];
 
 }

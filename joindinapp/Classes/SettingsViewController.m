@@ -14,6 +14,7 @@
 #import "SettingsViewController.h"
 #import "APICaller.h"
 #import "UserValidate.h"
+#import "UserGetDetail.h"
 #import "AboutViewController.h"
 
 @implementation SettingsViewController
@@ -27,6 +28,10 @@
 @synthesize uiContent;
 @synthesize uiLocalTime;
 @synthesize keyboardIsShowing;
+@synthesize uiSignedInView;
+@synthesize uiSigninView;
+@synthesize uiUserGravatar;
+@synthesize uiLoggedInText;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -66,12 +71,17 @@
 		[userPrefs setObject:@"event" forKey:@"timezonedisplay"];
 		[userPrefs synchronize];
 	}
-	
-	self.uiUser.text      = [userPrefs stringForKey:@"username"];
-	self.uiPass.text      = [userPrefs stringForKey:@"password"];
+
 	self.uiLimitEvents.on = [userPrefs boolForKey:@"limitevents"];
 	self.uiLocalTime.on   = [[userPrefs stringForKey:@"timezonedisplay"] isEqualToString:@"event"];
-	
+
+	NSString *accessToken = [userPrefs stringForKey:@"access_token"];
+	BOOL signedIn = (accessToken != nil && [accessToken length] > 0); // true if we have an access token.
+	[self setSignedIn:signedIn];
+	if (signedIn) {
+		[self setUserLoggedInDetails:[userPrefs stringForKey:@"username"]];
+		[self setUserGravatarImage:[userPrefs stringForKey:@"user_gravatar_hash"]];
+	}
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -83,6 +93,10 @@
 }
 
 - (void)dealloc {
+    [uiSigninView release];
+    [uiSignedInView release];
+    [uiUserGravatar release];
+    [uiLoggedInText release];
     [super dealloc];
 }
 
@@ -114,9 +128,10 @@
 }
 
 - (IBAction) submitScreen:(id)sender {
-	if ([self.uiUser.text isEqualToString:@""]) {
-		[self savePrefs];
-		[self.navigationController popViewControllerAnimated:YES];
+	if ([self.uiUser.text isEqualToString:@""] || [self.uiPass.text isEqualToString:@""]) {
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No details supplied" message:@"Please enter your joind.in username and password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+		[alertView show];
+		[alertView release];
 	} else {
 		[self.uiChecking startAnimating];
 		self.uiOk.hidden = YES;
@@ -128,13 +143,33 @@
 - (IBAction) logout:(id)sender {
 	self.uiUser.text = @"";
 	self.uiPass.text = @"";
-	[self submitScreen:sender];
+
+	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+	[params setObject:@"" forKey:@"access_token"];
+	[params setObject:@"" forKey:@"username"];
+	[params setObject:@"" forKey:@"user_uri"];
+	[params setObject:@"" forKey:@"gravatar_hash"];
+	[self setPrefs:params];
+	[self setSignedIn:NO];
 }
 
-- (void) savePrefs {
+- (void) setPrefs:(NSDictionary *)params {
 	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
-	[userPrefs setObject:self.uiUser.text    forKey:@"username"];
-	[userPrefs setObject:self.uiPass.text    forKey:@"password"];
+
+	// We expect authentication details to be set here
+	if ([[params objectForKey:@"username"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"username"] forKey:@"username"];
+	}
+	if ([[params objectForKey:@"access_token"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"access_token"] forKey:@"access_token"];
+	}
+	if ([[params objectForKey:@"user_uri"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"user_uri"] forKey:@"user_uri"];
+	}
+	if ([[params objectForKey:@"gravatar_hash"] isKindOfClass:[NSString class]]) {
+		[userPrefs setObject:[params objectForKey:@"gravatar_hash"] forKey:@"user_gravatar_hash"];
+	}
+
 	[userPrefs setBool:self.uiLimitEvents.on forKey:@"limitevents"];
 	if (self.uiLocalTime.on) {
 		[userPrefs setObject:@"event" forKey:@"timezonedisplay"];
@@ -145,19 +180,60 @@
 	//[APICaller clearCache];
 }
 
-- (void)gotUserValidateData:(BOOL)success error:(APIError *)err {
-	[self.uiChecking stopAnimating];
+- (void)gotUserValidateData:(BOOL)success error:(APIError *)err data:(NSDictionary *)data {
+	self.uiOk.hidden = NO;
 	if (success) {
-		[self savePrefs];
-		[self.navigationController popViewControllerAnimated:YES];
+		NSMutableDictionary *newParams = [[NSMutableDictionary alloc] initWithDictionary:data];
+		[newParams setObject:self.uiUser.text forKey:@"username"];
+		[self setPrefs:newParams];
+
+		// request the user's details so we can get their gravatar image
+		NSString *verboseURI = [NSString stringWithFormat:@"%@?verbose=yes", [data objectForKey:@"user_uri"]];
+		UserGetDetail *userGetDetail = [APICaller UserGetDetail:self];
+		[userGetDetail call:verboseURI];
+
+		[self setSignedIn:YES];
+		[self.uiChecking stopAnimating];
 	} else {
+		[self.uiChecking stopAnimating];
 		UIAlertView *alert;
 		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid username/password"
 										  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
-		self.uiOk.hidden = NO;
 	}
+}
+
+- (void)gotUserGetDetailData:(UserDetailModel *)udm error:(APIError *)err {
+	if (err == nil) {
+		NSDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
+		[params setValue:udm.gravatarHash forKey:@"gravatar_hash"];
+		[self setPrefs:params];
+	} else {
+		// Couldn't retrieve user data
+	}
+	[self setUserGravatarImage:udm.gravatarHash];
+	[self setUserLoggedInDetails:udm.username];
+}
+
+- (void)setUserGravatarImage:(NSString *)gravatarHash {
+	NSMutableString *gravatarURL = [[NSMutableString alloc] initWithString:@"http://www.gravatar.com/avatar/"];
+	if (gravatarHash != nil) {
+		[gravatarURL appendString:gravatarHash];
+	}
+	[gravatarURL appendFormat:@"?d=mm&s=%f", self.uiUserGravatar.frame.size.width];
+
+	self.uiUserGravatar.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:gravatarURL]]];
+}
+
+- (void)setUserLoggedInDetails:(NSString *)username {
+	NSString *loggedInText = [NSString stringWithFormat:@"Logged in as %@", username];
+	self.uiLoggedInText.text = loggedInText;
+}
+
+- (void)setSignedIn:(BOOL)userIsSignedIn {
+	self.uiSigninView.hidden = userIsSignedIn;
+	self.uiSignedInView.hidden = !userIsSignedIn;
 }
 
 - (IBAction) gotoRegister:(id)sender {
@@ -171,6 +247,17 @@
 
 -(IBAction)doneEditingPass:(id)sender {
 	[sender resignFirstResponder];
+}
+- (void)viewDidUnload {
+	[uiSigninView release];
+	uiSigninView = nil;
+	[uiSignedInView release];
+	uiSignedInView = nil;
+	[uiUserGravatar release];
+	uiUserGravatar = nil;
+	[uiLoggedInText release];
+	uiLoggedInText = nil;
+    [super viewDidUnload];
 }
 @end
 

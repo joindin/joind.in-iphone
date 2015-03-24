@@ -18,23 +18,28 @@
 @implementation UserValidate
 
 - (void)call:(NSString *)user password:(NSString *)pass {
-	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
-	[params setValue:user       forKey:@"uid"];
-	[params setValue:[pass md5] forKey:@"pass"];
-	[self callAPI:@"user" action:@"validate" params:params needAuth:NO canCache:NO];
+	// Get OAuth details from application settings
+	NSString *oauthClientID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"joindInOAuthClientID"];
+	NSString *oauthClientSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"joindInOAuthClientSecret"];
+
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:5];
+	[params setValue:user       forKey:@"username"];
+	[params setValue:pass       forKey:@"password"];
+	[params setValue:@"password" forKey:@"grant_type"];
+	[params setValue:oauthClientID forKey:@"client_id"];
+	[params setValue:oauthClientSecret forKey:@"client_secret"];
+	[self callAPI:@"token" method:@"POST" params:params needAuth:NO canCache:NO];
 }
 
 - (void)gotData:(NSObject *)obj {
+	// Successful response (ie non-400/500 error)
 	NSDictionary *response = (NSDictionary *)obj;
-	if ([[response objectForKey:@"msg"] isEqualToString:@"success"]) {
-		[self.delegate gotUserValidateData:YES error:nil];
-	} else {
-		[self.delegate gotUserValidateData:NO error:nil];
-	}
+	[self.delegate gotUserValidateData:YES error:nil data:response];
 }
 
 - (void)gotError:(NSObject *)error {
-	//[self.delegate gotUserValidateData:nil error:error];
+	// Error response
+	[self.delegate gotUserValidateData:NO error:nil data:nil];
 }
 
 @end

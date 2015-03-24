@@ -46,6 +46,12 @@
 	<string>1.6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>joindInOAuthClientID</key>
+	<string></string>
+	<key>joindInOAuthClientSecret</key>
+	<string></string>
+	<key>joindInAPIURL</key>
+	<string>https://api.joind.in/v2.1</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 </dict>
