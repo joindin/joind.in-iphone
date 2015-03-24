@@ -77,7 +77,7 @@
 
 	NSString *accessToken = [userPrefs stringForKey:@"access_token"];
 	BOOL signedIn = (accessToken != nil && [accessToken length] > 0); // true if we have an access token.
-	[self toggleSignedIn:signedIn];
+	[self setSignedIn:signedIn];
 	if (signedIn) {
 		[self setUserLoggedInDetails:[userPrefs stringForKey:@"username"]];
 		[self setUserGravatarImage:[userPrefs stringForKey:@"user_gravatar_hash"]];
@@ -150,7 +150,7 @@
 	[params setObject:@"" forKey:@"user_uri"];
 	[params setObject:@"" forKey:@"gravatar_hash"];
 	[self setPrefs:params];
-	[self toggleSignedIn:NO];
+	[self setSignedIn:NO];
 }
 
 - (void) setPrefs:(NSDictionary *)params {
@@ -192,7 +192,7 @@
 		UserGetDetail *userGetDetail = [APICaller UserGetDetail:self];
 		[userGetDetail call:verboseURI];
 
-		[self toggleSignedIn:YES];
+		[self setSignedIn:YES];
 		[self.uiChecking stopAnimating];
 	} else {
 		[self.uiChecking stopAnimating];
@@ -231,7 +231,7 @@
 	self.uiLoggedInText.text = loggedInText;
 }
 
-- (void)toggleSignedIn:(BOOL)userIsSignedIn {
+- (void)setSignedIn:(BOOL)userIsSignedIn {
 	self.uiSigninView.hidden = userIsSignedIn;
 	self.uiSignedInView.hidden = !userIsSignedIn;
 }

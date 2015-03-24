@@ -52,7 +52,7 @@
 - (IBAction) doneEditingUser:(id)sender;
 - (IBAction) doneEditingPass:(id)sender;
 - (IBAction) gotoRegister:(id)sender;
-- (void) toggleSignedIn:(BOOL)userSignedIn;
+- (void) setSignedIn:(BOOL)userSignedIn;
 - (void) setPrefs:(NSDictionary *)params;
 
 @end
