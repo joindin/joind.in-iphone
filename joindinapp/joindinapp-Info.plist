@@ -50,6 +50,8 @@
 	<string></string>
 	<key>joindInOAuthClientSecret</key>
 	<string></string>
+	<key>joindInAPIURL</key>
+	<string>https://api.joind.in/v2.1</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 </dict>

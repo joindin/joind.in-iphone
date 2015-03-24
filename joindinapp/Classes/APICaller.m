@@ -35,7 +35,7 @@
 }
 
 - (NSString *)getApiUrl {
-	return API_URL;
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"joindInAPIURL"];
 }
 
 #pragma mark Cache control methods

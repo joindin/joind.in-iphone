@@ -14,10 +14,6 @@
 #import <Foundation/Foundation.h>
 #import "APIError.h"
 
-//#define API_URL @"http://test.joind.in/api"
-//#define API_URL @"http://localhost/api";
-#define API_URL @"https://api.joind.in/v2.1"
-
 #define CACHE_TIME 7*86400 // In seconds
 
 @interface APICaller : NSObject {
