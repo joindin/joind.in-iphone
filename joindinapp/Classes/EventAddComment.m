@@ -17,32 +17,13 @@
 @implementation EventAddComment
 
 - (void)call:(EventDetailModel *)event comment:(NSString *)comment {
-//	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:4];
-//	[params setObject:[NSString stringWithFormat:@"%d", event.Id] forKey:@"event_id"];
-//	[params setObject:comment forKey:@"comment"];
-//	[self callAPI:@"event" action:@"addcomment" params:params needAuth:YES canCache:NO];
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
+	[params setObject:comment forKey:@"comment"];
+	[self callAPI:event.commentsURI method:@"POST" params:params needAuth:YES canCache:NO];
 }
 
 - (void)gotData:(NSObject *)obj {
-	id _msg = [((NSDictionary *)obj) objectForKey:@"msg"];
-	
-	if ([_msg isKindOfClass:[NSString class]] && [_msg isEqualToString:@"Comment added!"]) {
-		[self.delegate gotAddedEventComment:nil];
-	} else {
-		// Detect if obj.msg is an array, and if so then collapse it
-		NSMutableString *msg = [NSMutableString stringWithCapacity:0];
-		if ([_msg isKindOfClass:[NSArray class]]) {
-			for(NSString *msgs in _msg) {
-				if ([msg length] > 1) {
-					[msg appendString:@", "];
-				}
-				[msg appendString:msgs];
-			}
-		} else {
-			[msg appendString:_msg];
-		}
-		[self gotError:[APIError APIErrorWithMsg:msg type:ERR_UNKNOWN]];
-	}
+	[self.delegate gotAddedEventComment:nil];
 }
 
 - (void)gotError:(APIError *)error {
