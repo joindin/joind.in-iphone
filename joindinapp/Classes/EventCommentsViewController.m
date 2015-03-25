@@ -97,37 +97,19 @@
 - (void)gotAddedEventComment:(APIError *)error {
 	if (error != nil) {
 		UIAlertView *alert;
-		if (error.type == ERR_CREDENTIALS) {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
-											  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		} else {
-			NSMutableString *msg = [NSMutableString stringWithCapacity:1];
-			[msg setString:@""];
-			if ([error.msg class] == [NSArray class]) {
-				for(NSString *eachMsg in (NSArray *)error.msg) {
-					[msg appendString:@", "];
-					[msg appendString:eachMsg];
-				}
-			} else {
-				[msg appendString:error.msg];
-			}
-			NSLog(@"Error string %@", error.msg);
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg 
-											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-			// Reload comments
-			EventGetComments *e = [APICaller EventGetComments:self];
-			[e call:self.event];
-			self.title = @"Loading...";
-		}
+		NSLog(@"Error string %@", (NSString *)error);
+		NSString *msg = @"There was a problem posting your comment";
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg
+                                          delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
-	} else {
-		// Reload comments
-		[self.provideCommentCell reset];
-		EventGetComments *e = [APICaller EventGetComments:self];
-		[e call:self.event];
-		self.title = @"Loading...";
 	}
+
+	// Reload comments
+	[self.provideCommentCell reset];
+	EventGetComments *e = [APICaller EventGetComments:self];
+	[e call:self.event];
+	self.title = @"Loading...";
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
