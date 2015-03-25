@@ -222,22 +222,13 @@
 }
 
 - (void)gotResponse:(NSString *)responseString {
-	// Parse response
-	//NSLog(@"Response is %@", responseString);
+	// Not all responses contain body data
+	// eg 201, 204 and similar
+	// If there's a nil response, just pass it along anyway
 	SBJSON *jsonParser = [SBJSON new];
 	NSObject *obj = [jsonParser objectWithString:responseString error:NULL];
-	//NSLog(@"Got obj %@", obj);
 	[jsonParser release];
-	
-	if (obj == nil) {
-		if ([responseString isEqualToString:@"Invalid permissions!"]) {
-			[self gotError:[APIError APIErrorWithMsg:responseString type:ERR_CREDENTIALS]];
-		} else {
-			[self gotError:[APIError APIErrorWithMsg:responseString type:ERR_UNKNOWN]];
-		}
-	} else {
-		[self gotData:obj];
-	}
+	[self gotData:obj];
 }
 
 #pragma mark Override these
