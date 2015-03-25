@@ -118,6 +118,7 @@
 		[alert release];
 	} else {
 		// Reload comments
+		[self.provideCommentCell reset];
 		EventGetComments *e = [APICaller EventGetComments:self];
 		[e call:self.event];
 		self.title = @"Loading...";

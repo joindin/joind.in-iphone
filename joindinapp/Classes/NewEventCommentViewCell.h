@@ -29,6 +29,7 @@
 - (IBAction) uiSubmitted:(id)sender;
 - (void) doStuff;
 - (void) textGotFocus:(NSNotification*)notification;
+- (void) reset;
 
 @end
 
