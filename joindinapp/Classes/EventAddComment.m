@@ -19,6 +19,7 @@
 - (void)call:(EventDetailModel *)event comment:(NSString *)comment {
 	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
 	[params setObject:comment forKey:@"comment"];
+	[params setObject:@"0" forKey:@"rating"];
 	[self callAPI:event.commentsURI method:@"POST" params:params needAuth:YES canCache:NO];
 }
 
