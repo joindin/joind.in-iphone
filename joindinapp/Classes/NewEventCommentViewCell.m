@@ -39,4 +39,10 @@
 	}
 }
 
+- (void) reset {
+    [self.uiActivity stopAnimating];
+    self.uiSubmit.hidden = NO;
+    self.uiComment.text = @"";
+}
+
 @end
