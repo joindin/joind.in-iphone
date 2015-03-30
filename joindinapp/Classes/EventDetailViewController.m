@@ -408,7 +408,7 @@
 - (IBAction)uiAttendingButtonPressed:(id)sender {
 	[self.uiAttendingIndicator startAnimating];
 	EventAttend *e = [APICaller EventAttend:self];
-	[e call:self.event];
+	[e call:self.event isNowAttending:self.uiAttending.isOn];
 }
 
 - (IBAction)uiCommentsButtonPressed:(id)sender {

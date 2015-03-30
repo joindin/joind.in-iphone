@@ -16,8 +16,9 @@
 
 @implementation EventAttend
 
-- (void)call:(EventDetailModel *)event {
-	[self callAPI:event.attendingURI needAuth:YES canCache:NO];
+- (void)call:(EventDetailModel *)event isNowAttending:(BOOL)attendingStatus {
+    NSString *method = attendingStatus ? @"POST" : @"DELETE";
+    [self callAPI:event.attendingURI method:method params:nil needAuth:YES canCache:NO];
 }
 
 - (void)gotData:(NSObject *)obj {
