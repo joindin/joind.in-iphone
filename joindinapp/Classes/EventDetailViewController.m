@@ -60,10 +60,6 @@
 	self.uiTableHeaderView = [nibViews objectAtIndex: 1];
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
 	
-	self.uiAttending = [UISwitch switchWithLeftText:@"yes" andRight:@" no"];
-	self.uiAttending.center = CGPointMake(263.0f, 258.0f);
-	[[self view] addSubview:self.uiAttending];
-	
 	[self view].backgroundColor = [UIColor whiteColor];
 }
 
@@ -166,21 +162,19 @@
 }
 
 - (void)setupAttending {
-//	if (self.event.isAuthd == YES) {
-//		self.uiAttending.hidden = NO;
-//		self.uiAttendingLabel.hidden = NO;
-//	} else {
-//		self.uiAttending.hidden = YES;
-//		self.uiAttendingLabel.hidden = YES;
-//	}
-	
+    self.uiAttending.on = self.event.attending;
 	if ([self.event hasFinished]) {
-		self.uiAttendingLabel.text = @"Attended";
-	} else {
-		self.uiAttendingLabel.text = @"Attending";
-	}
-	self.uiAttending.on = event.attending;
-	
+        self.uiAttendingLabel.text = @"Attended:";
+        self.uiAttending.enabled = NO;
+    } else {
+        self.uiAttendingLabel.text = @"Attending:";
+
+        // Enable/disable the control according to logged-in status
+        NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+        NSString *accessToken = [userPrefs stringForKey:@"access_token"];
+        BOOL signedIn = (accessToken != nil && [accessToken length] > 0); // true if we have an access token.
+        self.uiAttending.enabled = signedIn;
+    }
 }
 
 - (void)gotUserComments:(UserCommentListModel *)uclm error:(APIError *)err {
