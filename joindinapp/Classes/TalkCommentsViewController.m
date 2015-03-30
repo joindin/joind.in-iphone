@@ -89,40 +89,21 @@
 }
 
 - (void)gotAddedTalkComment:(APIError *)error {
-	if (error != nil) {
-		UIAlertView *alert;
-		if (error.type == ERR_CREDENTIALS) {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.msg 
-											  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		} else {
-			NSMutableString *msg = [NSMutableString stringWithCapacity:1];
-			[msg setString:@""];
-			if ([error.msg class] == [NSArray class]) {
-				for(NSString *eachMsg in (NSArray *)error.msg) {
-					[msg appendString:@", "];
-					[msg appendString:eachMsg];
-				}
-			} else {
-				[msg appendString:error.msg];
-			}
-			//NSLog(@"Error string %@", error.msg);
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg 
-											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-			// Reload comments
-			TalkGetComments *t = [APICaller TalkGetComments:self];
-			[t call:self.talk];
-		}
-		[alert show];
-		[alert release];
-	} else {
-		// Nip back to event screen
-		[self.navigationController popViewControllerAnimated:YES];
-		/* (doesn't seem to be re-init'ing the "Add comment" cell)
-		// Reload comments
-		TalkGetComments *t = [APICaller TalkGetComments:self];
-		[t call:self.talk];
-		 */
-	}
+    if (error != nil) {
+        UIAlertView *alert;
+        NSLog(@"Error string %@", (NSString *)error);
+        NSString *msg = @"There was a problem posting your comment";
+        alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg
+                                          delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+
+    // Reload comments
+    [self.provideCommentCell reset];
+    TalkGetComments *t = [APICaller TalkGetComments:self];
+    [t call:self.talk];
+    self.title = @"Loading...";
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
