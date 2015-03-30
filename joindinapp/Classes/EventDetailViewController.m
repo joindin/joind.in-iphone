@@ -443,10 +443,14 @@
 
 - (void)gotEventAttend:(APIError *)err {
 	[self.uiAttendingIndicator stopAnimating];
+	self.event.attending = !self.event.attending;
 	if (err == nil) {
-		self.event.attending = !self.event.attending;
-		//[APICaller clearCache];
 		[self setupAttending];
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Couldn't update your attending status"
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
 	}
 }
 
