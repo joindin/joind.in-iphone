@@ -424,14 +424,8 @@
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error{
 	if (error != nil) {
 		//NSLog(@"Error: %@", error.msg);
-		UIAlertView *alert;
-		if (error.type == ERR_CREDENTIALS) {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
-											  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		} else {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Couldn't load event details"
 											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		}
 		[alert show];
 		[alert release];
 	} else {
@@ -452,13 +446,6 @@
 		[alert show];
 		[alert release];
 	}
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	SettingsViewController *vc = [[SettingsViewController alloc] init];
-	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];	
-	
 }
 
 - (void)didReceiveMemoryWarning {
