@@ -19,7 +19,7 @@
 @interface EventAttend : APICaller {
 
 }
-- (void)call:(EventDetailModel *)event;
+- (void)call:(EventDetailModel *)event isNowAttending:(BOOL)attendingStatus;
 - (void)gotData:(NSObject *)obj;
 - (void)gotError:(NSObject *)error;
 

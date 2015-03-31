@@ -16,22 +16,17 @@
 
 @implementation EventAttend
 
-- (void)call:(EventDetailModel *)event {
-	[self callAPI:event.attendingURI needAuth:YES canCache:NO];
+- (void)call:(EventDetailModel *)event isNowAttending:(BOOL)attendingStatus {
+    NSString *method = attendingStatus ? @"POST" : @"DELETE";
+    [self callAPI:event.attendingURI method:method params:nil needAuth:YES canCache:NO];
 }
 
 - (void)gotData:(NSObject *)obj {
-	NSDictionary *d = (NSDictionary *)obj;
-	if ([[d objectForKey:@"msg"] isEqualToString:@"Success"]) {
-		[self.delegate gotEventAttend:nil];
-	} else {
-		APIError *e = [APIError APIErrorWithMsg:[d objectForKey:@"msg"] type:ERR_UNKNOWN];
-		[self.delegate gotEventAttend:e];
-	}
+	[self.delegate gotEventAttend:nil];
 }
 
-- (void)gotError:(NSObject *)error {
-	NSLog(@"Got error %@", error);
+- (void)gotError:(APIError *)error {
+    [self.delegate gotEventAttend:error];
 }
 
 @end

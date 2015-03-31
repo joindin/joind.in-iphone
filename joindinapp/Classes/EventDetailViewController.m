@@ -60,10 +60,6 @@
 	self.uiTableHeaderView = [nibViews objectAtIndex: 1];
 	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
 	
-	self.uiAttending = [UISwitch switchWithLeftText:@"yes" andRight:@" no"];
-	self.uiAttending.center = CGPointMake(263.0f, 258.0f);
-	[[self view] addSubview:self.uiAttending];
-	
 	[self view].backgroundColor = [UIColor whiteColor];
 }
 
@@ -166,21 +162,19 @@
 }
 
 - (void)setupAttending {
-//	if (self.event.isAuthd == YES) {
-//		self.uiAttending.hidden = NO;
-//		self.uiAttendingLabel.hidden = NO;
-//	} else {
-//		self.uiAttending.hidden = YES;
-//		self.uiAttendingLabel.hidden = YES;
-//	}
-	
+    self.uiAttending.on = self.event.attending;
 	if ([self.event hasFinished]) {
-		self.uiAttendingLabel.text = @"Attended";
-	} else {
-		self.uiAttendingLabel.text = @"Attending";
-	}
-	self.uiAttending.on = event.attending;
-	
+        self.uiAttendingLabel.text = @"Attended:";
+        self.uiAttending.enabled = NO;
+    } else {
+        self.uiAttendingLabel.text = @"Attending:";
+
+        // Enable/disable the control according to logged-in status
+        NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+        NSString *accessToken = [userPrefs stringForKey:@"access_token"];
+        BOOL signedIn = (accessToken != nil && [accessToken length] > 0); // true if we have an access token.
+        self.uiAttending.enabled = signedIn;
+    }
 }
 
 - (void)gotUserComments:(UserCommentListModel *)uclm error:(APIError *)err {
@@ -408,7 +402,7 @@
 - (IBAction)uiAttendingButtonPressed:(id)sender {
 	[self.uiAttendingIndicator startAnimating];
 	EventAttend *e = [APICaller EventAttend:self];
-	[e call:self.event];
+	[e call:self.event isNowAttending:self.uiAttending.isOn];
 }
 
 - (IBAction)uiCommentsButtonPressed:(id)sender {
@@ -430,14 +424,8 @@
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error{
 	if (error != nil) {
 		//NSLog(@"Error: %@", error.msg);
-		UIAlertView *alert;
-		if (error.type == ERR_CREDENTIALS) {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
-											  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		} else {
-			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:(NSString *)error.msg 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Couldn't load event details"
 											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		}
 		[alert show];
 		[alert release];
 	} else {
@@ -449,18 +437,15 @@
 
 - (void)gotEventAttend:(APIError *)err {
 	[self.uiAttendingIndicator stopAnimating];
+	self.event.attending = !self.event.attending;
 	if (err == nil) {
-		self.event.attending = !self.event.attending;
-		//[APICaller clearCache];
 		[self setupAttending];
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Couldn't update your attending status"
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
 	}
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	SettingsViewController *vc = [[SettingsViewController alloc] init];
-	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];	
-	
 }
 
 - (void)didReceiveMemoryWarning {
