@@ -117,7 +117,7 @@
     if (speakerCount > 0) {
         speakerLabel = [[self.speakers objectAtIndex:0] objectForKey:@"speaker_name"];
         if (speakerCount > 1) {
-            NSString *append = [NSString stringWithFormat:@" + %d other%@", speakerCount - 1, (speakerCount > 2 ? @"s" : @"")];
+            NSString *append = [NSString stringWithFormat:@" + %ld other%@", speakerCount - 1, (speakerCount > 2 ? @"s" : @"")];
             [speakerLabel stringByAppendingString:append];
         }
     }
