@@ -33,7 +33,7 @@
 			tcdm.comment = @"";
 		}
 		
-		if ([[comment objectForKey:@"date_made"] isKindOfClass:[NSString class]]) {
+		if ([[comment objectForKey:@"created_date"] isKindOfClass:[NSString class]]) {
 			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
 			tcdm.createdDate = [dateFormatter dateFromString:[comment objectForKey:@"created_date"]];

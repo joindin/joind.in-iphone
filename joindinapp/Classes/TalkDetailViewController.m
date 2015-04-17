@@ -47,7 +47,7 @@
 	self.uiTracks.hidden      = YES;
 
 	TalkGetDetail *t = [APICaller TalkGetDetail:self];
-	[t call:self.talk.uri];
+	[t call:self.talk.verboseURI];
 }
 
 -(void) gotTalkDetailData:(TalkDetailModel *)tdm error:(APIError *)error {

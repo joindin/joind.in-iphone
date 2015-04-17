@@ -46,46 +46,23 @@
 }
 
 - (IBAction) uiRatingPressed:(id)sender {
-	if (self.uiRating1.state == 1) {
+	if (self.uiRating1.state == UIControlStateHighlighted) {
 		self.rating = 1;
-		[self.uiRating1 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating2 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
-		[self.uiRating3 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
-		[self.uiRating4 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
-		[self.uiRating5 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
 	}
-	if (self.uiRating2.state == 1) {
+	if (self.uiRating2.state == UIControlStateHighlighted) {
 		self.rating = 2;
-		[self.uiRating1 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating2 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating3 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
-		[self.uiRating4 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
-		[self.uiRating5 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
 	}
-	if (self.uiRating3.state == 1) {
+	if (self.uiRating3.state == UIControlStateHighlighted) {
 		self.rating = 3;
-		[self.uiRating1 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating2 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating3 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating4 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
-		[self.uiRating5 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
 	}
-	if (self.uiRating4.state == 1) {
+	if (self.uiRating4.state == UIControlStateHighlighted) {
 		self.rating = 4;
-		[self.uiRating1 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating2 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating3 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating4 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating5 setImage:[UIImage imageNamed:@"rating-off.gif"] forState:0];
 	}
-	if (self.uiRating5.state == 1) {
+	if (self.uiRating5.state == UIControlStateHighlighted) {
 		self.rating = 5;
-		[self.uiRating1 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating2 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating3 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating4 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
-		[self.uiRating5 setImage:[UIImage imageNamed:@"rating-on.gif"]  forState:0];
 	}
+
+	[self setRatingImageState:self.rating];
 }
 
 // Poor-man's initialiser
@@ -101,6 +78,25 @@
 	if ([self.uiComment.text isEqualToString:@"Type comment..."]) {
 		self.uiComment.text = @"";
 	}
+}
+
+- (void) reset {
+	[self.uiActivity stopAnimating];
+	self.uiSubmit.hidden = NO;
+	self.uiComment.text = @"";
+	self.rating = 0;
+	[self setRatingImageState:self.rating];
+}
+
+- (void) setRatingImageState:(int)ratingValue {
+	NSString *off = @"rating-off.gif";
+	NSString *on = @"rating-on.gif";
+
+	[self.uiRating1 setImage:[UIImage imageNamed:(ratingValue > 0 ? on : off)] forState:UIControlStateNormal];
+	[self.uiRating2 setImage:[UIImage imageNamed:(ratingValue > 1 ? on : off)] forState:UIControlStateNormal];
+	[self.uiRating3 setImage:[UIImage imageNamed:(ratingValue > 2 ? on : off)] forState:UIControlStateNormal];
+	[self.uiRating4 setImage:[UIImage imageNamed:(ratingValue > 3 ? on : off)] forState:UIControlStateNormal];
+	[self.uiRating5 setImage:[UIImage imageNamed:(ratingValue > 4 ? on : off)] forState:UIControlStateNormal];
 }
 
 @end
