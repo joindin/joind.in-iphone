@@ -28,6 +28,7 @@
 	IBOutlet UITableViewCell *uiCell;
 	
 	BOOL commentsLoaded;
+	BOOL scrollToEnd;
 	
 }
 
@@ -41,6 +42,7 @@
 @property (nonatomic, retain) UITableViewCell *uiCell;
 
 @property (nonatomic, assign) BOOL commentsLoaded;
+@property (nonatomic, assign) BOOL scrollToEnd;
 
 - (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity rating:(NSUInteger)rating;
 - (void)focusNewComment;

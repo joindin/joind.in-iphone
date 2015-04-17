@@ -30,10 +30,12 @@
 @synthesize uiRating;
 @synthesize uiCell;
 @synthesize commentsLoaded;
+@synthesize scrollToEnd;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.commentsLoaded = NO;
+	self.scrollToEnd = NO;
 	TalkGetComments *t = [APICaller TalkGetComments:self];
 	[t call:self.talk];
 	self.title = @"Loading...";
@@ -79,6 +81,10 @@
 		self.comments = tclm;
 		self.title = [NSString stringWithFormat:@"%d comments", (int) [self.comments getNumComments]];
 		[[self tableView] reloadData];
+		if (scrollToEnd) {
+			scrollToEnd = NO;
+			[self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+		}
 	} else {
 		UIAlertView *alert;
 			alert = [[UIAlertView alloc] initWithTitle:@"Error" message:err.msg 
@@ -101,6 +107,7 @@
 
     // Reload comments
     [self.provideCommentCell reset];
+    self.scrollToEnd = YES;
     TalkGetComments *t = [APICaller TalkGetComments:self];
     [t call:self.talk];
     self.title = @"Loading...";
