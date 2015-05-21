@@ -79,7 +79,6 @@
 	if (err == nil) {
 		self.commentsLoaded = YES;
 		self.comments = tclm;
-		self.title = [NSString stringWithFormat:@"%d comments", (int) [self.comments getNumComments]];
 		[[self tableView] reloadData];
 		if (scrollToEnd) {
 			scrollToEnd = NO;
@@ -92,6 +91,12 @@
 		[alert show];
 		[alert release];
 	}
+    int numComments = (int) [self.comments getNumComments];
+    NSMutableString *commentTitle = [NSMutableString stringWithFormat:@"%d comment", numComments];
+    if (numComments != 1) {
+        [commentTitle appendString:@"s"];
+    }
+    self.title = commentTitle;
 }
 
 - (void)gotAddedTalkComment:(APIError *)error {
