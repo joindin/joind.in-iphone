@@ -112,6 +112,7 @@
 		28C286E10D94DF7D0034E888 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* EventListViewController.m */; };
 		28F335F11007B36200424DE2 /* EventListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* EventListView.xib */; };
 		9B2CF77A1BA763BF00F64075 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2CF7791BA763BF00F64075 /* CoreLocation.framework */; };
+		9BF8C7091C215C08004333C3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF8C7081C215C08004333C3 /* MainStoryboard.storyboard */; };
 		A028B23A17FF580300B86718 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23117FF580300B86718 /* Default~iphone.png */; };
 		A028B23B17FF580300B86718 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23217FF580300B86718 /* Default@2x.png */; };
 		A028B23C17FF580300B86718 /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23317FF580300B86718 /* Default-568h@2x~iphone.png */; };
@@ -297,6 +298,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* joindinapp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "joindinapp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9B2CF7791BA763BF00F64075 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9BF8C7081C215C08004333C3 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A028B23117FF580300B86718 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
 		A028B23217FF580300B86718 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A028B23317FF580300B86718 /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				9BF8C7081C215C08004333C3 /* MainStoryboard.storyboard */,
 				1B690B6717BA1EA8008B82C8 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -721,6 +724,7 @@
 				D45E21D61B28D5C400EEA14F /* icon_57.png in Resources */,
 				0AE857AF10F024A5002C4C98 /* rating-5.gif in Resources */,
 				0A41DEF610F518B000FBFE86 /* Entitlementsadhoc.plist in Resources */,
+				9BF8C7091C215C08004333C3 /* MainStoryboard.storyboard in Resources */,
 				0A41E05510F53E9B00FBFE86 /* Settings.bundle in Resources */,
 				D45E21CA1B28D38800EEA14F /* Images.xcassets in Resources */,
 				0A41E10610F54C8B00FBFE86 /* SettingsView.xib in Resources */,
