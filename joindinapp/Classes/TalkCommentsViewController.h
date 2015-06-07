@@ -30,6 +30,7 @@
 	BOOL commentsLoaded;
 	BOOL scrollToEnd;
 	
+	BOOL signedIn;
 }
 
 @property (nonatomic, retain) TalkDetailModel *talk;
@@ -43,6 +44,8 @@
 
 @property (nonatomic, assign) BOOL commentsLoaded;
 @property (nonatomic, assign) BOOL scrollToEnd;
+
+@property (nonatomic, assign) BOOL signedIn;
 
 - (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity rating:(NSUInteger)rating;
 - (void)focusNewComment;

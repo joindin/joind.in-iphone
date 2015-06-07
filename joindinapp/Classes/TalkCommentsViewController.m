@@ -32,6 +32,8 @@
 @synthesize commentsLoaded;
 @synthesize scrollToEnd;
 
+@synthesize signedIn;
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.commentsLoaded = NO;
@@ -40,7 +42,11 @@
 	[t call:self.talk];
 	self.title = @"Loading...";
 	
-	if (self.talk.allowComments) {
+	// Hide the ability to comment if user isn't signed in
+	NSUserDefaults *userPrefs = [NSUserDefaults standardUserDefaults];
+	NSString *accessToken = [userPrefs stringForKey:@"access_token"];
+	self.signedIn = (accessToken != nil && [accessToken length] > 0); // true if we have an access token.
+	if (self.signedIn && self.talk.allowComments) {
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBtnPressed)];
 	} else {
 		// Removed refresh button because it'll only appear after commenting has closed, so there's no point having a refresh
@@ -229,6 +235,7 @@
 		cell.commentDelegate = self;
 		[cell doStuff];
 		self.provideCommentCell = cell;
+		cell.hidden = !self.signedIn;
 		return cell;
 	}
 }
