@@ -26,7 +26,8 @@
 	IBOutlet UILabel *uiComment;
 	IBOutlet UILabel *uiAuthor;
 	IBOutlet UITableViewCell *uiCell;
-	
+
+	BOOL signedIn;
 }
 
 @property (nonatomic, retain) EventDetailModel *event;
@@ -37,6 +38,8 @@
 @property (nonatomic, retain) UILabel *uiComment;
 @property (nonatomic, retain) UILabel *uiAuthor;
 @property (nonatomic, retain) UITableViewCell *uiCell;
+
+@property (nonatomic, assign) BOOL signedIn;
 
 - (void)submitComment:(NSString *)comment activityIndicator:(UIActivityIndicatorView *)activity;
 - (void)addBtnPressed;
