@@ -62,7 +62,7 @@
 		self.rating = 5;
 	}
 
-	[self setRatingImageState:self.rating];
+	[self setRatingImageState: (int)self.rating];
 }
 
 // Poor-man's initialiser
@@ -85,7 +85,7 @@
 	self.uiSubmit.hidden = NO;
 	self.uiComment.text = @"";
 	self.rating = 0;
-	[self setRatingImageState:self.rating];
+	[self setRatingImageState: (int)self.rating];
 }
 
 - (void) setRatingImageState:(int)ratingValue {

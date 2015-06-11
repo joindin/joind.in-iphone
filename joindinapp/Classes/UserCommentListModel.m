@@ -39,7 +39,7 @@
 - (UserTalkCommentDetailModel *)getCommentForTalk:(TalkDetailModel *)talk {
 	for (id c in self.comments) {
 		if ([c class] == [UserTalkCommentDetailModel class]) {
-			UserTalkCommentDetailModel *d = (UserTalkCommentDetailModel *)c;
+//			UserTalkCommentDetailModel *d = (UserTalkCommentDetailModel *)c;
 //			if (d.talkId == talk.Id) {
 //				return d;
 //			}
@@ -51,7 +51,7 @@
 - (UserEventCommentDetailModel *)getCommentForEvent:(EventDetailModel *)event {
 	for (id c in self.comments) {
 		if ([c class] == [UserEventCommentDetailModel class]) {
-			UserEventCommentDetailModel *d = (UserEventCommentDetailModel *)c;
+//			UserEventCommentDetailModel *d = (UserEventCommentDetailModel *)c;
 // TODO
 //			if (d.eventId == event.Id) {
 //				return d;
