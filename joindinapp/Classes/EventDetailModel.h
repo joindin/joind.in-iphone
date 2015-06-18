@@ -96,6 +96,7 @@
 -(BOOL)isNowOn;
 -(BOOL)hasFinished;
 -(BOOL)hasStarted;
+-(BOOL)postEventTimeLimitReached;
 -(NSComparisonResult)comparator:(EventDetailModel *)otherModel;
 -(BOOL)hasTracks;
 

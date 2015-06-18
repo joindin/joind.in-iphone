@@ -67,6 +67,17 @@
 	return ([self.startDate compare:[NSDate date]] == NSOrderedAscending);
 }
 
+-(BOOL)postEventTimeLimitReached {
+    // The event time limit is 12 weeks following the end of the event
+    NSDateComponents *weekComponent = [[NSDateComponents alloc] init];
+    weekComponent.week = 12;
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *nextDate = [calendar dateByAddingComponents:weekComponent toDate:self.endDate options:0];
+
+    return ([nextDate compare:[NSDate date]] == NSOrderedAscending);
+}
+
 -(NSComparisonResult)comparator:(EventDetailModel *)otherModel {
 	return [self.startDate compare:otherModel.startDate];
 }
