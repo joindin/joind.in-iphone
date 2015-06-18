@@ -165,7 +165,7 @@
     self.uiAttending.on = self.event.attending;
 	if ([self.event hasFinished]) {
         self.uiAttendingLabel.text = @"Attended:";
-        self.uiAttending.enabled = NO;
+        self.uiAttending.enabled = ![self.event postEventTimeLimitReached];
     } else {
         self.uiAttendingLabel.text = @"Attending:";
 
