@@ -24,19 +24,9 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-    // Override point for customization after app launch    
-	
-	// This is what happens when launched from a URL:
-	//[self application:application handleOpenURL:[NSURL URLWithString:@"joindin://event/110"]];
-	
-	[window setRootViewController:splashScreenViewController];
-	[window makeKeyAndVisible];
-	
-	// Go straight to an event: (note that you probably want to remove the joindin:// handler if you do this)
-	//[splashScreenViewController gotoEventScreenWithEventId:142];
-
+- (BOOL)applicationDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after app launch
+    return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -12,7 +12,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "joindinappAppDelegate.h"
 
 int main(int argc, char *argv[]) {
