@@ -50,6 +50,9 @@
                     <navigationItem key="navigationItem" title="joind.in" id="EL2-zN-wPt">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="i14-Fg-axb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="hKw-NB-CKe" kind="show" id="sot-cX-m0j"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -60,6 +63,25 @@
             </objects>
             <point key="canvasLocation" x="1457" y="275"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="DlN-OQ-ncy">
+            <objects>
+                <viewController title="Settings" id="hKw-NB-CKe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MA4-Jk-yI4"/>
+                        <viewControllerLayoutGuide type="bottom" id="c8u-vF-epU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pt2-uJ-ZTC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="KKh-xg-HyW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWy-j1-QL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="1085"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="sOO-w5-UGn">
             <objects>
@@ -68,6 +90,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="0aZ-6c-UbR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.0" green="0.4823529412" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,5 +105,26 @@
             </objects>
             <point key="canvasLocation" x="645" y="275"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="78a-Zg-Nem">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Aa6-nq-rfh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iDY-sE-4lB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hKw-NB-CKe" kind="relationship" relationship="rootViewController" id="kcl-l8-tiw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZG-lk-EAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="759" y="1085"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="sot-cX-m0j"/>
+    </inferredMetricsTieBreakers>
 </document>
