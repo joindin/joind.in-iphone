@@ -97,6 +97,10 @@
 	[self callAPI:type method:@"GET" params:params needAuth:needAuth canCache:YES];
 }
 
+- (void)callAPI:(NSString *)type params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
+    [self callAPI:type method:@"GET" params:params needAuth:needAuth canCache:canCache];
+}
+
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth {
 	[self callAPI:type method:@"GET" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
 }
