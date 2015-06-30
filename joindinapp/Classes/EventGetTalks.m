@@ -21,7 +21,7 @@
 
 - (void)call:(EventDetailModel *)_event {
 	self.event = _event;
-    [self callAPI:_event.talksURI params:[NSDictionary dictionaryWithObject:[[NSNumber alloc] initWithInt:100] forKey:@"resultsperpage"] needAuth:YES];
+    [self callAPI:_event.talksURI params:[NSDictionary dictionaryWithObject:[[NSNumber alloc] initWithInt:200] forKey:@"resultsperpage"] needAuth:YES];
 }
 
 - (void)gotData:(NSObject *)obj {

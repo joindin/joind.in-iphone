@@ -17,7 +17,7 @@
 @implementation TalkGetComments
 
 - (void)call:(TalkDetailModel *)talk {
-    [self callAPI:talk.commentsURI params:[NSDictionary dictionaryWithObject:[[NSNumber alloc] initWithInt:100] forKey:@"resultsperpage"] needAuth:YES canCache:YES];
+    [self callAPI:talk.commentsURI params:[NSDictionary dictionaryWithObject:[[NSNumber alloc] initWithInt:200] forKey:@"resultsperpage"] needAuth:YES canCache:YES];
 }
 
 - (void)gotData:(NSObject *)obj {
