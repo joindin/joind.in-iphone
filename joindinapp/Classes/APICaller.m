@@ -97,6 +97,10 @@
 	[self callAPI:type method:@"GET" params:params needAuth:needAuth canCache:YES];
 }
 
+- (void)callAPI:(NSString *)type params:(NSDictionary *)params needAuth:(BOOL)needAuth canCache:(BOOL)canCache {
+    [self callAPI:type method:@"GET" params:params needAuth:needAuth canCache:canCache];
+}
+
 - (void)callAPI:(NSString *)type needAuth:(BOOL)needAuth {
 	[self callAPI:type method:@"GET" params:[[NSDictionary alloc] init] needAuth:needAuth canCache:YES];
 }
@@ -112,23 +116,23 @@
         [self.url setString:type]; // full URL supplied
     } else {
         [self.url setString:[NSString stringWithFormat:@"%@/%@", [self getApiUrl], type]];
+    }
 
-        if ([method isEqualToString:@"GET"]) {
-            // Add query string parameters
-            if ([self.url rangeOfString:@"?"].location == NSNotFound) {
-                [self.url appendString:@"?"];
-            } else {
-                [self.url appendString:@"&"];
-            }
-            NSMutableString *resultString = [[NSMutableString alloc] init];
-            for (NSString* key in [params allKeys]){
-                if ([resultString length] > 0) {
-                    [resultString appendString:@"&"];
-                }
-                [resultString appendFormat:@"%@=%@", key, [params objectForKey:key]];
-            }
-            [self.url appendString:resultString];
+    if ([method isEqualToString:@"GET"] && [params count] > 0) {
+        // Add query string parameters
+        if ([self.url rangeOfString:@"?"].location == NSNotFound) {
+            [self.url appendString:@"?"];
+        } else {
+            [self.url appendString:@"&"];
         }
+        NSMutableString *resultString = [[NSMutableString alloc] init];
+        for (NSString* key in [params allKeys]){
+            if ([resultString length] > 0) {
+                [resultString appendString:@"&"];
+            }
+            [resultString appendFormat:@"%@=%@", key, [params objectForKey:key]];
+        }
+        [self.url appendString:resultString];
     }
 
 //	if ((!canCache) || (![self checkCacheForRequest:self.reqJSON toUrl:self.url ignoreExpiry:NO])) {
