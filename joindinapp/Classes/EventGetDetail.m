@@ -120,6 +120,18 @@
         edm.eventCommentsCount = 0;
     }
 
+    if ([[event objectForKey:@"latitude"] isKindOfClass:[NSNumber class]]) {
+        edm.latitude = [[event objectForKey:@"latitude"] floatValue];
+    } else {
+        edm.latitude = 0;
+    }
+
+    if ([[event objectForKey:@"longitude"] isKindOfClass:[NSNumber class]]) {
+        edm.longitude = [[event objectForKey:@"longitude"] floatValue];
+    } else {
+        edm.longitude = 0;
+    }
+
     // URIs
     if ([[event objectForKey:@"uri"] isKindOfClass:[NSString class]]) {
         edm.uri     = [event objectForKey:@"uri"];
