@@ -15,7 +15,7 @@
 #import <MapKit/MapKit.h>
 #import "EventDetailModel.h"
 
-@interface EventLocationViewController : UIViewController <MKMapViewDelegate> {
+@interface EventLocationViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
 	IBOutlet MKMapView *uiMap;
 	IBOutlet UISegmentedControl *uiMapType;
 	IBOutlet UIButton *uiShowMe;
@@ -32,5 +32,6 @@
 @property (nonatomic, retain) UISegmentedControl *uiMapType;
 @property (nonatomic, retain) UIButton *uiShowMe;
 @property (nonatomic, retain) UIButton *uiShowEvent;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end

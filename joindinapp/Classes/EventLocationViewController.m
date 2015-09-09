@@ -26,6 +26,11 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager requestWhenInUseAuthorization];
+    self.locationManager.delegate = self;
+    [self updateShowMeEnabledStatus:[CLLocationManager authorizationStatus]];
+    [self.locationManager startUpdatingLocation];
 	[self initMap];
 	
 	[self.uiMapType addTarget:self
@@ -132,5 +137,17 @@
     [super dealloc];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    [self updateShowMeEnabledStatus:status];
+}
+
+- (void)updateShowMeEnabledStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusDenied) {
+        self.uiShowMe.enabled = FALSE;
+    }
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.uiShowMe.enabled = TRUE;
+    }
+}
 
 @end
