@@ -117,6 +117,7 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* EventListViewController.m */; };
 		28F335F11007B36200424DE2 /* EventListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* EventListView.xib */; };
+		9B2CF77A1BA763BF00F64075 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2CF7791BA763BF00F64075 /* CoreLocation.framework */; };
 		A028B23A17FF580300B86718 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23117FF580300B86718 /* Default~iphone.png */; };
 		A028B23B17FF580300B86718 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23217FF580300B86718 /* Default@2x.png */; };
 		A028B23C17FF580300B86718 /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23317FF580300B86718 /* Default-568h@2x~iphone.png */; };
@@ -312,6 +313,7 @@
 		28F335F01007B36200424DE2 /* EventListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListView.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* joindinapp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "joindinapp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9B2CF7791BA763BF00F64075 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A028B23117FF580300B86718 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
 		A028B23217FF580300B86718 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A028B23317FF580300B86718 /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B2CF77A1BA763BF00F64075 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
@@ -651,6 +654,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B2CF7791BA763BF00F64075 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
