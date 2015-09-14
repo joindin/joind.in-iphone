@@ -83,7 +83,6 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	SettingsViewController *vc = [[SettingsViewController alloc] init];
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];
 }
 
 
@@ -107,11 +106,7 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if (self.confListData == nil) {
-		return 1;
-	} else {
-		return 1;
-	}
+    return 1;
 }
 
 
@@ -122,7 +117,6 @@
 		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 		eventDetailViewController.event = edm;
 		[self.navigationController pushViewController:eventDetailViewController animated:YES];
-		[eventDetailViewController release];
 	}
 }
  
@@ -134,8 +128,7 @@
 	} else {
 		UITableViewCell *vc;
 		vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-		[vc autorelease];
-		
+
 		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 		
 		if (edm.attending) {
@@ -166,17 +159,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (self.confListData == nil) {
-		return 1;
+		return 0;
 	} else {
 		return [self.confListData getNumEvents];
 	}
 }
-
-- (void)dealloc {
-    [eventListTableView release];
-    [super dealloc];
-}
-
 
 @end
 

@@ -27,6 +27,7 @@
                                     <segment title="Hot"/>
                                     <segment title="Upcoming"/>
                                 </segments>
+                                <color key="tintColor" red="0.0" green="0.4823529412" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-Sq-YRm">
                                 <rect key="frame" x="0.0" y="135" width="600" height="465"/>
@@ -61,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEC-Kh-tPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="275"/>
+            <point key="canvasLocation" x="-1139" y="-297"/>
         </scene>
         <!--Settings-->
         <scene sceneID="DlN-OQ-ncy">
@@ -74,13 +75,28 @@
                     <view key="view" contentMode="scaleToFill" id="Pt2-uJ-ZTC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-Vl-HSi">
+                                <rect key="frame" x="16" y="72" width="568" height="56"/>
+                                <string key="text">Sign in using your joind.in username and password in order to leave comments with your name, track which events you are attending and personalise your event listings</string>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bFz-Vl-HSi" firstAttribute="trailing" secondItem="Pt2-uJ-ZTC" secondAttribute="trailingMargin" id="Hdq-Py-AfW"/>
+                            <constraint firstItem="bFz-Vl-HSi" firstAttribute="leading" secondItem="Pt2-uJ-ZTC" secondAttribute="leadingMargin" id="b2l-Mf-AJt"/>
+                            <constraint firstAttribute="centerX" secondItem="bFz-Vl-HSi" secondAttribute="centerX" id="cGC-Ff-poz"/>
+                            <constraint firstItem="bFz-Vl-HSi" firstAttribute="top" secondItem="MA4-Jk-yI4" secondAttribute="bottom" constant="8" id="y2m-7x-0JR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="KKh-xg-HyW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWy-j1-QL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="1085"/>
+            <point key="canvasLocation" x="-1139" y="513"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sOO-w5-UGn">
@@ -103,7 +119,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gdh-12-EYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645" y="275"/>
+            <point key="canvasLocation" x="-1951" y="-297"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="78a-Zg-Nem">
@@ -121,7 +137,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZG-lk-EAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="759" y="1085"/>
+            <point key="canvasLocation" x="-1837" y="513"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
