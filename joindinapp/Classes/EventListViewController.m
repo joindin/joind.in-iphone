@@ -21,18 +21,11 @@
 @implementation EventListViewController
 
 @synthesize confListData;
-@synthesize uiEventRange;
 @synthesize uiTableHeaderView;
 @synthesize uiFetchingCell;
 @synthesize eventListTableView;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    [self.uiEventRange addTarget:self action:@selector(rangeChanged) forControlEvents:UIControlEventValueChanged];
-}
-
-- (void)rangeChanged {
+- (IBAction)rangeChanged:(id)sender {
 	self.confListData = nil;
 	[self.eventListTableView reloadData];
 	
@@ -88,7 +81,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	[self rangeChanged];
+    [self rangeChanged:self.uiEventRange];
 }
 
 - (void)didReceiveMemoryWarning {

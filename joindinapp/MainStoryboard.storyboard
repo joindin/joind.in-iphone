@@ -28,6 +28,9 @@
                                     <segment title="Upcoming"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.4823529412" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="rangeChanged:" destination="CkU-hI-Ogq" eventType="valueChanged" id="4cP-tU-vxT"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-Sq-YRm">
                                 <rect key="frame" x="0.0" y="135" width="600" height="465"/>
@@ -58,6 +61,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="eventListTableView" destination="ft7-Sq-YRm" id="ua2-TX-6c5"/>
+                        <outlet property="uiEventRange" destination="UhN-TK-WzU" id="s8e-H0-dfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEC-Kh-tPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
