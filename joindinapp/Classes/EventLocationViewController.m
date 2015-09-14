@@ -28,14 +28,17 @@
     [super viewDidLoad];
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
-    self.locationManager.delegate = self;
-    [self updateShowMeEnabledStatus:[CLLocationManager authorizationStatus]];
-    [self.locationManager startUpdatingLocation];
 	[self initMap];
 	
 	[self.uiMapType addTarget:self
 						 action:@selector(changeMapType:)
 			   forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.locationManager.delegate = self;
+    [self updateShowMeEnabledStatus:[CLLocationManager authorizationStatus]];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)changeMapType:(id)sender {
@@ -127,11 +130,15 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager.delegate = nil;
+}
+
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
     [super dealloc];
