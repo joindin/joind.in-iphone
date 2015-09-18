@@ -37,13 +37,24 @@
 	<string>1.6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>api.joind.in</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSMainNibFile</key>
+	<string>MainWindow</string>
+	<key>joindInAPIURL</key>
+	<string>https://api.joind.in/v2.1</string>
 	<key>joindInOAuthClientID</key>
 	<string></string>
 	<key>joindInOAuthClientSecret</key>
 	<string></string>
-	<key>joindInAPIURL</key>
-	<string>https://api.joind.in/v2.1</string>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
 </dict>
 </plist>
