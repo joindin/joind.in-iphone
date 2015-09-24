@@ -60,10 +60,6 @@
 		0A9D7A14111A16810037C5CD /* UserGetDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7A13111A16810037C5CD /* UserGetDetail.m */; };
 		0A9D7A1D111A19370037C5CD /* UserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7A1C111A19370037C5CD /* UserDetailModel.m */; };
 		0A9D7A44111A1F3C0037C5CD /* UserCommentDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7A43111A1F3C0037C5CD /* UserCommentDetailModel.m */; };
-		0A9D7A47111A1F4A0037C5CD /* UserCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7A46111A1F4A0037C5CD /* UserCommentListModel.m */; };
-		0A9D7A59111A21A90037C5CD /* UserGetComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7A58111A21A90037C5CD /* UserGetComments.m */; };
-		0A9D7A81111A2C640037C5CD /* UserTalkCommentDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7A80111A2C640037C5CD /* UserTalkCommentDetailModel.m */; };
-		0A9D7A84111A2E460037C5CD /* UserEventCommentDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D7A83111A2E460037C5CD /* UserEventCommentDetailModel.m */; };
 		0AA90CA3110E610000301602 /* EventCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA90CA1110E610000301602 /* EventCommentsViewController.m */; };
 		0AA90CA4110E610000301602 /* EventCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA90CA2110E610000301602 /* EventCommentsView.xib */; };
 		0AA90CB8110E655900301602 /* EventCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA90CB7110E655900301602 /* EventCommentListModel.m */; };
@@ -88,8 +84,6 @@
 		0ACE785E1155589600B02BEC /* EventTalkViewCellWithTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE785D1155589600B02BEC /* EventTalkViewCellWithTrack.m */; };
 		0ACE78A511555DFC00B02BEC /* TracksListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE78A411555DFC00B02BEC /* TracksListModel.m */; };
 		0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE78B7115565D500B02BEC /* TrackDetailModel.m */; };
-		0ACE7AA81156E71800B02BEC /* NowNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE7AA61156E71800B02BEC /* NowNextViewController.m */; };
-		0ACE7AA91156E71800B02BEC /* NowNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ACE7AA71156E71800B02BEC /* NowNextView.xib */; };
 		0AE857AA10F024A5002C4C98 /* rating-0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A410F024A5002C4C98 /* rating-0.gif */; };
 		0AE857AB10F024A5002C4C98 /* rating-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A510F024A5002C4C98 /* rating-1.gif */; };
 		0AE857AC10F024A5002C4C98 /* rating-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AE857A610F024A5002C4C98 /* rating-2.gif */; };
@@ -220,14 +214,6 @@
 		0A9D7A1C111A19370037C5CD /* UserDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailModel.m; sourceTree = "<group>"; };
 		0A9D7A42111A1F3C0037C5CD /* UserCommentDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentDetailModel.h; sourceTree = "<group>"; };
 		0A9D7A43111A1F3C0037C5CD /* UserCommentDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentDetailModel.m; sourceTree = "<group>"; };
-		0A9D7A45111A1F4A0037C5CD /* UserCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentListModel.h; sourceTree = "<group>"; };
-		0A9D7A46111A1F4A0037C5CD /* UserCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentListModel.m; sourceTree = "<group>"; };
-		0A9D7A57111A21A90037C5CD /* UserGetComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGetComments.h; sourceTree = "<group>"; };
-		0A9D7A58111A21A90037C5CD /* UserGetComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGetComments.m; sourceTree = "<group>"; };
-		0A9D7A7F111A2C640037C5CD /* UserTalkCommentDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTalkCommentDetailModel.h; sourceTree = "<group>"; };
-		0A9D7A80111A2C640037C5CD /* UserTalkCommentDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTalkCommentDetailModel.m; sourceTree = "<group>"; };
-		0A9D7A82111A2E460037C5CD /* UserEventCommentDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEventCommentDetailModel.h; sourceTree = "<group>"; };
-		0A9D7A83111A2E460037C5CD /* UserEventCommentDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEventCommentDetailModel.m; sourceTree = "<group>"; };
 		0AA90CA0110E610000301602 /* EventCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCommentsViewController.h; sourceTree = "<group>"; };
 		0AA90CA1110E610000301602 /* EventCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCommentsViewController.m; sourceTree = "<group>"; };
 		0AA90CA2110E610000301602 /* EventCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EventCommentsView.xib; path = Classes/EventCommentsView.xib; sourceTree = "<group>"; };
@@ -274,9 +260,6 @@
 		0ACE78A411555DFC00B02BEC /* TracksListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksListModel.m; sourceTree = "<group>"; };
 		0ACE78B6115565D500B02BEC /* TrackDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailModel.h; sourceTree = "<group>"; };
 		0ACE78B7115565D500B02BEC /* TrackDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackDetailModel.m; sourceTree = "<group>"; };
-		0ACE7AA51156E71800B02BEC /* NowNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowNextViewController.h; sourceTree = "<group>"; };
-		0ACE7AA61156E71800B02BEC /* NowNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowNextViewController.m; sourceTree = "<group>"; };
-		0ACE7AA71156E71800B02BEC /* NowNextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NowNextView.xib; path = Classes/NowNextView.xib; sourceTree = "<group>"; };
 		0AE857A410F024A5002C4C98 /* rating-0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-0.gif"; sourceTree = "<group>"; };
 		0AE857A510F024A5002C4C98 /* rating-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-1.gif"; sourceTree = "<group>"; };
 		0AE857A610F024A5002C4C98 /* rating-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "rating-2.gif"; sourceTree = "<group>"; };
@@ -391,8 +374,6 @@
 				0A94BE0510F8FC8700CC32C0 /* TalkGetComments.m */,
 				0AEC4201110285F400705B06 /* TalkGetDetail.h */,
 				0AEC4202110285F400705B06 /* TalkGetDetail.m */,
-				0A9D7A57111A21A90037C5CD /* UserGetComments.h */,
-				0A9D7A58111A21A90037C5CD /* UserGetComments.m */,
 				0A9D7A12111A16810037C5CD /* UserGetDetail.h */,
 				0A9D7A13111A16810037C5CD /* UserGetDetail.m */,
 				0AEC433A1103932F00705B06 /* UserValidate.h */,
@@ -418,8 +399,6 @@
 				28C286E00D94DF7D0034E888 /* EventListViewController.m */,
 				0A72BF241167EE5D0019C2DF /* EventLocationViewController.h */,
 				0A72BF251167EE5D0019C2DF /* EventLocationViewController.m */,
-				0ACE7AA51156E71800B02BEC /* NowNextViewController.h */,
-				0ACE7AA61156E71800B02BEC /* NowNextViewController.m */,
 				0A41E10210F54C8B00FBFE86 /* SettingsViewController.h */,
 				0A41E10310F54C8B00FBFE86 /* SettingsViewController.m */,
 				0A7DF2A210F00A560028D49B /* SplashScreenViewController.h */,
@@ -500,16 +479,10 @@
 				0ACE78B7115565D500B02BEC /* TrackDetailModel.m */,
 				0ACE78A311555DFC00B02BEC /* TracksListModel.h */,
 				0ACE78A411555DFC00B02BEC /* TracksListModel.m */,
-				0A9D7A45111A1F4A0037C5CD /* UserCommentListModel.h */,
-				0A9D7A46111A1F4A0037C5CD /* UserCommentListModel.m */,
 				0A9D7A42111A1F3C0037C5CD /* UserCommentDetailModel.h */,
 				0A9D7A43111A1F3C0037C5CD /* UserCommentDetailModel.m */,
 				0A9D7A1B111A19370037C5CD /* UserDetailModel.h */,
 				0A9D7A1C111A19370037C5CD /* UserDetailModel.m */,
-				0A9D7A7F111A2C640037C5CD /* UserTalkCommentDetailModel.h */,
-				0A9D7A80111A2C640037C5CD /* UserTalkCommentDetailModel.m */,
-				0A9D7A82111A2E460037C5CD /* UserEventCommentDetailModel.h */,
-				0A9D7A83111A2E460037C5CD /* UserEventCommentDetailModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -585,7 +558,6 @@
 				0A72BF261167EE5D0019C2DF /* EventLocationView.xib */,
 				0A9D789F111777560037C5CD /* EventTalkCell.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				0ACE7AA71156E71800B02BEC /* NowNextView.xib */,
 				0A41E10410F54C8B00FBFE86 /* SettingsView.xib */,
 				0AF708F510F0107200CDEBE6 /* SplashScreenView.xib */,
 				0A94BF3110F96D8200CC32C0 /* TalkCommentsCell.xib */,
@@ -787,7 +759,6 @@
 				0AEE471111286D93009FE0BE /* workshop.gif in Resources */,
 				0AF7FAB1112876BA003B1978 /* joindin_iphone_large.jpg in Resources */,
 				0AF7FAB2112876BA003B1978 /* joindin_iphone_small.jpg in Resources */,
-				0ACE7AA91156E71800B02BEC /* NowNextView.xib in Resources */,
 				A028B24117FF580300B86718 /* icon_iphone_retina_114x114.png in Resources */,
 				0A72BF281167EE5D0019C2DF /* EventLocationView.xib in Resources */,
 				D45E21C71B28D31200EEA14F /* icon_180.png in Resources */,
@@ -850,16 +821,11 @@
 				0A9D7A14111A16810037C5CD /* UserGetDetail.m in Sources */,
 				0A9D7A1D111A19370037C5CD /* UserDetailModel.m in Sources */,
 				0A9D7A44111A1F3C0037C5CD /* UserCommentDetailModel.m in Sources */,
-				0A9D7A47111A1F4A0037C5CD /* UserCommentListModel.m in Sources */,
-				0A9D7A59111A21A90037C5CD /* UserGetComments.m in Sources */,
-				0A9D7A81111A2C640037C5CD /* UserTalkCommentDetailModel.m in Sources */,
-				0A9D7A84111A2E460037C5CD /* UserEventCommentDetailModel.m in Sources */,
 				0AC4E4AB111EE58D0095B3DA /* CreditsViewController.m in Sources */,
 				0AF7FB1A112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m in Sources */,
 				0ACE785E1155589600B02BEC /* EventTalkViewCellWithTrack.m in Sources */,
 				0ACE78A511555DFC00B02BEC /* TracksListModel.m in Sources */,
 				0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */,
-				0ACE7AA81156E71800B02BEC /* NowNextViewController.m in Sources */,
 				0A72BF271167EE5D0019C2DF /* EventLocationViewController.m in Sources */,
 				0AB86F7B11681434007E1038 /* EventMapAnnotation.m in Sources */,
 			);
