@@ -19,7 +19,6 @@
 #import "APICaller.h"
 #import "EventGetTalks.h"
 #import "SettingsViewController.h"
-#import "NowNextViewController.h"
 #import "EventAttend.h"
 #import "UISwitch-Extended.h"
 #import "EventCommentsViewController.h"
@@ -28,14 +27,12 @@
 #import "EventTalkViewCellWithTrack.h"
 #import "EventTalkDateHeaderViewCell.h"
 #import "EventLocationViewController.h"
-#import "UserGetComments.h"
 #import <UIKit/UIKit.h>
 
 @implementation EventDetailViewController
 
 @synthesize event;
 @synthesize talks;
-@synthesize comments;
 @synthesize uiTitle;
 @synthesize uiDate;
 @synthesize uiLocation;
@@ -103,9 +100,6 @@
 	EventGetTalks *e = [APICaller EventGetTalks:self];
 	[e call:self.event];
 	
-//	UserGetComments *u = [APICaller UserGetComments:self];
-//	[u call:nil];
-	
 	if ([self.event isNowOn]) {
 		for (TalkDetailModel *tdm in self.talks.talks) {
 			if ([tdm onNow] || [tdm onNext]) {
@@ -153,14 +147,6 @@
 	
 }
 
-- (void)nowNextBtnPressed {
-	NowNextViewController *nowNextViewController = [[NowNextViewController alloc] initWithNibName:@"NowNextView" bundle:nil];
-	nowNextViewController.event = self.event;
-	nowNextViewController.talks = self.talks;
-	[self.navigationController pushViewController:nowNextViewController animated:YES];
-	[nowNextViewController release];
-}
-
 - (void)setupAttending {
     self.uiAttending.on = self.event.attending;
 	if ([self.event hasFinished]) {
@@ -175,15 +161,6 @@
         BOOL signedIn = (accessToken != nil && [accessToken length] > 0); // true if we have an access token.
         self.uiAttending.enabled = signedIn;
     }
-}
-
-- (void)gotUserComments:(UserCommentListModel *)uclm error:(APIError *)err {
-	if (uclm == nil) {
-		// Can ignore errors - probably to do with the user not being logged-in
-	} else {
-		self.comments = uclm;
-		[(UITableView *)self.view reloadData];
-	}
 }
 
 #pragma mark Table view methods
@@ -300,14 +277,8 @@
 				cell.uiTalkType.image  = nil;
 			}
 			
-			UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
-			
-			if (utcdm == nil) {
-				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
-			} else {
-				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
-			}
-			
+			cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
+
 			cell.uiTracks.text = [tdm.tracks getStringTrackList];
 			
 			if ([tdm onNow]) {
@@ -351,13 +322,7 @@
 				cell.uiTalkType.image  = nil;
 			}
 			
-			UserTalkCommentDetailModel *utcdm = [self.comments getCommentForTalk:tdm];
-			
-			if (utcdm == nil) {
-				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
-			} else {
-				cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment-user.gif"];
-			}
+            cell.uiCommentBubble.image = [UIImage imageNamed:@"icon-comment.gif"];
 			
 			if ([tdm onNow]) {
 				cell.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
