@@ -56,5 +56,7 @@
 	<string></string>
 	<key>joindInOAuthClientSecret</key>
 	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is required to show your current position on the map</string>
 </dict>
 </plist>
