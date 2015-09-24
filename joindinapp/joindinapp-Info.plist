@@ -56,7 +56,5 @@
 	<string></string>
 	<key>joindInOAuthClientSecret</key>
 	<string></string>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
 </dict>
 </plist>
