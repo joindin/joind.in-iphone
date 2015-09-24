@@ -2,6 +2,10 @@
 
 iPhone application for Joind.in
 
+Please report any issues at the joind.in JIRA project, in the iPhone App component:
+
+https://joindin.jira.com/browse/JOINDIN/component/10211
+
 
 ### Welcome
 
