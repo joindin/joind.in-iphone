@@ -217,7 +217,7 @@
 }
 
 - (void)setUserGravatarImage:(NSString *)gravatarHash {
-	NSMutableString *gravatarURL = [[NSMutableString alloc] initWithString:@"http://www.gravatar.com/avatar/"];
+	NSMutableString *gravatarURL = [[NSMutableString alloc] initWithString:@"https://www.gravatar.com/avatar/"];
 	if (gravatarHash != nil) {
 		[gravatarURL appendString:gravatarHash];
 	}
