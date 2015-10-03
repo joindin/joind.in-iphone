@@ -643,6 +643,7 @@
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "joindinapp" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
+				9B8C45AD1BBF35010071A29B /* ShellScript */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 			);
@@ -767,6 +768,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B8C45AD1BBF35010071A29B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "# OAuth key\nif [ -n \"${joindInOAuthClientID:+x}\" ]; then\n  echo \"Using OAuth client ID from environment variable\"\n  /usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientID ${joindInOAuthClientID}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n\n# OAuth secret\nif [ -n \"${joindInOAuthClientSecret:+x}\" ]; then\necho \"Using OAuth client secret from environment variable\"\n/usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientSecret ${joindInOAuthClientSecret}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
