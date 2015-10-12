@@ -14,15 +14,13 @@
 #import <UIKit/UIKit.h>
 #import "EventDetailModel.h"
 #import "TalkListModel.h"
-#import "UserCommentListModel.h"
 #import "APIError.h"
 #import "EventAttend.h"
 
 @interface EventDetailViewController : UITableViewController {
 	EventDetailModel *event;
 	TalkListModel *talks;
-	UserCommentListModel *comments;
-	
+
 	// IB components
 	IBOutlet UILabel  *uiTitle;
 	IBOutlet UILabel  *uiDate;
@@ -47,11 +45,9 @@
 - (void)gotTalksForEvent:(TalkListModel *)tlm error:(APIError *)error;
 - (void)gotEventAttend:(APIError *)err;
 - (void)setupAttending;
-- (void)nowNextBtnPressed;
 
 @property (nonatomic, retain) EventDetailModel *event;
 @property (nonatomic, retain) TalkListModel *talks;
-@property (nonatomic, retain) UserCommentListModel *comments;
 
 @property (nonatomic, retain) UILabel  *uiTitle;
 @property (nonatomic, retain) UILabel  *uiDate;

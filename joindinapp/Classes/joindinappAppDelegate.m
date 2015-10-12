@@ -31,7 +31,7 @@
 	// This is what happens when launched from a URL:
 	//[self application:application handleOpenURL:[NSURL URLWithString:@"joindin://event/110"]];
 	
-	[window addSubview:[splashScreenViewController view]];
+	[window setRootViewController:splashScreenViewController];
 	[window makeKeyAndVisible];
 	
 	// Go straight to an event: (note that you probably want to remove the joindin:// handler if you do this)
