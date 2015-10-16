@@ -781,7 +781,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "# OAuth key\nif [ -n \"${joindInOAuthClientID:+x}\" ]; then\n  echo \"Using OAuth client ID from environment variable\"\n  /usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientID ${joindInOAuthClientID}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n\n# OAuth secret\nif [ -n \"${joindInOAuthClientSecret:+x}\" ]; then\necho \"Using OAuth client secret from environment variable\"\n/usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientSecret ${joindInOAuthClientSecret}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n";
+			shellScript = "# URL\nif [ -n \"${joindInAPIURL:+x}\" ]; then\necho \"Using API URL from environment variable\"\n/usr/libexec/PlistBuddy -c \"Set :joindInAPIURL ${joindInAPIURL}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n\n# OAuth key\nif [ -n \"${joindInOAuthClientID:+x}\" ]; then\n  echo \"Using OAuth client ID from environment variable\"\n  /usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientID ${joindInOAuthClientID}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n\n# OAuth secret\nif [ -n \"${joindInOAuthClientSecret:+x}\" ]; then\necho \"Using OAuth client secret from environment variable\"\n/usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientSecret ${joindInOAuthClientSecret}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
