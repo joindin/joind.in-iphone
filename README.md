@@ -15,3 +15,12 @@ everyone understands what we expect from our community, our projects have a [Con
 Conduct](CODE_OF_CONDUCT.md) and by participating in the development of joind.in you agree to abide
 by its terms.
 
+## Configuration
+
+The default joind.in iOS app OAuth configuration is set up to work with a development version of the API. The app has an extra build step as part of the Archive process, which will allow insertion of different credentials (for example for release builds). To use this:
+
+1. Copy `environment.example.xcconfig` to eg `release.xcconfig`
+2. Add a reference to this file to the project (no need to copy it in)
+3. Under Project Settings -> Info, set the appropriate configuration file in the Configuration section for your desired build (eg "Release").
+4. Create the archive as normal
+
