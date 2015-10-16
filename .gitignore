@@ -2,4 +2,4 @@
 joindinapp/joindinapp.xcodeproj/project.xcworkspace/xcshareddata/joindinapp.xccheckout
 joindinapp/joindinapp.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 xcuserdata
-.xcconfig
+*.xcconfig
