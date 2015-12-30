@@ -41,6 +41,8 @@
 	<string>MainWindow</string>
 	<key>joindInAPIURL</key>
 	<string>https://api.joind.in/v2.1</string>
+	<key>UIMainStoryboardFile</key>
+	<string></string>
 	<key>joindInOAuthClientID</key>
 	<string></string>
 	<key>joindInOAuthClientSecret</key>
