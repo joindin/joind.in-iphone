@@ -96,6 +96,19 @@
 	// e.g. self.myOutlet = nil;
 }
 
+// NOTE: This is temporary only until the Settings view has been brought
+// over to the storyboard
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"settingsSegue"]) {
+        SettingsViewController *vc = [[SettingsViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+
+        return NO;
+    }
+
+    return YES;
+}
+
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
