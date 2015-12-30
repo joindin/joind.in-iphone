@@ -37,17 +37,15 @@
 	<string>1.6.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is required to show your current position on the map</string>
+	<key>UIMainStoryboardFile</key>
+	<string>MainStoryboard</string>
 	<key>joindInAPIURL</key>
 	<string>https://api.joind.in/v2.1</string>
-	<key>UIMainStoryboardFile</key>
-	<string></string>
 	<key>joindInOAuthClientID</key>
 	<string></string>
 	<key>joindInOAuthClientSecret</key>
 	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is required to show your current position on the map</string>
 </dict>
 </plist>
