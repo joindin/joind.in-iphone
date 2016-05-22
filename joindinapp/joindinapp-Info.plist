@@ -55,10 +55,10 @@
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>joindInAPIURL</key>
-	<string>${joindInAPIURL}</string>
+	<string>http://api.dev.joind.in/v2.1</string>
 	<key>joindInOAuthClientID</key>
-	<string>${joindInOAuthClientID}</string>
+	<string>web2</string>
 	<key>joindInOAuthClientSecret</key>
-	<string>${joindInOAuthClientSecret}</string>
+	<string>web2secret</string>
 </dict>
 </plist>
