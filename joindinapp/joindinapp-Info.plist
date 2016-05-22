@@ -42,10 +42,10 @@
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>joindInAPIURL</key>
-	<string>https://api.joind.in/v2.1</string>
+	<string>${joindInAPIURL}</string>
 	<key>joindInOAuthClientID</key>
-	<string></string>
+	<string>${joindInOAuthClientID}</string>
 	<key>joindInOAuthClientSecret</key>
-	<string></string>
+	<string>${joindInOAuthClientSecret}</string>
 </dict>
 </plist>
