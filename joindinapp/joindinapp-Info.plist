@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>api.dev.joind.in</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -37,17 +50,15 @@
 	<string>1.6.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
-	<key>joindInAPIURL</key>
-	<string>https://api.joind.in/v2.1</string>
-	<key>UIMainStoryboardFile</key>
-	<string></string>
-	<key>joindInOAuthClientID</key>
-	<string></string>
-	<key>joindInOAuthClientSecret</key>
-	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location is required to show your current position on the map</string>
+	<key>UIMainStoryboardFile</key>
+	<string>MainStoryboard</string>
+	<key>joindInAPIURL</key>
+	<string>${joindInAPIURL}</string>
+	<key>joindInOAuthClientID</key>
+	<string>${joindInOAuthClientID}</string>
+	<key>joindInOAuthClientSecret</key>
+	<string>${joindInOAuthClientSecret}</string>
 </dict>
 </plist>

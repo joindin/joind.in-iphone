@@ -21,39 +21,13 @@
 @implementation EventListViewController
 
 @synthesize confListData;
-@synthesize uiEventRange;
 @synthesize uiTableHeaderView;
 @synthesize uiFetchingCell;
+@synthesize eventListTableView;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	self.title = @"Events";
-	
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(btnPressed)];
-	
-	NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"EventListView" owner:self options:nil];
-	self.uiTableHeaderView = [nibViews objectAtIndex: 1];	
-	((UITableView *)[self view]).tableHeaderView = self.uiTableHeaderView;
-	
-	[self.uiEventRange addTarget:self
-						  action:@selector(rangeChanged)
-				forControlEvents:UIControlEventValueChanged];
-	
-	
-}
-
-- (void)btnPressed {
-	SettingsViewController *vc = [[SettingsViewController alloc] init];
-	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];	
-}
-
-- (void)rangeChanged {
+- (IBAction)rangeChanged:(id)sender {
 	self.confListData = nil;
-	[(UITableView *)[self view] reloadData];
+	[self.eventListTableView reloadData];
 	
 	EventGetList *e = [APICaller EventGetList:self];
 
@@ -95,45 +69,20 @@
 		}
 		
 		self.confListData = eventListData;
-		[(UITableView *)[self view] reloadData];
+		[self.eventListTableView reloadData];
 	}
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	SettingsViewController *vc = [[SettingsViewController alloc] init];
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	[self rangeChanged];
+    [self rangeChanged:self.uiEventRange];
 }
-
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
-
-/*
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -147,15 +96,23 @@
 	// e.g. self.myOutlet = nil;
 }
 
+// NOTE: This is temporary only until the Settings view has been brought
+// over to the storyboard
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"settingsSegue"]) {
+        SettingsViewController *vc = [[SettingsViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+
+        return NO;
+    }
+
+    return YES;
+}
 
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if (self.confListData == nil) {
-		return 1;
-	} else {
-		return 1;
-	}
+    return 1;
 }
 
 
@@ -166,7 +123,6 @@
 		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 		eventDetailViewController.event = edm;
 		[self.navigationController pushViewController:eventDetailViewController animated:YES];
-		[eventDetailViewController release];
 	}
 }
  
@@ -178,8 +134,7 @@
 	} else {
 		UITableViewCell *vc;
 		vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-		[vc autorelease];
-		
+
 		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 		
 		if (edm.attending) {
@@ -210,16 +165,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (self.confListData == nil) {
-		return 1;
+		return 0;
 	} else {
 		return [self.confListData getNumEvents];
 	}
 }
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 
 @end
 

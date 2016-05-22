@@ -13,7 +13,7 @@
 
 #import "SplashScreenViewController.h"
 
-@interface joindinappAppDelegate : NSObject <UIApplicationDelegate> {
+@interface joindinappAppDelegate : UIResponder <UIApplicationDelegate> {
     
     UIWindow *window;
     IBOutlet SplashScreenViewController *splashScreenViewController;
