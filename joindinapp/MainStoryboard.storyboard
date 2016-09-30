@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jmd-ID-UJl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Jmd-ID-UJl">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--joind.in-->
@@ -15,11 +16,10 @@
                         <viewControllerLayoutGuide type="bottom" id="NiW-7U-D89"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LiC-Y8-HBL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="UhN-TK-WzU">
-                                <rect key="frame" x="160" y="86" width="280" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="GVm-Om-fwe"/>
                                 </constraints>
@@ -28,21 +28,20 @@
                                     <segment title="Hot"/>
                                     <segment title="Upcoming"/>
                                 </segments>
-                                <color key="tintColor" red="0.0" green="0.4823529412" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.051161527633666992" green="0.40692704916000366" blue="0.52055120468139648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="rangeChanged:" destination="CkU-hI-Ogq" eventType="valueChanged" id="4cP-tU-vxT"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-Sq-YRm">
-                                <rect key="frame" x="0.0" y="135" width="600" height="465"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="CkU-hI-Ogq" id="nyo-vc-8me"/>
                                     <outlet property="delegate" destination="CkU-hI-Ogq" id="3E0-pE-lVV"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ft7-Sq-YRm" secondAttribute="width" id="45o-X7-Chh"/>
                             <constraint firstAttribute="centerX" secondItem="ft7-Sq-YRm" secondAttribute="centerX" id="4Zc-Xy-dE5"/>
@@ -54,7 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="joind.in" id="EL2-zN-wPt">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="i14-Fg-axb">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="hKw-NB-CKe" kind="show" identifier="settingsSegue" id="sot-cX-m0j"/>
                             </connections>
@@ -78,17 +77,16 @@
                         <viewControllerLayoutGuide type="bottom" id="c8u-vF-epU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pt2-uJ-ZTC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Dummy Settings placeholder" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-Vl-HSi">
-                                <rect key="frame" x="20" y="72" width="560" height="14"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bFz-Vl-HSi" firstAttribute="trailing" secondItem="Pt2-uJ-ZTC" secondAttribute="trailingMargin" id="Hdq-Py-AfW"/>
                             <constraint firstItem="bFz-Vl-HSi" firstAttribute="leading" secondItem="Pt2-uJ-ZTC" secondAttribute="leadingMargin" id="b2l-Mf-AJt"/>
@@ -110,10 +108,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="0aZ-6c-UbR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.0" green="0.4823529412" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.051161527633666992" green="0.40692704916000366" blue="0.52055120468139648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
