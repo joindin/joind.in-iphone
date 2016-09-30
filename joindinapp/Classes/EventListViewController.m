@@ -126,47 +126,43 @@
 }
  
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	
 	if (self.confListData == nil) {
 		return self.uiFetchingCell;
-	} else {
-		UITableViewCell *vc;
-		vc = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-
-		EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
-		
-		if (edm.attending) {
-			vc.accessoryType = UITableViewCellAccessoryCheckmark;
-		} else {
-			vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		}
-		
-		NSString *label = edm.name;
-		
-		NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-		[outputFormatter setDateFormat:@"d MMM yyyy"];
-		NSString *startDate = [outputFormatter stringFromDate:edm.startDate];
-		NSString *endDate   = [outputFormatter stringFromDate:edm.endDate];
-		
-		if ([startDate compare:endDate] == NSOrderedSame) {
-			vc.detailTextLabel.text = startDate;
-		} else {
-			vc.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
-		}
-		
-		vc.textLabel.text = label;
-		return vc;
 	}
-	
+
+    UITableViewCell *vc = [tableView dequeueReusableCellWithIdentifier:@"eventListItemCell" forIndexPath:indexPath];
+
+    EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
+
+    if (edm.attending) {
+        vc.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        vc.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+
+    NSString *label = edm.name;
+
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"d MMM yyyy"];
+    NSString *startDate = [outputFormatter stringFromDate:edm.startDate];
+    NSString *endDate   = [outputFormatter stringFromDate:edm.endDate];
+
+    if ([startDate compare:endDate] == NSOrderedSame) {
+        vc.detailTextLabel.text = startDate;
+    } else {
+        vc.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
+    }
+
+    vc.textLabel.text = label;
+    return vc;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (self.confListData == nil) {
 		return 0;
-	} else {
-		return [self.confListData getNumEvents];
 	}
+
+    return [self.confListData getNumEvents];
 }
 
 @end
