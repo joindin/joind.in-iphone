@@ -36,29 +36,38 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-Sq-YRm">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventListItemCell" textLabel="9mI-QE-v7x" detailTextLabel="9WR-Ul-c0M" style="IBUITableViewCellStyleSubtitle" id="14b-Ji-j4g">
-                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventListItemCell" rowHeight="64" id="14b-Ji-j4g" customClass="EventListItemTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="14b-Ji-j4g" id="c2a-7i-X7q">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9mI-QE-v7x">
-                                                    <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpk-R1-MS7">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9WR-Ul-c0M">
-                                                    <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diP-qf-Szb">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="diP-qf-Szb" firstAttribute="top" secondItem="Wpk-R1-MS7" secondAttribute="bottom" id="1Ty-sm-hPX"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="diP-qf-Szb" secondAttribute="leading" constant="-8" id="8nc-gC-WXf"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Wpk-R1-MS7" secondAttribute="leading" constant="-8" id="EkX-3D-uA6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="diP-qf-Szb" secondAttribute="bottom" id="S4m-oG-wOg"/>
+                                                <constraint firstItem="Wpk-R1-MS7" firstAttribute="top" secondItem="c2a-7i-X7q" secondAttribute="topMargin" id="srE-eY-hI0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="diP-qf-Szb" secondAttribute="trailing" id="sti-iz-Yhs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wpk-R1-MS7" secondAttribute="trailing" id="yjG-GM-7cK"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="subtitleLabel" destination="diP-qf-Szb" id="FWX-q3-yxX"/>
+                                            <outlet property="titleLabel" destination="Wpk-R1-MS7" id="oB2-ak-Y3f"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

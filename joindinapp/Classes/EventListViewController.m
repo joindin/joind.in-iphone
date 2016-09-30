@@ -11,6 +11,7 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "EventListItemTableViewCell.h"
 #import "EventListViewController.h"
 #import "EventDetailViewController.h"
 #import "EventListModel.h"
@@ -88,6 +89,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.eventListTableView.rowHeight = UITableViewAutomaticDimension;
+    self.eventListTableView.estimatedRowHeight = 44.0;
+
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     self.eventListTableView.refreshControl = refreshControl;
     [refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
@@ -145,7 +149,7 @@
 		return self.uiFetchingCell;
 	}
 
-    UITableViewCell *vc = [tableView dequeueReusableCellWithIdentifier:@"eventListItemCell" forIndexPath:indexPath];
+    EventListItemTableViewCell *vc = (EventListItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"eventListItemCell" forIndexPath:indexPath];
 
     EventDetailModel *edm = [self.confListData getEventDetailModelAtIndex:[indexPath row]];
 
@@ -163,12 +167,12 @@
     NSString *endDate   = [outputFormatter stringFromDate:edm.endDate];
 
     if ([startDate compare:endDate] == NSOrderedSame) {
-        vc.detailTextLabel.text = startDate;
+        vc.subtitleLabel.text = startDate;
     } else {
-        vc.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
+        vc.subtitleLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
     }
 
-    vc.textLabel.text = label;
+    vc.titleLabel.text = label;
     return vc;
 }
 
