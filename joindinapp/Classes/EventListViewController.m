@@ -26,25 +26,29 @@
 @synthesize eventListTableView;
 
 - (IBAction)rangeChanged:(id)sender {
-	self.confListData = nil;
-	[self.eventListTableView reloadData];
-	
-	EventGetList *e = [APICaller EventGetList:self];
+    [self refreshEvents];
+}
 
-	switch (self.uiEventRange.selectedSegmentIndex) {
-		case 0:	// Past
-			[e call:@"past"];
-			break;
-		case 1:	// Hot
-			[e call:@"hot"];
-			break;
-		case 2:	// Upcoming
-			[e call:@"upcoming"];
-			break;
-		default:
-			NSLog(@"Oops");
-			break;
-	}
+- (void)refreshEvents {
+    self.confListData = nil;
+    [self.eventListTableView reloadData];
+
+    EventGetList *e = [APICaller EventGetList:self];
+
+    switch (self.uiEventRange.selectedSegmentIndex) {
+        case 0:	// Past
+            [e call:@"past"];
+            break;
+        case 1:	// Hot
+            [e call:@"hot"];
+            break;
+        case 2:	// Upcoming
+            [e call:@"upcoming"];
+            break;
+        default:
+            NSLog(@"Oops");
+            break;
+    }
 }
 
 - (void)gotEventListData:(EventListModel *)eventListData error:(APIError *)error {
@@ -70,6 +74,10 @@
 		self.confListData = eventListData;
 		[self.eventListTableView reloadData];
 	}
+
+    if (self.eventListTableView.refreshControl.isRefreshing) {
+        [self.eventListTableView.refreshControl endRefreshing];
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -77,6 +85,13 @@
 	[self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    self.eventListTableView.refreshControl = refreshControl;
+    [refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
