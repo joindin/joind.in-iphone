@@ -120,7 +120,7 @@
 	
 	[self.uiMap setRegion:adjustedRegion animated:TRUE];
 	
-	EventMapAnnotation *ema = [[[EventMapAnnotation alloc] initWithCoordinate:location title:self.event.name] autorelease];
+	EventMapAnnotation *ema = [[EventMapAnnotation alloc] initWithCoordinate:location title:self.event.name];
 	[uiMap addAnnotation:ema];
 }
 
@@ -141,9 +141,6 @@
 	// e.g. self.myOutlet = nil;
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     [self updateShowMeEnabledStatus:status];

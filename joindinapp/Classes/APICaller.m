@@ -178,7 +178,6 @@
 	// Make asynchronous request (and store it in case it needs to be cancelled)
 	//NSLog(@"Sending request");
 	self.connection = [NSURLConnection connectionWithRequest:req delegate:self];
-	[req release];
 	
 }
 
@@ -209,7 +208,7 @@
 	NSString *responseString = [[NSString alloc] initWithData:self.urlData encoding:NSUTF8StringEncoding];
 	
 	// Reset buffer
-	[self.urlData release];
+	self.urlData;
 	self.urlData = [[NSMutableData alloc] init];
 
 	if (self.lastStatusCode >= 400 && self.lastStatusCode <= 600) {
@@ -221,7 +220,6 @@
 		[self gotResponse:responseString];
 	}
 	
-	[responseString release];
 
 }
 
@@ -231,7 +229,6 @@
 	// If there's a nil response, just pass it along anyway
 	SBJSON *jsonParser = [SBJSON new];
 	NSObject *obj = [jsonParser objectWithString:responseString error:NULL];
-	[jsonParser release];
 	[self gotData:obj];
 }
 

@@ -27,11 +27,11 @@
 - (IBAction) uiShowMePressed:(id)sender;
 - (IBAction) uiShowEventPressed:(id)sender;
 
-@property (nonatomic, retain) MKMapView *uiMap;
-@property (nonatomic, retain) EventDetailModel *event;
-@property (nonatomic, retain) UISegmentedControl *uiMapType;
-@property (nonatomic, retain) UIButton *uiShowMe;
-@property (nonatomic, retain) UIButton *uiShowEvent;
+@property (nonatomic, strong) MKMapView *uiMap;
+@property (nonatomic, strong) EventDetailModel *event;
+@property (nonatomic, strong) UISegmentedControl *uiMapType;
+@property (nonatomic, strong) UIButton *uiShowMe;
+@property (nonatomic, strong) UIButton *uiShowEvent;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end

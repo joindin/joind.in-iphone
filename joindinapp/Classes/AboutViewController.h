@@ -18,7 +18,7 @@
 	IBOutlet UILabel *uiVersion;
 }
 
-@property (nonatomic, retain) UILabel *uiVersion;
+@property (nonatomic, strong) UILabel *uiVersion;
 
 - (IBAction) uiClearCache:(id)sender;
 - (IBAction) uiWebsite:(id)sender;

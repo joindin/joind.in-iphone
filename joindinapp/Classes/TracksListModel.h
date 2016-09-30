@@ -18,7 +18,7 @@
 	NSMutableArray *tracks;
 }
 
-@property(nonatomic, retain) NSMutableArray *tracks;
+@property(nonatomic, strong) NSMutableArray *tracks;
 
 - (id)init;
 - (void)addTrack:(TrackDetailModel *)tdm;

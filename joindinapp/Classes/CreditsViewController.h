@@ -18,6 +18,6 @@
 	IBOutlet UIWebView *uiContent;
 }
 
-@property (nonatomic, retain) UIWebView *uiContent;
+@property (nonatomic, strong) UIWebView *uiContent;
 
 @end

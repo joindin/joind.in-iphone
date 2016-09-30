@@ -49,7 +49,6 @@
 	static UserValidate *u = nil;
 	if (u != nil) {
 		[u cancel];
-		[u release];
 	}	
 	u = [[UserValidate alloc] initWithDelegate:_delegate];
 	return u;

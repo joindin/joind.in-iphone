@@ -32,9 +32,9 @@
 }
 
 @property (nonatomic, assign) NSUInteger  rating;
-@property (nonatomic, retain) NSString   *comment;
-@property (nonatomic, retain) NSDate     *createdDate;
-@property (nonatomic, retain) NSString   *userDisplayName;
-@property (nonatomic, retain) NSString   *userURI;
+@property (nonatomic, strong) NSString   *comment;
+@property (nonatomic, strong) NSDate     *createdDate;
+@property (nonatomic, strong) NSString   *userDisplayName;
+@property (nonatomic, strong) NSString   *userURI;
 
 @end

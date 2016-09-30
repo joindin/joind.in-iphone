@@ -25,7 +25,7 @@ enum {
 	APIErrType type;
 }
 
-@property (nonatomic, retain) NSString *msg;
+@property (nonatomic, strong) NSString *msg;
 @property (nonatomic, assign) APIErrType type;
 
 +(id)APIErrorWithMsg:(NSString *)_msg type:(APIErrType)errtype;

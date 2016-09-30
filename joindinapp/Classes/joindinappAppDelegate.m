@@ -33,34 +33,5 @@
 	// Save data if appropriate
 }
 
-// Handle someone opening a "joindin://talk/123" or "joindin://event/123" URL
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
-{
-	if (url == nil) {
-		return NO;
-	}
-	
-    NSString *URLString = [url absoluteString];
-	
-	NSArray *components = [URLString componentsSeparatedByString:@"/"];
-	
-	NSString *type  = [components objectAtIndex:2];
-	NSString *reqid = [components objectAtIndex:3];
-	
-	if (type != nil) {
-		if (reqid != nil) {
-			if ([type isEqualToString:@"event"]) {
-				[splashScreenViewController gotoEventScreenWithEventId:[reqid integerValue]];
-				return YES;
-			} else if ([type isEqualToString:@"talk"]) {
-				[splashScreenViewController gotoTalkScreenWithTalkId:[reqid integerValue]];
-				return YES;
-			}
-		}
-	}
-	
-    return NO;
-}
-
 @end
 

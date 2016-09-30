@@ -20,11 +20,11 @@
     IBOutlet UITableView *eventListTableView;
 }
 
-@property(nonatomic, retain) EventListModel *confListData;
-@property(nonatomic, retain) UIView *uiTableHeaderView;
-@property(retain, nonatomic) IBOutlet UISegmentedControl *uiEventRange;
-@property(nonatomic, retain) UITableViewCell *uiFetchingCell;
-@property(nonatomic, retain) UITableView *eventListTableView;
+@property(nonatomic, strong) EventListModel *confListData;
+@property(nonatomic, strong) UIView *uiTableHeaderView;
+@property(strong, nonatomic) IBOutlet UISegmentedControl *uiEventRange;
+@property(nonatomic, strong) UITableViewCell *uiFetchingCell;
+@property(nonatomic, strong) UITableView *eventListTableView;
 
 - (IBAction)rangeChanged:(id)sender;
 

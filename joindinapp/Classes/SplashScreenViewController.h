@@ -30,16 +30,8 @@
 
 - (void) performPendingActions;
 
-- (void) gotoEventScreenWithEventId:(NSUInteger)eventId;
-- (void) gotoEventScreenWithEventDetailModel:(EventDetailModel *)edm;
-- (void) reallyGotoEventScreenWithEventId:(NSUInteger)eventId;
-
-- (void) gotoTalkScreenWithTalkId:(NSUInteger)talkId;
-- (void) gotoTalkScreenWithTalkDetailModel:(TalkDetailModel *)tdm;
-- (void) reallyGotoTalkScreenWithTalkId:(NSUInteger)talkId;
-
-@property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
-@property (nonatomic, retain) UINavigationController *navC;
+@property (nonatomic, strong) UIActivityIndicatorView *uiLoading;
+@property (nonatomic, strong) UINavigationController *navC;
 @property (nonatomic, assign) BOOL havePendingAction;
 @property (nonatomic, assign) NSUInteger pendingEventId;
 @property (nonatomic, assign) NSUInteger pendingTalkId;

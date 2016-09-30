@@ -25,11 +25,11 @@
 	int lastStatusCode;
 }
 
-@property (nonatomic, retain) id delegate;
-@property (nonatomic, retain) NSMutableData *urlData;
-@property (nonatomic, retain) NSURLConnection *connection;
-@property (nonatomic, retain) NSString *reqJSON;
-@property (nonatomic, retain) NSMutableString *url;
+@property (nonatomic, strong) id delegate;
+@property (nonatomic, strong) NSMutableData *urlData;
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) NSString *reqJSON;
+@property (nonatomic, strong) NSMutableString *url;
 @property (nonatomic, assign) int lastStatusCode;
 
 - (id)initWithDelegate:(id)_delegate;

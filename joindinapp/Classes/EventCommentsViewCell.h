@@ -20,7 +20,7 @@
 	
 }
 
-@property (nonatomic, retain) UILabel     *uiComment;
-@property (nonatomic, retain) UILabel     *uiAuthor;
+@property (nonatomic, strong) UILabel     *uiComment;
+@property (nonatomic, strong) UILabel     *uiAuthor;
 
 @end

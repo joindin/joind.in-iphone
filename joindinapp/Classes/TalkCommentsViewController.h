@@ -33,14 +33,14 @@
 	BOOL signedIn;
 }
 
-@property (nonatomic, retain) TalkDetailModel *talk;
-@property (nonatomic, retain) TalkCommentListModel *comments;
-@property (nonatomic, retain) NewCommentViewCell *provideCommentCell;
+@property (nonatomic, strong) TalkDetailModel *talk;
+@property (nonatomic, strong) TalkCommentListModel *comments;
+@property (nonatomic, strong) NewCommentViewCell *provideCommentCell;
 
-@property (nonatomic, retain) UILabel *uiComment;
-@property (nonatomic, retain) UILabel *uiAuthor;
-@property (nonatomic, retain) UIImageView *uiRating;
-@property (nonatomic, retain) UITableViewCell *uiCell;
+@property (nonatomic, strong) UILabel *uiComment;
+@property (nonatomic, strong) UILabel *uiAuthor;
+@property (nonatomic, strong) UIImageView *uiRating;
+@property (nonatomic, strong) UITableViewCell *uiCell;
 
 @property (nonatomic, assign) BOOL commentsLoaded;
 @property (nonatomic, assign) BOOL scrollToEnd;

@@ -184,7 +184,6 @@
 	
 	[self.delegate gotEventDetailData:edm error:nil];
 	
-	[edm release];
 }
 
 - (void)gotError:(APIError *)error {
@@ -199,7 +198,6 @@
 	static EventGetDetail *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}	
 	e = [[EventGetDetail alloc] initWithDelegate:_delegate];
 	return e;

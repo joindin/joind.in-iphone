@@ -28,16 +28,16 @@
 	NSString   *talkCommentsURI;
 }
 
-@property (nonatomic, retain) NSString   *username;
-@property (nonatomic, retain) NSString   *fullName;
-@property (nonatomic, retain) NSString   *twitterUsername;
-@property (nonatomic, retain) NSString   *gravatarHash;
-@property (nonatomic, retain) NSString   *uri;
-@property (nonatomic, retain) NSString   *verboseURI;
-@property (nonatomic, retain) NSString   *websiteURI;
-@property (nonatomic, retain) NSString   *talksURI;
-@property (nonatomic, retain) NSString   *attendedEventsURI;
-@property (nonatomic, retain) NSString   *hostedEventsURI;
-@property (nonatomic, retain) NSString   *talkCommentsURI;
+@property (nonatomic, strong) NSString   *username;
+@property (nonatomic, strong) NSString   *fullName;
+@property (nonatomic, strong) NSString   *twitterUsername;
+@property (nonatomic, strong) NSString   *gravatarHash;
+@property (nonatomic, strong) NSString   *uri;
+@property (nonatomic, strong) NSString   *verboseURI;
+@property (nonatomic, strong) NSString   *websiteURI;
+@property (nonatomic, strong) NSString   *talksURI;
+@property (nonatomic, strong) NSString   *attendedEventsURI;
+@property (nonatomic, strong) NSString   *hostedEventsURI;
+@property (nonatomic, strong) NSString   *talkCommentsURI;
 
 @end

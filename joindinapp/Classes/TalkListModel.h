@@ -23,11 +23,11 @@
 	NSMutableArray *talksNext;
 }
 
-@property(nonatomic, retain) NSMutableArray *talks;
-@property(nonatomic, retain) NSMutableDictionary *talksByDate;
-@property(nonatomic, retain) EventDetailModel *event;
-@property(nonatomic, retain) NSMutableArray *talksNow;
-@property(nonatomic, retain) NSMutableArray *talksNext;
+@property(nonatomic, strong) NSMutableArray *talks;
+@property(nonatomic, strong) NSMutableDictionary *talksByDate;
+@property(nonatomic, strong) EventDetailModel *event;
+@property(nonatomic, strong) NSMutableArray *talksNow;
+@property(nonatomic, strong) NSMutableArray *talksNext;
 
 - (id)initWithEvent:(EventDetailModel *)_edm;
 - (void)addTalk:(TalkDetailModel *)tdm;

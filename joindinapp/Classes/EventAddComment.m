@@ -38,7 +38,6 @@
 	static EventAddComment *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}
 	e = [[EventAddComment alloc] initWithDelegate:_delegate];
 	return e;

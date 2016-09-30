@@ -29,15 +29,15 @@
 	id commentDelegate;
 }
 
-@property (nonatomic, retain) UIButton *uiSubmit;
-@property (nonatomic, retain) UITextView *uiComment;
-@property (nonatomic, retain) UIActivityIndicatorView *uiActivity;
-@property (nonatomic, retain) id commentDelegate;
-@property (nonatomic, retain) UIButton *uiRating1;
-@property (nonatomic, retain) UIButton *uiRating2;
-@property (nonatomic, retain) UIButton *uiRating3;
-@property (nonatomic, retain) UIButton *uiRating4;
-@property (nonatomic, retain) UIButton *uiRating5;
+@property (nonatomic, strong) UIButton *uiSubmit;
+@property (nonatomic, strong) UITextView *uiComment;
+@property (nonatomic, strong) UIActivityIndicatorView *uiActivity;
+@property (nonatomic, strong) id commentDelegate;
+@property (nonatomic, strong) UIButton *uiRating1;
+@property (nonatomic, strong) UIButton *uiRating2;
+@property (nonatomic, strong) UIButton *uiRating3;
+@property (nonatomic, strong) UIButton *uiRating4;
+@property (nonatomic, strong) UIButton *uiRating5;
 @property (nonatomic, assign) NSUInteger rating;
 
 - (IBAction) uiSubmitted:(id)sender;

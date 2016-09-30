@@ -22,8 +22,8 @@
 	NSUInteger  id;
 }
 
-@property (nonatomic, retain) NSString   *comment;
-@property (nonatomic, retain) NSDate     *made;
+@property (nonatomic, strong) NSString   *comment;
+@property (nonatomic, strong) NSDate     *made;
 @property (nonatomic, assign) NSUInteger  uid;
 @property (nonatomic, assign) BOOL        active;
 @property (nonatomic, assign) NSUInteger  id;

@@ -19,7 +19,7 @@
 	NSMutableArray *comments;
 }
 
-@property(nonatomic, retain) NSMutableArray *comments;
+@property(nonatomic, strong) NSMutableArray *comments;
 
 - (void)addComment:(TalkCommentDetailModel *)tcdm;
 - (TalkCommentDetailModel *)getTalkCommentAtIndex:(NSUInteger)idx;

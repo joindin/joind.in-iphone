@@ -22,7 +22,7 @@
 
 - (void)gotData:(NSObject *)obj {
 	
-	UserDetailModel *udm = [[[UserDetailModel alloc] init] autorelease];
+	UserDetailModel *udm = [[UserDetailModel alloc] init];
 
     NSDictionary *user = [(NSArray *)[(NSDictionary *)obj objectForKey:@"users"] objectAtIndex:0];
     if ([[user objectForKey:@"username"] isKindOfClass:[NSString class]]) {
@@ -105,7 +105,6 @@
 	static UserGetDetail *u = nil;
 	if (u != nil) {
 		[u cancel];
-		[u release];
 	}	
 	u = [[UserGetDetail alloc] initWithDelegate:_delegate];
 	return u;

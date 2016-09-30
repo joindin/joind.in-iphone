@@ -19,7 +19,7 @@
 @synthesize type;
 
 +(id)APIErrorWithMsg:(NSString *)_msg type:(APIErrType)type {
-	APIError *e = [[APIError alloc] autorelease];
+	APIError *e = [APIError alloc];
 	e.msg = _msg;
 	e.type = type;
 	return e;

@@ -118,7 +118,6 @@
 			}
 			
 			[tdm.tracks addTrack:tkdm];
-			[tkdm release];
 		}
 	}
 	
@@ -159,7 +158,6 @@
 	}
 
 	[self.delegate gotTalkDetailData:tdm error:nil];
-	[tdm release];
 
 }
 
@@ -174,7 +172,6 @@
 	static TalkGetDetail *t = nil;
 	if (t != nil) {
 		[t cancel];
-		[t release];
 	}	
 	t = [[TalkGetDetail alloc] initWithDelegate:_delegate];
 	return t;

@@ -40,7 +40,6 @@
 	static TalkAddComment *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}
 	e = [[TalkAddComment alloc] initWithDelegate:_delegate];
 	return e;

@@ -154,16 +154,12 @@
 	TalkCommentsViewController *vc = [[TalkCommentsViewController alloc] initWithNibName:@"TalkCommentsView" bundle:nil];
 	vc.talk = self.talk;
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

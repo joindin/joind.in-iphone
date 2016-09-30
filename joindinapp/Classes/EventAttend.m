@@ -36,7 +36,6 @@
 	static EventAttend *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}
 	e = [[EventAttend alloc] initWithDelegate:_delegate];
 	return e;

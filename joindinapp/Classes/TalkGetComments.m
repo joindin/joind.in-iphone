@@ -21,7 +21,7 @@
 }
 
 - (void)gotData:(NSObject *)obj {
-	TalkCommentListModel *tclm = [[[TalkCommentListModel alloc] init] autorelease];
+	TalkCommentListModel *tclm = [[TalkCommentListModel alloc] init];
 	
 	NSDictionary *d = [(NSDictionary *)obj objectForKey:@"comments"];
 	for (NSDictionary *comment in d) {
@@ -54,7 +54,7 @@
 		}
 		
 		if ([[comment objectForKey:@"user_uri"] isKindOfClass:[NSString class]]) {
-			tcdm.userURI = [[comment objectForKey:@"user_uri"] integerValue];
+			tcdm.userURI = [[comment objectForKey:@"user_uri"] stringValue];
 		} else {
 			tcdm.userURI = 0;
 		}
@@ -63,7 +63,6 @@
 		//if (tdm.active && !tdm.private) {
 		[tclm addComment:tcdm];
 		//}
-		[tcdm release];
 		
 	}
 	[self.delegate gotTalkComments:tclm error:nil];
@@ -81,7 +80,6 @@
 	static TalkGetComments *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}
 	e = [[TalkGetComments alloc] initWithDelegate:_delegate];
 	return e;
