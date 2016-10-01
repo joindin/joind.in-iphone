@@ -15,6 +15,15 @@ everyone understands what we expect from our community, our projects have a [Con
 Conduct](CODE_OF_CONDUCT.md) and by participating in the development of joind.in you agree to abide
 by its terms.
 
+## Getting started
+
+The project uses CocoaPods for dependency management. The Podfile is located inside the `joindinapp` directory.
+
+1. Clone the repository
+2. `cd <project_root>/joindinapp`
+3. `pod install`
+4. `open joindinapp.xcworkspace`
+
 ## Configuration
 
 The default joind.in iOS app OAuth configuration is set up to work with a development version of the API. The app has an extra build step as part of the Archive process, which will allow insertion of different credentials (for example for release builds). To use this:
