@@ -71,9 +71,6 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark URL-launched methods
@@ -81,61 +78,6 @@
 - (void) performPendingActions {
 	if (self.havePendingAction) {
 		self.havePendingAction = NO;
-		if (self.pendingEventId > 0) {
-			[self reallyGotoEventScreenWithEventId:self.pendingEventId];
-		} else if (self.pendingTalkId > 0) {
-			[self reallyGotoTalkScreenWithTalkId:self.pendingTalkId];
-		}
-	}
-}
-
-#pragma mark URL-launched event
-
-- (void) gotoEventScreenWithEventId:(NSUInteger)eventId {
-	self.havePendingAction = YES;
-	self.pendingEventId = eventId;
-}
-
-- (void) reallyGotoEventScreenWithEventId:(NSUInteger)eventId {
-	EventGetDetail *ed = [APICaller EventGetDetail:self];
-	[ed call:eventId];
-}
-
-- (void) gotoEventScreenWithEventDetailModel:(EventDetailModel *)edm {
-	EventDetailViewController *eventDetailViewController = [[EventDetailViewController alloc] init];
-	eventDetailViewController.event = edm;
-	[self.navC pushViewController:eventDetailViewController animated:YES];
-	//[eventDetailViewController release];	
-}
-
-- (void)gotEventDetailData:(EventDetailModel *)edm error:(APIError *)err {
-	if (edm != nil) {
-		[self gotoEventScreenWithEventDetailModel:edm];
-	}
-}
-
-#pragma mark URL-launched talk
-
-- (void) gotoTalkScreenWithTalkId:(NSUInteger)talkId {
-	self.havePendingAction = YES;
-	self.pendingTalkId = talkId;
-}
-
-- (void) reallyGotoTalkScreenWithTalkId:(NSUInteger)talkId {
-	TalkGetDetail *td = [APICaller TalkGetDetail:self];
-	[td call:talkId];
-}
-
-- (void) gotoTalkScreenWithTalkDetailModel:(TalkDetailModel *)tdm {
-	TalkDetailViewController *talkDetailViewController = [[TalkDetailViewController alloc] init];
-	talkDetailViewController.talk = tdm;
-	[self.navC pushViewController:talkDetailViewController animated:YES];
-	//[talkDetailViewController release];	
-}
-
-- (void)gotTalkDetailData:(TalkDetailModel *)tdm error:(APIError *)err {
-	if (tdm != nil) {
-		[self gotoTalkScreenWithTalkDetailModel:tdm];
 	}
 }
 

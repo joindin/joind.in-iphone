@@ -40,7 +40,7 @@
 		[switchView.label2 setText:tag2];
 	}
 	
-	return [switchView autorelease];
+	return switchView;
 }
 
 @end

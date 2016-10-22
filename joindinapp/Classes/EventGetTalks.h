@@ -19,7 +19,7 @@
 	EventDetailModel *event;
 }
 
-@property (nonatomic, retain) EventDetailModel *event;
+@property (nonatomic, strong) EventDetailModel *event;
 
 - (void)call:(EventDetailModel *)event;
 - (void)gotData:(NSObject *)obj;

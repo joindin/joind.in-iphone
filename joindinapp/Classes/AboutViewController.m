@@ -59,9 +59,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (IBAction) uiClearCache:(id)sender {
 	[APICaller clearCache];
@@ -78,7 +75,6 @@
 - (IBAction) uiCredits:(id)sender {
 	CreditsViewController *vc = [[CreditsViewController alloc] initWithNibName:@"CreditsView" bundle:nil];
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];		
 }
 
 

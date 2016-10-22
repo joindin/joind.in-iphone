@@ -26,14 +26,14 @@
 	IBOutlet UILabel     *uiTracks;
 }
 
-@property (nonatomic,retain) UIButton    *uiDetail;
-@property (nonatomic,retain) UILabel     *uiTalkName;
-@property (nonatomic,retain) UILabel     *uiSpeaker;
-@property (nonatomic,retain) UIImageView *uiRating;
-@property (nonatomic,retain) UILabel     *uiNumComments;
-@property (nonatomic,retain) UIImageView *uiCommentBubble;
-@property (nonatomic,retain) UIImageView *uiTalkType;
-@property (nonatomic,retain) UILabel     *uiTime;
-@property (nonatomic,retain) UILabel     *uiTracks;
+@property (nonatomic,strong) UIButton    *uiDetail;
+@property (nonatomic,strong) UILabel     *uiTalkName;
+@property (nonatomic,strong) UILabel     *uiSpeaker;
+@property (nonatomic,strong) UIImageView *uiRating;
+@property (nonatomic,strong) UILabel     *uiNumComments;
+@property (nonatomic,strong) UIImageView *uiCommentBubble;
+@property (nonatomic,strong) UIImageView *uiTalkType;
+@property (nonatomic,strong) UILabel     *uiTime;
+@property (nonatomic,strong) UILabel     *uiTracks;
 
 @end

@@ -21,10 +21,10 @@
 	id EventCommentDelegate;
 }
 
-@property (nonatomic, retain) UIButton *uiSubmit;
-@property (nonatomic, retain) UITextView *uiComment;
-@property (nonatomic, retain) UIActivityIndicatorView *uiActivity;
-@property (nonatomic, retain) id EventCommentDelegate;
+@property (nonatomic, strong) UIButton *uiSubmit;
+@property (nonatomic, strong) UITextView *uiComment;
+@property (nonatomic, strong) UIActivityIndicatorView *uiActivity;
+@property (nonatomic, strong) id EventCommentDelegate;
 
 - (IBAction) uiSubmitted:(id)sender;
 - (void) doStuff;

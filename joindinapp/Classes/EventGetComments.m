@@ -22,7 +22,7 @@
 }
 
 - (void)gotData:(NSObject *)obj {
-	EventCommentListModel *eclm = [[[EventCommentListModel alloc] init] autorelease];
+	EventCommentListModel *eclm = [[EventCommentListModel alloc] init];
 	
 	NSDictionary *d = [(NSDictionary *)obj objectForKey:@"comments"];
 	for (NSDictionary *comment in d) {
@@ -68,7 +68,6 @@
 
 		[eclm addComment:ecdm];
 
-		[ecdm release];
 		
 	}
 	[self.delegate gotEventComments:eclm error:nil];
@@ -86,7 +85,6 @@
 	static EventGetComments *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}
 	e = [[EventGetComments alloc] initWithDelegate:_delegate];
 	return e;

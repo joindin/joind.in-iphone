@@ -25,7 +25,7 @@
 }
 
 - (void)gotData:(NSObject *)obj {
-	TalkListModel *tlm = [[[TalkListModel alloc] initWithEvent:self.event] autorelease];
+	TalkListModel *tlm = [[TalkListModel alloc] initWithEvent:self.event];
 	
 	NSDictionary *d = [(NSDictionary *)obj objectForKey:@"talks"];
 	for (NSDictionary *talk in d) {
@@ -88,7 +88,6 @@
 				}
 								
 				[tdm.tracks addTrack:tkdm];
-				[tkdm release];
 			}
 		}
 		
@@ -129,7 +128,6 @@
         }
 
         [tlm addTalk:tdm];
-		[tdm release];
 		
 	}
 	[tlm sort];
@@ -147,7 +145,6 @@
 	static EventGetTalks *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}
 	e = [[EventGetTalks alloc] initWithDelegate:_delegate];
 	return e;

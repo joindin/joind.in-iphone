@@ -59,7 +59,6 @@
 														   delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		}
 		[alert show];
-		[alert release];
 		
 	} else {
 		
@@ -149,7 +148,6 @@
 		[outputFormatter setDateFormat:@"d MMM yyyy"];
 		NSString *startDate = [outputFormatter stringFromDate:edm.startDate];
 		NSString *endDate   = [outputFormatter stringFromDate:edm.endDate];
-		[outputFormatter release];
 		
 		if ([startDate compare:endDate] == NSOrderedSame) {
 			vc.detailTextLabel.text = startDate;

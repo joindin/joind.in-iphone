@@ -53,7 +53,6 @@
 - (void)aboutBtnPressed {
 	AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutView" bundle:nil];
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];	
 	
 }
 
@@ -92,13 +91,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-    [uiSigninView release];
-    [uiSignedInView release];
-    [uiUserGravatar release];
-    [uiLoggedInText release];
-    [super dealloc];
-}
 
 - (void) keyboardWillShow:(NSNotification *)note {
 	if (!self.keyboardIsShowing) {
@@ -131,7 +123,6 @@
 	if ([self.uiUser.text isEqualToString:@""] || [self.uiPass.text isEqualToString:@""]) {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No details supplied" message:@"Please enter your joind.in username and password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 		[alertView show];
-		[alertView release];
 	} else {
 		[self.uiChecking startAnimating];
 		self.uiOk.hidden = YES;
@@ -200,7 +191,6 @@
 		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid username/password"
 										  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 }
 
@@ -249,13 +239,9 @@
 	[sender resignFirstResponder];
 }
 - (void)viewDidUnload {
-	[uiSigninView release];
 	uiSigninView = nil;
-	[uiSignedInView release];
 	uiSignedInView = nil;
-	[uiUserGravatar release];
 	uiUserGravatar = nil;
-	[uiLoggedInText release];
 	uiLoggedInText = nil;
     [super viewDidUnload];
 }

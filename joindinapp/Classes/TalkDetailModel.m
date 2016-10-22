@@ -83,7 +83,7 @@
 	
 	//NSLog(@"Dest offset [%d] Source offset [%d]", destinationGMTOffset, sourceGMTOffset);
 	
-	NSDate* destDate = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:self.startDate] autorelease];
+	NSDate* destDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:self.startDate];
 	return destDate;
 }
 
@@ -91,7 +91,6 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:format];
 	NSString *retval = [dateFormatter stringFromDate:[self getAdjustedDateGiven:event]];
-	[dateFormatter release];
  	return retval;
 }
 

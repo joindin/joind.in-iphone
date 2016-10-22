@@ -46,21 +46,21 @@
 - (void)gotEventAttend:(APIError *)err;
 - (void)setupAttending;
 
-@property (nonatomic, retain) EventDetailModel *event;
-@property (nonatomic, retain) TalkListModel *talks;
+@property (nonatomic, strong) EventDetailModel *event;
+@property (nonatomic, strong) TalkListModel *talks;
 
-@property (nonatomic, retain) UILabel  *uiTitle;
-@property (nonatomic, retain) UILabel  *uiDate;
-@property (nonatomic, retain) UILabel  *uiLocation;
-@property (nonatomic, retain) UILabel  *uiDesc;
-@property (nonatomic, retain) UIButton *uiDescButton;
-@property (nonatomic, retain) UIActivityIndicatorView *uiLoadTalksIndicator;
-@property (nonatomic, retain) UIView   *uiTableHeaderView;
-@property (nonatomic, retain) UISwitch *uiAttending;
-@property (nonatomic, retain) UILabel  *uiAttendingLabel;
-@property (nonatomic, retain) UIActivityIndicatorView *uiAttendingIndicator;
-@property (nonatomic, retain) UIButton *uiComments;
-@property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
-@property (nonatomic, retain) UIButton *uiLocationButton;
+@property (nonatomic, strong) UILabel  *uiTitle;
+@property (nonatomic, strong) UILabel  *uiDate;
+@property (nonatomic, strong) UILabel  *uiLocation;
+@property (nonatomic, strong) UILabel  *uiDesc;
+@property (nonatomic, strong) UIButton *uiDescButton;
+@property (nonatomic, strong) UIActivityIndicatorView *uiLoadTalksIndicator;
+@property (nonatomic, strong) UIView   *uiTableHeaderView;
+@property (nonatomic, strong) UISwitch *uiAttending;
+@property (nonatomic, strong) UILabel  *uiAttendingLabel;
+@property (nonatomic, strong) UIActivityIndicatorView *uiAttendingIndicator;
+@property (nonatomic, strong) UIButton *uiComments;
+@property (nonatomic, strong) UIActivityIndicatorView *uiLoading;
+@property (nonatomic, strong) UIButton *uiLocationButton;
 
 @end

@@ -54,22 +54,22 @@
 
 }
 
-@property (nonatomic, retain) NSString   *name;
-@property (nonatomic, retain) NSDate     *startDate;
-@property (nonatomic, retain) NSDate     *endDate;
-@property (nonatomic, retain) NSString   *location;
-@property (nonatomic, retain) NSString   *description;
+@property (nonatomic, strong) NSString   *name;
+@property (nonatomic, strong) NSDate     *startDate;
+@property (nonatomic, strong) NSDate     *endDate;
+@property (nonatomic, strong) NSString   *location;
+@property (nonatomic, strong) NSString   *description;
 @property (nonatomic, assign) BOOL        active;
-@property (nonatomic, retain) NSString   *stub;
-@property (nonatomic, retain) NSString   *tzContinent;
-@property (nonatomic, retain) NSString   *tzPlace;
-@property (nonatomic, retain) NSString   *icon;
+@property (nonatomic, strong) NSString   *stub;
+@property (nonatomic, strong) NSString   *tzContinent;
+@property (nonatomic, strong) NSString   *tzPlace;
+@property (nonatomic, strong) NSString   *icon;
 @property (nonatomic, assign) BOOL        pending;
-@property (nonatomic, retain) NSString   *hashtag;
-@property (nonatomic, retain) NSString   *href;
-@property (nonatomic, retain) NSDate     *cfpStartDate;
-@property (nonatomic, retain) NSDate     *cfpEndDate;
-@property (nonatomic, retain) NSString   *cfpURL;
+@property (nonatomic, strong) NSString   *hashtag;
+@property (nonatomic, strong) NSString   *href;
+@property (nonatomic, strong) NSDate     *cfpStartDate;
+@property (nonatomic, strong) NSDate     *cfpEndDate;
+@property (nonatomic, strong) NSString   *cfpURL;
 @property (nonatomic, assign) BOOL        voting;
 @property (nonatomic, assign) BOOL        private;
 @property (nonatomic, assign) NSUInteger  attendeeCount;
@@ -81,16 +81,16 @@
 @property (nonatomic, assign) BOOL        attending;
 @property (nonatomic, assign) float       latitude;
 @property (nonatomic, assign) float       longitude;
-@property (nonatomic, retain) NSString    *uri;
-@property (nonatomic, retain) NSString    *verboseURI;
-@property (nonatomic, retain) NSString    *commentsURI;
-@property (nonatomic, retain) NSString    *talksURI;
-@property (nonatomic, retain) NSString    *tracksURI;
-@property (nonatomic, retain) NSString    *attendingURI;
-@property (nonatomic, retain) NSString    *websiteURI;
-@property (nonatomic, retain) NSString    *humaneWebsiteURI;
-@property (nonatomic, retain) NSString    *allTalkCommentsURI;
-@property (nonatomic, retain) NSString    *attendeesURI;
+@property (nonatomic, strong) NSString    *uri;
+@property (nonatomic, strong) NSString    *verboseURI;
+@property (nonatomic, strong) NSString    *commentsURI;
+@property (nonatomic, strong) NSString    *talksURI;
+@property (nonatomic, strong) NSString    *tracksURI;
+@property (nonatomic, strong) NSString    *attendingURI;
+@property (nonatomic, strong) NSString    *websiteURI;
+@property (nonatomic, strong) NSString    *humaneWebsiteURI;
+@property (nonatomic, strong) NSString    *allTalkCommentsURI;
+@property (nonatomic, strong) NSString    *attendeesURI;
 
 -(id)init;
 -(BOOL)isNowOn;

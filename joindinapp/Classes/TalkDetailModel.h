@@ -42,30 +42,30 @@
 	NSString   *eventURI;
 }
 
-@property (nonatomic, retain) NSString   *title;
-@property (nonatomic, retain) NSString   *urlFriendlyTalkTitle;
-@property (nonatomic, retain) NSString   *description;
-@property (nonatomic, retain) NSString   *type;
-@property (nonatomic, retain) NSString   *slidesLink;
-@property (nonatomic, retain) NSString  *lang;
-@property (nonatomic, retain) NSDate     *startDate;
+@property (nonatomic, strong) NSString   *title;
+@property (nonatomic, strong) NSString   *urlFriendlyTalkTitle;
+@property (nonatomic, strong) NSString   *description;
+@property (nonatomic, strong) NSString   *type;
+@property (nonatomic, strong) NSString   *slidesLink;
+@property (nonatomic, strong) NSString  *lang;
+@property (nonatomic, strong) NSDate     *startDate;
 @property (nonatomic, assign) NSUInteger  duration;
-@property (nonatomic, retain) NSString   *stub;
+@property (nonatomic, strong) NSString   *stub;
 @property (nonatomic, assign) NSUInteger  rating;
 @property (nonatomic, assign) BOOL        allowComments;
 @property (nonatomic, assign) NSUInteger  commentCount;
 @property (nonatomic, assign) BOOL        starred;
 @property (nonatomic, assign) NSUInteger  starredCount;
-@property (nonatomic, retain) TracksListModel *tracks;
-@property (nonatomic, retain) NSArray    *speakers;
+@property (nonatomic, strong) TracksListModel *tracks;
+@property (nonatomic, strong) NSArray    *speakers;
 
-@property (nonatomic, retain) NSString   *uri;
-@property (nonatomic, retain) NSString   *verboseURI;
-@property (nonatomic, retain) NSString   *websiteURI;
-@property (nonatomic, retain) NSString   *commentsURI;
-@property (nonatomic, retain) NSString   *starredURI;
-@property (nonatomic, retain) NSString   *verboseCommentsURI;
-@property (nonatomic, retain) NSString   *eventURI;
+@property (nonatomic, strong) NSString   *uri;
+@property (nonatomic, strong) NSString   *verboseURI;
+@property (nonatomic, strong) NSString   *websiteURI;
+@property (nonatomic, strong) NSString   *commentsURI;
+@property (nonatomic, strong) NSString   *starredURI;
+@property (nonatomic, strong) NSString   *verboseCommentsURI;
+@property (nonatomic, strong) NSString   *eventURI;
 
 -(id)init;
 -(BOOL)hasFinished;

@@ -21,7 +21,7 @@
 	EventDetailModel *event;
 	EventCommentListModel *comments;
 	BOOL commentsLoaded;
-	NewEventCommentViewCell *provideCommentCell;
+	NewEventCommentViewCell *__weak provideCommentCell;
 	
 	IBOutlet UILabel *uiComment;
 	IBOutlet UILabel *uiAuthor;
@@ -30,14 +30,14 @@
 	BOOL signedIn;
 }
 
-@property (nonatomic, retain) EventDetailModel *event;
-@property (nonatomic, retain) EventCommentListModel *comments;
+@property (nonatomic, strong) EventDetailModel *event;
+@property (nonatomic, strong) EventCommentListModel *comments;
 @property (nonatomic, assign) BOOL commentsLoaded;
-@property (nonatomic, assign) NewEventCommentViewCell *provideCommentCell;
+@property (nonatomic, weak) NewEventCommentViewCell *provideCommentCell;
 
-@property (nonatomic, retain) UILabel *uiComment;
-@property (nonatomic, retain) UILabel *uiAuthor;
-@property (nonatomic, retain) UITableViewCell *uiCell;
+@property (nonatomic, strong) UILabel *uiComment;
+@property (nonatomic, strong) UILabel *uiAuthor;
+@property (nonatomic, strong) UITableViewCell *uiCell;
 
 @property (nonatomic, assign) BOOL signedIn;
 

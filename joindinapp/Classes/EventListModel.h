@@ -18,7 +18,7 @@
 	NSMutableArray *events;
 }
 
-@property(nonatomic, retain) NSMutableArray *events;
+@property(nonatomic, strong) NSMutableArray *events;
 
 - (void)addEvent:(EventDetailModel *)edm;
 - (EventDetailModel *)getEventDetailModelAtIndex:(NSUInteger)idx;

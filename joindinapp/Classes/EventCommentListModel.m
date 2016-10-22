@@ -24,7 +24,6 @@
 }
 
 - (void)addComment:(EventCommentDetailModel *)ecdm {
-	[ecdm retain];
 	[self.comments addObject:ecdm];
 }
 

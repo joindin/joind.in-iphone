@@ -33,7 +33,6 @@
 }
 
 - (void)addTalk:(TalkDetailModel *)tdm {
-	[tdm retain];
 	[self.talks addObject:tdm];
 	
 	NSString *dateString = [tdm getSortableDateString:self.event];
@@ -42,7 +41,6 @@
 		NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
 		[thing addObject:tdm];
 		[self.talksByDate setObject:thing forKey:dateString];
-		[thing release];
 	} else {
 		NSMutableArray *thing = [self.talksByDate objectForKey:dateString];
 		[thing addObject:tdm];
@@ -86,7 +84,6 @@
 			NSMutableArray *thing = [[NSMutableArray alloc] initWithCapacity:1];
 			[thing addObject:tdm];
 			[self.talksByDate setObject:thing forKey:dateString];
-			[thing release];
 		} else {
 			NSMutableArray *thing = [self.talksByDate objectForKey:dateString];
 			[thing addObject:tdm];

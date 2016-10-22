@@ -25,7 +25,6 @@
 }
 
 - (void)addEvent:(EventDetailModel *)edm {
-	[edm retain];
 	[self.events addObject:edm];
 }
 

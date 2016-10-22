@@ -24,7 +24,6 @@
 }
 
 - (void)addTrack:(TrackDetailModel *)tdm {
-	[tdm retain];
 	[self.tracks addObject:tdm];
 }
 

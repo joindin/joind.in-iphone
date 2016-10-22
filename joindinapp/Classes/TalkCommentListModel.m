@@ -25,7 +25,6 @@
 }
 
 - (void)addComment:(TalkCommentDetailModel *)tcdm {
-	[tcdm retain];
 	[self.comments addObject:tcdm];
 }
 

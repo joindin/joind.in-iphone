@@ -22,10 +22,10 @@
 	IBOutlet UILabel  *uiHashtag;
 }
 
-@property (nonatomic, retain) EventDetailModel *event;
-@property (nonatomic, retain) UITextView *uiDescription;
-@property (nonatomic, retain) UIButton *uiWebsite;
-@property (nonatomic, retain) UILabel  *uiHashtag;
+@property (nonatomic, strong) EventDetailModel *event;
+@property (nonatomic, strong) UITextView *uiDescription;
+@property (nonatomic, strong) UIButton *uiWebsite;
+@property (nonatomic, strong) UILabel  *uiHashtag;
 
 - (IBAction) uiWebsitePressed:(id)sender;
 

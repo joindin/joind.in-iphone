@@ -33,19 +33,19 @@
 	BOOL keyboardIsShowing;
 }
 
-@property (nonatomic, retain) UITextField  *uiUser;
-@property (nonatomic, retain) UITextField  *uiPass;
-@property (nonatomic, retain) UISwitch     *uiLimitEvents;
-@property (nonatomic, retain) UIButton     *uiOk;
-@property (nonatomic, retain) UIButton     *uiLogout;
-@property (nonatomic, retain) UIActivityIndicatorView *uiChecking;
-@property (nonatomic, retain) UIScrollView *uiContent;
+@property (nonatomic, strong) UITextField  *uiUser;
+@property (nonatomic, strong) UITextField  *uiPass;
+@property (nonatomic, strong) UISwitch     *uiLimitEvents;
+@property (nonatomic, strong) UIButton     *uiOk;
+@property (nonatomic, strong) UIButton     *uiLogout;
+@property (nonatomic, strong) UIActivityIndicatorView *uiChecking;
+@property (nonatomic, strong) UIScrollView *uiContent;
 @property (nonatomic, assign) BOOL keyboardIsShowing;
-@property (nonatomic, retain) UISwitch     *uiLocalTime;
-@property (nonatomic, retain) UIImageView  *uiUserGravatar;
-@property (nonatomic, retain) UILabel      *uiLoggedInText;
-@property (nonatomic, retain) UIView       *uiSigninView;
-@property (nonatomic, retain) UIView       *uiSignedInView;
+@property (nonatomic, strong) UISwitch     *uiLocalTime;
+@property (nonatomic, strong) UIImageView  *uiUserGravatar;
+@property (nonatomic, strong) UILabel      *uiLoggedInText;
+@property (nonatomic, strong) UIView       *uiSigninView;
+@property (nonatomic, strong) UIView       *uiSignedInView;
 
 - (IBAction) submitScreen:(id)sender;
 - (IBAction) logout:(id)sender;

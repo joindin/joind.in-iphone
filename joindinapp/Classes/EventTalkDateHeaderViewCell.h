@@ -18,6 +18,6 @@
 	IBOutlet UILabel *dateLabel;
 }
 
-@property (nonatomic, retain) UILabel *dateLabel;
+@property (nonatomic, strong) UILabel *dateLabel;
 
 @end

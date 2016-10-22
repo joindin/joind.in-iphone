@@ -90,7 +90,6 @@
 		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:err.msg 
 										  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 	int numComments = (int) [self.comments getNumComments];
 	NSMutableString *commentTitle = [NSMutableString stringWithFormat:@"%d comment", numComments];
@@ -108,7 +107,6 @@
 		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg
                                           delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 
 	// Reload comments
@@ -121,7 +119,6 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	SettingsViewController *vc = [[SettingsViewController alloc] init];
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -258,9 +255,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

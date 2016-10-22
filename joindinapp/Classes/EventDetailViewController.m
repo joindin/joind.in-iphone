@@ -78,7 +78,6 @@
 	[outputFormatter setDateFormat:@"d MMM yyyy"];
 	NSString *startDate = [outputFormatter stringFromDate:self.event.startDate];
 	NSString *endDate   = [outputFormatter stringFromDate:self.event.endDate];
-	[outputFormatter release];
 	
 	[self setupAttending];
 	
@@ -202,7 +201,6 @@
 		talkDetailViewController.event = self.event;
 		[self.navigationController pushViewController:talkDetailViewController animated:YES];
 		[tableView deselectRowAtIndexPath:indexPath animated:YES]; // Deselect the talk row in the event detail screen
-		[talkDetailViewController release];
 	}
 	
 }
@@ -354,14 +352,12 @@
 - (void)uiSettingsButtonPressed {
 	SettingsViewController *vc = [[SettingsViewController alloc] init];
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];	
 }
 
 - (IBAction)uiDescButtonPressed:(id)sender {
 	EventDescriptionViewController *edvc = [[EventDescriptionViewController alloc] initWithNibName:@"EventDescriptionView" bundle:nil];
 	edvc.event = self.event;
 	[self.navigationController pushViewController:edvc animated:YES];
-	[edvc release];
 }
 
 - (IBAction)uiAttendingButtonPressed:(id)sender {
@@ -374,14 +370,12 @@
 	EventCommentsViewController *ecvc = [[EventCommentsViewController alloc] initWithNibName:@"EventCommentsView" bundle:nil];
 	ecvc.event = self.event;
 	[self.navigationController pushViewController:ecvc animated:YES];
-	[ecvc release];
 }
 
 - (IBAction)uiLocationButtonPressed:(id)sender {
 	EventLocationViewController *locVC = [[EventLocationViewController alloc] initWithNibName:@"EventLocationView" bundle:nil];
 	locVC.event = self.event;
 	[self.navigationController pushViewController:locVC animated:YES];
-	[locVC release];
 }
 
 #pragma mark Utility methods
@@ -392,7 +386,6 @@
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Couldn't load event details"
 											  delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	} else {
 		[self.uiLoadTalksIndicator stopAnimating];
 		self.talks = tlm;
@@ -409,7 +402,6 @@
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Couldn't update your attending status"
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 }
 
@@ -417,9 +409,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

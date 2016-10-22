@@ -21,9 +21,9 @@
 	NSUInteger  Id;
 }
 
-@property (nonatomic, retain) NSString   *name;
-@property (nonatomic, retain) NSString   *desc;
-@property (nonatomic, retain) NSString   *color;
+@property (nonatomic, strong) NSString   *name;
+@property (nonatomic, strong) NSString   *desc;
+@property (nonatomic, strong) NSString   *color;
 @property (nonatomic, assign) NSUInteger  Id;
 
 @end

@@ -27,7 +27,7 @@
 	NSDictionary *d = (NSDictionary *)obj;
     NSDictionary *events = (NSDictionary *)[d objectForKey:@"events"];
 	
-	EventListModel *elm = [[[EventListModel alloc] init] autorelease];
+	EventListModel *elm = [[EventListModel alloc] init];
 	
 	
 	for (NSDictionary *event in events) {
@@ -181,7 +181,6 @@
 
 		[elm addEvent:edm];
 		
-		[edm release];
 	}
 	
 	//[elm sort];
@@ -202,7 +201,6 @@
 	static EventGetList *e = nil;
 	if (e != nil) {
 		[e cancel];
-		[e release];
 	}	
 	e = [[EventGetList alloc] initWithDelegate:_delegate];
 	return e;

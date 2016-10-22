@@ -31,18 +31,18 @@
 	IBOutlet UILabel    *uiTracks;
 }
 
-@property (nonatomic, retain) TalkDetailModel  *talk;
-@property (nonatomic, retain) EventDetailModel *event;
-@property (nonatomic, retain) UILabel *uiTitle;
-@property (nonatomic, retain) UILabel *uiSpeaker;
-@property (nonatomic, retain) UILabel *uiDate;
-@property (nonatomic, retain) UITextView *uiDesc;
-@property (nonatomic, retain) UIImageView *uiRating;
-@property (nonatomic, retain) UIButton *uiComments;
-@property (nonatomic, retain) UILabel *uiNotRated;
-@property (nonatomic, retain) UILabel *uiNumComments;
-@property (nonatomic, retain) UIActivityIndicatorView *uiLoading;
-@property (nonatomic, retain) UILabel *uiTracks;
+@property (nonatomic, strong) TalkDetailModel  *talk;
+@property (nonatomic, strong) EventDetailModel *event;
+@property (nonatomic, strong) UILabel *uiTitle;
+@property (nonatomic, strong) UILabel *uiSpeaker;
+@property (nonatomic, strong) UILabel *uiDate;
+@property (nonatomic, strong) UITextView *uiDesc;
+@property (nonatomic, strong) UIImageView *uiRating;
+@property (nonatomic, strong) UIButton *uiComments;
+@property (nonatomic, strong) UILabel *uiNotRated;
+@property (nonatomic, strong) UILabel *uiNumComments;
+@property (nonatomic, strong) UIActivityIndicatorView *uiLoading;
+@property (nonatomic, strong) UILabel *uiTracks;
 
 -(IBAction)uiViewComments:(id)sender;
 -(void)setupScreen:(BOOL)withExtraInfo;
