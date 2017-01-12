@@ -3,3 +3,5 @@ joindinapp/joindinapp.xcodeproj/project.xcworkspace/xcshareddata/joindinapp.xcch
 joindinapp/joindinapp.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 xcuserdata
 *.xcconfig
+Pods
+joindinapp/joindinapp.xcworkspace

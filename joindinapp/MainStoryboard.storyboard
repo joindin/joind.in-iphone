@@ -35,6 +35,52 @@
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-Sq-YRm">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventListItemCell" rowHeight="64" id="14b-Ji-j4g" customClass="EventListItemTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="14b-Ji-j4g" id="c2a-7i-X7q">
+                                            <frame key="frameInset" width="375" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpk-R1-MS7">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diP-qf-Szb">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultEventIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xpp-oC-0iT">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="42" id="PQg-k7-57T"/>
+                                                        <constraint firstAttribute="width" constant="42" id="Zzn-91-3Os"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="diP-qf-Szb" firstAttribute="top" secondItem="Wpk-R1-MS7" secondAttribute="bottom" id="1Ty-sm-hPX"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="diP-qf-Szb" secondAttribute="leading" constant="-58" id="8nc-gC-WXf"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Wpk-R1-MS7" secondAttribute="leading" constant="-58" id="EkX-3D-uA6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="diP-qf-Szb" secondAttribute="bottom" id="S4m-oG-wOg"/>
+                                                <constraint firstItem="xpp-oC-0iT" firstAttribute="leading" secondItem="c2a-7i-X7q" secondAttribute="leadingMargin" constant="8" id="TJt-tH-AI0"/>
+                                                <constraint firstItem="Wpk-R1-MS7" firstAttribute="top" secondItem="c2a-7i-X7q" secondAttribute="topMargin" id="srE-eY-hI0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="diP-qf-Szb" secondAttribute="trailing" id="sti-iz-Yhs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xpp-oC-0iT" secondAttribute="bottom" id="xNZ-Kq-IRE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wpk-R1-MS7" secondAttribute="trailing" id="yjG-GM-7cK"/>
+                                                <constraint firstItem="xpp-oC-0iT" firstAttribute="top" secondItem="c2a-7i-X7q" secondAttribute="topMargin" id="yrR-Jn-SnQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="eventIcon" destination="xpp-oC-0iT" id="ixc-F8-Z47"/>
+                                            <outlet property="subtitleLabel" destination="diP-qf-Szb" id="FWX-q3-yxX"/>
+                                            <outlet property="titleLabel" destination="Wpk-R1-MS7" id="oB2-ak-Y3f"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="CkU-hI-Ogq" id="nyo-vc-8me"/>
                                     <outlet property="delegate" destination="CkU-hI-Ogq" id="3E0-pE-lVV"/>
@@ -66,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEC-Kh-tPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1139" y="-297"/>
+            <point key="canvasLocation" x="-1140" y="-297.30134932533736"/>
         </scene>
         <!--Settings-->
         <scene sceneID="DlN-OQ-ncy">
@@ -124,4 +170,7 @@
             <point key="canvasLocation" x="-1951" y="-297"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultEventIcon" width="90" height="90"/>
+    </resources>
 </document>

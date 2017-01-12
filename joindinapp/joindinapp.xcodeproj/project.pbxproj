@@ -110,8 +110,9 @@
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* EventListViewController.m */; };
-		28F335F11007B36200424DE2 /* EventListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* EventListView.xib */; };
+		8C0126AD65A6E33B2E080ADC /* libPods-joindinapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47339B3CD527909B57D53F63 /* libPods-joindinapp.a */; };
 		9B2CF77A1BA763BF00F64075 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2CF7791BA763BF00F64075 /* CoreLocation.framework */; };
+		9BC74F1B1D9EFE24003CC019 /* EventListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC74F1A1D9EFE24003CC019 /* EventListItemTableViewCell.m */; };
 		9BF8C7091C215C08004333C3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF8C7081C215C08004333C3 /* MainStoryboard.storyboard */; };
 		9BF8C70B1C215CDC004333C3 /* icon_87.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF8C70A1C215CDC004333C3 /* icon_87.png */; };
 		A028B23A17FF580300B86718 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A028B23117FF580300B86718 /* Default~iphone.png */; };
@@ -284,6 +285,7 @@
 		0AF7FAB0112876BA003B1978 /* joindin_iphone_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = joindin_iphone_small.jpg; sourceTree = "<group>"; };
 		0AF7FB18112A0D0D003B1978 /* EventTalkDateHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTalkDateHeaderViewCell.h; sourceTree = "<group>"; };
 		0AF7FB19112A0D0D003B1978 /* EventTalkDateHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTalkDateHeaderViewCell.m; sourceTree = "<group>"; };
+		11D2B4F1F77BFCD128900E34 /* Pods-joindinapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-joindinapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-joindinapp/Pods-joindinapp.release.xcconfig"; sourceTree = "<group>"; };
 		1B690B6717BA1EA8008B82C8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* joindinappAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joindinappAppDelegate.h; sourceTree = "<group>"; };
@@ -295,10 +297,12 @@
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28C286DF0D94DF7D0034E888 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListViewController.h; sourceTree = "<group>"; };
 		28C286E00D94DF7D0034E888 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListViewController.m; sourceTree = "<group>"; };
-		28F335F01007B36200424DE2 /* EventListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListView.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		47339B3CD527909B57D53F63 /* libPods-joindinapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-joindinapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* joindinapp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "joindinapp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9B2CF7791BA763BF00F64075 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9BC74F191D9EFE24003CC019 /* EventListItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListItemTableViewCell.h; sourceTree = "<group>"; };
+		9BC74F1A1D9EFE24003CC019 /* EventListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListItemTableViewCell.m; sourceTree = "<group>"; };
 		9BF8C7081C215C08004333C3 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		9BF8C70A1C215CDC004333C3 /* icon_87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_87.png; sourceTree = "<group>"; };
 		A028B23117FF580300B86718 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 		A028B23717FF580300B86718 /* icon_iphone_retina_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_57x57.png; sourceTree = "<group>"; };
 		A028B23817FF580300B86718 /* icon_iphone_retina_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_114x114.png; sourceTree = "<group>"; };
 		A028B23917FF580300B86718 /* icon_iphone_retina_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iphone_retina_120x120.png; sourceTree = "<group>"; };
+		AA7E5BFAE6CA64EC48D579A2 /* Pods-joindinapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-joindinapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-joindinapp/Pods-joindinapp.debug.xcconfig"; sourceTree = "<group>"; };
+		B690968F9A54C4FC2891D10E /* Pods-joindinapp.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-joindinapp.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-joindinapp/Pods-joindinapp.adhoc.xcconfig"; sourceTree = "<group>"; };
 		D45E21C31B28D31200EEA14F /* icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120.png; sourceTree = "<group>"; };
 		D45E21C41B28D31200EEA14F /* icon_180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_180.png; sourceTree = "<group>"; };
 		D45E21C51B28D31200EEA14F /* icon_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_1024.png; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				0AB86EE21167F11D007E1038 /* MapKit.framework in Frameworks */,
+				8C0126AD65A6E33B2E080ADC /* libPods-joindinapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +441,8 @@
 				0A9D7943111794080037C5CD /* TalkCommentsLoadingViewCell.m */,
 				0A94BEFB10F9580D00CC32C0 /* TalkCommentsViewCell.h */,
 				0A94BEFC10F9580D00CC32C0 /* TalkCommentsViewCell.m */,
+				9BC74F191D9EFE24003CC019 /* EventListItemTableViewCell.h */,
+				9BC74F1A1D9EFE24003CC019 /* EventListItemTableViewCell.m */,
 			);
 			name = "Custom views";
 			sourceTree = "<group>";
@@ -559,7 +568,6 @@
 				0AA90CA2110E610000301602 /* EventCommentsView.xib */,
 				0A7DF07910EFAEAA0028D49B /* EventDescriptionView.xib */,
 				0A7DEFF610EEDC510028D49B /* EventDetailView.xib */,
-				28F335F01007B36200424DE2 /* EventListView.xib */,
 				0A72BF261167EE5D0019C2DF /* EventLocationView.xib */,
 				0A9D789F111777560037C5CD /* EventTalkCell.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
@@ -601,6 +609,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				2FF2E770C1B24A3E74B478BA /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -637,8 +646,19 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 				0AB86EE11167F11D007E1038 /* MapKit.framework */,
+				47339B3CD527909B57D53F63 /* libPods-joindinapp.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2FF2E770C1B24A3E74B478BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA7E5BFAE6CA64EC48D579A2 /* Pods-joindinapp.debug.xcconfig */,
+				B690968F9A54C4FC2891D10E /* Pods-joindinapp.adhoc.xcconfig */,
+				11D2B4F1F77BFCD128900E34 /* Pods-joindinapp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -648,10 +668,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "joindinapp" */;
 			buildPhases = (
+				6D6F65F8BA8CBBD75827DECF /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				9B8C45AD1BBF35010071A29B /* ShellScript */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				488FF45F4EB5CF38167D3E68 /* [CP] Embed Pods Frameworks */,
+				CDF18F3FB051B26D5433A77C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -693,6 +716,7 @@
 				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -708,7 +732,6 @@
 			files = (
 				A028B23B17FF580300B86718 /* Default@2x.png in Resources */,
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
-				28F335F11007B36200424DE2 /* EventListView.xib in Resources */,
 				0A6D1E3F10EE561700E941EE /* Entitlements.plist in Resources */,
 				A028B24017FF580300B86718 /* icon_iphone_retina_57x57.png in Resources */,
 				0A7DEE0110EE844B0028D49B /* TalkDetailView.xib in Resources */,
@@ -778,6 +801,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		488FF45F4EB5CF38167D3E68 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-joindinapp/Pods-joindinapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D6F65F8BA8CBBD75827DECF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		9B8C45AD1BBF35010071A29B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -790,6 +843,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "# URL\nif [ -n \"${joindInAPIURL:+x}\" ]; then\necho \"Using API URL from environment variable\"\n/usr/libexec/PlistBuddy -c \"Set :joindInAPIURL ${joindInAPIURL}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n\n# OAuth key\nif [ -n \"${joindInOAuthClientID:+x}\" ]; then\n  echo \"Using OAuth client ID from environment variable\"\n  /usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientID ${joindInOAuthClientID}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n\n# OAuth secret\nif [ -n \"${joindInOAuthClientSecret:+x}\" ]; then\necho \"Using OAuth client secret from environment variable\"\n/usr/libexec/PlistBuddy -c \"Set :joindInOAuthClientSecret ${joindInOAuthClientSecret}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\n";
+		};
+		CDF18F3FB051B26D5433A77C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-joindinapp/Pods-joindinapp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -853,6 +921,7 @@
 				0ACE78B8115565D500B02BEC /* TrackDetailModel.m in Sources */,
 				0A72BF271167EE5D0019C2DF /* EventLocationViewController.m in Sources */,
 				0AB86F7B11681434007E1038 /* EventMapAnnotation.m in Sources */,
+				9BC74F1B1D9EFE24003CC019 /* EventListItemTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +960,7 @@
 		};
 		0AE85D2910F50DC7002C4C98 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B690968F9A54C4FC2891D10E /* Pods-joindinapp.adhoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -915,6 +985,7 @@
 		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA7E5BFAE6CA64EC48D579A2 /* Pods-joindinapp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -939,6 +1010,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11D2B4F1F77BFCD128900E34 /* Pods-joindinapp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
